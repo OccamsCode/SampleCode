@@ -19,7 +19,18 @@
 		BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */; };
 		BA1F37DA25DAB475007CC963 /* TopHeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37D925DAB475007CC963 /* TopHeadlinesViewController.swift */; };
 		BA1F37DD25DAB5D1007CC963 /* TopHeadlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37DC25DAB5D1007CC963 /* TopHeadlinesViewModel.swift */; };
+		BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA1F37E925DAC85B007CC963 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA1F379B25DA9CEE007CC963 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA1F37A225DA9CEE007CC963;
+			remoteInfo = "Occcam News";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BA1F37A325DA9CEF007CC963 /* Occcam News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occcam News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,10 +47,20 @@
 		BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCoordinator.swift; sourceTree = "<group>"; };
 		BA1F37D925DAB475007CC963 /* TopHeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewController.swift; sourceTree = "<group>"; };
 		BA1F37DC25DAB5D1007CC963 /* TopHeadlinesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewModel.swift; sourceTree = "<group>"; };
+		BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Occcam NewsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BA1F37A025DA9CEE007CC963 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1F37E125DAC85B007CC963 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37A525DA9CEF007CC963 /* Occcam News */,
+				BA1F37E525DAC85B007CC963 /* Occcam NewsTests */,
 				BA1F37A425DA9CEF007CC963 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37A325DA9CEF007CC963 /* Occcam News.app */,
+				BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +132,15 @@
 			path = "News Flow";
 			sourceTree = "<group>";
 		};
+		BA1F37E525DAC85B007CC963 /* Occcam NewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */,
+				BA1F37E825DAC85B007CC963 /* Info.plist */,
+			);
+			path = "Occcam NewsTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,6 +161,24 @@
 			productReference = BA1F37A325DA9CEF007CC963 /* Occcam News.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BA1F37E325DAC85B007CC963 /* Occcam NewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "Occcam NewsTests" */;
+			buildPhases = (
+				BA1F37E025DAC85B007CC963 /* Sources */,
+				BA1F37E125DAC85B007CC963 /* Frameworks */,
+				BA1F37E225DAC85B007CC963 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA1F37EA25DAC85B007CC963 /* PBXTargetDependency */,
+			);
+			name = "Occcam NewsTests";
+			productName = "Occcam NewsTests";
+			productReference = BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,6 +190,10 @@
 				TargetAttributes = {
 					BA1F37A225DA9CEE007CC963 = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					BA1F37E325DAC85B007CC963 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = BA1F37A225DA9CEE007CC963;
 					};
 				};
 			};
@@ -157,6 +211,7 @@
 			projectRoot = "";
 			targets = (
 				BA1F37A225DA9CEE007CC963 /* Occcam News */,
+				BA1F37E325DAC85B007CC963 /* Occcam NewsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +224,13 @@
 				BA1F37B325DA9CEF007CC963 /* LaunchScreen.storyboard in Resources */,
 				BA1F37B025DA9CEF007CC963 /* Assets.xcassets in Resources */,
 				BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1F37E225DAC85B007CC963 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +253,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA1F37E025DAC85B007CC963 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA1F37EA25DAC85B007CC963 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA1F37A225DA9CEE007CC963 /* Occcam News */;
+			targetProxy = BA1F37E925DAC85B007CC963 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BA1F37AC25DA9CEF007CC963 /* Main.storyboard */ = {
@@ -369,6 +447,46 @@
 			};
 			name = Release;
 		};
+		BA1F37EC25DAC85B007CC963 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 592QM63P2J;
+				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projects.Occcam-NewsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Occcam News.app/Occcam News";
+			};
+			name = Debug;
+		};
+		BA1F37ED25DAC85B007CC963 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 592QM63P2J;
+				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projects.Occcam-NewsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Occcam News.app/Occcam News";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -386,6 +504,15 @@
 			buildConfigurations = (
 				BA1F37B825DA9CEF007CC963 /* Debug */,
 				BA1F37B925DA9CEF007CC963 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "Occcam NewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA1F37EC25DAC85B007CC963 /* Debug */,
+				BA1F37ED25DAC85B007CC963 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
