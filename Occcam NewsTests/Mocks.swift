@@ -76,3 +76,10 @@ class MockURLSession: URLSessionProtocol {
     }
     
 }
+
+// MARK: - Parser Tests
+struct MockModel: Decodable {
+    let name: String
+    let age: Int
+    let isDone: Bool
+}

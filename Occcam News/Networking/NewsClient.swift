@@ -14,4 +14,6 @@ class NewsClient: APIClient {
         self.session = session
     }
     
+    
+    
 }

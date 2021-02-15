@@ -26,6 +26,9 @@
 		BA1F380D25DB04ED007CC963 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F380C25DB04ED007CC963 /* APIClientTest.swift */; };
 		BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381025DB052E007CC963 /* NewsClient.swift */; };
 		BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381425DB0C11007CC963 /* Mocks.swift */; };
+		BA1F381925DB253A007CC963 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381825DB253A007CC963 /* Parser.swift */; };
+		BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381E25DB27CD007CC963 /* JSONParser.swift */; };
+		BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		BA1F380C25DB04ED007CC963 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
 		BA1F381025DB052E007CC963 /* NewsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsClient.swift; sourceTree = "<group>"; };
 		BA1F381425DB0C11007CC963 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		BA1F381825DB253A007CC963 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BA1F381E25DB27CD007CC963 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 				BA1F37F325DACDB4007CC963 /* Endpoint.swift */,
 				BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */,
 				BA1F380625DAEB8C007CC963 /* APIClient.swift */,
+				BA1F381825DB253A007CC963 /* Parser.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F381025DB052E007CC963 /* NewsClient.swift */,
+				BA1F381E25DB27CD007CC963 /* JSONParser.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 			children = (
 				BA1F380225DAE71B007CC963 /* EndpointTests.swift */,
 				BA1F380C25DB04ED007CC963 /* APIClientTest.swift */,
+				BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -277,8 +286,10 @@
 			files = (
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
 				BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */,
+				BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */,
 				BA1F37DD25DAB5D1007CC963 /* TopHeadlinesViewModel.swift in Sources */,
 				BA1F37DA25DAB475007CC963 /* TopHeadlinesViewController.swift in Sources */,
+				BA1F381925DB253A007CC963 /* Parser.swift in Sources */,
 				BA1F37F425DACDB4007CC963 /* Endpoint.swift in Sources */,
 				BA1F380725DAEB8C007CC963 /* APIClient.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
@@ -296,6 +307,7 @@
 			files = (
 				BA1F380D25DB04ED007CC963 /* APIClientTest.swift in Sources */,
 				BA1F380325DAE71B007CC963 /* EndpointTests.swift in Sources */,
+				BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */,
 				BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */,
 				BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */,
 			);
