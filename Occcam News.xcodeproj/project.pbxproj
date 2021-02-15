@@ -22,6 +22,10 @@
 		BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */; };
 		BA1F37F425DACDB4007CC963 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37F325DACDB4007CC963 /* Endpoint.swift */; };
 		BA1F380325DAE71B007CC963 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F380225DAE71B007CC963 /* EndpointTests.swift */; };
+		BA1F380725DAEB8C007CC963 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F380625DAEB8C007CC963 /* APIClient.swift */; };
+		BA1F380D25DB04ED007CC963 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F380C25DB04ED007CC963 /* APIClientTest.swift */; };
+		BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381025DB052E007CC963 /* NewsClient.swift */; };
+		BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381425DB0C11007CC963 /* Mocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1F37F325DACDB4007CC963 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		BA1F380225DAE71B007CC963 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		BA1F380625DAEB8C007CC963 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		BA1F380C25DB04ED007CC963 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
+		BA1F381025DB052E007CC963 /* NewsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsClient.swift; sourceTree = "<group>"; };
+		BA1F381425DB0C11007CC963 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +120,11 @@
 		BA1F37BC25DAA01F007CC963 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				BA1F37BD25DAA05D007CC963 /* Coordinator.swift */,
 				BA1F37C125DAA0BE007CC963 /* ClassName.swift */,
-				BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */,
+				BA1F37BD25DAA05D007CC963 /* Coordinator.swift */,
 				BA1F37F325DACDB4007CC963 /* Endpoint.swift */,
+				BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */,
+				BA1F380625DAEB8C007CC963 /* APIClient.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -144,6 +153,7 @@
 				BA1F37F925DADDFD007CC963 /* Networking */,
 				BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */,
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
+				BA1F381425DB0C11007CC963 /* Mocks.swift */,
 			);
 			path = "Occcam NewsTests";
 			sourceTree = "<group>";
@@ -151,6 +161,7 @@
 		BA1F37F225DACD9F007CC963 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				BA1F381025DB052E007CC963 /* NewsClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F380225DAE71B007CC963 /* EndpointTests.swift */,
+				BA1F380C25DB04ED007CC963 /* APIClientTest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -268,7 +280,9 @@
 				BA1F37DD25DAB5D1007CC963 /* TopHeadlinesViewModel.swift in Sources */,
 				BA1F37DA25DAB475007CC963 /* TopHeadlinesViewController.swift in Sources */,
 				BA1F37F425DACDB4007CC963 /* Endpoint.swift in Sources */,
+				BA1F380725DAEB8C007CC963 /* APIClient.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
+				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
 				BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */,
 				BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */,
 				BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */,
@@ -280,8 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA1F380D25DB04ED007CC963 /* APIClientTest.swift in Sources */,
 				BA1F380325DAE71B007CC963 /* EndpointTests.swift in Sources */,
 				BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */,
+				BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

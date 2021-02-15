@@ -69,28 +69,3 @@ class EndpointTests: XCTestCase {
     }
 
 }
-
-class MockEndpoint: Endpoint {
-    
-    var baseURL: String {
-        return "api.github.com"
-    }
-    
-    var path: String {
-        return "/search"
-    }
-    
-    var method: HTTPMethod {
-        return .GET
-    }
-    
-    var parameters: Parameters? {
-        return ["q":"swift"]
-    }
-    
-    var headers: HTTPHeaders {
-        return ["Accept":"*/*"]
-    }
-    
-    
-}
