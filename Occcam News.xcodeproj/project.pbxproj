@@ -16,7 +16,9 @@
 		BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C125DAA0BE007CC963 /* ClassName.swift */; };
 		BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */; };
 		BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */; };
-		BA1F37CF25DAA8EC007CC963 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37CE25DAA8EC007CC963 /* ViewController.swift */; };
+		BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */; };
+		BA1F37DA25DAB475007CC963 /* TopHeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37D925DAB475007CC963 /* TopHeadlinesViewController.swift */; };
+		BA1F37DD25DAB5D1007CC963 /* TopHeadlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37DC25DAB5D1007CC963 /* TopHeadlinesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,9 @@
 		BA1F37C125DAA0BE007CC963 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
 		BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
-		BA1F37CE25DAA8EC007CC963 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCoordinator.swift; sourceTree = "<group>"; };
+		BA1F37D925DAB475007CC963 /* TopHeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewController.swift; sourceTree = "<group>"; };
+		BA1F37DC25DAB5D1007CC963 /* TopHeadlinesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BA1F37D325DAB36F007CC963 /* News Flow */,
 				BA1F37C525DAA179007CC963 /* Coordinators */,
 				BA1F37BC25DAA01F007CC963 /* Protocol */,
 				BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */,
@@ -71,7 +76,6 @@
 				BA1F37AC25DA9CEF007CC963 /* Main.storyboard */,
 				BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */,
 				BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */,
-				BA1F37CE25DAA8EC007CC963 /* ViewController.swift */,
 				BA1F37B425DA9CEF007CC963 /* Info.plist */,
 			);
 			path = "Occcam News";
@@ -91,8 +95,18 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */,
+				BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BA1F37D325DAB36F007CC963 /* News Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F37D925DAB475007CC963 /* TopHeadlinesViewController.swift */,
+				BA1F37DC25DAB5D1007CC963 /* TopHeadlinesViewModel.swift */,
+			);
+			path = "News Flow";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,10 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
+				BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */,
+				BA1F37DD25DAB5D1007CC963 /* TopHeadlinesViewModel.swift in Sources */,
+				BA1F37DA25DAB475007CC963 /* TopHeadlinesViewController.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */,
 				BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */,
-				BA1F37CF25DAA8EC007CC963 /* ViewController.swift in Sources */,
 				BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */,
 				BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */,
 			);

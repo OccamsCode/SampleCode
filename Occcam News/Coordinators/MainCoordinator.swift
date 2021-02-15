@@ -13,22 +13,28 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     let window: UIWindow
+    let navigationController: UINavigationController
     
     init(_ window: UIWindow) {
         self.window = window
-        childCoordinators = []
+        self.navigationController = UINavigationController()
+        self.childCoordinators = []
     }
     
     func start() {
         
-        // preparing root view
-        let navigationController = UINavigationController()
-        
+        let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
         // store child coordinator
+        store(topHeadlinesFlow)
         
+        // start the coordinator
+        topHeadlinesFlow.start()
+        
+        // launch the window
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        // TODO: Free child
     }
     
     
