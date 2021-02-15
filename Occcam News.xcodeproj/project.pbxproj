@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */; };
 		BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */; };
-		BA1F37AB25DA9CEF007CC963 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37AA25DA9CEF007CC963 /* ViewController.swift */; };
 		BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37AC25DA9CEF007CC963 /* Main.storyboard */; };
 		BA1F37B025DA9CEF007CC963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */; };
 		BA1F37B325DA9CEF007CC963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */; };
+		BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37BD25DAA05D007CC963 /* Coordinator.swift */; };
+		BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C125DAA0BE007CC963 /* ClassName.swift */; };
+		BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */; };
+		BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */; };
+		BA1F37CF25DAA8EC007CC963 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37CE25DAA8EC007CC963 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA1F37A325DA9CEF007CC963 /* Occcam News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occcam News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA1F37AA25DA9CEF007CC963 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA1F37AD25DA9CEF007CC963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA1F37B225DA9CEF007CC963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA1F37B425DA9CEF007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA1F37BD25DAA05D007CC963 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BA1F37C125DAA0BE007CC963 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
+		BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
+		BA1F37CE25DAA8EC007CC963 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,35 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BA1F37C525DAA179007CC963 /* Coordinators */,
+				BA1F37BC25DAA01F007CC963 /* Protocol */,
 				BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */,
 				BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */,
-				BA1F37AA25DA9CEF007CC963 /* ViewController.swift */,
 				BA1F37AC25DA9CEF007CC963 /* Main.storyboard */,
 				BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */,
 				BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */,
+				BA1F37CE25DAA8EC007CC963 /* ViewController.swift */,
 				BA1F37B425DA9CEF007CC963 /* Info.plist */,
 			);
 			path = "Occcam News";
+			sourceTree = "<group>";
+		};
+		BA1F37BC25DAA01F007CC963 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F37BD25DAA05D007CC963 /* Coordinator.swift */,
+				BA1F37C125DAA0BE007CC963 /* ClassName.swift */,
+				BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BA1F37C525DAA179007CC963 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +165,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1F37AB25DA9CEF007CC963 /* ViewController.swift in Sources */,
+				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
+				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
+				BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */,
+				BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */,
+				BA1F37CF25DAA8EC007CC963 /* ViewController.swift in Sources */,
 				BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */,
 				BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */,
 			);
@@ -289,6 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = "Occcam News/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = "Occcam News/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
