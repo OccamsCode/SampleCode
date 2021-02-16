@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WRs-LH-n4h">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WRs-LH-n4h">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Dl-Zw-m6u">
@@ -45,10 +45,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WRs-LH-n4h" secondAttribute="trailing" id="B95-dV-q6L"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WRs-LH-n4h" secondAttribute="bottom" id="Udg-4d-7tf"/>
-                            <constraint firstItem="WRs-LH-n4h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wfj-xi-9np"/>
-                            <constraint firstItem="WRs-LH-n4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dz6-EY-qGB"/>
+                            <constraint firstItem="WRs-LH-n4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DxN-mb-d8I"/>
+                            <constraint firstItem="WRs-LH-n4h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YhZ-Do-Vzb"/>
+                            <constraint firstItem="WRs-LH-n4h" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bzj-tf-k6w"/>
+                            <constraint firstAttribute="bottom" secondItem="WRs-LH-n4h" secondAttribute="bottom" id="ra5-s0-aS4"/>
                         </constraints>
                     </view>
                 </viewController>
