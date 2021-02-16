@@ -48,3 +48,62 @@ public extension StoryboardInstantiatable where Self: UIViewController {
     }
 }
 
+/*
+ TODO:
+    1. Replace with StoryboardInstantiatable with IBInstantiatable
+    2. Get it to work UITableViewCell & UICollectionViewCell
+ */
+
+public enum IBInstanceType {
+    case nib
+    case storyboardInitial
+    case storyboardIdentifier(String)
+}
+
+public protocol IBInstantiatable {
+    static var storyboardName: String { get }
+    static var bundle: Bundle { get }
+    static var nibName: String { get }
+    static var instantiateType: IBInstanceType { get }
+}
+
+public extension IBInstantiatable where Self: NSObject {
+    
+    static var storyboardName: String {
+        return "Main"
+    }
+    
+    static var nibName: String {
+        return className
+    }
+    
+    static var bundle: Bundle {
+        return Bundle(for: self)
+    }
+    
+    private static var storyboard: UIStoryboard {
+        return UIStoryboard(name: storyboardName, bundle: bundle)
+    }
+    
+    static var instantiateType: StoryboardInstantiateType {
+        return .identifier(className)
+    }
+    
+}
+
+public extension IBInstantiatable where Self: UIViewController {
+    
+    static func instantiate() -> Self {
+        
+        switch instantiateType {
+        case .nib:
+            return Self.init(nibName: nibName, bundle: bundle)
+        case .storyboardInitial:
+            return storyboard.instantiateInitialViewController() as! Self
+        case .storyboardIdentifier(let identifier):
+            return storyboard.instantiateViewController(withIdentifier: identifier) as! Self
+        }
+        
+    }
+    
+}
