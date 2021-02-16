@@ -9,16 +9,28 @@ import Foundation
 
 class TopHeadlinesViewModel {
     
+    private var items: [Int]
+    
+    init(model: [Int]) {
+        self.items = model
+    }
+    
     var numberOfSections: Int {
-        return 2
+        items.isEmpty ? 0 : 1
     }
     
     func numberOfItems(in section: Int) -> Int {
-        return 10
+        
+        if section < 0 || section >= numberOfSections { return 0 }
+        return items.count
+        
     }
     
-    func item(at indexPath: IndexPath) -> Int {
-        return (indexPath.section + 1) * indexPath.row
+    func item(at indexPath: IndexPath) -> Int? {
+        
+        if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
+        return items[indexPath.row]
+        
     }
     
 }

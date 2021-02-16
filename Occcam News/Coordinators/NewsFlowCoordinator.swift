@@ -22,7 +22,7 @@ class NewsFlowCoordinator: Coordinator {
     func start() {
         
         let view = TopHeadlinesViewController.instantiate()
-        let viewModel =  TopHeadlinesViewModel()
+        let viewModel =  TopHeadlinesViewModel(model: [])
         view.viewModel = viewModel
         navigation.viewControllers = [view]
         

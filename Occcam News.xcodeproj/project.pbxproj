@@ -29,6 +29,7 @@
 		BA1F381925DB253A007CC963 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381825DB253A007CC963 /* Parser.swift */; };
 		BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381E25DB27CD007CC963 /* JSONParser.swift */; };
 		BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */; };
+		BA1F382E25DC1554007CC963 /* TopHeadlinesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		BA1F381825DB253A007CC963 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BA1F381E25DB27CD007CC963 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
+		BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		BA1F37E525DAC85B007CC963 /* Occcam NewsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BA1F382C25DC153A007CC963 /* ViewModels */,
 				BA1F37F925DADDFD007CC963 /* Networking */,
 				BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */,
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
@@ -182,6 +185,14 @@
 				BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		BA1F382C25DC153A007CC963 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +320,7 @@
 				BA1F380325DAE71B007CC963 /* EndpointTests.swift in Sources */,
 				BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */,
 				BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */,
+				BA1F382E25DC1554007CC963 /* TopHeadlinesViewModelTests.swift in Sources */,
 				BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
