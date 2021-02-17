@@ -11,9 +11,8 @@ class TopHeadlinesViewController: UIViewController {
     
     var viewModel: TopHeadlinesViewModel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //precondition(viewModel != nil, "You forgot to attach a ViewModel to the View")
+    override func viewDidLoad() {
+        precondition(viewModel != nil, "You forgot to attach a ViewModel")
     }
     
 }
@@ -53,6 +52,6 @@ extension UIColor {
     }
 }
 
-extension TopHeadlinesViewController: StoryboardInstantiatable {
-    static var instantiateType: StoryboardInstantiateType { return .initial }
+extension TopHeadlinesViewController: IBInstantiatable {
+    static var instantiateType: IBInstanceType { return .storyboardInitial }
 }
