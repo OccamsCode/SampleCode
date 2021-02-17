@@ -51,7 +51,6 @@ public extension StoryboardInstantiatable where Self: UIViewController {
 /*
  TODO:
     1. Replace with StoryboardInstantiatable with IBInstantiatable
-    2. Get it to work UITableViewCell & UICollectionViewCell
  */
 
 public enum IBInstanceType {
@@ -99,9 +98,15 @@ public extension IBInstantiatable where Self: UIViewController {
         case .nib:
             return Self.init(nibName: nibName, bundle: bundle)
         case .storyboardInitial:
-            return storyboard.instantiateInitialViewController() as! Self
+            guard let viewController = storyboard.instantiateInitialViewController() as? Self else {
+                fatalError("Unable to cast initial ViewController to \(Self.className)")
+            }
+            return viewController
         case .storyboardIdentifier(let identifier):
-            return storyboard.instantiateViewController(withIdentifier: identifier) as! Self
+            guard let viewController = storyboard.instantiateViewController(identifier: identifier) as? Self else {
+                fatalError("Unable to cast ViewController with ID \(identifier) to \(Self.className)")
+            }
+            return viewController
         }
         
     }
