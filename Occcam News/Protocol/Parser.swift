@@ -18,5 +18,5 @@ enum ParserError: Error {
 }
 
 protocol Parser {
-    func parse<T: Decodable>(_ data: Data, into type: T.Type, completion: @escaping (Result<T, ParserError>) -> Void)
+    func parse<T>(_ data: Data, into type: T.Type, completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable
 }
