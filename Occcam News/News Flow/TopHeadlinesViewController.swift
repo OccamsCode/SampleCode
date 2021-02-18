@@ -9,10 +9,18 @@ import UIKit
 
 class TopHeadlinesViewController: UIViewController {
     
+    @IBOutlet var collectionView: UICollectionView!
+    
     var viewModel: TopHeadlinesViewModel!
     
     override func viewDidLoad() {
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
+        
+        viewModel.update { [unowned self] in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
 }

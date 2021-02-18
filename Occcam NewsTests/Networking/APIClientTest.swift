@@ -12,16 +12,20 @@ class APIClientTest: XCTestCase {
     
     var sut: NewsClient!
     var mockSession: MockURLSession!
+    var mockParser: Parser!
 
     override func setUpWithError() throws {
         
         mockSession = MockURLSession()
-        sut = NewsClient(mockSession)
+        mockParser = MockParser<Bool>()
+        
+        sut = NewsClient(mockSession, jsonParser: mockParser)
     }
 
     override func tearDownWithError() throws {
        
         mockSession = nil
+        mockParser = nil
         sut = nil
     }
 

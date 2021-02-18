@@ -51,6 +51,9 @@
                             <constraint firstAttribute="bottom" secondItem="WRs-LH-n4h" secondAttribute="bottom" id="ra5-s0-aS4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="WRs-LH-n4h" id="EmR-TY-80P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

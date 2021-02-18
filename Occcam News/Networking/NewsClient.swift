@@ -7,13 +7,42 @@
 
 import Foundation
 
-class NewsClient: APIClient {
-    var session: URLSessionProtocol
+enum NewsAPI {
+    case topHeadlines
+}
+
+extension NewsAPI: Endpoint {
     
-    init(_ session: URLSessionProtocol) {
-        self.session = session
+    var baseURL: String {
+        return "newsapi.org"
     }
     
+    var path: String {
+        return "/v2/top-headlines"
+    }
     
+    var method: HTTPMethod {
+        return .GET
+    }
+    
+    var parameters: Parameters? {
+        return ["country":"gb"]
+    }
+    
+    var headers: HTTPHeaders {
+        return ["Authorization":"e3452d72803f4632af9e317be1662d3b"]
+    }
+    
+}
+
+class NewsClient: APIClient {
+    
+    var parser: Parser
+    var session: URLSessionProtocol
+    
+    init(_ session: URLSessionProtocol, jsonParser: Parser) {
+        self.session = session
+        self.parser = jsonParser
+    }
     
 }

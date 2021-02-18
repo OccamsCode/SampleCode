@@ -11,8 +11,11 @@ class TopHeadlinesViewModel {
     
     private var items: [Int]
     
-    init(model: [Int]) {
+    private let client: APIClient
+    
+    init(client: APIClient, model: [Int]) {
         self.items = model
+        self.client = client
     }
     
     var numberOfSections: Int {
@@ -31,6 +34,25 @@ class TopHeadlinesViewModel {
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
         return items[indexPath.row]
         
+    }
+    
+    func update(completion: @escaping () -> Void) {
+        
+        let topHeadlines = NewsAPI.topHeadlines
+        
+        client.fetch(from: topHeadlines, into: TopHeadlines.self) { (result) in
+            
+            switch result {
+            case .success(let topHeadlines):
+                print(topHeadlines.status)
+                self.items = Array(0...topHeadlines.totalResults)
+            case .failure(let error):
+                print(error)
+            }
+            
+            completion()
+            
+        }
     }
     
 }

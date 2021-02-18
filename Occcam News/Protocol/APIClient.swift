@@ -12,6 +12,7 @@ enum APIError: Error, Equatable {
     case invalidData
     case invalidResponse
     case invalidResponseStatusCode
+    
     case responseError
     
     var localizedDescription: String {
@@ -28,16 +29,55 @@ protocol URLSessionTaskProtocol {
     func resume()
 }
 
+extension URLSessionDataTask: URLSessionTaskProtocol {}
+
 protocol URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol
+    func dataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol
+}
+
+extension URLSession: URLSessionProtocol {
+    func dataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol {
+        return self.dataTask(with: request, completionHandler: completion)
+    }
 }
 
 protocol APIClient {
     var session: URLSessionProtocol { get }
+    var parser: Parser { get }
+    func fetch<T>(from endpoint: Endpoint, into type: T.Type, completion: @escaping (Result<T, APIError>) -> Void) where T: Decodable
+    func fetch(from endpoint: Endpoint, completion: @escaping (Result<Data, APIError>) -> Void)
     func fetch(with request: URLRequest, completion: @escaping (Result<Data, APIError>) -> Void)
 }
 
 extension APIClient {
+    
+    func fetch<T>(from endpoint: Endpoint, into type: T.Type, completion: @escaping (Result<T, APIError>) -> Void) where T: Decodable {
+        
+        fetch(from: endpoint) { (fetchResult) in
+            switch fetchResult {
+            case .success(let data):
+                parser.parse(data, into: T.self) { (parserResult) in
+                    switch parserResult {
+                    case .success(let decodedData): completion(.success(decodedData))
+                    case .failure(let error):
+                        debugPrint(error)
+                        completion(.failure(.invalidData))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
+    
+    func fetch(from endpoint: Endpoint, completion: @escaping (Result<Data, APIError>) -> Void) {
+        
+        let request = endpoint.request
+        
+        fetch(with: request, completion: completion)
+        
+    }
     
     func fetch(with request: URLRequest, completion: @escaping (Result<Data, APIError>) -> Void) {
         
