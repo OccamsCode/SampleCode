@@ -67,10 +67,10 @@ class MockURLSession: URLSessionProtocol {
     var response: URLResponse?
     var error: Error?
     
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol {
+    func dataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol {
     
         return MockTask {
-            completionHandler(self.data, self.response, self.error)
+            completion(self.data, self.response, self.error)
         }
         
     }
@@ -82,4 +82,58 @@ struct MockModel: Decodable {
     let name: String
     let age: Int
     let isDone: Bool
+}
+
+class MockParser<T: Decodable>: Parser {
+    
+    enum State {
+        case error, data
+    }
+    
+    var state: State = .error
+    
+    var item: T!
+    
+    func parse<T>(_ data: Data, into type: T.Type, completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable {
+        
+        switch state {
+        case .error: completion(.failure(.jsonDecodeError))
+        case .data: completion(.success(item as! T))
+        }
+        
+    }
+}
+
+class MockClient: APIClient {
+    
+    enum State {
+        case error, data
+    }
+    
+    var state: State
+    
+    var session: URLSessionProtocol
+    
+    var parser: Parser
+    
+    init(_ session: URLSessionProtocol, parser: Parser) {
+        self.parser = parser
+        self.session = session
+        self.state = .error
+    }
+    
+    func fetch(with request: URLRequest, completion: @escaping (Result<Data, APIError>) -> Void) {
+        
+        switch state {
+        case .error: completion(.failure(.responseError))
+        case .data:
+            let t = type(of: self)
+            let bundle = Bundle(for: t.self)
+            let path = bundle.url(forResource: "responseTopHeadlines", withExtension: "json")!
+            let data = try! Data(contentsOf: path)
+            completion(.success(data))
+        }
+        
+    }
+    
 }

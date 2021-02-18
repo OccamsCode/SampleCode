@@ -30,6 +30,8 @@
 		BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381E25DB27CD007CC963 /* JSONParser.swift */; };
 		BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */; };
 		BA1F382E25DC1554007CC963 /* TopHeadlinesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */; };
+		BA2D838625DEEC800054FDDB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D838525DEEC800054FDDB /* Model.swift */; };
+		BA2D838D25DF21970054FDDB /* responseTopHeadlines.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		BA1F381E25DB27CD007CC963 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		BA1F382225DB2AA4007CC963 /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
 		BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesViewModelTests.swift; sourceTree = "<group>"; };
+		BA2D838525DEEC800054FDDB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseTopHeadlines.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BA2D838425DEEC6F0054FDDB /* Models */,
 				BA1F37F225DACD9F007CC963 /* Networking */,
 				BA1F37D325DAB36F007CC963 /* News Flow */,
 				BA1F37C525DAA179007CC963 /* Coordinators */,
@@ -163,7 +168,7 @@
 				BA1F37F925DADDFD007CC963 /* Networking */,
 				BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */,
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
-				BA1F381425DB0C11007CC963 /* Mocks.swift */,
+				BA2D838B25DF21520054FDDB /* Mock Data */,
 			);
 			path = "Occcam NewsTests";
 			sourceTree = "<group>";
@@ -193,6 +198,23 @@
 				BA1F382D25DC1554007CC963 /* TopHeadlinesViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BA2D838425DEEC6F0054FDDB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA2D838525DEEC800054FDDB /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA2D838B25DF21520054FDDB /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F381425DB0C11007CC963 /* Mocks.swift */,
+				BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */,
+			);
+			path = "Mock Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2D838D25DF21970054FDDB /* responseTopHeadlines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
 				BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */,
 				BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */,
