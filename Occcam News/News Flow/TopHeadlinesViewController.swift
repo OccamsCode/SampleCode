@@ -37,27 +37,35 @@ extension TopHeadlinesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopHeadlinesCollectionViewCell", for: indexPath)
-        
-        if cell.backgroundColor != UIColor.white {
-            cell.backgroundColor = .random
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopHeadlinesCollectionViewCell", for: indexPath) as? TopHeadlineCollectionViewCell else {
+            fatalError("Did not deque cell")
         }
+        
+        guard let topHeadline = viewModel.item(at: indexPath) else { fatalError("Other") }
+        
+        cell.textLabel.text = topHeadline.title
+        cell.imageView.layer.cornerRadius = 5.0
         
         return cell
     }
     
 }
 
-extension CGFloat {
-    static var random: CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
+extension TopHeadlinesViewController: UICollectionViewDelegateFlowLayout {
 
-extension UIColor {
-    static var random: UIColor {
-        return UIColor(red: .random, green: .random, blue: .random, alpha: 1.0)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        var width = collectionView.frame.width - 10
+        
+        switch indexPath.row {
+        case 0: break
+        default: width = width / 2.0
+        }
+        
+        return CGSize(width: width, height: width)
+
     }
+
 }
 
 extension TopHeadlinesViewController: IBInstantiatable {
