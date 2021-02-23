@@ -9,11 +9,11 @@ import Foundation
 
 class TopHeadlinesViewModel {
     
-    private var items: [Int]
+    private var items: [Article]
     
     private let client: APIClient
     
-    init(client: APIClient, model: [Int]) {
+    init(client: APIClient, model: [Article]) {
         self.items = model
         self.client = client
     }
@@ -29,7 +29,7 @@ class TopHeadlinesViewModel {
         
     }
     
-    func item(at indexPath: IndexPath) -> Int? {
+    func item(at indexPath: IndexPath) -> Article? {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
         return items[indexPath.row]
@@ -45,7 +45,7 @@ class TopHeadlinesViewModel {
             switch result {
             case .success(let topHeadlines):
                 print(topHeadlines.status)
-                self.items = Array(0...topHeadlines.totalResults)
+                self.items = topHeadlines.articles
             case .failure(let error):
                 print(error)
             }

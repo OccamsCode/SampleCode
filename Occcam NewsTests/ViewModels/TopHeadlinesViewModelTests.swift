@@ -75,7 +75,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     // MARK: - Three Items
     func test_ThreeModel_HasOneSection() {
         
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let result = sut.numberOfSections
         
@@ -85,7 +86,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_ThreeItemsInSectionZero() {
         
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let result = sut.numberOfItems(in: 0)
         
@@ -95,7 +97,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_ZeroItemsInSectionOne() {
         
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let result = sut.numberOfItems(in: 1)
         
@@ -105,7 +108,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_HasItemAtIndexPathZero() {
         
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let zero = IndexPath(row: 0, section: 0)
         let result = sut.item(at: zero)
@@ -116,40 +120,46 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_HasCorrectItemAtIndexPathZero() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let zero = IndexPath(row: 0, section: 0)
         let result = sut.item(at: zero)
         
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result?.title, models.first?.title)
         
     }
     
     func test_ThreeModel_HasCorrectItemAtRowOneSectionZero() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        let expectedTitle = models[1].title
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let zero = IndexPath(row: 1, section: 0)
         let result = sut.item(at: zero)
         
-        XCTAssertEqual(result, 2)
+        XCTAssertEqual(result?.title, expectedTitle)
         
     }
     
     func test_ThreeModel_HasCorrectItemAtRowTwoSectionZero() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        let expectedTitle = models[2].title
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let zero = IndexPath(row: 2, section: 0)
         let result = sut.item(at: zero)
         
-        XCTAssertEqual(result, 3)
+        XCTAssertEqual(result?.title, expectedTitle)
         
     }
 
     func test_ThreeModel_HasNoItemAtRowThreeSectionZero() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let zero = IndexPath(row: 3, section: 0)
         let result = sut.item(at: zero)
@@ -160,7 +170,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_ZeroItemsInNegativeSection() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let result = sut.numberOfItems(in: -1)
         
@@ -169,7 +180,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_NoItemAtNegativeSection() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let negative = IndexPath(row: 0, section: -1)
         let result = sut.item(at: negative)
@@ -179,7 +191,8 @@ class TopHeadlinesViewModelTests: XCTestCase {
     
     func test_ThreeModel_NoItemAtNegativeRow() {
 
-        sut = TopHeadlinesViewModel(client: mockClient, model: [1, 2, 3])
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
         
         let negative = IndexPath(row: -1, section: 0)
         let result = sut.item(at: negative)

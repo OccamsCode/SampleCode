@@ -137,3 +137,13 @@ class MockClient: APIClient {
     }
     
 }
+
+class MockGenerator {
+    
+    static func createArticles(_ count: Int) -> [Article] {
+        
+        return Array(0..<3).map({ Article(author: nil, title: "\($0)", description: nil, url: URL(string: "apple.com")!, urlToImage: nil, source: Source(id: nil, name: "")) })
+
+    }
+    
+}
