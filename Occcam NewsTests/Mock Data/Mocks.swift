@@ -84,11 +84,11 @@ struct MockModel: Decodable {
     let isDone: Bool
 }
 
+enum State {
+    case error, data
+}
+
 class MockParser<T: Decodable>: Parser {
-    
-    enum State {
-        case error, data
-    }
     
     var state: State = .error
     
@@ -105,10 +105,6 @@ class MockParser<T: Decodable>: Parser {
 }
 
 class MockClient: APIClient {
-    
-    enum State {
-        case error, data
-    }
     
     var state: State
     

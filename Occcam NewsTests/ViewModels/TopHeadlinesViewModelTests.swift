@@ -11,15 +11,20 @@ import XCTest
 class TopHeadlinesViewModelTests: XCTestCase {
     
     var sut: TopHeadlinesViewModel!
-    var mockClient: APIClient!
+    var mockClient: MockClient!
+    var jsonParser: JSONParser!
 
     override func setUpWithError() throws {
     
-        mockClient = MockClient(MockURLSession(), parser: MockParser<TopHeadlines>())
+        jsonParser = JSONParser()
+        mockClient = MockClient(MockURLSession(), parser: jsonParser)
         sut = TopHeadlinesViewModel(client: mockClient, model: [])
     }
 
     override func tearDownWithError() throws {
+        
+        jsonParser = nil
+        mockClient = nil
         sut = nil
     }
     
@@ -198,6 +203,60 @@ class TopHeadlinesViewModelTests: XCTestCase {
         let result = sut.item(at: negative)
         
         XCTAssertNil(result)
+    }
+    
+    // MARK: - Update
+    func test_Update_HasSection() {
+
+        let updateVM = expectation(description: "Update ViewModel")
+        mockClient.state = .data
+        sut = TopHeadlinesViewModel(client: mockClient, model: [])
+
+        sut.update {
+            updateVM.fulfill()
+        }
+        
+        wait(for: [updateVM], timeout: 1.0)
+        
+        let result = sut.numberOfSections
+        
+        XCTAssertGreaterThan(result, 0)
+    }
+    
+    func test_Update_HasRowsInFirstSection() {
+        
+        let updateVM = expectation(description: "Update ViewModel")
+        mockClient.state = .data
+        sut = TopHeadlinesViewModel(client: mockClient, model: [])
+
+        sut.update {
+            updateVM.fulfill()
+        }
+        
+        wait(for: [updateVM], timeout: 1.0)
+        
+        let result = sut.numberOfItems(in: 0)
+        
+        XCTAssertGreaterThan(result, 0)
+        
+    }
+    
+    func test_Update_HasItem() {
+        
+        let updateVM = expectation(description: "Update ViewModel")
+        mockClient.state = .data
+        sut = TopHeadlinesViewModel(client: mockClient, model: [])
+
+        sut.update {
+            updateVM.fulfill()
+        }
+        
+        wait(for: [updateVM], timeout: 1.0)
+        
+        let result = sut.item(at: IndexPath(row: 0, section: 0))
+        
+        XCTAssertNotNil(result)
+        
     }
 
 }
