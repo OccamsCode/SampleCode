@@ -41,10 +41,9 @@ extension TopHeadlinesViewController: UICollectionViewDataSource {
             fatalError("Did not deque cell")
         }
         
-        guard let topHeadline = viewModel.item(at: indexPath) else { fatalError("Other") }
+        guard let topHeadline = viewModel.viewModelForItem(at: indexPath) else { fatalError("Other") }
         
-        cell.textLabel.text = topHeadline.title
-        cell.imageView.layer.cornerRadius = 5.0
+        cell.update(topHeadline)
         
         return cell
     }
@@ -56,13 +55,16 @@ extension TopHeadlinesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         var width = collectionView.frame.width - 10
+        var height = width
         
         switch indexPath.row {
         case 0: break
-        default: width = width / 2.0
+        default:
+            width = width / 2.0
+            height = width * 1.3
         }
         
-        return CGSize(width: width, height: width)
+        return CGSize(width: width, height: height)
 
     }
 

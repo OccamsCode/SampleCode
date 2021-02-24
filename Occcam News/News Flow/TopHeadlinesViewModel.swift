@@ -7,34 +7,64 @@
 
 import Foundation
 
+enum ListItemStyle {
+    case feature, subfeature, normal
+}
+
 class TopHeadlinesViewModel {
     
-    private var items: [Article]
+    private var articles: [Article]
     
     private let client: APIClient
     
+    var cellStyles: [Int: ListItemStyle]
+    
     init(client: APIClient, model: [Article]) {
-        self.items = model
+        self.articles = model
         self.client = client
+        cellStyles = [:]
     }
     
     var numberOfSections: Int {
-        items.isEmpty ? 0 : 1
+        articles.isEmpty ? 0 : 1
     }
     
     func numberOfItems(in section: Int) -> Int {
         
         if section < 0 || section >= numberOfSections { return 0 }
-        return items.count
+        return articles.count
         
     }
     
     func item(at indexPath: IndexPath) -> Article? {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
-        return items[indexPath.row]
+        return articles[indexPath.row]
         
     }
+    
+    func styleForItem(at indexPath: IndexPath) -> ListItemStyle {
+        
+        return .normal
+        
+    }
+    
+    func viewModelForItem(at indexPath: IndexPath) -> TopHeadlineCellViewModel? {
+        
+        guard let item = item(at: indexPath) else { return nil }
+        
+        switch indexPath.row {
+        case 0:
+            return TopHeadlineCellViewModel(item, cellType: .featured)
+        default:
+            return TopHeadlineCellViewModel(item, cellType: .subfeature)
+        }
+
+    }
+    
+//    func sizeForItem(at indexPath: IndexPath, given width: Float) -> (Float, Float) {
+//
+//    }
     
     func update(completion: @escaping () -> Void) {
         
@@ -45,7 +75,7 @@ class TopHeadlinesViewModel {
             switch result {
             case .success(let topHeadlines):
                 print(topHeadlines.status)
-                self.items = topHeadlines.articles
+                self.articles = topHeadlines.articles
             case .failure(let error):
                 print(error)
             }
