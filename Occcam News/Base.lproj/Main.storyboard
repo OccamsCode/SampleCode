@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopHeadlinesCollectionViewCell" id="7Gp-8J-Pdz" customClass="TopHeadlineCollectionViewCell" customModule="Occcam_News" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturedArticleCollectionViewCell" id="7Gp-8J-Pdz" customClass="FeaturedArticleCollectionViewCell" customModule="Occcam_News" customModuleProvider="target">
                                         <rect key="frame" x="6.5" y="0.0" width="401" height="325"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kQq-Hh-jjy">

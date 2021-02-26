@@ -37,7 +37,7 @@ extension TopHeadlinesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopHeadlinesCollectionViewCell", for: indexPath) as? TopHeadlineCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedArticleCollectionViewCell", for: indexPath) as? FeaturedArticleCollectionViewCell else {
             fatalError("Did not deque cell")
         }
         

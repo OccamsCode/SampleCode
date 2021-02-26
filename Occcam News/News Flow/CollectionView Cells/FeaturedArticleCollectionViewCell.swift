@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopHeadlineCellViewModel {
+class ArticleCellViewModel {
     
     let listStyle: ListItemStyle
     
@@ -47,7 +47,7 @@ class FeaturedArticleCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 5.0
     }
     
-    func update(_ viewModel: TopHeadlineCellViewModel) {
+    func update(_ viewModel: ArticleCellViewModel) {
         
         textLabel.text = viewModel.articleTitle
         textLabel.font = UIFont.boldSystemFont(ofSize: viewModel.fontSize)
