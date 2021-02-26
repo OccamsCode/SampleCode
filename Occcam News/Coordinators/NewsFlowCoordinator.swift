@@ -25,6 +25,7 @@ class NewsFlowCoordinator: Coordinator {
         let parser = JSONParser()
         let client = NewsClient(URLSession(configuration: .default), jsonParser: parser)
         let viewModel =  TopHeadlinesViewModel(client: client, model: [])
+        viewModel.listItemStyles = [0:.feature, 1:.subfeature, 2:.subfeature]
         view.viewModel = viewModel
         navigation.setViewControllers([view], animated: false)
         

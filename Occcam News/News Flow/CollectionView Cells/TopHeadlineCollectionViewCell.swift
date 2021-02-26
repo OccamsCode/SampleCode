@@ -9,17 +9,13 @@ import UIKit
 
 class TopHeadlineCellViewModel {
     
-    enum CellType {
-        case featured, subfeature
-    }
-    
-    let cellType: CellType
+    let listStyle: ListItemStyle
     
     private let model: Article
     
-    init(_ article: Article, cellType: CellType) {
+    init(_ article: Article, listStyle: ListItemStyle) {
         self.model = article
-        self.cellType = cellType
+        self.listStyle = listStyle
     }
     
     var articleTitle: String {
@@ -28,9 +24,9 @@ class TopHeadlineCellViewModel {
     
     var fontSize: CGFloat {
         
-        switch cellType {
-        case .featured: return 16.0
-        case .subfeature: return 12.0
+        switch listStyle {
+        case .feature: return 16.0
+        case .subfeature, .normal: return 12.0
         }
         
     }
@@ -70,6 +66,7 @@ class TopHeadlineCollectionViewCell: UICollectionViewCell {
     
 }
 
+// TODO - Refactor This
 extension UIImageView {
     
     func setImage(from url: URL, completion: @escaping (UIImage) -> Void) {

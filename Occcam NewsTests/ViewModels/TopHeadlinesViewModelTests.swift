@@ -259,4 +259,88 @@ class TopHeadlinesViewModelTests: XCTestCase {
         
     }
 
+    // MARK: - Style For Item
+    
+    func test_NoStyle_NilStyle() {
+        
+        sut.listItemStyles = [:]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
+        
+        XCTAssertNil(result)
+        
+    }
+    
+    func test_SingleStyleNormal_ZeroIndexPathGivesNormal() {
+        
+        let models = MockGenerator.createArticles(1)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        sut.listItemStyles = [0:ListItemStyle.normal]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(result, ListItemStyle.normal)
+    }
+    
+    func test_SingleStyleNormal_OutOfIndexNil() {
+        
+        let models = MockGenerator.createArticles(1)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        sut.listItemStyles = [0:ListItemStyle.normal]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 1, section: 0))
+        
+        XCTAssertNil(result)
+    }
+    
+    func test_MultipleStyle_FirstIndexCorrect() {
+        
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        
+        sut.listItemStyles = [
+            0:.feature,
+            1:.subfeature,
+            2:.subfeature
+        ]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(result, .feature)
+        
+    }
+    
+    func test_MultipleStyle_SecondIndexCorrect() {
+        
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        
+        sut.listItemStyles = [
+            0:.feature,
+            1:.subfeature,
+            2:.subfeature
+        ]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 1, section: 0))
+        
+        XCTAssertEqual(result, .subfeature)
+        
+    }
+    
+    func test_MultipleStyle_ThirdIndexCorrect() {
+        
+        let models = MockGenerator.createArticles(3)
+        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        
+        sut.listItemStyles = [
+            0:.feature,
+            1:.subfeature,
+            2:.subfeature
+        ]
+        
+        let result = sut.styleForItem(at: IndexPath(row: 2, section: 0))
+        
+        XCTAssertEqual(result, .subfeature)
+        
+    }
 }

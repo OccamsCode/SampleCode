@@ -17,12 +17,12 @@ class TopHeadlinesViewModel {
     
     private let client: APIClient
     
-    var cellStyles: [Int: ListItemStyle]
+    var listItemStyles: [Int: ListItemStyle]
     
     init(client: APIClient, model: [Article]) {
         self.articles = model
         self.client = client
-        cellStyles = [:]
+        listItemStyles = [:]
     }
     
     var numberOfSections: Int {
@@ -43,28 +43,39 @@ class TopHeadlinesViewModel {
         
     }
     
-    func styleForItem(at indexPath: IndexPath) -> ListItemStyle {
+    func styleForItem(at indexPath: IndexPath) -> ListItemStyle? {
         
-        return .normal
+        guard let _ = item(at: indexPath) else { return nil }
         
+        guard let style = listItemStyles[indexPath.row] else { return .normal }
+        
+        return style
     }
     
     func viewModelForItem(at indexPath: IndexPath) -> TopHeadlineCellViewModel? {
         
-        guard let item = item(at: indexPath) else { return nil }
+        guard let item = item(at: indexPath), let style = styleForItem(at: indexPath) else { return nil }
         
-        switch indexPath.row {
-        case 0:
-            return TopHeadlineCellViewModel(item, cellType: .featured)
-        default:
-            return TopHeadlineCellViewModel(item, cellType: .subfeature)
-        }
+        return TopHeadlineCellViewModel(item, listStyle: style)
 
     }
     
-//    func sizeForItem(at indexPath: IndexPath, given width: Float) -> (Float, Float) {
-//
-//    }
+    func sizeForItem(at indexPath: IndexPath, given width: Float) -> (Float, Float) {
+
+        guard let style = styleForItem(at: indexPath) else { return (0, 0) }
+        
+        var paddedWidth = width - 10
+        
+        switch style {
+        case .feature:
+            return (paddedWidth, paddedWidth)
+        case .subfeature:
+            paddedWidth = paddedWidth / 2.0
+            return (paddedWidth, paddedWidth * 1.4)
+        case .normal:
+            return (paddedWidth, paddedWidth / 2.0)
+        }
+    }
     
     func update(completion: @escaping () -> Void) {
         

@@ -54,17 +54,9 @@ extension TopHeadlinesViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        var width = collectionView.frame.width - 10
-        var height = width
+        let itemSize = viewModel.sizeForItem(at: indexPath, given: Float(collectionView.frame.width))
         
-        switch indexPath.row {
-        case 0: break
-        default:
-            width = width / 2.0
-            height = width * 1.3
-        }
-        
-        return CGSize(width: width, height: height)
+        return CGSize(width: CGFloat(itemSize.0), height: CGFloat(itemSize.1))
 
     }
 
