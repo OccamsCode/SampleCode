@@ -37,13 +37,11 @@ extension TopHeadlinesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedArticleCollectionViewCell", for: indexPath) as? FeaturedArticleCollectionViewCell else {
-            fatalError("Did not deque cell")
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as? ArticleCollectionViewCell else { fatalError("Cell Dequeing") }
         
         guard let topHeadline = viewModel.viewModelForItem(at: indexPath) else { fatalError("Other") }
         
-        cell.update(topHeadline)
+        cell.update(with: topHeadline)
         
         return cell
     }

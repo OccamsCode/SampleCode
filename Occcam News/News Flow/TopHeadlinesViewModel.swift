@@ -70,10 +70,11 @@ class TopHeadlinesViewModel {
         case .feature:
             return (paddedWidth, paddedWidth)
         case .subfeature:
+            paddedWidth -= 5
             paddedWidth = paddedWidth / 2.0
             return (paddedWidth, paddedWidth * 1.4)
         case .normal:
-            return (paddedWidth, paddedWidth / 2.0)
+            return (paddedWidth, paddedWidth / 3.5)
         }
     }
     
