@@ -74,7 +74,7 @@ class TopHeadlinesViewModel {
             paddedWidth = paddedWidth / 2.0
             return (paddedWidth, paddedWidth + 120)
         case .normal:
-            let floored = floorf(paddedWidth / 3.75)
+            let floored = floorf(paddedWidth / 3)
             return (paddedWidth, floored)
         }
     }
