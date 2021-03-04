@@ -9,109 +9,36 @@ import UIKit
 
 class ArticleCollectionViewCell: UICollectionViewCell {
     
-    lazy var imageView: UIImageView = {
-        let placeholder = UIImage(imageLiteralResourceName: "placeholder")
-        let imageView = UIImageView(image: placeholder)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    @IBOutlet var imageView: UIImageView!
     
-    lazy var textLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGreen
-        label.text = "Article Title"
-        label.numberOfLines = 0
-        return label
-    }()
+    @IBOutlet var textLabel: UILabel!
     
-    lazy var dateLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .magenta
-        label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "Last Updated"
-        return label
-    }()
+    @IBOutlet var dateLabel: UILabel!
     
-    var stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.distribution = .fill
-        stack.alignment = .fill
-        stack.spacing = 3
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    var subStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fill
-        stack.alignment = .fill
-        stack.spacing = 2
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+    @IBOutlet var stackView: UIStackView!
     
     func configuireUI(given style: ListItemStyle) {
+        
+        imageView.layer.cornerRadius = 10.0
  
-        addSubview(stackView)
-
-        textLabel.removeFromSuperview()
-        dateLabel.removeFromSuperview()
-        imageView.removeFromSuperview()
-        
-        // Constraints
-        var constraints = [NSLayoutConstraint]()
-        
-        constraints.append(dateLabel.heightAnchor.constraint(equalToConstant: 14))
-        
         switch style {
         case .feature, .subfeature:
-            
-            subStackView.removeFromSuperview()
-            
-            constraints.append(textLabel.heightAnchor.constraint(equalToConstant: 60))
-            
             stackView.axis = .vertical
-            stackView.addArrangedSubview(imageView)
-            stackView.addArrangedSubview(textLabel)
-            stackView.addArrangedSubview(dateLabel)
             
         case .normal:
-            
-            constraints.append(imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1))
-            
-            subStackView.addArrangedSubview(textLabel)
-            subStackView.addArrangedSubview(dateLabel)
-
             stackView.axis = .horizontal
-            stackView.addArrangedSubview(subStackView)
-            stackView.addArrangedSubview(imageView)
-            
         }
-        
-        
-        let top = stackView.topAnchor.constraint(equalTo: topAnchor)
-        let bottom = stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        let trailing = stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        let leading = stackView.leadingAnchor.constraint(equalTo: leadingAnchor)
-        constraints.append(contentsOf: [top, bottom, trailing, leading])
-        
-        addConstraints(constraints)
-        
+
     }
     
     func update(with viewModel: ArticleCellViewModel) {
-        
+
         configuireUI(given: viewModel.listStyle)
         
         textLabel.text = viewModel.articleTitle
-        textLabel.font = UIFont.boldSystemFont(ofSize: viewModel.fontSize)
+        textLabel.font = viewModel.expectedFont
         
-        if let url = viewModel.articleImage {
+       if let url = viewModel.articleImage {
             
             imageView.setImage(from: url) { (image) in
                 DispatchQueue.main.async {
@@ -137,6 +64,17 @@ class ArticleCellViewModel {
     
     var articleTitle: String {
         return model.title
+    }
+    
+    var expectedFont: UIFont {
+        
+        switch listStyle {
+        case .feature: return .preferredFont(forTextStyle: .title1)
+        case .subfeature: return .preferredFont(forTextStyle: .headline)
+        case .normal: return .preferredFont(forTextStyle: .body)
+
+        }
+        
     }
     
     var fontSize: CGFloat {

@@ -68,13 +68,14 @@ class TopHeadlinesViewModel {
         
         switch style {
         case .feature:
-            return (paddedWidth, paddedWidth)
+            return (paddedWidth, paddedWidth + 140)
         case .subfeature:
             paddedWidth -= 5
             paddedWidth = paddedWidth / 2.0
-            return (paddedWidth, paddedWidth * 1.4)
+            return (paddedWidth, paddedWidth + 120)
         case .normal:
-            return (paddedWidth, paddedWidth / 3.5)
+            let floored = floorf(paddedWidth / 3.75)
+            return (paddedWidth, floored)
         }
     }
     
