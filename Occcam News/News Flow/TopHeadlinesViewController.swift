@@ -14,6 +14,7 @@ class TopHeadlinesViewController: UIViewController {
     var viewModel: TopHeadlinesViewModel!
     
     override func viewDidLoad() {
+        
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
         
         viewModel.update { [unowned self] in
@@ -37,7 +38,7 @@ extension TopHeadlinesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as? ArticleCollectionViewCell else { fatalError("Cell Dequeing") }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OLDArticleCollectionViewCell", for: indexPath) as? OldArticleCollectionViewCell else { fatalError("Cell Dequeing") }
         
         guard let topHeadline = viewModel.viewModelForItem(at: indexPath) else { fatalError("Other") }
         

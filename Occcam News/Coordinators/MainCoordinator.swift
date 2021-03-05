@@ -15,20 +15,27 @@ class MainCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
     
+    private let client: APIClient
+    
     init(_ window: UIWindow) {
         self.window = window
         self.navigationController = UINavigationController()
         self.childCoordinators = []
+        
+        let parser = JSONParser()
+        self.client = NewsClient(URLSession(configuration: .default), jsonParser: parser)
     }
     
     func start() {
         
-        let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
+        //let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
+        
+        let homeFlow = HomeFlowCoordinator(navigationController, client: client)
         // store child coordinator
-        store(topHeadlinesFlow)
+        store(homeFlow)
         
         // start the coordinator
-        topHeadlinesFlow.start()
+        homeFlow.start()
         
         // launch the window
         window.rootViewController = navigationController

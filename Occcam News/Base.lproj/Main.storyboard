@@ -10,6 +10,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Home Collection View Controller-->
+        <scene sceneID="nfJ-fd-sYH">
+            <objects>
+                <collectionViewController storyboardIdentifier="HomeCollectionViewController" id="pEq-Kk-1eA" customClass="HomeCollectionViewController" customModule="Occcam_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qby-nL-afb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="W3w-GI-KJO">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="0.0" maxX="10" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="pEq-Kk-1eA" id="Ygu-ET-Ant"/>
+                            <outlet property="delegate" destination="pEq-Kk-1eA" id="oMt-Pd-G6H"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u61-lk-v0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-228" y="-594"/>
+        </scene>
         <!--Top Headlines View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -28,7 +53,7 @@
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCollectionViewCell" id="7Gp-8J-Pdz" customClass="ArticleCollectionViewCell" customModule="Occcam_News" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OLDArticleCollectionViewCell" id="7Gp-8J-Pdz" customClass="OldArticleCollectionViewCell" customModule="Occcam_News" customModuleProvider="target">
                                         <rect key="frame" x="74.5" y="0.0" width="265" height="420"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kQq-Hh-jjy">
@@ -106,101 +131,11 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="4U0-dI-8YG">
-            <objects>
-                <viewController id="njY-Hp-v2N" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TrT-JD-OdU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eR9-nB-w88">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Mf-L7e">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O11-j4-lRB">
-                                                <rect key="frame" x="20" y="275.5" width="374" height="108.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love island definitely returning this summer as ITV announce bumper schdule - Mirror Online " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnh-OC-mie">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="82.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJY-3O-Rsv">
-                                                        <rect key="frame" x="0.0" y="92.5" width="374" height="16"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                        <constraints>
-                                            <constraint firstItem="O11-j4-lRB" firstAttribute="leading" secondItem="pdj-Mf-L7e" secondAttribute="leading" constant="20" id="07v-I2-8Cp"/>
-                                            <constraint firstAttribute="bottom" secondItem="O11-j4-lRB" secondAttribute="bottom" constant="20" id="VH2-zB-XIh"/>
-                                            <constraint firstAttribute="trailing" secondItem="O11-j4-lRB" secondAttribute="trailing" constant="20" id="nSj-N1-FOk"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byZ-Qs-qHr">
-                                        <rect key="frame" x="0.0" y="414" width="414" height="404"/>
-                                        <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UC3-cA-nR6">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="404"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KdI-KJ-PYs">
-                                                    <size key="itemSize" width="128" height="128"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uOe-D6-8Ve">
-                                                        <rect key="frame" x="10" y="0.0" width="400" height="400"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TLL-gI-nwR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                        <size key="customSize" width="400" height="400"/>
-                                                    </collectionViewCell>
-                                                </cells>
-                                            </collectionView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cNK-FL-Pyg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="eR9-nB-w88" firstAttribute="top" secondItem="cNK-FL-Pyg" secondAttribute="top" id="mUy-jR-sEB"/>
-                            <constraint firstItem="cNK-FL-Pyg" firstAttribute="trailing" secondItem="eR9-nB-w88" secondAttribute="trailing" id="nGL-ge-guf"/>
-                            <constraint firstItem="eR9-nB-w88" firstAttribute="bottom" secondItem="cNK-FL-Pyg" secondAttribute="bottom" id="tPc-G4-oc5"/>
-                            <constraint firstItem="eR9-nB-w88" firstAttribute="leading" secondItem="cNK-FL-Pyg" secondAttribute="leading" id="yEz-Ez-UWz"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yNH-q8-CxA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="772.46376811594212" y="141.96428571428569"/>
-        </scene>
     </scenes>
     <resources>
         <image name="placeholder" width="1280" height="960"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

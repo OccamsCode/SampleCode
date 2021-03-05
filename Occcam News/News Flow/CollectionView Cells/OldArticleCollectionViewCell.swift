@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArticleCollectionViewCell: UICollectionViewCell {
+class OldArticleCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     

@@ -87,7 +87,7 @@ class TopHeadlinesViewModel {
             
             switch result {
             case .success(let topHeadlines):
-                print(topHeadlines.status)
+                print("Found \(topHeadlines.totalResults) articles")
                 self.articles = topHeadlines.articles
             case .failure(let error):
                 print(error)
