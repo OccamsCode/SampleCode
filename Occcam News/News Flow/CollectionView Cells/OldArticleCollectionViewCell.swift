@@ -31,7 +31,7 @@ class OldArticleCollectionViewCell: UICollectionViewCell {
 
     }
     
-    func update(with viewModel: ArticleCellViewModel) {
+    func update(with viewModel: OldArticleCellViewModel) {
 
         configuireUI(given: viewModel.listStyle)
         
@@ -40,18 +40,18 @@ class OldArticleCollectionViewCell: UICollectionViewCell {
         
        if let url = viewModel.articleImage {
             
-            imageView.setImage(from: url) { (image) in
-                DispatchQueue.main.async {
-                    self.imageView.image = image
-                }
+        imageView.setImage(from: url) { urlImage in
+            DispatchQueue.main.async {
+                self.imageView.image = urlImage
             }
+        }
             
         }
     }
 }
 
 
-class ArticleCellViewModel {
+class OldArticleCellViewModel {
     
     let listStyle: ListItemStyle
     
@@ -92,18 +92,19 @@ class ArticleCellViewModel {
     
 }
 
-// TODO - Refactor This
+// TODO: - Refactor this to something more robust
 extension UIImageView {
     
-    func setImage(from url: URL, completion: @escaping (UIImage) -> Void) {
+    func setImage(from url: URL, completion: @escaping (UIImage) -> ()) {
         
-        let session = URLSession(configuration: .default)
+        let session = URLSession.shared
         
         image = #imageLiteral(resourceName: "placeholder")
         
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             
             guard let data = data, let urlImage = UIImage(data: data) else { return print("No Image Data") }
+            
             completion(urlImage)
         }
         

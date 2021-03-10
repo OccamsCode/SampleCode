@@ -18,7 +18,22 @@ class TopArticleCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.layer.cornerRadius = 15.0
+        imageView.layer.cornerRadius = 25.0
     }
 
+    func update(with viewModel: HomeArticleCellViewModel) {
+        
+        textLabel.text = viewModel.articleTitle
+        
+        if let url = viewModel.articleImageUrl {
+            
+            imageView.setImage(from: url) { image in
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+            
+        }
+        
+    }
 }

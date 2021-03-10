@@ -42,6 +42,8 @@
 		BA78E8CE25F19AF700D7857C /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8CD25F19AF700D7857C /* HomeCollectionViewController.swift */; };
 		BA78E8D225F19D6000D7857C /* HomeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8D125F19D6000D7857C /* HomeFlowCoordinator.swift */; };
 		BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8D525F1A64000D7857C /* HomeViewModel.swift */; };
+		BA78E8DD25F2DCF000D7857C /* ArticleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8DC25F2DCF000D7857C /* ArticleCellViewModel.swift */; };
+		BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */; };
 		BA9E5A0D25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E5A0C25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		BA78E8CD25F19AF700D7857C /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		BA78E8D125F19D6000D7857C /* HomeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowCoordinator.swift; sourceTree = "<group>"; };
 		BA78E8D525F1A64000D7857C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BA78E8DC25F2DCF000D7857C /* ArticleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCellViewModel.swift; sourceTree = "<group>"; };
+		BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		BA9E5A0C25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +254,8 @@
 			children = (
 				BA78E8CD25F19AF700D7857C /* HomeCollectionViewController.swift */,
 				BA78E8D525F1A64000D7857C /* HomeViewModel.swift */,
+				BA78E8DC25F2DCF000D7857C /* ArticleCellViewModel.swift */,
+				BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */,
 			);
 			path = "Home Flow";
 			sourceTree = "<group>";
@@ -447,11 +453,13 @@
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA78E8C325F1602C00D7857C /* ListCollectionViewCell.swift in Sources */,
 				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
+				BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */,
 				BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */,
 				BA78E8B125F1596F00D7857C /* TopArticleCollectionViewCell.swift in Sources */,
 				BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */,
 				BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */,
 				BA78E8CE25F19AF700D7857C /* HomeCollectionViewController.swift in Sources */,
+				BA78E8DD25F2DCF000D7857C /* ArticleCellViewModel.swift in Sources */,
 				BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */,
 				BA78E8CA25F1977A00D7857C /* CollectionViewCellReuse.swift in Sources */,
 			);

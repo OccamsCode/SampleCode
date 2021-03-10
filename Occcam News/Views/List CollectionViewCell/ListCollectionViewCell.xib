@@ -21,12 +21,7 @@
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-td-yRV">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="364"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="34e-gu-KO3">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="3eQ-zJ-LKt" customClass="SnapCollectionFlowLayout" customModule="Occcam_News" customModuleProvider="target"/>
                         <connections>
                             <outlet property="dataSource" destination="gTV-IL-0wX" id="uFN-6y-1Zk"/>
                             <outlet property="delegate" destination="gTV-IL-0wX" id="vpa-W8-wG9"/>

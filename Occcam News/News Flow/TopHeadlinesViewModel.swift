@@ -52,11 +52,11 @@ class TopHeadlinesViewModel {
         return style
     }
     
-    func viewModelForItem(at indexPath: IndexPath) -> ArticleCellViewModel? {
+    func viewModelForItem(at indexPath: IndexPath) -> OldArticleCellViewModel? {
         
         guard let item = item(at: indexPath), let style = styleForItem(at: indexPath) else { return nil }
         
-        return ArticleCellViewModel(item, listStyle: style)
+        return OldArticleCellViewModel(item, listStyle: style)
 
     }
     

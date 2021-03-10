@@ -10,7 +10,7 @@ import Foundation
 class HomeViewModel {
     
     private let client: APIClient
-    private var articles: [String:[Article]]
+    private var articles: [String:HomeArticleCellViewModel]
     
     init(client: APIClient) {
         self.client = client
@@ -32,7 +32,7 @@ class HomeViewModel {
         return ["Top Headline", "General"]
     }
     
-    func items(at indexPath: IndexPath) -> [Article]? {
+    func cellViewModel(at indexPath: IndexPath) -> HomeArticleCellViewModel? {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
         return articles[sections[indexPath.section]]
@@ -49,10 +49,10 @@ class HomeViewModel {
             case .success(let topHeadlines):
                 print("Found \(topHeadlines.totalResults) articles")
                 
-                let top = Array(topHeadlines.articles.dropFirst())
+                let top = Array(arrayLiteral: topHeadlines.articles.first!)
                 
-                self.articles["Top Headline"] = top
-                self.articles["General"] = topHeadlines.articles
+                self.articles["Top Headline"] = HomeArticleCellViewModel(top)
+                self.articles["General"] = HomeArticleCellViewModel(topHeadlines.articles)
                 
             case .failure(let error):
                 print(error)
