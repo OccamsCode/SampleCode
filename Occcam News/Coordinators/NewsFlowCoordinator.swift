@@ -10,20 +10,20 @@ import UIKit
 
 class NewsFlowCoordinator: Coordinator {
     
-    let navigation: UINavigationController
-    
     var childCoordinators: [Coordinator]
     
-    init(_ navigationController: UINavigationController) {
+    let navigation: UINavigationController
+    private let client: APIClient
+    
+    init(_ navigationController: UINavigationController, client: APIClient) {
         self.navigation = navigationController
+        self.client = client
         self.childCoordinators = []
     }
     
     func start() {
         
         let view = TopHeadlinesViewController.instantiate()
-        let parser = JSONParser()
-        let client = NewsClient(URLSession(configuration: .default), jsonParser: parser)
         let viewModel =  TopHeadlinesViewModel(client: client, model: [])
         viewModel.listItemStyles = [0:.feature, 1:.subfeature, 2:.subfeature]
         view.viewModel = viewModel
