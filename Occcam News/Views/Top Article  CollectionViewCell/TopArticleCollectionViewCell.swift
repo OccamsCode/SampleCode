@@ -18,7 +18,7 @@ class TopArticleCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.layer.cornerRadius = 25.0
+        layer.cornerRadius = 25.0
     }
 
     func update(with viewModel: HomeArticleCellViewModel) {
