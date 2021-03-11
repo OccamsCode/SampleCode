@@ -19,6 +19,7 @@ class HomeCollectionViewController: UICollectionViewController {
         // Register cell classes
         collectionView.register(cellType: TopArticleCollectionViewCell.self)
         collectionView.register(cellType: ListCollectionViewCell.self)
+        collectionView.register(reusableViewType: SectionHeaderView.self)
 
         // Do any additional setup after loading the view.
         
@@ -60,6 +61,13 @@ class HomeCollectionViewController: UICollectionViewController {
 
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableView(with: SectionHeaderView.self, for: indexPath)
+        headerView.textLabel.text = viewModel.titleForHeader(at: indexPath.section)
+        return headerView
+        
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -95,9 +103,13 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.frame.width - 20
-        return CGSize(width: width, height: width)
+        return viewModel.sizeForItem(at: indexPath, given: collectionView.frame.size)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+        return viewModel.sizeForHeader(at: section, given: collectionView.frame.size)
     }
     
 }

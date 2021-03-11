@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 class HomeViewModel {
     
@@ -36,6 +37,35 @@ class HomeViewModel {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
         return articles[sections[indexPath.section]]
+        
+    }
+    
+    func titleForHeader(at section: Int) -> String? {
+        
+        if section >= 0 && section < numberOfSections {
+            return sections[section]
+        }
+        
+        return nil
+        
+    }
+    
+    func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
+        
+        let width = frame.width - 20
+        return CGSize(width: width, height: width)
+        
+    }
+    
+    func sizeForHeader(at section: Int, given frame: CGSize) -> CGSize  {
+        
+        switch section {
+        case 0:
+            return CGSize.zero
+        default:
+            let width = frame.width
+            return CGSize(width: width, height: 40)
+        }
         
     }
     
