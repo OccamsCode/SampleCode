@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 enum ListItemStyle {
     case feature, subfeature, normal
@@ -60,22 +61,23 @@ class TopHeadlinesViewModel {
 
     }
     
-    func sizeForItem(at indexPath: IndexPath, given width: Float) -> (Float, Float) {
+    func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
 
-        guard let style = styleForItem(at: indexPath) else { return (0, 0) }
+        guard let style = styleForItem(at: indexPath) else { return CGSize.zero }
         
-        var paddedWidth = width - 10
+        var paddedWidth = frame.width - 10
         
         switch style {
         case .feature:
-            return (paddedWidth, paddedWidth + 140)
+            return CGSize(width: paddedWidth, height: paddedWidth + 140)
         case .subfeature:
             paddedWidth -= 5
             paddedWidth = paddedWidth / 2.0
-            return (paddedWidth, paddedWidth + 120)
+            return CGSize(width: paddedWidth, height: paddedWidth + 120)
         case .normal:
-            let floored = floorf(paddedWidth / 3)
-            return (paddedWidth, floored)
+            return CGSize.zero
+//            let floored = floorf(paddedWidth / 3)
+//            return (paddedWidth, floored)
         }
     }
     
