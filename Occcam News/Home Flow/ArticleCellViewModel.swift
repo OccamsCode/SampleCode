@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 class HomeArticleCellViewModel {
     
@@ -33,10 +34,10 @@ class HomeArticleCellViewModel {
         
     }
     
-    func sizeOfItem(at indexPath: IndexPath, given size: (w:Double, h:Double)) -> (Double, Double) {
+    func sizeOfItem(at indexPath: IndexPath, given size: CGSize) -> CGSize {
         
-        let width = size.w
-        return (w: width - 100, h: width)
+        let floord = floor(size.width / 3)
+        return CGSize(width: size.width - floord, height: size.height)
 
     }
     

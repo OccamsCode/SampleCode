@@ -83,7 +83,7 @@ class TopHeadlinesViewModel {
     
     func update(completion: @escaping () -> Void) {
         
-        let topHeadlines = NewsAPI.topHeadlines
+        let topHeadlines = NewsAPI.topHeadlines(.general)
         
         client.fetch(from: topHeadlines, into: TopHeadlines.self) { (result) in
             

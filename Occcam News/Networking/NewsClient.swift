@@ -7,8 +7,18 @@
 
 import Foundation
 
+enum NewsCategory: String {
+    case business
+    case entertainment
+    case general
+    case health
+    case science
+    case sports
+    case technology
+}
+
 enum NewsAPI {
-    case topHeadlines
+    case topHeadlines(NewsCategory)
 }
 
 extension NewsAPI: Endpoint {
@@ -26,7 +36,16 @@ extension NewsAPI: Endpoint {
     }
     
     var parameters: Parameters? {
-        return ["country":"gb"]
+        
+        //TODO: Support regional news
+        var params:Parameters = ["country":"gb", "pageSize":"10"]
+        
+        switch self {
+        case .topHeadlines(let category):
+            params.updateValue(category.rawValue, forKey: "category")
+        }
+        
+        return params
     }
     
     var headers: HTTPHeaders {

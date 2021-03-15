@@ -30,7 +30,7 @@ class HomeViewModel {
     }
     
     var sections: [String] {
-        return ["Top Headline", "General"]
+        return ["Top Headline", "general", "technology", "health"]
     }
     
     func cellViewModel(at indexPath: IndexPath) -> HomeArticleCellViewModel? {
@@ -43,7 +43,7 @@ class HomeViewModel {
     func titleForHeader(at section: Int) -> String? {
         
         if section >= 0 && section < numberOfSections {
-            return sections[section]
+            return sections[section].capitalized
         }
         
         return nil
@@ -53,17 +53,24 @@ class HomeViewModel {
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
         
         let width = frame.width - 20
-        return CGSize(width: width, height: width)
+        
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: width, height: width)
+        default:
+            let height = floor(width * 0.8)
+            return CGSize(width: width, height: height)
+        }
         
     }
     
-    func sizeForHeader(at section: Int, given frame: CGSize) -> CGSize  {
+    func sizeForHeader(at section: Int, given size: CGSize) -> CGSize  {
         
         switch section {
         case 0:
             return CGSize.zero
         default:
-            let width = frame.width
+            let width = size.width
             return CGSize(width: width, height: 40)
         }
         
@@ -71,25 +78,46 @@ class HomeViewModel {
     
     func update(completion: @escaping () -> Void) {
         
-        let topHeadlines = NewsAPI.topHeadlines
+        let categories = sections.map {
+            NewsCategory.init(rawValue: $0)
+        }
         
-        client.fetch(from: topHeadlines, into: TopHeadlines.self) { [unowned self] result in
+        let group = DispatchGroup()
+        
+        for category in categories {
             
-            switch result {
-            case .success(let topHeadlines):
-                print("Found \(topHeadlines.totalResults) articles")
+            guard let unwrapped = category else { continue }
+            
+            group.enter()
+            let topHeadlines = NewsAPI.topHeadlines(unwrapped)
+            
+            client.fetch(from: topHeadlines, into: TopHeadlines.self) { [unowned self] result in
                 
-                let top = Array(arrayLiteral: topHeadlines.articles.first!)
+                switch result {
+                case .success(let topHeadlines):
+                    
+                    print("Found \(topHeadlines.totalResults) articles total, returned \(topHeadlines.articles.count)")
+                    
+                    if unwrapped == .general {
+                        let top = Array(arrayLiteral: topHeadlines.articles.first!)
+                        self.articles["Top Headline"] = HomeArticleCellViewModel(top)
+                    }
+                    
+                    self.articles[unwrapped.rawValue] = HomeArticleCellViewModel(topHeadlines.articles)
+                    
+                case .failure(let error):
+                    print(error)
+                }
                 
-                self.articles["Top Headline"] = HomeArticleCellViewModel(top)
-                self.articles["General"] = HomeArticleCellViewModel(topHeadlines.articles)
+                group.leave()
                 
-            case .failure(let error):
-                print(error)
             }
             
+        }
+        
+        group.notify(queue: DispatchQueue.global(qos: .background)) {
+            print("All network requests completed")
             completion()
-            
         }
     }
     

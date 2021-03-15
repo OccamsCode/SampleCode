@@ -69,9 +69,9 @@ extension ListCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let size = (w: Double(collectionView.frame.width), h: Double(collectionView.frame.height))
-        let (w, h) = viewModel.sizeOfItem(at: indexPath, given: size)
-        return CGSize(width: w, height: h)
+        //let size = (w: Double(collectionView.frame.width), h: Double(collectionView.frame.height))
+        return viewModel.sizeOfItem(at: indexPath, given: collectionView.frame.size)
+        //return CGSize(width: w, height: h)
 
     }
 
