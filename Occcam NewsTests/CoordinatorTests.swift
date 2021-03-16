@@ -10,6 +10,17 @@ import XCTest
 
 class CoordinatorTests: XCTestCase {
     
+    var apiClient: MockClient!
+    
+    override func setUpWithError() throws {
+        
+        apiClient = MockClient(MockURLSession(), parser: MockParser<Bool>())
+    }
+    
+    override func tearDownWithError() throws {
+        apiClient = nil
+    }
+    
     func test_InitialMainCoordinator_HasNoChildren() {
         
         // Given
@@ -39,7 +50,7 @@ class CoordinatorTests: XCTestCase {
     func test_NewNewsFlowCoordinator_HasNoChildren() {
         
         // Given
-        let sut = NewsFlowCoordinator(UINavigationController())
+        let sut = NewsFlowCoordinator(UINavigationController(), client: apiClient)
         
         // When
         let result = sut.childCoordinators.count
@@ -52,7 +63,7 @@ class CoordinatorTests: XCTestCase {
     func test_NewsFlowCoordinator_HasNoChildren() {
         
         // Given
-        let sut = NewsFlowCoordinator(UINavigationController())
+        let sut = NewsFlowCoordinator(UINavigationController(), client: apiClient)
         sut.start()
         
         // When

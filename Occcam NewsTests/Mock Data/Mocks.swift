@@ -90,6 +90,8 @@ enum State {
 
 class MockParser<T: Decodable>: Parser {
     
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .secondsSince1970
+    
     var state: State = .error
     
     var item: T!
@@ -138,7 +140,7 @@ class MockGenerator {
     
     static func createArticles(_ count: Int) -> [Article] {
         
-        return Array(0..<count).map({ Article(author: nil, title: "\($0)", description: nil, url: URL(string: "apple.com")!, urlToImage: nil, source: Source(id: nil, name: "")) })
+        return Array(0..<count).map({ Article(author: nil, title: "\($0)", description: nil, url: URL(string: "apple.com")!, urlToImage: nil, source: Source(id: nil, name: ""), publishedAt: Date()) })
 
     }
     

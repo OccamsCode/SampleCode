@@ -7,12 +7,20 @@
 
 import Foundation
 
-struct JSONParser: Parser {
+class JSONParser: Parser {
+    
+    let decoder: JSONDecoder
+    
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+    
+    init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601) {
+        self.decoder = JSONDecoder()
+        self.dateDecodingStrategy = dateDecodingStrategy
+    }
     
     func parse<T>(_ data: Data, into type: T.Type, completion: @escaping (Result<T, ParserError>) -> Void) where T : Decodable {
         
-        let decoder = JSONDecoder()
-        
+        decoder.dateDecodingStrategy = dateDecodingStrategy
         do {
             let result = try decoder.decode(T.self, from: data)
             completion(.success(result))
