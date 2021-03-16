@@ -11,6 +11,8 @@ class HomeCollectionViewController: UICollectionViewController {
 
     var viewModel: HomeViewModel!
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,12 +22,28 @@ class HomeCollectionViewController: UICollectionViewController {
         collectionView.register(cellType: TopArticleCollectionViewCell.self)
         collectionView.register(cellType: ListCollectionViewCell.self)
         collectionView.register(reusableViewType: SectionHeaderView.self)
+        
+        collectionView.refreshControl = refreshControl
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")
 
         // Do any additional setup after loading the view.
+        updateUI()
+        
+    }
+    
+    @objc func refreshData(_ sender: UIRefreshControl) {
+        updateUI()
+    }
+    
+    func updateUI() {
         
         viewModel.update { [unowned self] in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         

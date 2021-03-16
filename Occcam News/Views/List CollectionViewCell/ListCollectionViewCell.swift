@@ -17,7 +17,13 @@ class ListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var viewModel: HomeArticleCellViewModel!
+    var viewModel: HomeArticleCellViewModel! {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     var delegate: ListCellDelegate?
     
