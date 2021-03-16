@@ -20,7 +20,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-td-yRV">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="364"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewLayout key="collectionViewLayout" id="3eQ-zJ-LKt" customClass="SnapCollectionFlowLayout" customModule="Occcam_News" customModuleProvider="target"/>
                         <connections>
                             <outlet property="dataSource" destination="gTV-IL-0wX" id="uFN-6y-1Zk"/>
@@ -44,8 +44,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
