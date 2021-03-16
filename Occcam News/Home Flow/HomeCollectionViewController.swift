@@ -17,6 +17,9 @@ class HomeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
+        
+        // TODO: Localise text
+        navigationItem.title = "Top Headlines"
 
         // Register cell classes
         collectionView.register(cellType: TopArticleCollectionViewCell.self)

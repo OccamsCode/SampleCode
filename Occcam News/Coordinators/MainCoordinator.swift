@@ -29,6 +29,7 @@ class MainCoordinator: Coordinator {
     func start() {
         
         //let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
+        navigationController.navigationBar.prefersLargeTitles = true
         
         let homeFlow = HomeFlowCoordinator(navigationController, client: client)
         // store child coordinator
