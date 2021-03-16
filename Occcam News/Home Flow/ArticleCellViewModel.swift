@@ -55,4 +55,9 @@ extension HomeArticleCellViewModel {
         return article.urlToImage
     }
     
+    var artidlePublishDate: Date {
+        guard let article = articles.first else { fatalError("Something went wrong") }
+        return article.publishedAt
+    }
+    
 }

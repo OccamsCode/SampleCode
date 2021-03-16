@@ -33,3 +33,12 @@ struct TopHeadlines: Decodable {
     let totalResults: Int
     let articles: [Article]
 }
+
+
+extension Date {
+    func timeAgo(since date: Date = Date()) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: self, relativeTo: date)
+    }
+}

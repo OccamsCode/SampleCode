@@ -39,6 +39,7 @@ class ListCollectionViewCell: UICollectionViewCell {
 
 }
 
+
 extension ListCollectionViewCell: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -57,6 +58,8 @@ extension ListCollectionViewCell: UICollectionViewDataSource {
         
         // TODO: Move to view model
         cell.textLabel.text = article.title
+        cell.dateLabel.text = article.publishedAt.timeAgo()
+        
         if let imageUrl = article.urlToImage {
             cell.imageView.setImage(from: imageUrl) { image in
                 DispatchQueue.main.async {

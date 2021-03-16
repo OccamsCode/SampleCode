@@ -25,6 +25,8 @@ class TopArticleCollectionViewCell: UICollectionViewCell {
         
         textLabel.text = viewModel.articleTitle
         
+        dateLabel.text = viewModel.artidlePublishDate.timeAgo()
+        
         if let url = viewModel.articleImageUrl {
             
             imageView.setImage(from: url) { image in
