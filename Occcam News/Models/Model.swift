@@ -35,10 +35,12 @@ struct TopHeadlines: Decodable {
 }
 
 
+//TODO: Move this to somewhere else?
 extension Date {
     func timeAgo(since date: Date = Date()) -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
+        formatter.locale = Calendar.current.locale
         return formatter.localizedString(for: self, relativeTo: date)
     }
 }
