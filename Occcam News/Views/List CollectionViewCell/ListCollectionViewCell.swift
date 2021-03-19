@@ -8,9 +8,7 @@
 import UIKit
 
 protocol ListCellDelegate: class {
-    
     func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath)
-    
 }
 
 class ListCollectionViewCell: UICollectionViewCell {
@@ -19,6 +17,7 @@ class ListCollectionViewCell: UICollectionViewCell {
     
     var viewModel: HomeArticleCellViewModel! {
         didSet {
+            delegate = viewModel
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -37,6 +36,14 @@ class ListCollectionViewCell: UICollectionViewCell {
         }
     }
 
+}
+
+extension ListCollectionViewCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.listCell(self, didSelectItemAtIndexPath: indexPath)
+    }
+    
 }
 
 
@@ -84,11 +91,4 @@ extension ListCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
     }
 
-}
-
-extension ListCollectionViewCell: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.listCell(self, didSelectItemAtIndexPath: indexPath)
-    }
 }

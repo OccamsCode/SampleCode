@@ -65,7 +65,7 @@ class HomeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//FIXME: Move to ViewModel
+//FIXME: Move to ViewModel + refactor
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(with: TopArticleCollectionViewCell.self, for: indexPath)

@@ -8,9 +8,15 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
+protocol ArticleCellDelegate {
+    func didSelect(_ article: Article)
+}
+
 class HomeArticleCellViewModel {
     
     var articles: [Article]
+    
+    var delegate: ArticleCellDelegate?
     
     init(_ articles: [Article]) {
         self.articles = articles
@@ -58,6 +64,16 @@ extension HomeArticleCellViewModel {
     var artidlePublishDate: Date {
         guard let article = articles.first else { fatalError("Something went wrong") }
         return article.publishedAt
+    }
+    
+}
+
+extension HomeArticleCellViewModel: ListCellDelegate {
+    
+    func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath) {
+        
+        guard let article = item(at: indexPath) else { return print("No article found") }
+        delegate?.didSelect(article)
     }
     
 }

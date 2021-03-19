@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SafariServices
 import UIKit
 
-class HomeFlowCoordinator: Coordinator {
+class HomeFlowCoordinator:NSObject, Coordinator {
     
     var childCoordinators: [Coordinator]
     
@@ -25,9 +26,27 @@ class HomeFlowCoordinator: Coordinator {
         
         let view = HomeCollectionViewController.instantiate()
         let viewModel = HomeViewModel(client: client)
+        viewModel.coordinator = self
         view.viewModel = viewModel
         
         navigation.setViewControllers([view], animated: false)
+    }
+    
+    func display(_ article: Article) {
+        
+        let view = SFSafariViewController(url: article.url)
+        view.delegate = self
+        view.modalPresentationStyle = .overCurrentContext
+        navigation.present(view, animated: true, completion: nil)
+        
+    }
+    
+}
+
+extension HomeFlowCoordinator: SFSafariViewControllerDelegate {
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        navigation.dismiss(animated: true, completion: nil)
     }
     
 }

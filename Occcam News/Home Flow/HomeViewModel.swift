@@ -13,6 +13,8 @@ class HomeViewModel {
     private let client: APIClient
     private var articles: [String:HomeArticleCellViewModel]
     
+    weak var coordinator: HomeFlowCoordinator?
+    
     init(client: APIClient) {
         self.client = client
         self.articles = [:]
@@ -36,7 +38,9 @@ class HomeViewModel {
     func cellViewModel(at indexPath: IndexPath) -> HomeArticleCellViewModel? {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
-        return articles[sections[indexPath.section]]
+        let articleViewModel = articles[sections[indexPath.section]]
+        articleViewModel?.delegate = self
+        return articleViewModel
         
     }
     
@@ -119,6 +123,14 @@ class HomeViewModel {
             print("All network requests completed")
             completion()
         }
+    }
+    
+}
+
+extension HomeViewModel: ArticleCellDelegate {
+    
+    func didSelect(_ article: Article) {
+        coordinator?.display(article)
     }
     
 }
