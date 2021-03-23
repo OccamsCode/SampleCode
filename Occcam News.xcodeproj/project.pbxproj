@@ -48,6 +48,7 @@
 		BA78E8F025FA5FAF00D7857C /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA78E8EE25FA5FAF00D7857C /* SectionHeaderView.xib */; };
 		BA78E8F42601281300D7857C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8F32601281300D7857C /* GradientView.swift */; };
 		BA9E5A0D25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E5A0C25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift */; };
+		BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		BA78E8EE25FA5FAF00D7857C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		BA78E8F32601281300D7857C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BA9E5A0C25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldArticleCollectionViewCell.swift; sourceTree = "<group>"; };
+		BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BAE5D6AD260A43340073C8D5 /* Factories */,
 				BA78E8AD25F158DE00D7857C /* Views */,
 				BA78E8AC25F158CF00D7857C /* Search Flow */,
 				BA78E8AB25F157CA00D7857C /* Home Flow */,
@@ -329,6 +332,14 @@
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
 		};
+		BAE5D6AD260A43340073C8D5 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA9E5A0D25E9333A005AEFA3 /* OldArticleCollectionViewCell.swift in Sources */,
+				BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */,
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
