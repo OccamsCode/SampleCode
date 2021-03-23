@@ -8,10 +8,16 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
+enum HomeSection: Int {
+    case top = 0
+    case other
+}
+
 class HomeViewModel {
     
     private let client: APIClient
     private var articles: [String:HomeArticleCellViewModel]
+    var selectedContextActionIndexPath: IndexPath?
     
     weak var coordinator: HomeFlowCoordinator?
     
@@ -54,14 +60,19 @@ class HomeViewModel {
         
     }
     
+    func sectionType(for index: Int) -> HomeSection {
+        return HomeSection(rawValue: index) ?? .other
+    }
+    
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
         
-        let width = frame.width - 20
+        let section = sectionType(for: indexPath.section)
         
-        switch indexPath.section {
-        case 0:
+        let width = frame.width - 20
+        switch section {
+        case .top:
             return CGSize(width: width, height: width)
-        default:
+        case .other:
             let height = floor(width * 0.8)
             return CGSize(width: width, height: height)
         }
@@ -70,10 +81,12 @@ class HomeViewModel {
     
     func sizeForHeader(at section: Int, given size: CGSize) -> CGSize  {
         
-        switch section {
-        case 0:
+        let sectiontype = sectionType(for: section)
+        
+        switch sectiontype {
+        case .top:
             return CGSize.zero
-        default:
+        case .other:
             let width = size.width
             return CGSize(width: width, height: 40)
         }
@@ -123,6 +136,31 @@ class HomeViewModel {
             print("All network requests completed")
             completion()
         }
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        
+        let section = sectionType(for: indexPath.section)
+        
+        switch section {
+        case .top:
+            guard let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { return }
+            coordinator?.display(article)
+        case .other:
+            break
+        }
+    }
+    
+    func didSelectContextActionForItem(at indexPath: IndexPath) {
+        selectedContextActionIndexPath = indexPath
+    }
+    
+    func willPerformContextAction() {
+        
+        //FIXME: Finish the Fatal Error message
+        guard let indexPath = selectedContextActionIndexPath, let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { fatalError() }
+        didSelect(article)
+        
     }
     
 }

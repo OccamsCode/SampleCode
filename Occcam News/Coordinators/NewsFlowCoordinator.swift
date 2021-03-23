@@ -23,7 +23,7 @@ class NewsFlowCoordinator: Coordinator {
     
     func start() {
         
-        let view = TopHeadlinesViewController.instantiate()
+        let view =  ViewControllerFactory.produce(TopHeadlinesViewController.self) //TopHeadlinesViewController.instantiate()
         let viewModel =  TopHeadlinesViewModel(client: client, model: [])
         viewModel.listItemStyles = [0:.feature, 1:.subfeature, 2:.subfeature]
         view.viewModel = viewModel

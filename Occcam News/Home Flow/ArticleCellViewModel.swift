@@ -18,7 +18,7 @@ class HomeArticleCellViewModel {
     
     var delegate: ArticleCellDelegate?
     
-    var previewActionIndexPath: IndexPath?
+    var selectedContextActionIndexPath: IndexPath?
     
     init(_ articles: [Article]) {
         self.articles = articles
@@ -49,37 +49,18 @@ class HomeArticleCellViewModel {
 
     }
     
-    func didSelectCellForPreviewAction(at indexPath: IndexPath) {
-        previewActionIndexPath = indexPath
+    func didSelectCellForContextAction(at indexPath: IndexPath) {
+        selectedContextActionIndexPath = indexPath
     }
     
-    func willPerformPreviewAction() {
+    func willPerformContextAction() {
         
-        guard let indexPath = previewActionIndexPath, let article = item(at: indexPath) else {
-            return print("No article found at \(String(describing: previewActionIndexPath))")
+        guard let indexPath = selectedContextActionIndexPath, let article = item(at: indexPath) else {
+            return print("No article found at \(String(describing: selectedContextActionIndexPath))")
         }
         
         delegate?.didSelect(article)
         
-    }
-    
-}
-
-extension HomeArticleCellViewModel {
-    
-    var articleTitle: String {
-        guard let article = articles.first else { fatalError("Something went wrong") }
-        return article.title
-    }
-    
-    var articleImageUrl: URL? {
-        guard let article = articles.first else { fatalError("Something went wrong") }
-        return article.urlToImage
-    }
-    
-    var artidlePublishDate: Date {
-        guard let article = articles.first else { fatalError("Something went wrong") }
-        return article.publishedAt
     }
     
 }

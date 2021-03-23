@@ -23,11 +23,14 @@ class TopArticleCollectionViewCell: UICollectionViewCell {
 
     func update(with viewModel: HomeArticleCellViewModel) {
         
-        textLabel.text = viewModel.articleTitle
+        //FIXME: Change the fatal error
+        guard let article = viewModel.item(at: IndexPath(item: 0, section: 0)) else { fatalError() }
         
-        dateLabel.text = viewModel.artidlePublishDate.timeAgo()
+        textLabel.text = article.title
         
-        if let url = viewModel.articleImageUrl {
+        dateLabel.text = article.publishedAt.timeAgo()
+        
+        if let url = article.urlToImage {
             
             imageView.setImage(from: url) { image in
                 DispatchQueue.main.async {

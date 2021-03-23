@@ -5,8 +5,6 @@
 //  Created by Brian Munjoma on 04/03/2021.
 //
 
-import SafariServices
-
 import UIKit
 
 class HomeCollectionViewController: UICollectionViewController {
@@ -20,7 +18,7 @@ class HomeCollectionViewController: UICollectionViewController {
         
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
         
-        // TODO: Localise text
+        //FIXME: Localise text
         navigationItem.title = "Top Headlines"
         
         // Register cell classes
@@ -93,73 +91,28 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     // MARK: UICollectionViewDelegate
-    
-    func makeContextMenu() -> UIMenu {
-        
-        // Create a UIAction for sharing
-        let share = UIAction(title: "Something") { action in
-            print("Something")
-        }
-        
-        // Create and return a UIMenu with the share action
-        return UIMenu(title: "Main Menu", children: [share])
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath)
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
+        viewModel.didSelectContextActionForItem(at: indexPath)
+        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
-            
             guard let article = self.viewModel.cellViewModel(at: indexPath)?.articles.first else { return nil }
-            
-            let view = SFSafariViewController(url: article.url)
-            return view
-        }, actionProvider: { suggestedActions in
-            
-            // "puppers" is the array backing the collection view
-            return self.makeContextMenu()
-        })
+            return ViewControllerFactory.produce(safariControllerFrom: article)
+        }, actionProvider: nil)
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         
-        animator.addCompletion {
-            guard let article = self.viewModel.cellViewModel(at: IndexPath(row: 0, section: 0))?.articles.first else { return }
-            
-            let view = SFSafariViewController(url: article.url)
-            view.delegate = self
-            view.modalPresentationStyle = .overCurrentContext
-            self.navigationController?.present(view, animated: true, completion: nil)
-            
+        animator.addCompletion { [unowned self] in
+            viewModel.willPerformContextAction()
         }
         
     }
-    
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-     
-     }
-     */
     
 }
 
@@ -175,35 +128,6 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return viewModel.sizeForHeader(at: section, given: collectionView.frame.size)
-    }
-    
-}
-
-// MARK:- UIViewControllerPreviewingDelegate
-//extension HomeCollectionViewController: UIViewControllerPreviewingDelegate {
-//
-//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-//
-//        guard let indexPath = collectionView.indexPathForItem(at: location), let article = viewModel.cellViewModel(at: indexPath)?.articles.first else { return nil }
-//
-//        let view = SFSafariViewController(url: article.url)
-//        view.delegate = self
-//        view.modalPresentationStyle = .overCurrentContext
-//        return view
-//    }
-//
-//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-//        navigationController?.present(viewControllerToCommit, animated: true, completion: nil)
-//    }
-//
-//}
-
-
-
-extension HomeCollectionViewController: SFSafariViewControllerDelegate {
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -24,7 +24,7 @@ class HomeFlowCoordinator:NSObject, Coordinator {
     
     func start() {
         
-        let view = HomeCollectionViewController.instantiate()
+        let view = ViewControllerFactory.produce(HomeCollectionViewController.self) 
         let viewModel = HomeViewModel(client: client)
         viewModel.coordinator = self
         view.viewModel = viewModel
@@ -34,7 +34,7 @@ class HomeFlowCoordinator:NSObject, Coordinator {
     
     func display(_ article: Article) {
         
-        let view = SFSafariViewController(url: article.url)
+        let view = ViewControllerFactory.produce(safariControllerFrom: article)
         view.delegate = self
         view.modalPresentationStyle = .overCurrentContext
         navigation.present(view, animated: true, completion: nil)
