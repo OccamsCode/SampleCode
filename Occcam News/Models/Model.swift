@@ -34,6 +34,11 @@ struct TopHeadlines: Decodable {
     let articles: [Article]
 }
 
+struct SearchResult: Decodable {
+    let status: String
+    let totalResults: Int
+    let articles: [Article]
+}
 
 //TODO: Move this to somewhere else?
 extension Date {

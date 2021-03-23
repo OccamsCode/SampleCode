@@ -13,13 +13,14 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     let window: UIWindow
-    let navigationController: UINavigationController
+    let tabBarController: UITabBarController
+    //let navigationController: UINavigationController
     
     private let client: APIClient
     
     init(_ window: UIWindow) {
         self.window = window
-        self.navigationController = UINavigationController()
+        self.tabBarController = UITabBarController()
         self.childCoordinators = []
         
         let parser = JSONParser()
@@ -28,18 +29,26 @@ class MainCoordinator: Coordinator {
     
     func start() {
         
-        //let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
-        navigationController.navigationBar.prefersLargeTitles = true
+        let homeFlow = HomeFlowCoordinator(UINavigationController(), client: client)
+        let searchFlow = SearchFlowCoordinator(UINavigationController(), client: client)
         
-        let homeFlow = HomeFlowCoordinator(navigationController, client: client)
+        homeFlow.start()
+        searchFlow.start()
+        
+        tabBarController.setViewControllers([homeFlow.navigation, searchFlow.navigation], animated: false)
+        
+        //let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
+        homeFlow.navigation.navigationBar.prefersLargeTitles = true
+        
         // store child coordinator
         store(homeFlow)
+        store(searchFlow)
         
         // start the coordinator
         homeFlow.start()
         
         // launch the window
-        window.rootViewController = navigationController
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         
         // TODO: Free child
