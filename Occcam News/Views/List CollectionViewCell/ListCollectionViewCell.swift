@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol ListCellDelegate: class {
     func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath)
@@ -35,6 +36,17 @@ class ListCollectionViewCell: UICollectionViewCell {
             layout.scrollDirection = .horizontal
         }
     }
+    
+    func makeContextMenu() -> UIMenu {
+        
+        // Create a UIAction for sharing
+        let share = UIAction(title: "Something") { action in
+            print("Something")
+        }
+        
+        // Create and return a UIMenu with the share action
+        return UIMenu(title: "Main Menu", children: [share])
+    }
 
 }
 
@@ -44,8 +56,31 @@ extension ListCollectionViewCell: UICollectionViewDelegate {
         delegate?.listCell(self, didSelectItemAtIndexPath: indexPath)
     }
     
-}
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        viewModel.didSelectCellForPreviewAction(at: indexPath)
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            
+            guard let article = self.viewModel.item(at: indexPath) else { return nil }
+            // TODO:- Move to factory pattery
+            return SFSafariViewController(url: article.url)
+        }, actionProvider: { suggestedActions in
 
+            return self.makeContextMenu()
+        })
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        
+        animator.addCompletion { [unowned self] in
+            viewModel.willPerformPreviewAction()
+        }
+        
+    }
+    
+}
 
 extension ListCollectionViewCell: UICollectionViewDataSource {
     
@@ -75,7 +110,6 @@ extension ListCollectionViewCell: UICollectionViewDataSource {
             }
         }
         
-        
         return cell
     }
     
@@ -84,11 +118,7 @@ extension ListCollectionViewCell: UICollectionViewDataSource {
 extension ListCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        //let size = (w: Double(collectionView.frame.width), h: Double(collectionView.frame.height))
         return viewModel.sizeOfItem(at: indexPath, given: collectionView.frame.size)
-        //return CGSize(width: w, height: h)
-
     }
 
 }

@@ -18,6 +18,8 @@ class HomeArticleCellViewModel {
     
     var delegate: ArticleCellDelegate?
     
+    var previewActionIndexPath: IndexPath?
+    
     init(_ articles: [Article]) {
         self.articles = articles
     }
@@ -45,6 +47,20 @@ class HomeArticleCellViewModel {
         let floord = floor(size.width / 3)
         return CGSize(width: size.width - floord, height: size.height)
 
+    }
+    
+    func didSelectCellForPreviewAction(at indexPath: IndexPath) {
+        previewActionIndexPath = indexPath
+    }
+    
+    func willPerformPreviewAction() {
+        
+        guard let indexPath = previewActionIndexPath, let article = item(at: indexPath) else {
+            return print("No article found at \(String(describing: previewActionIndexPath))")
+        }
+        
+        delegate?.didSelect(article)
+        
     }
     
 }
