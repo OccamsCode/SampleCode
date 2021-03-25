@@ -88,11 +88,7 @@ extension ListCollectionViewCell: UICollectionViewDataSource {
         cell.dateLabel.text = article.publishedAt.timeAgo()
         
         if let imageUrl = article.urlToImage {
-            cell.imageView.setImage(from: imageUrl) { image in
-                DispatchQueue.main.async {
-                    cell.imageView.image = image
-                }
-            }
+            cell.imageView.load(url: imageUrl)
         }
         
         return cell

@@ -31,13 +31,7 @@ class TopArticleCollectionViewCell: UICollectionViewCell {
         dateLabel.text = article.publishedAt.timeAgo()
         
         if let url = article.urlToImage {
-            
-            imageView.setImage(from: url) { image in
-                DispatchQueue.main.async {
-                    self.imageView.image = image
-                }
-            }
-            
+            imageView.load(url: url)
         }
         
     }

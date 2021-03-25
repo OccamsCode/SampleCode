@@ -16,7 +16,6 @@
 		BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C125DAA0BE007CC963 /* ClassName.swift */; };
 		BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */; };
 		BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */; };
-		BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */; };
 		BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */; };
 		BA1F37F425DACDB4007CC963 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37F325DACDB4007CC963 /* Endpoint.swift */; };
 		BA1F380325DAE71B007CC963 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F380225DAE71B007CC963 /* EndpointTests.swift */; };
@@ -75,7 +74,6 @@
 		BA1F37C125DAA0BE007CC963 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
 		BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
-		BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCoordinator.swift; sourceTree = "<group>"; };
 		BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Occcam NewsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */,
-				BA1F37D425DAB394007CC963 /* NewsFlowCoordinator.swift */,
 				BA78E8D125F19D6000D7857C /* HomeFlowCoordinator.swift */,
 				BAE5D6B6260A53030073C8D5 /* SearchFlowCoordinator.swift */,
 			);
@@ -469,7 +466,6 @@
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
-				BA1F37D525DAB394007CC963 /* NewsFlowCoordinator.swift in Sources */,
 				BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */,
 				BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */,
 				BAE5D6C6260A5CE50073C8D5 /* TableViewCellReuse.swift in Sources */,
