@@ -106,7 +106,7 @@ class HomeViewModel {
             guard let unwrapped = category else { continue }
             
             group.enter()
-            let topHeadlines = NewsAPI.topHeadlines(unwrapped)
+            let topHeadlines = NewsAPI.topHeadlines(api: unwrapped, page: 1, pageSize: 10)
             
             client.fetch(from: topHeadlines, into: TopHeadlines.self) { [unowned self] result in
                 

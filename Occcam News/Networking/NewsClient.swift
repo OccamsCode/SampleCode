@@ -18,7 +18,8 @@ enum NewsCategory: String {
 }
 
 enum NewsAPI {
-    case topHeadlines(NewsCategory)
+    case topHeadlines(api:NewsCategory, page: Int, pageSize: Int)
+    case search(term: String, page: Int, pageSize: Int)
 }
 
 extension NewsAPI: Endpoint {
@@ -28,7 +29,12 @@ extension NewsAPI: Endpoint {
     }
     
     var path: String {
-        return "/v2/top-headlines"
+        switch self {
+        case .topHeadlines(_, _, _):
+            return "/v2/top-headlines"
+        case .search(_, _, _):
+            return "/v2/everything"
+        }
     }
     
     var method: HTTPMethod {
@@ -37,12 +43,21 @@ extension NewsAPI: Endpoint {
     
     var parameters: Parameters? {
         
-        //TODO: Support regional news
-        var params:Parameters = ["country":"gb", "pageSize":"10"]
+        var params:Parameters = [:]
         
         switch self {
-        case .topHeadlines(let category):
+        case .topHeadlines(let category, let page, let pageSize):
+            
+            //TODO: Support regional news
+            params.updateValue("gb", forKey: "country")
             params.updateValue(category.rawValue, forKey: "category")
+            params.updateValue(String(page), forKey: "page")
+            params.updateValue(String(pageSize), forKey: "pageSize")
+            
+        case .search(let searchTerm, let page, let pageSize):
+            params.updateValue(searchTerm, forKey: "q")
+            params.updateValue(String(page), forKey: "page")
+            params.updateValue(String(pageSize), forKey: "pageSize")
         }
         
         return params

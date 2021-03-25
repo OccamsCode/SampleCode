@@ -17,17 +17,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="484" height="328"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1gr-ap-zhT">
-                        <rect key="frame" x="10" y="10" width="464" height="960"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1gr-ap-zhT">
+                        <rect key="frame" x="5" y="5" width="474" height="318"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="QBj-ei-XbO">
-                                <rect key="frame" x="0.0" y="0.0" width="340.5" height="960"/>
+                                <rect key="frame" x="0.0" y="0.0" width="318" height="318"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QBj-ei-XbO" secondAttribute="height" multiplier="1:1" id="GBX-3e-iBA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coN-Ru-fDD">
-                                <rect key="frame" x="340.5" y="0.0" width="123.5" height="960"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coN-Ru-fDD">
+                                <rect key="frame" x="328" y="0.0" width="146" height="318"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,10 +36,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1gr-ap-zhT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="C9f-lO-UU3"/>
-                    <constraint firstItem="1gr-ap-zhT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="h23-Yt-SQM"/>
-                    <constraint firstAttribute="trailing" secondItem="1gr-ap-zhT" secondAttribute="trailing" constant="10" id="jm0-l8-eD2"/>
-                    <constraint firstAttribute="bottom" secondItem="1gr-ap-zhT" secondAttribute="bottom" constant="10" id="ybm-sB-rkf"/>
+                    <constraint firstItem="1gr-ap-zhT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="C9f-lO-UU3"/>
+                    <constraint firstItem="1gr-ap-zhT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="h23-Yt-SQM"/>
+                    <constraint firstAttribute="trailing" secondItem="1gr-ap-zhT" secondAttribute="trailing" constant="5" id="jm0-l8-eD2"/>
+                    <constraint firstAttribute="bottom" secondItem="1gr-ap-zhT" secondAttribute="bottom" constant="5" id="ybm-sB-rkf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -47,7 +47,7 @@
                 <outlet property="coverImage" destination="QBj-ei-XbO" id="XCk-tW-VhI"/>
                 <outlet property="titleLabel" destination="coN-Ru-fDD" id="DeV-QU-xxs"/>
             </connections>
-            <point key="canvasLocation" x="-161" y="34"/>
+            <point key="canvasLocation" x="-317" y="2"/>
         </tableViewCell>
     </objects>
     <resources>

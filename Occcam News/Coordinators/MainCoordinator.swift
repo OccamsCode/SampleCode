@@ -14,7 +14,6 @@ class MainCoordinator: Coordinator {
     
     let window: UIWindow
     let tabBarController: UITabBarController
-    //let navigationController: UINavigationController
     
     private let client: APIClient
     
@@ -37,7 +36,6 @@ class MainCoordinator: Coordinator {
         
         tabBarController.setViewControllers([homeFlow.navigation, searchFlow.navigation], animated: false)
         
-        //let topHeadlinesFlow = NewsFlowCoordinator(navigationController)
         homeFlow.navigation.navigationBar.prefersLargeTitles = true
         
         // store child coordinator
