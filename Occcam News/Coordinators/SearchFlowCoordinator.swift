@@ -23,6 +23,7 @@ class SearchFlowCoordinator: Coordinator {
     func start() {
         
         let view =  ViewControllerFactory.produce(SearchNewsTableViewController.self)
+        view.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         let viewModel =  SearchNewsViewModel(client: client)
         view.viewModel = viewModel
         navigation.setViewControllers([view], animated: false)
