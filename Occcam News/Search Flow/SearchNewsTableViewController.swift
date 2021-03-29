@@ -23,9 +23,12 @@ class SearchNewsTableViewController: UITableViewController {
         
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search News"
+        //FIXME: Localise text
+        searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         
+        //FIXME: Localise text
+        navigationItem.title = "Discover"
     }
 
     // MARK: - Table view data source
@@ -44,10 +47,13 @@ class SearchNewsTableViewController: UITableViewController {
         //FIXME: Move to CellVM
         
         if isLoadingCell(for: indexPath) {
-            cell.titleLabel.text = "waiting.."
+            
+            // Change from static text to a spinner/activity view
+            cell.titleLabel.text = "fetching.."
             } else {
                 guard let article = viewModel.article(at: indexPath) else { fatalError() }
                 cell.titleLabel.text = article.title
+                cell.dateLabel.text = article.publishedAt.timeAgo()
             }
         
         return cell

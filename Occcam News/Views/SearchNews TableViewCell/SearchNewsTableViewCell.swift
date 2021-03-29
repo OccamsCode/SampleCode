@@ -10,8 +10,10 @@ import UIKit
 class SearchNewsTableViewCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     
     @IBOutlet var coverImage: UIImageView!
+    
     
     
 }
