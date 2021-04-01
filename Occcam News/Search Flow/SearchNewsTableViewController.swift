@@ -58,6 +58,29 @@ class SearchNewsTableViewController: UITableViewController {
         return viewModel.heightForCell(at: indexPath, given: tableView.frame.width)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        viewModel.didSelectContextActionForItem(at: indexPath)
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: { [unowned self] in
+            guard let article = self.viewModel.article(at: indexPath) else { return nil }
+            return ViewControllerFactory.produce(safariControllerFrom: article)
+        }, actionProvider: nil)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        
+        animator.addCompletion { [unowned self] in
+            self.viewModel.willPerformContextAction()
+        }
+        
+    }
+    
 }
 
 extension SearchNewsTableViewController: UITableViewDataSourcePrefetching {

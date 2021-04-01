@@ -16,6 +16,7 @@ class SearchNewsViewModel {
     private var currentSearchTerm: String?
     private var articles: [Article]
     private var isFetchInProgress: Bool
+    private var selectedContextActionIndexPath: IndexPath?
     
     weak var coordinator: SearchFlowCoordinator?
     
@@ -109,6 +110,28 @@ extension SearchNewsViewModel {
         return 100
     }
     
+    func didSelectItem(at indexPath: IndexPath) {
+        
+        guard let article = article(at: indexPath) else {
+            return
+        }
+        
+        coordinator?.display(article)
+        
+    }
+    
+    func didSelectContextActionForItem(at indexPath: IndexPath) {
+        selectedContextActionIndexPath = indexPath
+    }
+    
+    func willPerformContextAction() {
+        
+        guard let indexPath = selectedContextActionIndexPath, let article = article(at: indexPath) else {
+            return
+        }
+        coordinator?.display(article)
+        
+    }
 }
 
 
