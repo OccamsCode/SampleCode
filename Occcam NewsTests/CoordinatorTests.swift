@@ -21,6 +21,7 @@ class CoordinatorTests: XCTestCase {
         apiClient = nil
     }
     
+    //MARK:- Main Coordinator Tests
     func test_InitialMainCoordinator_HasNoChildren() {
         
         // Given
@@ -34,7 +35,7 @@ class CoordinatorTests: XCTestCase {
         
     }
     
-    func test_MainCoordinatorOnStart_HasOneChild() {
+    func test_MainCoordinatorOnStart_HasTwoChild() {
         
         // Given
         let sut = MainCoordinator(UIWindow())
@@ -44,13 +45,14 @@ class CoordinatorTests: XCTestCase {
         let result = sut.childCoordinators.count
         
         // Then
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result, 2)
     }
-
-    func test_NewNewsFlowCoordinator_HasNoChildren() {
+    
+    //MARK:- Home Coordinator Tests
+    func test_InitialHomeFlowCoordinator_HasNoChildren() {
         
         // Given
-        let sut = NewsFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = HomeFlowCoordinator(UINavigationController(), client: apiClient)
         
         // When
         let result = sut.childCoordinators.count
@@ -59,11 +61,39 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(result, 0)
         
     }
-
-    func test_NewsFlowCoordinator_HasNoChildren() {
+    
+    func test_HomeFlowCoordinatorOnStart_HasNoChildren() {
         
         // Given
-        let sut = NewsFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = HomeFlowCoordinator(UINavigationController(), client: apiClient)
+        sut.start()
+        
+        // When
+        let result = sut.childCoordinators.count
+        
+        // Then
+        XCTAssertEqual(result, 0)
+        
+    }
+    
+    //MARK:- Search Coordinator Tests
+    func test_InitialSearchFlowCoordinator_HasNoChildren() {
+        
+        // Given
+        let sut = SearchFlowCoordinator(UINavigationController(), client: apiClient)
+        
+        // When
+        let result = sut.childCoordinators.count
+        
+        // Then
+        XCTAssertEqual(result, 0)
+        
+    }
+    
+    func test_SearchFlowCoordinatorOnStart_HasNoChildren() {
+        
+        // Given
+        let sut = SearchFlowCoordinator(UINavigationController(), client: apiClient)
         sut.start()
         
         // When

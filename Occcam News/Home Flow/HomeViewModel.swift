@@ -17,13 +17,13 @@ class HomeViewModel {
     
     private let client: APIClient
     private var articles: [String:HomeArticleCellViewModel]
-    var selectedContextActionIndexPath: IndexPath?
+    private(set) public var selectedContextActionIndexPath: IndexPath?
     
     weak var coordinator: HomeFlowCoordinator?
     
-    init(client: APIClient) {
+    init(client: APIClient, article: [String:HomeArticleCellViewModel] = [:]) {
         self.client = client
-        self.articles = [:]
+        self.articles = article
     }
     
     var numberOfSections: Int {
@@ -37,8 +37,10 @@ class HomeViewModel {
         
     }
     
+    //FIXME: Find a way to inject this
     var sections: [String] {
         return ["Top Headline", "general", "technology", "health"]
+        // business, entertainment, general, health, science, sports, technology
     }
     
     func cellViewModel(at indexPath: IndexPath) -> HomeArticleCellViewModel? {
@@ -112,8 +114,6 @@ class HomeViewModel {
                 
                 switch result {
                 case .success(let topHeadlines):
-                    
-                    print("Found \(topHeadlines.totalResults) articles total, returned \(topHeadlines.articles.count)")
                     
                     if unwrapped == .general {
                         let top = Array(arrayLiteral: topHeadlines.articles.first!)

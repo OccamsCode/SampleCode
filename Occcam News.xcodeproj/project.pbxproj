@@ -43,6 +43,7 @@
 		BA78E8EF25FA5FAF00D7857C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8ED25FA5FAF00D7857C /* SectionHeaderView.swift */; };
 		BA78E8F025FA5FAF00D7857C /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA78E8EE25FA5FAF00D7857C /* SectionHeaderView.xib */; };
 		BA78E8F42601281300D7857C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8F32601281300D7857C /* GradientView.swift */; };
+		BAB097022615EDE7001274FE /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB097012615EDE7001274FE /* HomeViewModelTests.swift */; };
 		BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */; };
 		BAE5D6B3260A52DB0073C8D5 /* SearchNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6B2260A52DB0073C8D5 /* SearchNewsTableViewController.swift */; };
 		BAE5D6B7260A53030073C8D5 /* SearchFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6B6260A53030073C8D5 /* SearchFlowCoordinator.swift */; };
@@ -103,6 +104,7 @@
 		BA78E8ED25FA5FAF00D7857C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		BA78E8EE25FA5FAF00D7857C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		BA78E8F32601281300D7857C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		BAB097012615EDE7001274FE /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		BAE5D6B2260A52DB0073C8D5 /* SearchNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNewsTableViewController.swift; sourceTree = "<group>"; };
 		BAE5D6B6260A53030073C8D5 /* SearchFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		BA1F382C25DC153A007CC963 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BAB097012615EDE7001274FE /* HomeViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				BA1F382325DB2AA4007CC963 /* JSONParserTests.swift in Sources */,
 				BA1F37E725DAC85B007CC963 /* CoordinatorTests.swift in Sources */,
 				BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */,
+				BAB097022615EDE7001274FE /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +703,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -719,6 +724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
