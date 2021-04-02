@@ -8,9 +8,10 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
-enum HomeSection: Int {
-    case top = 0
-    case other
+enum HomeSection {
+    case top
+    case list
+    case none
 }
 
 class HomeViewModel {
@@ -62,8 +63,16 @@ class HomeViewModel {
         
     }
     
-    func sectionType(for index: Int) -> HomeSection {
-        return HomeSection(rawValue: index) ?? .other
+    func sectionType(for section: Int) -> HomeSection {
+        
+        if articles.isEmpty { return .none }
+        
+        switch section {
+        case 0: return .top
+        case 1...:
+            return numberOfItems(in: section) == 0 ? .none : .list
+        default: return .none
+        }
     }
     
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
@@ -74,9 +83,11 @@ class HomeViewModel {
         switch section {
         case .top:
             return CGSize(width: width, height: width)
-        case .other:
+        case .list:
             let height = floor(width * 0.8)
             return CGSize(width: width, height: height)
+        case .none:
+            return CGSize.zero
         }
         
     }
@@ -88,9 +99,11 @@ class HomeViewModel {
         switch sectiontype {
         case .top:
             return CGSize.zero
-        case .other:
+        case .list:
             let width = size.width
             return CGSize(width: width, height: 40)
+        case .none:
+            return CGSize.zero
         }
         
     }
@@ -146,7 +159,7 @@ class HomeViewModel {
         case .top:
             guard let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { return }
             coordinator?.display(article)
-        case .other:
+        case .list, .none:
             break
         }
     }

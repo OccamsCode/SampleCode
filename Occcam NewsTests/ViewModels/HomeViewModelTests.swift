@@ -78,7 +78,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     // MARK: - Three Items
-    func test_OneModel_HasOneSection() {
+    func test_ThreeModels_HasOneSection() {
         
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -90,7 +90,7 @@ class HomeViewModelTests: XCTestCase {
         
     }
     
-    func test_OneModel_OneItemInSectionZero() {
+    func test_ThreeModels_OneItemInSectionZero() {
         
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -102,7 +102,7 @@ class HomeViewModelTests: XCTestCase {
         
     }
     
-    func test_OneModel_ZeroItemsInSectionOne() {
+    func test_ThreeModels_ZeroItemsInSectionOne() {
         
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -114,7 +114,7 @@ class HomeViewModelTests: XCTestCase {
         
     }
     
-    func test_ThreeModel_HasItemAtIndexPathZero() {
+    func test_ThreeModels_HasItemAtIndexPathZero() {
         
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -127,59 +127,7 @@ class HomeViewModelTests: XCTestCase {
         
     }
     
-    /*
-    func test_ThreeModel_HasCorrectItemAtIndexPathZero() {
-
-        let models = MockGenerator.createArticles(3)
-        let viewModel = HomeArticleCellViewModel(models)
-        sut = HomeViewModel(client: mockClient, article: ["Test":viewModel])
-        
-        let zero = IndexPath(row: 0, section: 0)
-        let result = sut.item(at: zero)
-        
-        XCTAssertEqual(result?.title, models.first?.title)
-        
-    }
-    
-    func test_ThreeModel_HasCorrectItemAtRowOneSectionZero() {
-
-        let models = MockGenerator.createArticles(3)
-        let expectedTitle = models[1].title
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        
-        let zero = IndexPath(row: 1, section: 0)
-        let result = sut.item(at: zero)
-        
-        XCTAssertEqual(result?.title, expectedTitle)
-        
-    }
-    
-    func test_ThreeModel_HasCorrectItemAtRowTwoSectionZero() {
-
-        let models = MockGenerator.createArticles(3)
-        let expectedTitle = models[2].title
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        
-        let zero = IndexPath(row: 2, section: 0)
-        let result = sut.item(at: zero)
-        
-        XCTAssertEqual(result?.title, expectedTitle)
-    }
-
-    func test_ThreeModel_HasNoItemAtRowThreeSectionZero() {
-
-        let models = MockGenerator.createArticles(3)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        
-        let zero = IndexPath(row: 3, section: 0)
-        let result = sut.item(at: zero)
-        
-        XCTAssertNil(result)
-        
-    }
-    */
-    
-    func test_ThreeModel_ZeroItemsInNegativeSection() {
+    func test_ThreeModels_ZeroItemsInNegativeSection() {
 
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -190,7 +138,7 @@ class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
     
-    func test_ThreeModel_NoItemAtNegativeSection() {
+    func test_ThreeModels_NoItemAtNegativeSection() {
 
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -202,7 +150,7 @@ class HomeViewModelTests: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func test_ThreeModel_NoItemAtNegativeRow() {
+    func test_ThreeModels_NoItemAtNegativeRow() {
 
         let models = MockGenerator.createArticles(3)
         let viewModel = HomeArticleCellViewModel(models)
@@ -268,90 +216,545 @@ class HomeViewModelTests: XCTestCase {
         
     }
 
-    // MARK: - Style For Item
-    /*
-    func test_NoStyle_NilStyle() {
+    // MARK: - Section Headers
+    func test_EmptyModel_SectionZero_HasNoSectionHeader() {
         
-        sut.listItemStyles = [:]
+        let section = 0
         
-        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
+        let result = sut.titleForHeader(at: section)
+        
+        XCTAssertNil(result)
+        
+    }
+    
+    func test_EmptyModel_NegativeSection_HasNoSectionHeader() {
+        
+        let section = -1
+        
+        let result = sut.titleForHeader(at: section)
         
         XCTAssertNil(result)
         
     }
     
-    func test_SingleStyleNormal_ZeroIndexPathGivesNormal() {
+    func test_SingleModel_SectionZero_HasSectionHeader() {
         
         let models = MockGenerator.createArticles(1)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        sut.listItemStyles = [0:ListItemStyle.normal]
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = 0
         
-        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
+        let result = sut.titleForHeader(at: section)
         
-        XCTAssertEqual(result, ListItemStyle.normal)
+        XCTAssertNotNil(result)
+        
     }
     
-    func test_SingleStyleNormal_OutOfIndexNil() {
+    func test_SingleModel_SectionOne_HasNoSectionHeader() {
         
         let models = MockGenerator.createArticles(1)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        sut.listItemStyles = [0:ListItemStyle.normal]
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = 1
         
-        let result = sut.styleForItem(at: IndexPath(row: 1, section: 0))
+        let result = sut.titleForHeader(at: section)
         
         XCTAssertNil(result)
-    }
-    
-    func test_MultipleStyle_FirstIndexCorrect() {
-        
-        let models = MockGenerator.createArticles(3)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
-        
-        sut.listItemStyles = [
-            0:.feature,
-            1:.subfeature,
-            2:.subfeature
-        ]
-        
-        let result = sut.styleForItem(at: IndexPath(row: 0, section: 0))
-        
-        XCTAssertEqual(result, .feature)
         
     }
     
-    func test_MultipleStyle_SecondIndexCorrect() {
+    func test_SingleModel_NegativeSection_HasNoSectionHeader() {
         
-        let models = MockGenerator.createArticles(3)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = -1
         
-        sut.listItemStyles = [
-            0:.feature,
-            1:.subfeature,
-            2:.subfeature
-        ]
+        let result = sut.titleForHeader(at: section)
         
-        let result = sut.styleForItem(at: IndexPath(row: 1, section: 0))
-        
-        XCTAssertEqual(result, .subfeature)
+        XCTAssertNil(result)
         
     }
     
-    func test_MultipleStyle_ThirdIndexCorrect() {
+    // MARK: - Section Type
+    func test_InitialModel_SectionZero_SectionTypeIsNone() {
         
-        let models = MockGenerator.createArticles(3)
-        sut = TopHeadlinesViewModel(client: mockClient, model: models)
+        let section = 0
         
-        sut.listItemStyles = [
-            0:.feature,
-            1:.subfeature,
-            2:.subfeature
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_InitialModel_SectionOne_SectionTypeIsNone() {
+        
+        let section = 1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_InitialModel_NegativeSection_SectionTypeIsNone() {
+        
+        let section = -1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_OneModel_SectionZero_SectionTypeIsTop() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = 0
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .top)
+    }
+    
+    func test_OneModel_SectionOne_SectionTypeIsNone() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = 1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_OneModel_NegativeSection_SectionTypeIsNone() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let section = -1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_ThreeModels_SectionZero_SectionTypeIsTop() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
         ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let section = 0
         
-        let result = sut.styleForItem(at: IndexPath(row: 2, section: 0))
+        let result = sut.sectionType(for: section)
         
-        XCTAssertEqual(result, .subfeature)
+        XCTAssertEqual(result, .top)
+    }
+    
+    func test_ThreeModels_SectionOne_SectionTypeIsList() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let section = 1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .list)
+    }
+    
+    func test_ThreeModels_SectionTwo_SectionTypeIsList() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let section = 2
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .list)
+    }
+    
+    func test_ThreeModels_SectionThree_SectionTypeIsNone() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let section = 3
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    func test_ThreeModels_NegativeSection_SectionTypeIsNone() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let section = -1
+        
+        let result = sut.sectionType(for: section)
+        
+        XCTAssertEqual(result, .none)
+    }
+    
+    //MARK: Size For Item
+    func test_InitialModel_IndexPathZero_SizeZero() {
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_InitialModel_SectionOneItemZero_SizeZero() {
+        
+        let indexPath = IndexPath(item: 0, section: 1)
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_InitialModel_SectionZeroItemOne_SizeZero() {
+        
+        let indexPath = IndexPath(item: 1, section: 0)
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_InitialModel_NegativeIndexPath_SizeZero() {
+        
+        let indexPath = IndexPath(item: 0, section: -1)
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_SingleModel_IndexPathZero_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 0)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
+    }
+    
+    func test_SingleModel_SectionOneItemZero_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 1)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_SingleModel_NegativeIndexPath_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: -1)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_ThreeModel_IndexPathZero_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 0)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
         
     }
- */
-
+    
+    func test_ThreeModel_SectionOneItemZero_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 1)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
+        
+    }
+    
+    func test_ThreeModel_SectionTwoItemZero_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 2)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
+        
+    }
+    
+    func test_ThreeModel_SectionThreeItemZero_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: 3)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+        
+    }
+    
+    func test_ThreeModel_NegativeSection_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        
+        let size = CGSize(width: 320, height: 100)
+        let indexPath = IndexPath(item: 0, section: -1)
+        
+        let result = sut.sizeForItem(at: indexPath, given: size)
+        
+        XCTAssertEqual(result, .zero)
+        
+    }
+    
+    // MARK:- Size For Header
+    func test_InitialModel_SectionZero_SizeZero() {
+        
+        let section = 0
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_InitialModel_SectionOne_SizeZero() {
+        
+        let section = 1
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_InitialModel_NegativeSection_SizeZero() {
+        
+        let section = -1
+        let size = CGSize(width: 320, height: 100)
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_SingleModel_SectionZero_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let section = 0
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_SingleModel_SectionOne_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let section = 1
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_SingleModel_NegativeSection_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        sut = HomeViewModel(client: mockClient, article: ["Top Headline":viewModel])
+        let size = CGSize(width: 320, height: 100)
+        let section = -1
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_ThreeModels_SectionZero_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let size = CGSize(width: 320, height: 100)
+        let section = 0
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_ThreeModels_SectionOne_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let size = CGSize(width: 320, height: 100)
+        let section = 1
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
+    }
+    
+    func test_ThreeModels_SectionTwo_SizeNotZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let size = CGSize(width: 320, height: 100)
+        let section = 2
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertNotEqual(result, .zero)
+    }
+    
+    func test_ThreeModels_SectionThree_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let size = CGSize(width: 320, height: 100)
+        let section = 3
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
+    
+    func test_ThreeModels_NegativeSection_SizeZero() {
+        
+        let models = MockGenerator.createArticles(1)
+        let viewModel = HomeArticleCellViewModel(models)
+        let data = [
+            "Top Headline": viewModel,
+            "general": viewModel,
+            "technology": viewModel
+        ]
+        sut = HomeViewModel(client: mockClient, article: data)
+        let size = CGSize(width: 320, height: 100)
+        let section = -1
+        
+        let result = sut.sizeForHeader(at: section, given: size)
+        
+        XCTAssertEqual(result, .zero)
+    }
 }
