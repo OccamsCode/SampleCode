@@ -757,4 +757,37 @@ class HomeViewModelTests: XCTestCase {
         
         XCTAssertEqual(result, .zero)
     }
+    // MARK:- Did Select Article
+    func test_InitialViewModel_SelectedContextActionIndexPath_IsNil() {
+        
+        let result = sut.selectedContextActionIndexPath
+        
+        XCTAssertNil(result)
+    }
+    
+    func test_DidSelectContextAction_SelectedContextActionIndexPath_IsNotNil() {
+        
+        let zero = IndexPath(row: 0, section: 0)
+        sut.didSelectContextActionForItem(at: zero)
+        
+        let result = sut.selectedContextActionIndexPath
+        
+        XCTAssertNotNil(result)
+    }
+    
+    func test_DidSelectContextAction_SelectedContextActionIndexPath_IsCorrect() {
+        
+        let zero = IndexPath(row: 0, section: 0)
+        sut.didSelectContextActionForItem(at: zero)
+        
+        let result = sut.selectedContextActionIndexPath
+        
+        XCTAssertEqual(zero, result)
+    }
+    
+    // MARK:- Did Select Item At IndexPath
+    
+    // MARK:- Did Select Context Action
+    
+    // MARK:- Will Select Context Action
 }
