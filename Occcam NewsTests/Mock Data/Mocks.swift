@@ -145,3 +145,13 @@ class MockGenerator {
     }
     
 }
+
+class MockArticleCellDelegate: ArticleCellDelegate {
+    
+    private(set) public var isDidSelectArticleCalled: Bool = false
+    
+    func didSelect(_ article: Article) {
+        isDidSelectArticleCalled = true
+    }
+    
+}

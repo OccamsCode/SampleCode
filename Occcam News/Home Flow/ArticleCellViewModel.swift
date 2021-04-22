@@ -44,8 +44,13 @@ class HomeArticleCellViewModel {
     
     func sizeOfItem(at indexPath: IndexPath, given size: CGSize) -> CGSize {
         
-        let floord = floor(size.width / 3)
-        return CGSize(width: size.width - floord, height: size.height)
+        switch item(at: indexPath) {
+        case .none:
+            return CGSize.zero
+        case .some(_):
+            let floord = floor(size.width / 3)
+            return CGSize(width: size.width - floord, height: size.height)
+        }
 
     }
     
