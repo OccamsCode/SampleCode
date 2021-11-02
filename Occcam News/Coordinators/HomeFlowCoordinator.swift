@@ -29,17 +29,26 @@ class HomeFlowCoordinator:NSObject, Coordinator {
         view.tabBarItem = UITabBarItem(title: "Latest News", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
         let viewModel = HomeViewModel(client: client)
         viewModel.coordinator = self
+        viewModel.sections = ["general", "science", "health", "technology"]
         view.viewModel = viewModel
         
         navigation.setViewControllers([view], animated: false)
     }
     
     func display(_ article: Article) {
+
+       let preview = ViewControllerFactory.produce(safariControllerFrom: article)
+        display(preview)
+
+    }
+    
+    func display(_ preview: Previewable) {
         
-        let view = ViewControllerFactory.produce(safariControllerFrom: article)
-        view.delegate = self
-        view.modalPresentationStyle = .overCurrentContext
-        navigation.present(view, animated: true, completion: nil)
+        if let p = preview as? SFSafariViewController {
+            p.delegate = self
+            p.modalPresentationStyle = .overCurrentContext
+            navigation.present(p, animated: true, completion: nil)
+        }
         
     }
     

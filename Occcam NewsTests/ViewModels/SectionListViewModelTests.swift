@@ -1,5 +1,5 @@
 //
-//  ArticleCellViewModelTests.swift
+//  SectionListViewModelTests.swift
 //  Occcam NewsTests
 //
 //  Created by Brian Munjoma on 21/04/2021.
@@ -8,13 +8,13 @@
 import XCTest
 @testable import Occcam_News
 
-class ArticleCellViewModelTests: XCTestCase {
+class SectionListViewModelTests: XCTestCase {
     
-    var sut: HomeArticleCellViewModel!
+    var sut: SectionListViewModel!
     var mockListCellDelegate: MockArticleCellDelegate!
     
     override func setUpWithError() throws {
-        sut = HomeArticleCellViewModel([])
+        sut = SectionListViewModel(with: [])
         mockListCellDelegate = MockArticleCellDelegate()
         sut.delegate = mockListCellDelegate
     }
@@ -35,7 +35,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_NumberOfSections_OneCount() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         
         let result = sut.numberOfSections
         
@@ -45,7 +45,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_MultipleModels_NumberOfSections_OneCount() {
         
         let models = MockGenerator.createArticles(3)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         
         let result = sut.numberOfSections
         
@@ -83,7 +83,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_NumberOfItemsInSectionZero_OneCount() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = 0
         
         let result = sut.numberOfItems(in: section)
@@ -94,7 +94,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_NumberOfItemsInSectionNegative_ZeroCount() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = -1
         
         let result = sut.numberOfItems(in: section)
@@ -105,7 +105,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_NumberOfItemsInSectionThree_OneCount() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = 3
         
         let result = sut.numberOfItems(in: section)
@@ -116,7 +116,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_ThreeModel_NumberOfItemsInSectionZero_ThreeCount() {
         
         let models = MockGenerator.createArticles(3)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = 0
         
         let result = sut.numberOfItems(in: section)
@@ -127,7 +127,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_ThreeModel_NumberOfItemsInSectionNegative_ZeroCount() {
         
         let models = MockGenerator.createArticles(3)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = -1
         
         let result = sut.numberOfItems(in: section)
@@ -138,7 +138,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_ThreeModel_NumberOfItemsInSectionThree_OneCount() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let section = 3
         
         let result = sut.numberOfItems(in: section)
@@ -195,7 +195,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_ItemAtIndexPathZero_IsNotNil() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let zero = IndexPath(row: 0, section: 0)
         
         let result = sut.item(at: zero)
@@ -206,7 +206,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_ItemAtSectionZeroRowOne_IsNil() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let indexPath = IndexPath(row: 1, section: 0)
         
         let result = sut.item(at: indexPath)
@@ -217,7 +217,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_ItemAtSectionOneRowOne_IsNil() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let indexPath = IndexPath(row: 1, section: 1)
         
         let result = sut.item(at: indexPath)
@@ -228,7 +228,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_ItemAtSectionNegativeRowZero_IsNil() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let indexPath = IndexPath(row: 0, section: -1)
         
         let result = sut.item(at: indexPath)
@@ -239,7 +239,7 @@ class ArticleCellViewModelTests: XCTestCase {
     func test_SingleModel_ItemAtSectionZeroRowNegative_IsNil() {
         
         let models = MockGenerator.createArticles(1)
-        sut = HomeArticleCellViewModel(models)
+        sut = SectionListViewModel(with: models)
         let indexPath = IndexPath(row: -1, section: 0)
         
         let result = sut.item(at: indexPath)

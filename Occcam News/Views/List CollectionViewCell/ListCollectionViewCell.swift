@@ -11,11 +11,18 @@ protocol ListCellDelegate: class {
     func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
+protocol ListCellViewModelDelegate: AnyObject {
+
+    func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath)
+    func listCell(_ cell: ListCollectionViewCell, generatePreviewForItemAtIndexPath indexPath: IndexPath) -> Previewable
+    func listCellCommitPreviewAction(_ cell: ListCollectionViewCell)
+}
+
 class ListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var viewModel: HomeArticleCellViewModel! {
+    var viewModel: SectionListViewModel! {
         didSet {
             delegate = viewModel
             DispatchQueue.main.async {
@@ -24,7 +31,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var delegate: ListCellDelegate?
+    var delegate: ListCellViewModelDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,13 +53,10 @@ extension ListCollectionViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        viewModel.didSelectCellForContextAction(at: indexPath)
+        guard let preview = delegate?.listCell(self, generatePreviewForItemAtIndexPath: indexPath) as? UIViewController else { return nil }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
-            
-            guard let article = self.viewModel.item(at: indexPath) else { return nil }
-            return ViewControllerFactory.produce(safariControllerFrom: article)
-             
+            return preview
         }, actionProvider: nil)
         
     }
@@ -60,7 +64,7 @@ extension ListCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         
         animator.addCompletion { [unowned self] in
-            viewModel.willPerformContextAction()
+            delegate?.listCellCommitPreviewAction(self)
         }
         
     }

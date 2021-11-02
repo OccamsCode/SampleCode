@@ -8,21 +8,15 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
-enum HomeSection {
-    case top
-    case list
-    case none
-}
-
 class HomeViewModel {
     
     private let client: APIClient
-    private var articles: [String:HomeArticleCellViewModel]
-    private(set) public var selectedContextActionIndexPath: IndexPath?
+    private var articles: [String:SectionListViewModel]
+    private(set) public var generatedPreview: Previewable?
     
     weak var coordinator: HomeFlowCoordinator?
     
-    init(client: APIClient, article: [String:HomeArticleCellViewModel] = [:]) {
+    init(client: APIClient, article: [String:SectionListViewModel] = [:]) {
         self.client = client
         self.articles = article
     }
@@ -39,12 +33,9 @@ class HomeViewModel {
     }
     
     //FIXME: Find a way to inject this
-    var sections: [String] {
-        return ["Top Headline", "general", "technology", "health"]
-        // business, entertainment, general, health, science, sports, technology
-    }
+    var sections: [String] = []
     
-    func cellViewModel(at indexPath: IndexPath) -> HomeArticleCellViewModel? {
+    func cellViewModel(at indexPath: IndexPath) -> SectionListViewModel? {
         
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
         let articleViewModel = articles[sections[indexPath.section]]
@@ -63,47 +54,27 @@ class HomeViewModel {
         
     }
     
-    func sectionType(for section: Int) -> HomeSection {
-        
-        if articles.isEmpty { return .none }
-        
-        switch section {
-        case 0: return .top
-        case 1...:
-            return numberOfItems(in: section) == 0 ? .none : .list
-        default: return .none
-        }
-    }
-    
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
         
-        let section = sectionType(for: indexPath.section)
-        
-        let width = frame.width - 20
-        switch section {
-        case .top:
-            return CGSize(width: width, height: width)
-        case .list:
-            let height = floor(width * 0.8)
-            return CGSize(width: width, height: height)
+        switch titleForHeader(at: indexPath.section) {
         case .none:
             return CGSize.zero
+        case .some(_):
+            let width = frame.width - 20
+            let height = floor(width * 0.8)
+            return CGSize(width: width, height: height)
         }
         
     }
     
     func sizeForHeader(at section: Int, given size: CGSize) -> CGSize  {
         
-        let sectiontype = sectionType(for: section)
-        
-        switch sectiontype {
-        case .top:
-            return CGSize.zero
-        case .list:
-            let width = size.width
-            return CGSize(width: width, height: 40)
+        switch titleForHeader(at: section) {
         case .none:
             return CGSize.zero
+        case .some(_):
+            let width = size.width
+            return CGSize(width: width, height: 40)
         }
         
     }
@@ -128,12 +99,7 @@ class HomeViewModel {
                 switch result {
                 case .success(let topHeadlines):
                     
-                    if unwrapped == .general {
-                        let top = Array(arrayLiteral: topHeadlines.articles.first!)
-                        self.articles["Top Headline"] = HomeArticleCellViewModel(top)
-                    }
-                    
-                    self.articles[unwrapped.rawValue] = HomeArticleCellViewModel(topHeadlines.articles)
+                    self.articles[unwrapped.rawValue] = SectionListViewModel(with: topHeadlines.articles)
                     
                 case .failure(let error):
                     print(error)
@@ -146,42 +112,33 @@ class HomeViewModel {
         }
         
         group.notify(queue: DispatchQueue.global(qos: .background)) {
-            print("All network requests completed")
             completion()
         }
     }
     
     func didSelectItem(at indexPath: IndexPath) {
         
-        let section = sectionType(for: indexPath.section)
-        
-        switch section {
-        case .top:
-            guard let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { return }
-            coordinator?.display(article)
-        case .list, .none:
-            break
-        }
-    }
-    
-    func didSelectContextActionForItem(at indexPath: IndexPath) {
-        selectedContextActionIndexPath = indexPath
-    }
-    
-    func willPerformContextAction() {
-        
-        //FIXME: Finish the Fatal Error message
-        guard let indexPath = selectedContextActionIndexPath, let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { fatalError() }
-        didSelect(article)
-        
+        //        let section = sectionType(for: indexPath.section)
+        //
+        //        switch section {
+        //        case .top:
+        //            guard let article = cellViewModel(at: indexPath)?.item(at: IndexPath(row: 0, section: 0)) else { return }
+        //            coordinator?.display(article)
+        //        case .list, .none:
+        //            break
+        //        }
     }
     
 }
 
-extension HomeViewModel: ArticleCellDelegate {
+extension HomeViewModel: SectionViewModelDelegate {
     
     func didSelect(_ article: Article) {
         coordinator?.display(article)
+    }
+    
+    func commitAction(forPreview preview: Previewable) {
+        coordinator?.display(preview)
     }
     
 }

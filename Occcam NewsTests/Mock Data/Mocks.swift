@@ -146,10 +146,14 @@ class MockGenerator {
     
 }
 
-class MockArticleCellDelegate: ArticleCellDelegate {
+class MockArticleCellDelegate: SectionViewModelDelegate {
+    
+    private(set) public var isCommitActionCalled: Bool = false
+    func commitAction(forPreview preview: Previewable) {
+        isCommitActionCalled = true
+    }
     
     private(set) public var isDidSelectArticleCalled: Bool = false
-    
     func didSelect(_ article: Article) {
         isDidSelectArticleCalled = true
     }

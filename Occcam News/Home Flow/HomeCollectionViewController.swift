@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -22,7 +23,7 @@ class HomeCollectionViewController: UICollectionViewController {
         navigationItem.title = "Top Headlines"
         
         // Register cell classes
-        collectionView.register(cellType: TopArticleCollectionViewCell.self)
+        //collectionView.register(cellType: TopArticleCollectionViewCell.self)
         collectionView.register(cellType: ListCollectionViewCell.self)
         collectionView.register(reusableViewType: SectionHeaderView.self)
         
@@ -67,13 +68,13 @@ class HomeCollectionViewController: UICollectionViewController {
         
         //FIXME: Move to ViewModel + refactor
         
-        if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(with: TopArticleCollectionViewCell.self, for: indexPath)
-            
-            guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
-            cell.update(with: cellViewModel)
-            return cell
-        }
+//        if indexPath.section == 0 {
+//            let cell = collectionView.dequeueReusableCell(with: TopArticleCollectionViewCell.self, for: indexPath)
+//
+//            guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
+//            cell.update(with: cellViewModel)
+//            return cell
+//        }
         
         let cell = collectionView.dequeueReusableCell(with: ListCollectionViewCell.self, for: indexPath)
         guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
@@ -93,25 +94,6 @@ class HomeCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectItem(at: indexPath)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        
-        viewModel.didSelectContextActionForItem(at: indexPath)
-        
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
-            guard let article = self.viewModel.cellViewModel(at: indexPath)?.articles.first else { return nil }
-            return ViewControllerFactory.produce(safariControllerFrom: article)
-        }, actionProvider: nil)
-        
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        
-        animator.addCompletion { [unowned self] in
-            viewModel.willPerformContextAction()
-        }
-        
     }
     
 }

@@ -145,6 +145,7 @@ class GradientView: UIView {
     }
 }
 
+//FIXME: Find a better to handling image downloading 
 extension UIImageView {
     func load(url: URL) {
         
@@ -158,16 +159,5 @@ extension UIImageView {
         }
         
         task.resume()
-        /*
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-        */
     }
 }

@@ -9,7 +9,15 @@ import UIKit
 import Foundation
 import SafariServices
 
+protocol Previewable {}
+
+extension UIViewController: Previewable {}
+
 class ViewControllerFactory {
+    
+    class func preview(for article: Article) -> Previewable {
+        return produce(safariControllerFrom: article)
+    }
     
     // Produce a SFSafariViewController
     class func produce(safariControllerFrom article: Article) -> SFSafariViewController {
