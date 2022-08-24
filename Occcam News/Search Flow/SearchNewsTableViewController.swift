@@ -64,11 +64,10 @@ class SearchNewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        viewModel.didSelectContextActionForItem(at: indexPath)
+        guard let preview = viewModel.didSelectContextActionForItem(at: indexPath) as? UIViewController else { return nil }
         
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: { [unowned self] in
-            guard let article = self.viewModel.article(at: indexPath) else { return nil }
-            return ViewControllerFactory.produce(safariControllerFrom: article)
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            return preview
         }, actionProvider: nil)
         
     }

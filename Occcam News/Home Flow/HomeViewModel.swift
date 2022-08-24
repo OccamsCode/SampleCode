@@ -12,7 +12,6 @@ class HomeViewModel {
     
     private let client: APIClient
     private var articles: [String:SectionListViewModel]
-    private(set) public var generatedPreview: Previewable?
     
     weak var coordinator: HomeFlowCoordinator?
     
@@ -134,11 +133,11 @@ class HomeViewModel {
 extension HomeViewModel: SectionViewModelDelegate {
     
     func didSelect(_ article: Article) {
-        coordinator?.display(article)
+        coordinator?.navigate(.toArticle(article))
     }
     
     func commitAction(forPreview preview: Previewable) {
-        coordinator?.display(preview)
+        coordinator?.navigate(.toPreview(preview))
     }
     
 }

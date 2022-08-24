@@ -17,6 +17,7 @@ class SearchNewsViewModel {
     private var articles: [Article]
     private var isFetchInProgress: Bool
     private var selectedContextActionIndexPath: IndexPath?
+    private(set) var generatedPreview: Previewable!
     
     weak var coordinator: SearchFlowCoordinator?
     
@@ -116,20 +117,23 @@ extension SearchNewsViewModel {
             return
         }
         
-        coordinator?.display(article)
+        coordinator?.navigate(.toArticle(article))
         
     }
     
-    func didSelectContextActionForItem(at indexPath: IndexPath) {
-        selectedContextActionIndexPath = indexPath
+    func didSelectContextActionForItem(at indexPath: IndexPath) -> Previewable {
+        
+        guard let article = article(at: indexPath) else { fatalError() }
+        generatedPreview = ViewControllerFactory.preview(for: article)
+        return generatedPreview
     }
     
     func willPerformContextAction() {
         
-        guard let indexPath = selectedContextActionIndexPath, let article = article(at: indexPath) else {
+        guard let preview = generatedPreview else {
             return
         }
-        coordinator?.display(article)
+        coordinator?.navigate(.toPreview(preview))
         
     }
 }
