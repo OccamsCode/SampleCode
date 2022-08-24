@@ -23,7 +23,7 @@ class SectionListViewModel {
     weak var delegate: SectionViewModelDelegate?
     
     init(with articles: [Article]) {
-        self.articles = articles
+        self.articles = articles.sorted { return $0.publishedAt > $1.publishedAt }
     }
     
     var numberOfSections: Int {

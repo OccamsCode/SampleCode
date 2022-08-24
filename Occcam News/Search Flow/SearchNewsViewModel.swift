@@ -38,7 +38,7 @@ class SearchNewsViewModel {
             switch result {
             case .success(let searchResults):
                 self.totalExpectedResults = searchResults.totalResults
-                self.articles = searchResults.articles
+                self.articles = searchResults.articles.sorted { return $0.publishedAt > $1.publishedAt }
             case .failure(let error):
                 print(error)
             }
