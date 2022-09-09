@@ -32,21 +32,20 @@ class SearchFlowCoordinator: NSObject, Coordinator {
         
     }
     
-    func display(_ preview: Previewable) {
-
-        if let p = preview as? SFSafariViewController {
-            p.delegate = self
-            p.modalPresentationStyle = .overCurrentContext
-            navigation.present(p, animated: true, completion: nil)
+    func navigate(_ to: Navigate) {
+        
+        switch to {
+        case .toArticle(let article):
+            let preview = ViewControllerFactory.produce(safariControllerFrom: article)
+            navigate(.toPreview(preview))
+        case .toPreview(let previewable):
+            if let p = previewable as? SFSafariViewController {
+                p.delegate = self
+                p.modalPresentationStyle = .overCurrentContext
+                navigation.present(p, animated: true, completion: nil)
+            }
         }
-
-    }
-    
-    func display(_ article: Article) {
-
-        let preview = ViewControllerFactory.produce(safariControllerFrom: article)
-        display(preview)
-
+        
     }
     
 }

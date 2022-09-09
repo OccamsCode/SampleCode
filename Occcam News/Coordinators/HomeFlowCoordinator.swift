@@ -35,19 +35,18 @@ class HomeFlowCoordinator:NSObject, Coordinator {
         navigation.setViewControllers([view], animated: false)
     }
     
-    func display(_ article: Article) {
-
-       let preview = ViewControllerFactory.produce(safariControllerFrom: article)
-        display(preview)
-
-    }
-    
-    func display(_ preview: Previewable) {
+    func navigate(_ to: Navigate) {
         
-        if let p = preview as? SFSafariViewController {
-            p.delegate = self
-            p.modalPresentationStyle = .overCurrentContext
-            navigation.present(p, animated: true, completion: nil)
+        switch to {
+        case .toArticle(let article):
+            let preview = ViewControllerFactory.produce(safariControllerFrom: article)
+            navigate(.toPreview(preview))
+        case .toPreview(let preview):
+            if let previewingController = preview as? SFSafariViewController {
+                previewingController.delegate = self
+                previewingController.modalPresentationStyle = .overCurrentContext
+                navigation.present(previewingController, animated: true, completion: nil)
+            }
         }
         
     }
