@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ListCellDelegate: class {
+protocol ListCellDelegate: AnyObject {
     func listCell(_ cell: ListCollectionViewCell, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
