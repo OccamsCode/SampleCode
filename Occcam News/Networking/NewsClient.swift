@@ -7,6 +7,49 @@
 
 import Foundation
 
+enum TheNewsAPI {
+    case topStories
+    case search(term: String)
+}
+
+extension TheNewsAPI: Endpoint {
+    var baseURL: String {
+        return "api.thenewsapi.com"
+    }
+    
+    var path: String {
+        switch self {
+        case .topStories:
+            return "/v1/news/top"
+        case .search(_):
+            return "/v1/news/all"
+        }
+    }
+    
+    var method: HTTPMethod {
+        return .GET
+    }
+    
+    var parameters: Parameters? {
+        var params:Parameters = ["api_token":"1crzZq3hlOa4vneGOKIgxiYWPfWbaVLVRH1HV1ed"]
+        
+        switch self {
+        case .topStories:
+            break
+        case .search(let term):
+            params.updateValue(term, forKey: "search")
+        }
+        
+        return params
+    }
+    
+    var headers: HTTPHeaders {
+        return HTTPHeaders()
+    }
+    
+    
+}
+
 enum NewsCategory: String {
     case business
     case entertainment

@@ -7,25 +7,31 @@
 
 import Foundation
 
-/*
- source": {
-    "id": null,
-    "name": "KXAN.com"
- }
- */
+struct Meta: Decodable {
+    let found: Int
+    let returned: Int
+    let limit: Int
+    let page: Int
+}
+
+//TODO: Coding Keys
+struct Article: Decodable {
+    let uuid: UUID
+    let title: String
+    let url: URL
+    let image_url: URL
+    let published_at: Date
+    let source: String
+}
+
+struct TopStoriesResponse: Decodable {
+    let meta: Meta
+    let data: [Article]
+}
+
 struct Source: Decodable {
     let id: String?
     let name: String?
-}
-
-struct Article: Decodable {
-    let author: String?
-    let title: String
-    let description: String?
-    let url: URL
-    let urlToImage: URL?
-    let source: Source
-    let publishedAt: Date
 }
 
 struct TopHeadlines: Decodable {

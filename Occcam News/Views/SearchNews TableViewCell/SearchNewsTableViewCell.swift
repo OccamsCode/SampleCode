@@ -39,11 +39,11 @@ class SearchNewsTableViewCell: UITableViewCell {
             activityView.stopAnimating()
             
             titleLabel.text = article.title
-            dateLabel.text = article.publishedAt.timeAgo()
+            dateLabel.text = article.published_at.timeAgo()
             
-            if let imageUrl = article.urlToImage {
-                coverImage.load(url: imageUrl)
-            }
+            //if let imageUrl = article.image_url {
+            coverImage.load(url: article.image_url)
+            //}
             
         }
         

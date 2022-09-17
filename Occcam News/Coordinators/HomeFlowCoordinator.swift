@@ -12,7 +12,6 @@ import UIKit
 class HomeFlowCoordinator:NSObject, Coordinator {
     
     var childCoordinators: [Coordinator]
-    
     var navigation: UINavigationController
     private let client: APIClient
     
@@ -23,13 +22,11 @@ class HomeFlowCoordinator:NSObject, Coordinator {
     }
     
     func start() {
-        
         let view = ViewControllerFactory.produce(HomeCollectionViewController.self)
         //FIXME: Localise text
         view.tabBarItem = UITabBarItem(title: "Latest News", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
         let viewModel = HomeViewModel(client: client)
         viewModel.coordinator = self
-        viewModel.sections = ["general", "science", "health", "technology"]
         view.viewModel = viewModel
         
         navigation.setViewControllers([view], animated: false)

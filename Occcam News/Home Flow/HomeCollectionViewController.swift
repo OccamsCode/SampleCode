@@ -20,13 +20,10 @@ class HomeCollectionViewController: UICollectionViewController {
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
         
         //FIXME: Localise text
-        navigationItem.title = "Top Headlines"
+        navigationItem.title = "Top Stories"
         
         // Register cell classes
-        //collectionView.register(cellType: TopArticleCollectionViewCell.self)
-        collectionView.register(cellType: ListCollectionViewCell.self)
-        collectionView.register(reusableViewType: SectionHeaderView.self)
-        
+        collectionView.register(cellType: ArticleCollectionViewCell.self)
         collectionView.refreshControl = refreshControl
         
         // Configure Refresh Control
@@ -65,29 +62,11 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //FIXME: Move to ViewModel + refactor
-        
-//        if indexPath.section == 0 {
-//            let cell = collectionView.dequeueReusableCell(with: TopArticleCollectionViewCell.self, for: indexPath)
-//
-//            guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
-//            cell.update(with: cellViewModel)
-//            return cell
-//        }
-        
-        let cell = collectionView.dequeueReusableCell(with: ListCollectionViewCell.self, for: indexPath)
+
+        let cell = collectionView.dequeueReusableCell(with: ArticleCollectionViewCell.self, for: indexPath)
         guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
         cell.viewModel = cellViewModel
         return cell
-        
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let headerView = collectionView.dequeueReusableView(with: SectionHeaderView.self, for: indexPath)
-        headerView.textLabel.text = viewModel.titleForHeader(at: indexPath.section)
-        return headerView
         
     }
     
@@ -101,14 +80,15 @@ class HomeCollectionViewController: UICollectionViewController {
 // MARK:- UICollectionViewDelegateFlowLayout
 extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return viewModel.sizeForItem(at: indexPath, given: collectionView.frame.size)
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return viewModel.sizeForHeader(at: section, given: collectionView.frame.size)
     }
     
