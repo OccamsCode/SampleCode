@@ -140,22 +140,13 @@ class MockGenerator {
     
     static func createArticles(_ count: Int) -> [Article] {
         
-        return Array(0..<count).map({ Article(author: nil, title: "\($0)", description: nil, url: URL(string: "apple.com")!, urlToImage: nil, source: Source(id: nil, name: ""), publishedAt: Date()) })
-
+        return Array(0..<count).map {
+            Article(uuid: UUID(),
+                    title: String($0),
+                    url: URL(string: "apple.com")!,
+                    image_url: URL(string: "apple.com")!,
+                    published_at: Date(),
+                    source: "Source")
+        }
     }
-    
-}
-
-class MockArticleCellDelegate: SectionViewModelDelegate {
-    
-    private(set) public var isCommitActionCalled: Bool = false
-    func commitAction(forPreview preview: Previewable) {
-        isCommitActionCalled = true
-    }
-    
-    private(set) public var isDidSelectArticleCalled: Bool = false
-    func didSelect(_ article: Article) {
-        isDidSelectArticleCalled = true
-    }
-    
 }

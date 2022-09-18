@@ -86,12 +86,6 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
         return viewModel.sizeForItem(at: indexPath, given: collectionView.frame.size)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return viewModel.sizeForHeader(at: section, given: collectionView.frame.size)
-    }
-    
 }
 
 // MARK:- IBInstantiatable

@@ -37,25 +37,10 @@ class HomeViewModel {
         
     }
     
-    func titleForHeader(at section: Int) -> String? {
-        return nil
-    }
-    
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
+        guard cellViewModel(at: indexPath) != nil else { return .zero }
         let width = frame.width - 10
         return CGSize(width: width, height: width * 0.8)
-    }
-    
-    func sizeForHeader(at section: Int, given size: CGSize) -> CGSize  {
-        
-        switch titleForHeader(at: section) {
-        case .none:
-            return CGSize.zero
-        case .some(_):
-            let width = size.width
-            return CGSize(width: width, height: 40)
-        }
-        
     }
     
     func update(completion: @escaping () -> Void) {
