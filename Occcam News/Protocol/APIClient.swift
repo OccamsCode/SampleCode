@@ -60,7 +60,7 @@ extension APIClient {
                     switch parserResult {
                     case .success(let decodedData): completion(.success(decodedData))
                     case .failure(let error):
-                        debugPrint(error)
+                        Log.error(error)
                         completion(.failure(.invalidData))
                     }
                 }
@@ -84,7 +84,7 @@ extension APIClient {
         let task = session.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
-                debugPrint(error)
+                Log.error(error)
                 return completion(.failure(.responseError))
             }
             

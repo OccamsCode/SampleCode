@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA07570028D77BC8000AD25E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0756FF28D77BC8000AD25E /* Logger.swift */; };
 		BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */; };
 		BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */; };
 		BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37AC25DA9CEF007CC963 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA0756FF28D77BC8000AD25E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BA1F37A325DA9CEF007CC963 /* Occcam News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occcam News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA0756FE28D77B46000AD25E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA0756FF28D77BC8000AD25E /* Logger.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		BA1F379A25DA9CEE007CC963 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BA0756FE28D77B46000AD25E /* Utilities */,
 				BAE5D6AD260A43340073C8D5 /* Factories */,
 				BA78E8AD25F158DE00D7857C /* Views */,
 				BA78E8AC25F158CF00D7857C /* Search Flow */,
@@ -445,6 +456,7 @@
 				BAE5D6C6260A5CE50073C8D5 /* TableViewCellReuse.swift in Sources */,
 				BA78E8F42601281300D7857C /* GradientView.swift in Sources */,
 				BAE5D6BB260A53E20073C8D5 /* SearchNewsViewModel.swift in Sources */,
+				BA07570028D77BC8000AD25E /* Logger.swift in Sources */,
 				BA1F381925DB253A007CC963 /* Parser.swift in Sources */,
 				BA78E8D225F19D6000D7857C /* HomeFlowCoordinator.swift in Sources */,
 				BAE5D6C1260A58E10073C8D5 /* SearchNewsTableViewCell.swift in Sources */,
@@ -676,6 +688,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-DUTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.projects.Occcam-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -697,6 +710,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-DUTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.projects.Occcam-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

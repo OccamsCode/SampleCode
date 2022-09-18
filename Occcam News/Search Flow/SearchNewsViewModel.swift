@@ -41,7 +41,8 @@ class SearchNewsViewModel {
                 self.totalExpectedResults = searchResults.totalResults
                 self.articles = searchResults.articles.sorted { return $0.published_at > $1.published_at }
             case .failure(let error):
-                print(error)
+                Log.error(error)
+                
             }
             
             completion()
@@ -71,7 +72,7 @@ class SearchNewsViewModel {
                 let newIndexPaths = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
                 completion(newIndexPaths)
             case .failure(let error):
-                print(error)
+                Log.error(error)
             }
             
             completion(.none)

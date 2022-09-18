@@ -47,7 +47,7 @@ class JSONParser: Parser {
             let result = try decoder.decode(T.self, from: data)
             completion(.success(result))
         } catch {
-            debugPrint(error)
+            Log.error(error)
             completion(.failure(.jsonDecodeError))
         }
         

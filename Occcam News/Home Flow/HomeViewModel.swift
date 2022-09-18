@@ -51,13 +51,12 @@ class HomeViewModel {
             
             switch result {
             case .success(let topHeadlines):
-                print(topHeadlines)
+                //print(topHeadlines)
                 self.articles = topHeadlines.data
                 completion()
             case .failure(let error):
-                print(error)
+                Log.error(error)
             }
-            
         }
     }
     

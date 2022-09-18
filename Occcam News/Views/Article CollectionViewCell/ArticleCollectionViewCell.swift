@@ -55,10 +55,10 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func bookmarkArticle(_ sender: Any) {
-        print("Bookmark Article")
+        Log.info("Bookmark Article")
     }
     
     @IBAction func shareArticle(_ sender: Any) {
-        print("Share Article")
+        Log.info("Share Article")
     }
 }
