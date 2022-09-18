@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA07570028D77BC8000AD25E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0756FF28D77BC8000AD25E /* Logger.swift */; };
+		BA07570228D7BC03000AD25E /* MiscExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA07570128D7BC03000AD25E /* MiscExtension.swift */; };
 		BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */; };
 		BA1F37A925DA9CEF007CC963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */; };
 		BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37AC25DA9CEF007CC963 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		BA0756FF28D77BC8000AD25E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BA07570128D7BC03000AD25E /* MiscExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscExtension.swift; sourceTree = "<group>"; };
 		BA1F37A325DA9CEF007CC963 /* Occcam News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occcam News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0756FF28D77BC8000AD25E /* Logger.swift */,
+				BA07570128D7BC03000AD25E /* MiscExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				BA1F381F25DB27CD007CC963 /* JSONParser.swift in Sources */,
 				BAE5D6C6260A5CE50073C8D5 /* TableViewCellReuse.swift in Sources */,
 				BA78E8F42601281300D7857C /* GradientView.swift in Sources */,
+				BA07570228D7BC03000AD25E /* MiscExtension.swift in Sources */,
 				BAE5D6BB260A53E20073C8D5 /* SearchNewsViewModel.swift in Sources */,
 				BA07570028D77BC8000AD25E /* Logger.swift in Sources */,
 				BA1F381925DB253A007CC963 /* Parser.swift in Sources */,

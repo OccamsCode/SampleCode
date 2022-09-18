@@ -144,20 +144,3 @@ class GradientView: UIView {
         updateGradient()
     }
 }
-
-//FIXME: Find a better to handling image downloading 
-extension UIImageView {
-    func load(url: URL) {
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-        
-            guard let imageData = data else { return }
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                self?.image = image
-            }
-        }
-        
-        task.resume()
-    }
-}

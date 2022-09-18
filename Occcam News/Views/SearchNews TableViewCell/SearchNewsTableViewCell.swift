@@ -41,9 +41,9 @@ class SearchNewsTableViewCell: UITableViewCell {
             titleLabel.text = article.title
             dateLabel.text = article.published_at.timeAgo()
             
-            //if let imageUrl = article.image_url {
-            coverImage.load(url: article.image_url)
-            //}
+            if let imageUrl = article.image_url {
+            coverImage.load(url: imageUrl)
+            }
             
         }
         

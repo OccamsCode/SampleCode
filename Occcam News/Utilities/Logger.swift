@@ -1,13 +1,6 @@
 import Foundation
 import os.log
 
-extension String {
-    var lastPathComponent: String {
-        let components = self.components(separatedBy: "/")
-        return components.last ?? String()
-    }
-}
-
 enum Log {
     enum LogLevel {
         case info

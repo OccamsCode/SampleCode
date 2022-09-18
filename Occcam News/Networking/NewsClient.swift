@@ -31,7 +31,10 @@ extension TheNewsAPI: Endpoint {
     }
     
     var parameters: Parameters? {
-        var params:Parameters = ["api_token":"1crzZq3hlOa4vneGOKIgxiYWPfWbaVLVRH1HV1ed"]
+        var params:Parameters = [
+            "api_token":"1crzZq3hlOa4vneGOKIgxiYWPfWbaVLVRH1HV1ed",
+            "locale": "gb"  //TODO: Support regional news
+        ]
         
         switch self {
         case .topStories:

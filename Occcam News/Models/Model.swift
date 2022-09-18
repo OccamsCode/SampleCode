@@ -16,10 +16,10 @@ struct Meta: Decodable {
 
 //TODO: Coding Keys
 struct Article: Decodable {
-    let uuid: UUID
+    let uuid: UUID?
     let title: String
     let url: URL
-    let image_url: URL
+    let image_url: URL?
     let published_at: Date
     let source: String
 }
@@ -44,14 +44,4 @@ struct SearchResult: Decodable {
     let status: String
     let totalResults: Int
     let articles: [Article]
-}
-
-//TODO: Move this to somewhere else?
-extension Date {
-    func timeAgo(since date: Date = Date()) -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        formatter.locale = Calendar.current.locale
-        return formatter.localizedString(for: self, relativeTo: date)
-    }
 }
