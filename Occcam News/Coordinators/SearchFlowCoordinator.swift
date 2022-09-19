@@ -43,6 +43,9 @@ class SearchFlowCoordinator: NSObject, Coordinator {
         }
     }
     
+    deinit {
+        childCoordinators.forEach { free($0) }
+    }
 }
 
 extension SearchFlowCoordinator: SFSafariViewControllerDelegate {

@@ -48,6 +48,10 @@ class HomeFlowCoordinator:NSObject, Coordinator {
         
     }
     
+    deinit {
+        childCoordinators.forEach { free($0) }
+    }
+    
 }
 
 extension HomeFlowCoordinator: SFSafariViewControllerDelegate {
