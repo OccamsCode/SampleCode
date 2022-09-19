@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -317,7 +317,7 @@
 				BA1F379F25DA9CEE007CC963 /* Sources */,
 				BA1F37A025DA9CEE007CC963 /* Frameworks */,
 				BA1F37A125DA9CEE007CC963 /* Resources */,
-				BA78E8D925F2720000D7857C /* ShellScript */,
+				BA78E8D925F2720000D7857C /* TODO as Warning Run Script */,
 				BA93A55228CBD747007FBF51 /* SwiftLint Run Script */,
 			);
 			buildRules = (
@@ -408,8 +408,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BA78E8D925F2720000D7857C /* ShellScript */ = {
+		BA78E8D925F2720000D7857C /* TODO as Warning Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -417,6 +418,7 @@
 			);
 			inputPaths = (
 			);
+			name = "TODO as Warning Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -427,6 +429,7 @@
 		};
 		BA93A55228CBD747007FBF51 /* SwiftLint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
