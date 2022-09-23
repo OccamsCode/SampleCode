@@ -9,49 +9,49 @@ import UIKit
 
 @IBDesignable
 class GradientView: UIView {
-    
+
     // the gradient start colour
     @IBInspectable var startColor: UIColor? {
         didSet {
             updateGradient()
         }
     }
-    
+
     // the gradient end colour
     @IBInspectable var endColor: UIColor? {
         didSet {
             updateGradient()
         }
     }
-    
+
     // the gradient angle, in degrees anticlockwise from 0 (east/right)
     @IBInspectable var angle: CGFloat = 270 {
         didSet {
             updateGradient()
         }
     }
-    
+
     override var frame: CGRect {
         didSet {
             installGradient()
             updateGradient()
         }
     }
-    
+
     // the gradient layer
     private var gradient: CAGradientLayer?
-    
+
     // initializers
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         installGradient()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         installGradient()
     }
-    
+
     // Create a gradient and install it on the layer
     private func installGradient() {
         // if there's already a gradient installed on the layer, remove it
@@ -62,7 +62,7 @@ class GradientView: UIView {
         self.layer.addSublayer(gradient)
         self.gradient = gradient
     }
-    
+
     // Update an existing gradient
     private func updateGradient() {
         if let gradient = self.gradient {
@@ -74,71 +74,71 @@ class GradientView: UIView {
             gradient.endPoint = end
         }
     }
-    
+
     // create gradient layer
     private func createGradient() -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         return gradient
     }
-    
+
     // create vector pointing in direction of angle
     private func gradientPointsForAngle(_ angle: CGFloat) -> (CGPoint, CGPoint) {
         // get vector start and end points
         let end = pointForAngle(angle)
-        //let start = pointForAngle(angle+180.0)
+        // let start = pointForAngle(angle+180.0)
         let start = oppositePoint(end)
         // convert to gradient space
-        let p0 = transformToGradientSpace(start)
-        let p1 = transformToGradientSpace(end)
-        return (p0, p1)
+        let point0 = transformToGradientSpace(start)
+        let point1 = transformToGradientSpace(end)
+        return (point0, point1)
     }
-    
+
     // get a point corresponding to the angle
     private func pointForAngle(_ angle: CGFloat) -> CGPoint {
         // convert degrees to radians
         let radians = angle * .pi / 180.0
-        var x = cos(radians)
-        var y = sin(radians)
+        var xVal = cos(radians)
+        var yVal = sin(radians)
         // (x,y) is in terms unit circle. Extrapolate to unit square to get full vector length
-        if (abs(x) > abs(y)) {
+        if abs(xVal) > abs(yVal) {
             // extrapolate x to unit length
-            x = x > 0 ? 1 : -1
-            y = x * tan(radians)
+            xVal = xVal > 0 ? 1 : -1
+            yVal = xVal * tan(radians)
         } else {
             // extrapolate y to unit length
-            y = y > 0 ? 1 : -1
-            x = y / tan(radians)
+            yVal = yVal > 0 ? 1 : -1
+            xVal = yVal / tan(radians)
         }
-        return CGPoint(x: x, y: y)
+        return CGPoint(x: xVal, y: yVal)
     }
-    
+
     // transform point in unit space to gradient space
     private func transformToGradientSpace(_ point: CGPoint) -> CGPoint {
         // input point is in signed unit space: (-1,-1) to (1,1)
         // convert to gradient space: (0,0) to (1,1), with flipped Y axis
         return CGPoint(x: (point.x + 1) * 0.5, y: 1.0 - (point.y + 1) * 0.5)
     }
-    
+
     // return the opposite point in the signed unit square
     private func oppositePoint(_ point: CGPoint) -> CGPoint {
         return CGPoint(x: -point.x, y: -point.y)
     }
-    
+
     // ensure the gradient gets initialized when the view is created in IB
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         installGradient()
         updateGradient()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         // this is crucial when constraints are used in superviews
         installGradient()
         updateGradient()
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateGradient()

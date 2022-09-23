@@ -14,14 +14,23 @@ struct Meta: Decodable {
     let page: Int
 }
 
-//TODO: Coding Keys
 struct Article: Decodable {
     let uuid: UUID?
     let title: String
     let url: URL
-    let image_url: URL?
-    let published_at: Date
+    let imageUrl: URL?
+    let publishedAt: Date
     let source: String
+
+    enum CodingKeys: String, CodingKey {
+        case uuid
+        case title
+        case url
+        case imageUrl = "image_url"
+        case publishedAt = "published_at"
+        case source
+    }
+
 }
 
 struct TopStoriesResponse: Decodable {

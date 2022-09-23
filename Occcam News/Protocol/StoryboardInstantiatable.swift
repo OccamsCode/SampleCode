@@ -22,33 +22,32 @@ public protocol IBInstantiatable {
 }
 
 public extension IBInstantiatable where Self: NSObject {
-    
+
     static var storyboardName: String {
         return "Main"
     }
-    
+
     static var nibName: String {
         return className
     }
-    
+
     static var bundle: Bundle {
         return Bundle(for: self)
     }
-    
+
     private static var storyboard: UIStoryboard {
         return UIStoryboard(name: storyboardName, bundle: bundle)
     }
-    
+
     static var instantiateType: IBInstanceType {
         return .storyboardIdentifier(className)
     }
-    
+
 }
 
 public extension IBInstantiatable where Self: UIViewController {
-    
+
     static func instantiate() -> Self {
-        
         switch instantiateType {
         case .nib:
             return Self.init(nibName: nibName, bundle: bundle)
@@ -63,7 +62,6 @@ public extension IBInstantiatable where Self: UIViewController {
             }
             return viewController
         }
-        
     }
-    
+
 }

@@ -12,8 +12,8 @@ enum Navigate {
     case toPreview(Previewable)
 }
 
-protocol Coordinator : AnyObject {
-    var childCoordinators : [Coordinator] { get set }
+protocol Coordinator: AnyObject {
+    var childCoordinators: [Coordinator] { get set }
     func start()
     func navigate(_ navigate: Navigate)
 }
@@ -23,23 +23,19 @@ extension Coordinator {
 }
 
 extension Coordinator {
-    
+
     func store(_ coordinator: Coordinator) {
-        for element in childCoordinators {
-            if element === coordinator {
-                return
-            }
+        for element in childCoordinators where element === coordinator {
+            return
         }
         childCoordinators.append(coordinator)
     }
-    
+
     func free(_ coordinator: Coordinator) {
         guard !childCoordinators.isEmpty else { return }
-        for (index, element) in childCoordinators.enumerated() {
-            if element === coordinator {
-                childCoordinators.remove(at: index)
-                break
-            }
+        for (index, element) in childCoordinators.enumerated() where element === coordinator {
+            childCoordinators.remove(at: index)
+            break
         }
     }
 }

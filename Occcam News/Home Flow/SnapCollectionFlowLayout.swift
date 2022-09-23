@@ -8,46 +8,47 @@
 import UIKit
 
 class SnapCollectionFlowLayout: UICollectionViewFlowLayout {
-    
+
     // MARK: - Properties
-    
+
     private var firstSetupDone = false
-    
+
     var spacingMultiplier: CGFloat = 6 {
         didSet {
             invalidateLayout()
         }
     }
-    
+
     var minLineSpacing: CGFloat = 20 {
         didSet {
             minimumLineSpacing = minLineSpacing
             invalidateLayout()
         }
     }
+
     var itemHeight: CGFloat = 0 {
         didSet {
             recalculateItemSize(for: itemHeight)
         }
     }
-    
+
     var horizontalOrientationDevider: CGFloat = 2 {
         didSet {
             recalculateItemSize(for: itemHeight)
             invalidateLayout()
         }
     }
-    
+
     // MARK: - Overrides
-    
+
     override func prepare() {
         super.prepare()
-        
+
         if !firstSetupDone {
             setup()
             firstSetupDone = true
         }
-        
+
         guard let unwrappedCollectionView = collectionView else {
             return
         }
@@ -55,16 +56,17 @@ class SnapCollectionFlowLayout: UICollectionViewFlowLayout {
         recalculateItemSize(for: height)
     }
 
-    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint,
+                                      withScrollingVelocity velocity: CGPoint) -> CGPoint {
         super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
-        
+
         guard let unwrappedCollectionView = collectionView else { fatalError("CollectionView not avaliable") }
-        
+
         let layoutAttributes = layoutAttributesForElements(in: unwrappedCollectionView.bounds)
-        
+
         var centerOffset: CGFloat
         var offsetWithCenter: CGFloat
-        
+
         switch scrollDirection {
         case .horizontal:
             centerOffset = unwrappedCollectionView.bounds.size.width / 2
@@ -77,9 +79,10 @@ class SnapCollectionFlowLayout: UICollectionViewFlowLayout {
         }
 
         guard let unwrappedLayoutAttributes = layoutAttributes else {
-            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset,
+                                             withScrollingVelocity: velocity)
         }
-        
+
         var closestAttribute: UICollectionViewLayoutAttributes
 
         switch scrollDirection {
@@ -99,10 +102,8 @@ class SnapCollectionFlowLayout: UICollectionViewFlowLayout {
             fatalError("Unsupported scroll direction. Please contact the developer to resolve this issue")
         }
     }
-    
-    
+
     // MARK: - Private helpers
-    
     private func setup() {
         guard let unwrappedCollectionView = collectionView else {
             return
@@ -111,23 +112,26 @@ class SnapCollectionFlowLayout: UICollectionViewFlowLayout {
         itemSize = CGSize(width: unwrappedCollectionView.bounds.width, height: itemHeight)
         unwrappedCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
-    
+
     private func recalculateItemSize(for itemHeight: CGFloat) {
         guard let unwrappedCollectionView = collectionView else {
             return
         }
-        let horizontalContentInset = unwrappedCollectionView.contentInset.left + unwrappedCollectionView.contentInset.right
-        let verticalContentInset = unwrappedCollectionView.contentInset.bottom + unwrappedCollectionView.contentInset.top
-        
+        let contentInset = unwrappedCollectionView.contentInset
+        let horizontalContentInset = contentInset.left + contentInset.right
+        let verticalContentInset = contentInset.bottom + contentInset.top
+
         var divider: CGFloat = 1.0
-        
+
         if unwrappedCollectionView.bounds.width > unwrappedCollectionView.bounds.height {
-            // collection view bounds are in landscape so we change the item width in a way where 2 rows can be displayed
+            /* collection view bounds are in landscape so we change the item width
+             in a way where 2 rows can be displayed */
             divider = horizontalOrientationDevider
         }
-        
-        itemSize = CGSize(width: unwrappedCollectionView.bounds.width / divider - horizontalContentInset, height: itemHeight - (minLineSpacing * spacingMultiplier) - verticalContentInset)
-        
+
+        itemSize = CGSize(width: unwrappedCollectionView.bounds.width / divider - horizontalContentInset,
+                          height: itemHeight - (minLineSpacing * spacingMultiplier) - verticalContentInset)
+
         invalidateLayout()
     }
 }

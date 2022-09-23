@@ -8,17 +8,18 @@
 import Foundation
 
 class JSONParser: Parser {
-    
+
     let decoder: JSONDecoder
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
-    
+
     init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601withFractionalSeconds) {
         self.decoder = JSONDecoder()
         self.dateDecodingStrategy = dateDecodingStrategy
     }
-    
-    func parse<T>(_ data: Data, into type: T.Type, completion: @escaping (Result<T, ParserError>) -> Void) where T : Decodable {
-        
+
+    func parse<T>(_ data: Data,
+                  into type: T.Type,
+                  completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable {
         decoder.dateDecodingStrategy = dateDecodingStrategy
         do {
             let result = try decoder.decode(T.self, from: data)
@@ -27,7 +28,6 @@ class JSONParser: Parser {
             Log.error(error)
             completion(.failure(.jsonDecodeError))
         }
-        
     }
-    
+
 }

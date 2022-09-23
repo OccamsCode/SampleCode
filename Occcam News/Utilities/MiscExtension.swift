@@ -42,19 +42,17 @@ extension String {
 
 import UIKit.UIImageView
 
-//FIXME: Find a better to handling image downloading
+// FIXME: Find a better to handling image downloading
 extension UIImageView {
     func load(url: URL) {
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, _) in
+
             guard let imageData = data else { return }
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
                 self?.image = image
             }
         }
-        
         task.resume()
     }
 }

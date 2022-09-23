@@ -8,6 +8,7 @@
 import XCTest
 @testable import Occcam_News
 
+// swiftlint:disable all
 class APIClientTest: XCTestCase {
     
     var sut: NewsClient!
@@ -30,18 +31,18 @@ class APIClientTest: XCTestCase {
     }
 
     func test_Client_NoData_NoResponse_WithError() {
-        
+
         // Given
         mockSession.error = MockError.err
         var apiError: APIError?
-        
+
         let request = URLRequest(url: URL(string: "www.google.com")!)
         let expecation = expectation(description: "Loading URL")
         
         // When
-        sut.fetch(with: request) { _result in
+        sut.fetch(with: request) { result in
             
-            switch _result {
+            switch result {
             case .failure(let error): apiError = error
             default: break
             }
@@ -65,9 +66,9 @@ class APIClientTest: XCTestCase {
         let expecation = expectation(description: "Loading URL")
         
         // When
-        sut.fetch(with: request) { _result in
+        sut.fetch(with: request) { result in
             
-            switch _result {
+            switch result {
             case .failure(let error): apiError = error
             default: break
             }
@@ -91,9 +92,9 @@ class APIClientTest: XCTestCase {
         let expecation = expectation(description: "Loading URL")
         
         // When
-        sut.fetch(with: request) { _result in
+        sut.fetch(with: request) { result in
             
-            switch _result {
+            switch result {
             case .failure(let error): apiError = error
             default: break
             }
@@ -117,9 +118,9 @@ class APIClientTest: XCTestCase {
         let expecation = expectation(description: "Loading URL")
         
         // When
-        sut.fetch(with: request) { _result in
+        sut.fetch(with: request) { result in
             
-            switch _result {
+            switch result {
             case .failure(let error): apiError = error
             default: break
             }
@@ -144,10 +145,10 @@ class APIClientTest: XCTestCase {
         let expecation = expectation(description: "Loading URL")
         
         // When
-        sut.fetch(with: request) { _result in
+        sut.fetch(with: request) { result in
             
-            switch _result {
-            case .success(let _data): data = _data
+            switch result {
+            case .success(let sData): data = sData
             default: break
             }
             
