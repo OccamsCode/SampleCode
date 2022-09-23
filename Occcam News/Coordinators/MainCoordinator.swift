@@ -53,9 +53,11 @@ class MainCoordinator: Coordinator {
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         
-        // TODO: Free child
     }
     
+    deinit {
+        childCoordinators.forEach { free($0) }
+    }
 }
 
 /*

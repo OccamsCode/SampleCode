@@ -10,10 +10,9 @@ import Foundation
 class JSONParser: Parser {
     
     let decoder: JSONDecoder
-    
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
     
-    init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601) {
+    init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601withFractionalSeconds) {
         self.decoder = JSONDecoder()
         self.dateDecodingStrategy = dateDecodingStrategy
     }
@@ -25,7 +24,7 @@ class JSONParser: Parser {
             let result = try decoder.decode(T.self, from: data)
             completion(.success(result))
         } catch {
-            debugPrint(error)
+            Log.error(error)
             completion(.failure(.jsonDecodeError))
         }
         

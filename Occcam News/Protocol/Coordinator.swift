@@ -7,9 +7,19 @@
 
 import Foundation
 
-protocol Coordinator : class {
+enum Navigate {
+    case toArticle(Article)
+    case toPreview(Previewable)
+}
+
+protocol Coordinator : AnyObject {
     var childCoordinators : [Coordinator] { get set }
     func start()
+    func navigate(_ navigate: Navigate)
+}
+
+extension Coordinator {
+    func navigate(_ navigate: Navigate) {}
 }
 
 extension Coordinator {
