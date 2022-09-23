@@ -1,3 +1,5 @@
+[![iOS Workflow](https://github.com/OccamsCode/SampleCode/actions/workflows/CI.yml/badge.svg)](https://github.com/OccamsCode/SampleCode/actions/workflows/CI.yml)
+
 # Sample Code
 
 Hi! Chances are you found yourself here because you asked to see some sample code from me
