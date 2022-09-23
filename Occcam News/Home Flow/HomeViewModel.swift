@@ -39,7 +39,7 @@ class HomeViewModel {
     
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
         guard cellViewModel(at: indexPath) != nil else { return .zero }
-        let width = frame.width - 10
+        let width = frame.width - 20    //TODO: This while knowing the content inset
         return CGSize(width: width, height: width * 0.8)
     }
     
