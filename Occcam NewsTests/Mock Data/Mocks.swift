@@ -53,6 +53,7 @@ class MockTask: URLSessionTaskProtocol {
 }
 
 class MockResponse {
+
     static func create(withCode code: Int) -> HTTPURLResponse {
         return HTTPURLResponse(url: URL(string: "www.google.com")!,
                                statusCode: code,
@@ -66,6 +67,7 @@ class MockResponse {
                            expectedContentLength: 1,
                            textEncodingName: nil)
     }
+
 }
 
 class MockURLSession: URLSessionProtocol {
@@ -79,7 +81,6 @@ class MockURLSession: URLSessionProtocol {
         return MockTask {
             completion(self.data, self.response, self.error)
         }
-
     }
 
 }
@@ -108,8 +109,8 @@ class MockParser<T: Decodable>: Parser {
         case .error: completion(.failure(.jsonDecodeError))
         case .data: completion(.success(item as! T))
         }
-
     }
+
 }
 
 class MockClient: APIClient {
@@ -145,9 +146,10 @@ class MockGenerator {
             Article(uuid: UUID(),
                     title: String($0),
                     url: URL(string: "apple.com")!,
-                    image_url: URL(string: "apple.com")!,
-                    published_at: Date(),
+                    imageUrl: URL(string: "apple.com")!,
+                    publishedAt: Date(),
                     source: "Source")
         }
     }
+
 }
