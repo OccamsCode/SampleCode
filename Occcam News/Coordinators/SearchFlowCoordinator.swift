@@ -9,17 +9,17 @@ import UIKit
 import SafariServices
 
 class SearchFlowCoordinator: NSObject, Coordinator {
-    
+
     var childCoordinators: [Coordinator]
     let navigation: UINavigationController
     private let client: APIClient
-    
+
     init(_ navigationController: UINavigationController, client: APIClient) {
         self.navigation = navigationController
         self.client = client
         self.childCoordinators = []
     }
-    
+
     func start() {
         let view =  ViewControllerFactory.produce(SearchNewsTableViewController.self)
         view.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
@@ -28,9 +28,9 @@ class SearchFlowCoordinator: NSObject, Coordinator {
         view.viewModel = viewModel
         navigation.setViewControllers([view], animated: false)
     }
-    
-    func navigate(_ to: Navigate) {
-        switch to {
+
+    func navigate(_ toType: Navigate) {
+        switch toType {
         case .toArticle(let article):
             let preview = ViewControllerFactory.produce(safariControllerFrom: article)
             navigate(.toPreview(preview))
@@ -42,7 +42,7 @@ class SearchFlowCoordinator: NSObject, Coordinator {
             }
         }
     }
-    
+
     deinit {
         childCoordinators.forEach { free($0) }
     }

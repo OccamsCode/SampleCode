@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum HTTPMethod:String {
+enum HTTPMethod: String {
     case GET, POST, DELETE
 }
 
-typealias HTTPHeaders = [String:String]
-typealias Parameters = [String:String]
+typealias HTTPHeaders = [String: String]
+typealias Parameters = [String: String]
 
 protocol Endpoint {
     var baseURL: String { get } // api.github.com
@@ -23,30 +23,29 @@ protocol Endpoint {
 }
 
 extension Endpoint {
-    
+
     var request: URLRequest {
-        
+
         var urlComponents = URLComponents()
-        
+
         urlComponents.scheme = "https"
         urlComponents.host = baseURL
         urlComponents.path = path
-        
+
         if let params = parameters {
             urlComponents.queryItems = params.map { URLQueryItem(name: $0.0, value: $0.1) }
         }
-        
+
         guard let url = urlComponents.url else { fatalError("Unable to create the URL") }
-        
+
         var request = URLRequest(url: url)
-        
+
         request.httpMethod = method.rawValue
-        
         headers.forEach { (key, value) in
             request.setValue(value, forHTTPHeaderField: key)
         }
-        
+
         return request
     }
-    
+
 }

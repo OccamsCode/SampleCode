@@ -8,6 +8,7 @@
 import XCTest
 @testable import Occcam_News
 
+// swiftlint:disable all
 class CoordinatorTests: XCTestCase {
     
     var apiClient: MockClient!

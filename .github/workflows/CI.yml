@@ -1,12 +1,19 @@
-name: iOS starter workflow
+name: iOS Workflow
 
 on:
+  push:
+    branches: 
+    - main
+    - develop
   pull_request:
-    branches: [ "main" ]
+    types:
+      - opened
+    branches:
+      - main
 
 jobs:
   build:
-    name: Build and Test default scheme using any available iPhone simulator
+    name: Build and Test, any available iPhone simulator
     runs-on: macos-latest
 
     steps:
