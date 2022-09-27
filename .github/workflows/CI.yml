@@ -2,9 +2,14 @@ name: iOS Workflow
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: 
+    - main
+    - develop
   pull_request:
-    branches: [ "main" ]
+    types:
+      - opened
+    branches:
+      - main
 
 jobs:
   build:
