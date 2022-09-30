@@ -26,7 +26,7 @@ class HomeCollectionViewController: UICollectionViewController {
 
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")     // FIXME: Localise text
 
         // Do any additional setup after loading the view.
         updateUI()
@@ -67,6 +67,24 @@ class HomeCollectionViewController: UICollectionViewController {
         viewModel.didSelectItem(at: indexPath)
     }
 
+    override func collectionView(_ collectionView: UICollectionView,
+                                 contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+                                 point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let preview = viewModel.didSelectContextActionForItem(at: indexPaths.first!) as? UIViewController else {
+            return nil
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            return preview
+        }, actionProvider: nil)
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
+                                 animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion { [unowned self] in
+            self.viewModel.willPerformContextAction()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
