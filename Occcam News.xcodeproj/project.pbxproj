@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA04D29F28E7A5A60098D0E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04D29E28E7A5A60098D0E2 /* HomeViewController.swift */; };
+		BA04D2A428E7A9A00098D0E2 /* TopArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04D2A228E7A9A00098D0E2 /* TopArticleTableViewCell.swift */; };
+		BA04D2A528E7A9A00098D0E2 /* TopArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA04D2A328E7A9A00098D0E2 /* TopArticleTableViewCell.xib */; };
 		BA07570028D77BC8000AD25E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0756FF28D77BC8000AD25E /* Logger.swift */; };
 		BA07570228D7BC03000AD25E /* MiscExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA07570128D7BC03000AD25E /* MiscExtension.swift */; };
 		BA1F37A725DA9CEF007CC963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */; };
@@ -59,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA04D29E28E7A5A60098D0E2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BA04D2A228E7A9A00098D0E2 /* TopArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArticleTableViewCell.swift; sourceTree = "<group>"; };
+		BA04D2A328E7A9A00098D0E2 /* TopArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopArticleTableViewCell.xib; sourceTree = "<group>"; };
 		BA0756FF28D77BC8000AD25E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BA07570128D7BC03000AD25E /* MiscExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscExtension.swift; sourceTree = "<group>"; };
 		BA1F37A325DA9CEF007CC963 /* Occcam News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occcam News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +128,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA04D2A028E7A94C0098D0E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA04D2A128E7A95F0098D0E2 /* TopArticle TableViewCell */,
+				BA78E8B525F15B9700D7857C /* Article CollectionViewCell */,
+				BAE5D6BE260A586F0073C8D5 /* SearchNews TableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BA04D2A128E7A95F0098D0E2 /* TopArticle TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BA04D2A228E7A9A00098D0E2 /* TopArticleTableViewCell.swift */,
+				BA04D2A328E7A9A00098D0E2 /* TopArticleTableViewCell.xib */,
+			);
+			path = "TopArticle TableViewCell";
+			sourceTree = "<group>";
+		};
+		BA04D2A728E7AF3A0098D0E2 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				BA78E8AC25F158CF00D7857C /* Search Flow */,
+				BA78E8AB25F157CA00D7857C /* Home Flow */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
 		BA0756FE28D77B46000AD25E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +188,8 @@
 			children = (
 				BA0756FE28D77B46000AD25E /* Utilities */,
 				BAE5D6AD260A43340073C8D5 /* Factories */,
-				BA78E8AD25F158DE00D7857C /* Views */,
-				BA78E8AC25F158CF00D7857C /* Search Flow */,
-				BA78E8AB25F157CA00D7857C /* Home Flow */,
+				BA78E8AD25F158DE00D7857C /* UIs */,
+				BA04D2A728E7AF3A0098D0E2 /* Flows */,
 				BA2D838425DEEC6F0054FDDB /* Models */,
 				BA1F37F225DACD9F007CC963 /* Networking */,
 				BA1F37C525DAA179007CC963 /* Coordinators */,
@@ -255,6 +288,7 @@
 		BA78E8AB25F157CA00D7857C /* Home Flow */ = {
 			isa = PBXGroup;
 			children = (
+				BA04D29E28E7A5A60098D0E2 /* HomeViewController.swift */,
 				BA78E8CD25F19AF700D7857C /* HomeCollectionViewController.swift */,
 				BA78E8D525F1A64000D7857C /* HomeViewModel.swift */,
 				BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */,
@@ -271,14 +305,13 @@
 			path = "Search Flow";
 			sourceTree = "<group>";
 		};
-		BA78E8AD25F158DE00D7857C /* Views */ = {
+		BA78E8AD25F158DE00D7857C /* UIs */ = {
 			isa = PBXGroup;
 			children = (
-				BAE5D6BE260A586F0073C8D5 /* SearchNews TableViewCell */,
-				BA78E8B525F15B9700D7857C /* Article CollectionViewCell */,
+				BA04D2A028E7A94C0098D0E2 /* Cells */,
 				BA78E8F32601281300D7857C /* GradientView.swift */,
 			);
-			path = Views;
+			path = UIs;
 			sourceTree = "<group>";
 		};
 		BA78E8B525F15B9700D7857C /* Article CollectionViewCell */ = {
@@ -393,6 +426,7 @@
 				BA1F37B025DA9CEF007CC963 /* Assets.xcassets in Resources */,
 				BAE5D6C2260A58E10073C8D5 /* SearchNewsTableViewCell.xib in Resources */,
 				BA78E8B925F15BD300D7857C /* ArticleCollectionViewCell.xib in Resources */,
+				BA04D2A528E7A9A00098D0E2 /* TopArticleTableViewCell.xib in Resources */,
 				BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */,
+				BA04D2A428E7A9A00098D0E2 /* TopArticleTableViewCell.swift in Sources */,
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
@@ -472,6 +507,7 @@
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
 				BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */,
+				BA04D29F28E7A5A60098D0E2 /* HomeViewController.swift in Sources */,
 				BAE5D6B3260A52DB0073C8D5 /* SearchNewsTableViewController.swift in Sources */,
 				BA1F37CA25DAA496007CC963 /* StoryboardInstantiatable.swift in Sources */,
 				BA1F37C225DAA0BE007CC963 /* ClassName.swift in Sources */,

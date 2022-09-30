@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pEq-Kk-1eA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UJe-GY-Yfo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="bAu-Cq-gAV">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="UJe-GY-Yfo" customClass="HomeViewController" customModule="Occcam_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Wt-QJ-0XQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZlV-bV-SIP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="UJe-GY-Yfo" id="aSD-5H-uE5"/>
+                                    <outlet property="delegate" destination="UJe-GY-Yfo" id="5Hm-UA-zrV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IWH-jO-Ecg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZlV-bV-SIP" firstAttribute="top" secondItem="5Wt-QJ-0XQ" secondAttribute="top" id="IBi-hl-bwb"/>
+                            <constraint firstItem="IWH-jO-Ecg" firstAttribute="trailing" secondItem="ZlV-bV-SIP" secondAttribute="trailing" id="SWp-hy-J1g"/>
+                            <constraint firstAttribute="trailing" secondItem="ZlV-bV-SIP" secondAttribute="trailing" id="cAu-es-zJK"/>
+                            <constraint firstItem="ZlV-bV-SIP" firstAttribute="leading" secondItem="IWH-jO-Ecg" secondAttribute="leading" id="eGs-ys-l7D"/>
+                            <constraint firstAttribute="bottom" secondItem="ZlV-bV-SIP" secondAttribute="bottom" id="kru-Nh-tng"/>
+                            <constraint firstItem="ZlV-bV-SIP" firstAttribute="leading" secondItem="IWH-jO-Ecg" secondAttribute="leading" id="wPe-2U-tVO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ZlV-bV-SIP" id="Uk5-4s-ZYI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKU-uc-duw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-229" y="-1289"/>
+        </scene>
         <!--Home Collection View Controller-->
         <scene sceneID="nfJ-fd-sYH">
             <objects>

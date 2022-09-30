@@ -1,8 +1,8 @@
 //
-//  ArticleCollectionViewCell.swift
+//  TopArticleTableViewCell.swift
 //  Occcam News
 //
-//  Created by Brian Munjoma on 04/03/2021.
+//  Created by Brian Munjoma on 30/09/2022.
 //
 
 import UIKit
@@ -28,11 +28,11 @@ class ArticleCellViewModel {
     }
 }
 
-class ArticleCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var textLabel: UILabel!
-    @IBOutlet private var dateLabel: UILabel!
+class TopArticleTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var mainImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var publishedDateLabel: UILabel!
 
     var viewModel: ArticleCellViewModel! {
         didSet {
@@ -42,23 +42,21 @@ class ArticleCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView.layer.cornerRadius = 10.0
+        mainImageView.layer.cornerRadius = 10.0
     }
 
     func updateUI() {
-        textLabel.text = viewModel.title
-        dateLabel.text = viewModel.datePublished
+        titleLabel.text = viewModel.title
+        publishedDateLabel.text = viewModel.datePublished
 
         if let imageUrl = viewModel.imageUrl {
-            imageView.load(url: imageUrl)
+            mainImageView.load(url: imageUrl)
         }
     }
 
-    @IBAction func bookmarkArticle(_ sender: Any) {
-        Log.info("Bookmark Article")
+    @IBAction func didSelectShare(_ sender: UIButton) {
     }
 
-    @IBAction func shareArticle(_ sender: Any) {
-        Log.info("Share Article")
+    @IBAction func didSelectBookmark(_ sender: UIButton) {
     }
 }
