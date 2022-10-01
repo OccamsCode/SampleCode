@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
 
         // Register cell classes
         tableView.register(cellType: TopArticleTableViewCell.self)
-        //collectionView.register(cellType: ArticleCollectionViewCell.self)
         tableView.refreshControl = refreshControl
 
         // Configure Refresh Control
@@ -66,6 +65,27 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let preview = viewModel.didSelectContextActionForItem(at: indexPath) as? UIViewController else {
+            return nil
+        }
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            return preview
+        }, actionProvider: nil)
+
+    }
+
+    func tableView(_ tableView: UITableView,
+                   willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
+                   animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion { [unowned self] in
+            self.viewModel.willPerformContextAction()
+        }
+    }
 }
 
 extension HomeViewController: IBInstantiatable {}
