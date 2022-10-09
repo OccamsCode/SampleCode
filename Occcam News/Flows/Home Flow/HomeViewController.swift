@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         navigationItem.title = "Top Stories"
 
         // Register cell classes
-        tableView.register(cellType: TopArticleTableViewCell.self)
+        tableView.register(cellType: ArticleTableViewCell.self)
         tableView.refreshControl = refreshControl
 
         // Configure Refresh Control
@@ -39,8 +39,8 @@ class HomeViewController: UIViewController {
     func updateUI() {
         viewModel.update { [unowned self] in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
             }
         }
     }
@@ -57,7 +57,8 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(with: TopArticleTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(with: ArticleTableViewCell.self, for: indexPath)
+        cell.cellStyle = indexPath.row == 0 ? .top : .standard
         guard let cellViewModel = viewModel.cellViewModel(at: indexPath) else { return cell }
         cell.viewModel = cellViewModel
         return cell
@@ -65,6 +66,10 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath)
+    }
 
     func tableView(_ tableView: UITableView,
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
