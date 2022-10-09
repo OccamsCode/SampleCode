@@ -22,7 +22,7 @@ class HomeFlowCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        let view = ViewControllerFactory.produce(HomeCollectionViewController.self)
+        let view = ViewControllerFactory.produce(HomeViewController.self)
 // FIXME: Localise text
         view.tabBarItem = UITabBarItem(title: "Latest News",
                                        image: UIImage(systemName: "newspaper"),
