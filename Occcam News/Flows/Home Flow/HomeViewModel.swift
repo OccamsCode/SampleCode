@@ -13,6 +13,7 @@ class HomeViewModel {
     private let client: APIClient
     private var articles: [Article]
     weak var coordinator: HomeFlowCoordinator?
+    private(set) var generatedPreview: Previewable!
 
     init(client: APIClient, article: [Article] = []) {
         self.client = client
@@ -28,10 +29,14 @@ class HomeViewModel {
         return articles.count
     }
 
-    func cellViewModel(at indexPath: IndexPath) -> ArticleCellViewModel? {
+    func article(at indexPath: IndexPath) -> Article? {
         if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return nil }
-        let articleViewModel = ArticleCellViewModel(articles[indexPath.row])
-        return articleViewModel
+        return articles[indexPath.row]
+    }
+
+    func cellViewModel(at indexPath: IndexPath) -> ArticleCellViewModel? {
+        guard let article = article(at: indexPath) else { return nil }
+        return ArticleCellViewModel(article)
     }
 
     func sizeForItem(at indexPath: IndexPath, given frame: CGSize) -> CGSize {
@@ -60,4 +65,14 @@ class HomeViewModel {
         coordinator?.navigate(.toArticle(articles[indexPath.row]))
     }
 
+    func didSelectContextActionForItem(at indexPath: IndexPath) -> Previewable {
+        guard let article = article(at: indexPath) else { fatalError() }
+        generatedPreview = ViewControllerFactory.preview(for: article)
+        return generatedPreview
+    }
+
+    func willPerformContextAction() {
+        guard let preview = generatedPreview else { return }
+        coordinator?.navigate(.toPreview(preview))
+    }
 }

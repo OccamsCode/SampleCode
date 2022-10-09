@@ -35,16 +35,13 @@ class MainCoordinator: Coordinator {
         let searchFlow = SearchFlowCoordinator(searchNavigationController, client: client)
 
         homeFlow.start()
-        searchFlow.start()
+        //searchFlow.start()
 
-        tabBarController.setViewControllers([homeNavigationController, searchNavigationController], animated: false)
+        tabBarController.setViewControllers([homeNavigationController], animated: false)
 
         // store child coordinator
         store(homeFlow)
         store(searchFlow)
-
-        // start the coordinator
-        homeFlow.start()
 
         // launch the window
         window.rootViewController = tabBarController

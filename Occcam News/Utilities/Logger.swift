@@ -52,11 +52,6 @@ enum Log {
 
         let log = OSLog(subsystem: Bundle.main.bundleIdentifier ?? "com.custom.app", category: level.prefix)
         os_log("# %{public}@ ", log: log, type: .info, items.joined(separator: " ") )
-
-//        #if DEBUG
-//        print(fullString)
-//        #endif
-
     }
 
     static func info(shouldLogContext: Bool = false,

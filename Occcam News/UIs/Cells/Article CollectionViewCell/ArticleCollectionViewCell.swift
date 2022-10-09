@@ -7,27 +7,6 @@
 
 import UIKit
 
-class ArticleCellViewModel {
-
-    private let article: Article
-
-    init (_ article: Article) {
-        self.article = article
-    }
-
-    var title: String {
-        return article.title
-    }
-
-    var datePublished: String {
-        return article.publishedAt.timeAgo()
-    }
-
-    var imageUrl: URL? {
-        return article.imageUrl
-    }
-}
-
 class ArticleCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var imageView: UIImageView!
