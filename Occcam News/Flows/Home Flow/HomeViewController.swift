@@ -26,7 +26,8 @@ class HomeViewController: UIViewController {
 
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")     // FIXME: Localise text
+// FIXME: Localise text
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")
 
         // Do any additional setup after loading the view.
         updateUI()
