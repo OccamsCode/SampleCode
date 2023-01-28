@@ -8,13 +8,13 @@
 import Foundation
 
 enum HTTPMethod: String {
-    case GET, POST, DELETE
+    case GET, POST, PUT, DELETE
 }
 
 typealias HTTPHeaders = [String: String]
 typealias Parameters = [String: String]
 
-protocol Endpoint {
+protocol Endpoint: CustomStringConvertible {
     var baseURL: String { get } // api.github.com
     var path: String { get } // /search/repositories
     var method: HTTPMethod { get } // .GET
@@ -28,8 +28,15 @@ extension Endpoint {
 
         var urlComponents = URLComponents()
 
-        urlComponents.scheme = "https"
-        urlComponents.host = baseURL
+        if ProcessInfo.processInfo.arguments.contains("--uitest") {
+            urlComponents.scheme = "http"
+            urlComponents.host = "localhost"
+            urlComponents.port = 8080
+        } else {
+            urlComponents.scheme = "https"
+            urlComponents.host = baseURL
+        }
+
         urlComponents.path = path
 
         if let params = parameters {
@@ -48,4 +55,15 @@ extension Endpoint {
         return request
     }
 
+    var description: String {
+        return """
+        
+        ⌜--------------------
+        Request: \(method.rawValue) - \(baseURL)\(path)
+        Headers: \(headers.sorted(by: <).reduce("", { $0 + "\($1.key): \($1.value)," }))
+        Date: \(Date())
+        Parameters: \(parameters?.sorted(by: <).reduce("", { $0 + "\($1.key): \($1.value)," }) ?? "nil")
+        ⌞--------------------
+        """
+    }
 }

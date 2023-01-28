@@ -53,7 +53,7 @@ class APIClientTest: XCTestCase {
         wait(for: [expecation], timeout: 0.1)
         
         // Then
-        XCTAssertEqual(apiError, APIError.responseError)
+        XCTAssertEqual(apiError, APIError.response(error: MockError.err))
     }
     
     func test_Client_NoData_WrongResponseType_NoError() {

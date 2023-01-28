@@ -127,7 +127,7 @@ class MockClient: APIClient {
 
     func fetch(with request: URLRequest, completion: @escaping (Result<Data, APIError>) -> Void) {
         switch state {
-        case .error: completion(.failure(.responseError))
+        case .error: completion(.failure(.response(error: MockError.err)))
         case .data:
             let type = type(of: self)
             let bundle = Bundle(for: type.self)
