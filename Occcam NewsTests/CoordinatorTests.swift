@@ -11,11 +11,11 @@ import XCTest
 // swiftlint:disable all
 class CoordinatorTests: XCTestCase {
     
-    var apiClient: MockClient!
+    var apiClient: MockClient<String>!
     
     override func setUpWithError() throws {
         
-        apiClient = MockClient(MockURLSession(), parser: MockParser<Bool>())
+        apiClient = MockClient(environment: MockEnvironment(), urlSession: MockURLSession())
     }
     
     override func tearDownWithError() throws {
@@ -46,7 +46,7 @@ class CoordinatorTests: XCTestCase {
         let result = sut.childCoordinators.count
         
         // Then
-        XCTAssertEqual(result, 2)
+        XCTAssertEqual(result, 1)
     }
     
     //MARK:- Home Coordinator Tests

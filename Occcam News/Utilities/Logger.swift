@@ -2,7 +2,7 @@ import Foundation
 import os.log
 
 enum Log {
-    enum LogLevel {
+    enum Level {
         case info
         case warning
         case error
@@ -27,7 +27,7 @@ enum Log {
         }
     }
 
-    fileprivate static func handle(_ level: LogLevel, shouldLogContext: Bool, context: Context, args: Any) {
+    fileprivate static func handle(_ level: Level, shouldLogContext: Bool, context: Context, args: Any) {
         var items: [String] = []
 
         if shouldLogContext {

@@ -10,7 +10,7 @@ import CoreGraphics.CGGeometry
 
 class SearchNewsViewModel {
 
-    private let client: APIClient
+    private let client: Client
     private var totalExpectedResults: Int
     private var currentPage: Int
     private var currentSearchTerm: String?
@@ -20,7 +20,7 @@ class SearchNewsViewModel {
     private(set) var generatedPreview: Previewable!
     weak var coordinator: SearchFlowCoordinator?
 
-    init(client: APIClient, articles: [Article] = []) {
+    init(client: Client, articles: [Article] = []) {
         self.client = client
         self.articles = articles
         self.totalExpectedResults = 0
@@ -29,50 +29,50 @@ class SearchNewsViewModel {
     }
 
     func search(for searchTerm: String, completion: @escaping () -> Void) {
-        currentPage = 1
-        let searching = NewsAPI.search(term: searchTerm, page: currentPage, pageSize: 30)
-        currentSearchTerm = searchTerm
-        client.fetch(from: searching, into: SearchResult.self) { [unowned self] result in
-
-            switch result {
-            case .success(let searchResults):
-                self.totalExpectedResults = searchResults.totalResults
-                self.articles = searchResults.articles.sorted { return $0.publishedAt > $1.publishedAt }
-            case .failure(let error):
-                Log.error(error)
-            }
-            completion()
-        }
+        //        currentPage = 1
+        //        let searching = NewsAPI.search(term: searchTerm, page: currentPage, pageSize: 30)
+        //        currentSearchTerm = searchTerm
+        //        client.fetch(from: searching, into: SearchResult.self) { [unowned self] result in
+        //
+        //            switch result {
+        //            case .success(let searchResults):
+        //                self.totalExpectedResults = searchResults.totalResults
+        //                self.articles = searchResults.articles.sorted { return $0.publishedAt > $1.publishedAt }
+        //            case .failure(let error):
+        //                Log.error(error)
+        //            }
+        //            completion()
+        //        }
     }
 
     func loadMore(completion: @escaping ([IndexPath]?) -> Void) {
-        guard !isFetchInProgress else { return }
-        isFetchInProgress = true
-
-        guard let currentSearchTerm = currentSearchTerm else { return completion(.none) }
-        currentPage += 1
-        let nextPage = NewsAPI.search(term: currentSearchTerm, page: currentPage, pageSize: 30)
-
-        client.fetch(from: nextPage, into: SearchResult.self) { [unowned self] result in
-
-            self.isFetchInProgress = false
-            switch result {
-            case .success(let searchResults):
-                let startIndex = self.articles.count
-                self.articles.append(contentsOf: searchResults.articles)
-                let endIndex = self.articles.count
-                let newIndexPaths = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-                completion(newIndexPaths)
-            case .failure(let error):
-                Log.error(error)
-            }
-            completion(.none)
-
-        }
-
+        //        guard !isFetchInProgress else { return }
+        //        isFetchInProgress = true
+        //
+        //        guard let currentSearchTerm = currentSearchTerm else { return completion(.none) }
+        //        currentPage += 1
+        //        let nextPage = NewsAPI.search(term: currentSearchTerm, page: currentPage, pageSize: 30)
+        //
+        //        client.fetch(from: nextPage, into: SearchResult.self) { [unowned self] result in
+        //
+        //            self.isFetchInProgress = false
+        //            switch result {
+        //            case .success(let searchResults):
+        //                let startIndex = self.articles.count
+        //                self.articles.append(contentsOf: searchResults.articles)
+        //                let endIndex = self.articles.count
+        //                let newIndexPaths = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        //                completion(newIndexPaths)
+        //            case .failure(let error):
+        //                Log.error(error)
+        //            }
+        //            completion(.none)
+        //
+        //        }
+        //
+        //    }
     }
 }
-
 extension SearchNewsViewModel {
 
     var numberOfSections: Int {
