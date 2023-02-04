@@ -15,6 +15,12 @@ struct TopStoriesRequest: Requestable {
 
 class HomeViewModel {
 
+    enum Constants {
+        static let tabBarTitle = Localized.HomeViewModel.TabBarItem.text
+        static let navigationTitle = Localized.HomeViewModel.NavigationItem.text
+        static let refreshControlTitle = Localized.HomeViewModel.RefreshControl.text
+    }
+
     private let client: Client
     private var articles: [Article]
     weak var coordinator: HomeFlowCoordinator?

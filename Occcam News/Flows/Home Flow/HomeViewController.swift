@@ -17,19 +17,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
 
-// FIXME: Localise text
-        navigationItem.title = "Top Stories"
+        navigationItem.title = HomeViewModel.Constants.navigationTitle
 
-        // Register cell classes
         tableView.register(cellType: ArticleTableViewCell.self)
         tableView.refreshControl = refreshControl
 
-        // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-// FIXME: Localise text
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Latest News ...")
+        refreshControl.attributedTitle = NSAttributedString(string: HomeViewModel.Constants.refreshControlTitle)
 
-        // Do any additional setup after loading the view.
         updateUI()
     }
 
