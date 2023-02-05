@@ -1,7 +1,7 @@
 import XCTest
 
 // swiftlint:disable all
-final class HomeFlowTests: UITest {
+final class HomeFlowTests: UITest, HomeFlow {
 
     func testGoingThrough() {
         
@@ -14,6 +14,8 @@ final class HomeFlowTests: UITest {
         
         launchApp(with: defaultLaunchArguments)
         
-        sleep(10)
+        XCTContext.runActivity(named: "Displays Home Screen") { _ in
+            thenIShouldSeeHomeScreen()
+        }
     }
 }

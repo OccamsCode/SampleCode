@@ -51,6 +51,7 @@
 		BAA2B73B2940074200FB0034 /* responseTopHeadlines.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */; };
 		BAA43EB8298F11E100B96725 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAA43EB7298F11E100B96725 /* Localizable.strings */; };
 		BAA43EBA298F121D00B96725 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43EB9298F121D00B96725 /* Localized.swift */; };
+		BAA43EBC298F26B400B96725 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43EBB298F26B400B96725 /* HomeFlow.swift */; };
 		BAB097022615EDE7001274FE /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB097012615EDE7001274FE /* HomeViewModelTests.swift */; };
 		BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */; };
 		BAE5D6B3260A52DB0073C8D5 /* SearchNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5D6B2260A52DB0073C8D5 /* SearchNewsTableViewController.swift */; };
@@ -125,6 +126,7 @@
 		BAA2B735293FF9C100FB0034 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		BAA43EB7298F11E100B96725 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BAA43EB9298F121D00B96725 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		BAA43EBB298F26B400B96725 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		BAB097012615EDE7001274FE /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		BAE5D6AE260A43560073C8D5 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		BAE5D6B2260A52DB0073C8D5 /* SearchNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNewsTableViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				BAA2B735293FF9C100FB0034 /* UITest.swift */,
+				BAA43EBB298F26B400B96725 /* HomeFlow.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAA2B733293FF82F00FB0034 /* HomeFlowTests.swift in Sources */,
+				BAA43EBC298F26B400B96725 /* HomeFlow.swift in Sources */,
 				BAA2B736293FF9C100FB0034 /* UITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

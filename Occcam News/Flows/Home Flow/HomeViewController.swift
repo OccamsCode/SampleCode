@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         precondition(viewModel != nil, "You forgot to attach a ViewModel")
 
+        view.accessibilityIdentifier = "homeScreen"
         navigationItem.title = HomeViewModel.Constants.navigationTitle
 
         tableView.register(cellType: ArticleTableViewCell.self)
