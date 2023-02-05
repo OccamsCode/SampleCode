@@ -27,7 +27,7 @@ class UITest: XCTestCase {
     lazy var app = XCUIApplication()
 
     let defaultLaunchArguments: [String] = {
-        let launchArguments: [String] = ["--uitest"]
+        let launchArguments: [String] = ["--test"]
         return launchArguments
     }()
 

@@ -20,9 +20,7 @@ class NewAPIClient: Client {
     func dataTask<T>(with resource: Resource<T>,
                      completion: @escaping (Result<T, APIError>) -> Void ) -> URLSessionTaskType? {
 
-#if DEBUG
         Log.verbose(resource.request)
-#endif
 
         guard let urlReqest = URLRequest(request: resource.request,
                                          in: environment) else { return nil }
