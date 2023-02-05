@@ -32,7 +32,7 @@ class Log {
 
     static let instance = Log()
 
-    var level: Level = .none
+    var level: Level = .error
 
     fileprivate func shouldLog(atLevel logLevel: Level) -> Bool {
 

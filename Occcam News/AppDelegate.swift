@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        if !CommandLine.arguments.contains("--test") {
+        if CommandLine.arguments.contains("--Log") {
             Log.instance.level = .info
         }
 
