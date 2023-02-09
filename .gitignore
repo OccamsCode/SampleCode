@@ -1,8 +1,3 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/swift,xcode,objective-c,osx
-# Edit at https://www.toptal.com/developers/gitignore?templates=swift,xcode,objective-c,osx
-
-### Objective-C ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -155,9 +150,6 @@ Dependencies/
 # Xcode
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-
-
-
 ## Gcc Patch
 /*.gcno
 
@@ -170,3 +162,5 @@ Dependencies/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,objective-c,osx
 *.xcscheme
+*/xcuserdata
+xcuserdata/
