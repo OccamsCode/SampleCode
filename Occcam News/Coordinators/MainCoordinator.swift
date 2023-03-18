@@ -24,9 +24,9 @@ class MainCoordinator: Coordinator {
             self.client = NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
         } else {
             let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String
-            let item = URLQueryItem(name: "api_token", value: key)
+            let item = URLQueryItem(name: "apikey", value: key)
             let env = Environment(scheme: .secure,
-                                  endpoint: "api.thenewsapi.com",
+                                  endpoint: "gnews.io",
                                   addtionalHeaders: [:],
                                   port: nil,
                                   secret: item)

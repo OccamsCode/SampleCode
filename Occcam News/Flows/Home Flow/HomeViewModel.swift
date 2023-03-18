@@ -8,8 +8,8 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
-struct TopStoriesRequest: Requestable {
-    let path = "/v1/news/top"
+struct TopHeadlinesRequest: Requestable {
+    let path = "/api/v4/top-headlines"
     let parameters: [URLQueryItem]
 }
 
@@ -58,16 +58,17 @@ class HomeViewModel {
 
     func update(completion: @escaping () -> Void) {
 
-        let topStories = TopStoriesRequest(parameters: [
-            URLQueryItem(name: "locale", value: "gb")
+        let topStories = TopHeadlinesRequest(parameters: [
+            URLQueryItem(name: "lang", value: "en"),
+            URLQueryItem(name: "country", value: "gb")
         ])
-        let resource = Resource<TopStoriesResponse>(request: topStories)
+        let resource = Resource<TopHeadlinesResponse>(request: topStories)
 
         let task = client.dataTask(with: resource) { [unowned self] result in
 
             switch result {
             case .success(let topHeadlines):
-                self.articles = topHeadlines.data
+                self.articles = topHeadlines.articles
                 completion()
             case .failure(let failure):
                 Log.error(failure)

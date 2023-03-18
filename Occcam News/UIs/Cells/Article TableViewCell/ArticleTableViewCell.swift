@@ -24,7 +24,7 @@ class ArticleCellViewModel {
     }
 
     var imageUrl: URL? {
-        return article.imageUrl
+        return article.image
     }
 }
 
