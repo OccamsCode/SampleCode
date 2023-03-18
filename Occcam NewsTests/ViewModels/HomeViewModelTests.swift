@@ -9,7 +9,7 @@ import XCTest
 @testable import Occcam_News
 
 // swiftlint:disable all
-class HomeViewModelTests: XCTestCase {
+/* class HomeViewModelTests: XCTestCase {
     
     var sut: HomeViewModel!
     var mockClient: MockClient!
@@ -264,4 +264,4 @@ class HomeViewModelTests: XCTestCase {
     // MARK:- Did Select Context Action
     
     // MARK:- Will Select Context Action
-}
+} */

@@ -13,35 +13,45 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     let window: UIWindow
     let tabBarController: UITabBarController
-    private let client: APIClient
+    private let client: Client
 
     init(_ window: UIWindow) {
         self.window = window
         self.tabBarController = UITabBarController()
         self.childCoordinators = []
 
-        let parser = JSONParser()
-        self.client = NewsClient(URLSession(configuration: .default), jsonParser: parser)
+        if ProcessInfo.processInfo.arguments.contains("--uitest") {
+            self.client = NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
+        } else {
+            let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String
+            let item = URLQueryItem(name: "api_token", value: key)
+            let env = Environment(scheme: .secure,
+                                  endpoint: "api.thenewsapi.com",
+                                  addtionalHeaders: [:],
+                                  port: nil,
+                                  secret: item)
+            self.client = NewAPIClient(environment: env, urlSession: URLSession.shared)
+        }
     }
 
     func start() {
         let homeNavigationController = UINavigationController()
-        let searchNavigationController = UINavigationController()
+        // let searchNavigationController = UINavigationController()
 
         homeNavigationController.navigationBar.prefersLargeTitles = true
-        searchNavigationController.navigationBar.prefersLargeTitles = true
+        // searchNavigationController.navigationBar.prefersLargeTitles = true
 
         let homeFlow = HomeFlowCoordinator(homeNavigationController, client: client)
-        let searchFlow = SearchFlowCoordinator(searchNavigationController, client: client)
+        // let searchFlow = SearchFlowCoordinator(searchNavigationController, client: client)
 
         homeFlow.start()
-        //searchFlow.start()
+        // searchFlow.start()
 
         tabBarController.setViewControllers([homeNavigationController], animated: false)
 
         // store child coordinator
         store(homeFlow)
-        store(searchFlow)
+        // store(searchFlow)
 
         // launch the window
         window.rootViewController = tabBarController

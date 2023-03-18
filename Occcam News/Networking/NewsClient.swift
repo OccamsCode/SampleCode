@@ -7,118 +7,48 @@
 
 import Foundation
 
-enum TheNewsAPI {
-    case topStories
-    case search(term: String)
-}
+class NewAPIClient: Client {
 
-extension TheNewsAPI: Endpoint {
+    internal let environment: EnvironmentType
+    internal let urlSession: URLSessionType
 
-    var baseURL: String {
-        return "api.thenewsapi.com"
+    init(environment: EnvironmentType, urlSession: URLSessionType) {
+        self.environment = environment
+        self.urlSession = urlSession
     }
 
-    var path: String {
-        switch self {
-        case .topStories:
-            return "/v1/news/top"
-        case .search(term: _):
-            return "/v1/news/all"
+    func dataTask<T>(with resource: Resource<T>,
+                     completion: @escaping (Result<T, APIError>) -> Void ) -> URLSessionTaskType? {
+
+        Log.verbose(resource.request)
+
+        guard let urlReqest = URLRequest(request: resource.request,
+                                         in: environment) else { return nil }
+
+        let task = urlSession.dataTask(with: urlReqest) { data, response, error in
+
+            if let error = error {
+                return completion(.failure(.response(error: error)))
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return completion(.failure(.invalidResponse))
+            }
+
+            switch httpResponse.statusCode {
+            case 200...299:
+                guard let data = data else { return completion(.failure(.invalidData)) }
+                do {
+                    let decoded = try resource.decode(data)
+                    completion(.success(decoded))
+                } catch {
+                    completion(.failure(.decode(error: error)))
+                }
+            default:
+                completion(.failure(.invalidResponseStatusCode))
+            }
+
         }
+        return task
     }
-
-    var method: HTTPMethod {
-        return .GET
-    }
-
-    var parameters: Parameters? {
-        var params: Parameters = [
-            "api_token": "1crzZq3hlOa4vneGOKIgxiYWPfWbaVLVRH1HV1ed",
-            "locale": "gb"  // TODO: Support regional news
-        ]
-
-        switch self {
-        case .topStories:
-            break
-        case .search(let term):
-            params.updateValue(term, forKey: "search")
-        }
-        return params
-    }
-
-    var headers: HTTPHeaders {
-        return HTTPHeaders()
-    }
-
-}
-
-enum NewsCategory: String {
-    case business
-    case entertainment
-    case general
-    case health
-    case science
-    case sports
-    case technology
-}
-
-enum NewsAPI {
-    case topHeadlines(api: NewsCategory, page: Int, pageSize: Int)
-    case search(term: String, page: Int, pageSize: Int)
-}
-
-extension NewsAPI: Endpoint {
-
-    var baseURL: String {
-        return "newsapi.org"
-    }
-
-    var path: String {
-        switch self {
-        case .topHeadlines(api: _, page: _, pageSize: _):
-            return "/v2/top-headlines"
-        case .search(term: _, page: _, pageSize: _):
-            return "/v2/everything"
-        }
-    }
-
-    var method: HTTPMethod {
-        return .GET
-    }
-
-    var parameters: Parameters? {
-        var params: Parameters = [:]
-
-        switch self {
-        case .topHeadlines(let category, let page, let pageSize):
-            // TODO: Support regional news
-            params.updateValue("gb", forKey: "country")
-            params.updateValue(category.rawValue, forKey: "category")
-            params.updateValue(String(page), forKey: "page")
-            params.updateValue(String(pageSize), forKey: "pageSize")
-
-        case .search(let searchTerm, let page, let pageSize):
-            params.updateValue(searchTerm, forKey: "q")
-            params.updateValue(String(page), forKey: "page")
-            params.updateValue(String(pageSize), forKey: "pageSize")
-        }
-        return params
-    }
-
-    var headers: HTTPHeaders {
-        return ["Authorization": "e3452d72803f4632af9e317be1662d3b"]
-    }
-
-}
-
-class NewsClient: APIClient {
-
-    var parser: Parser
-    var session: URLSessionProtocol
-
-    init(_ session: URLSessionProtocol, jsonParser: Parser) {
-        self.session = session
-        self.parser = jsonParser
-    }
-
 }

@@ -9,29 +9,17 @@ import Foundation
 @testable import Occcam_News
 
 // swiftlint:disable all
-// MARK: - Endpoint Tests
-class MockEndpoint: Endpoint {
+// MARK: - Requestable Tests
+struct MockDefaultRequest: Requestable {
+    let path: String
+}
 
-    var baseURL: String {
-        return "api.github.com"
-    }
-
-    var path: String {
-        return "/search"
-    }
-
-    var method: HTTPMethod {
-        return .GET
-    }
-
-    var parameters: Parameters? {
-        return ["q": "swift"]
-    }
-
-    var headers: HTTPHeaders {
-        return ["Accept": "*/*"]
-    }
-
+struct MockCustomRequest: Requestable {
+    let path: String
+    var method: HTTP.Method { .POST }
+    var parameters: [URLQueryItem] { return [URLQueryItem(name: "name", value: "value")] }
+    var headers: [String: String] { return ["Content-Length": "348"] }
+    var body: Data? { return Data() }
 }
 
 // MARK: - Client Tests
@@ -39,7 +27,7 @@ enum MockError: Error {
     case err
 }
 
-class MockTask: URLSessionTaskProtocol {
+class MockTask: URLSessionTaskType {
 
     private let closure: () -> Void
 
@@ -70,14 +58,14 @@ class MockResponse {
 
 }
 
-class MockURLSession: URLSessionProtocol {
+class MockURLSession: URLSessionType {
 
     var data: Data?
     var response: URLResponse?
     var error: Error?
 
     func dataTask(with request: URLRequest,
-                  completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskProtocol {
+                  completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskType {
         return MockTask {
             completion(self.data, self.response, self.error)
         }
@@ -102,6 +90,15 @@ class MockParser<T: Decodable>: Parser {
     var state: State = .error
     var item: T!
 
+    func parse<T>(_ data: Data, into type: T.Type) throws -> T where T : Decodable {
+        switch state {
+        case .error:
+            throw ParserError.jsonDecodeError
+        case .data:
+            return item as! T
+        }
+    }
+
     func parse<T>(_ data: Data,
                   into type: T.Type,
                   completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable {
@@ -113,30 +110,44 @@ class MockParser<T: Decodable>: Parser {
 
 }
 
-class MockClient: APIClient {
+class MockEnvironment: EnvironmentType {
+
+    var scheme: HTTP.Scheme = .unsecure
+    var endpoint: String = ""
+    var addtionalHeaders: [String : String] = [:]
+    var port: Int? = nil
+    var secret: URLQueryItem?
+    
+}
+
+class MockClient<T: Decodable>: Client {
 
     var state: State
-    var session: URLSessionProtocol
-    var parser: Parser
+    var item: T!
+    var environment: EnvironmentType
+    var urlSession: URLSessionType
 
-    init(_ session: URLSessionProtocol, parser: Parser) {
-        self.parser = parser
-        self.session = session
-        self.state = .error
+    init(environment: EnvironmentType, urlSession: URLSessionType) {
+        self.environment = environment
+        self.urlSession = urlSession
+        state = .error
     }
 
-    func fetch(with request: URLRequest, completion: @escaping (Result<Data, APIError>) -> Void) {
+    func dataTask<T>(with resource: Resource<T>,
+                     completion: @escaping (Result<T, APIError>) -> Void) -> URLSessionTaskType? where T : Decodable {
         switch state {
-        case .error: completion(.failure(.responseError))
+        case .error:
+            return MockTask{ completion(.failure(.response(error: MockError.err))) }
         case .data:
             let type = type(of: self)
             let bundle = Bundle(for: type.self)
             let path = bundle.url(forResource: "responseTopHeadlines", withExtension: "json")!
             let data = try! Data(contentsOf: path)
-            completion(.success(data))
+            let coded = try! resource.decode(data)
+            return MockTask{ completion(.success(coded)) }
         }
     }
-
+    
 }
 
 class MockGenerator {

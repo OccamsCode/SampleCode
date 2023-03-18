@@ -18,6 +18,12 @@ class JSONParser: Parser {
     }
 
     func parse<T>(_ data: Data,
+                  into type: T.Type) throws -> T where T: Decodable {
+        decoder.dateDecodingStrategy = dateDecodingStrategy
+        return try decoder.decode(T.self, from: data)
+    }
+
+    func parse<T>(_ data: Data,
                   into type: T.Type,
                   completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable {
         decoder.dateDecodingStrategy = dateDecodingStrategy

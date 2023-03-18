@@ -20,6 +20,8 @@ enum ParserError: Error {
 protocol Parser {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get set }
     func parse<T>(_ data: Data,
+                  into type: T.Type) throws -> T where T: Decodable
+    func parse<T>(_ data: Data,
                   into type: T.Type,
                   completion: @escaping (Result<T, ParserError>) -> Void) where T: Decodable
 }

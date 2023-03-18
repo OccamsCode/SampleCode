@@ -1,19 +1,22 @@
 import Foundation
 import os.log
 
-enum Log {
-    enum LogLevel {
+class Log {
+
+    enum Level {
         case info
+        case verbose
         case warning
         case error
-        case verbose
+        case none
 
         fileprivate var prefix: String {
             switch self {
             case .info:    return "INFO 💬"
+            case .verbose: return "V.BOSE 🔊"
             case .warning: return "WARN ⚠️"
             case .error:   return "ERROR ❌"
-            case .verbose: return "V.BOSE 🔊"
+            case .none:    return "🚫"
             }
         }
     }
@@ -27,14 +30,37 @@ enum Log {
         }
     }
 
-    fileprivate static func handle(_ level: LogLevel, shouldLogContext: Bool, context: Context, args: Any) {
+    static let instance = Log()
+
+    var level: Level = .error
+
+    fileprivate func shouldLog(atLevel logLevel: Level) -> Bool {
+
+        switch level {
+        case .info:
+            return true
+        case .verbose:
+            return Set<Level>([.warning, .error, .verbose]).contains(logLevel)
+        case .warning:
+            return Set<Level>([.warning, .error]).contains(logLevel)
+        case .error:
+            return logLevel == .error
+        case .none:
+            return false
+        }
+    }
+
+    fileprivate func handle(_ level: Level, shouldLogContext: Bool, context: Context, args: Any) {
+
+        guard shouldLog(atLevel: level) else { return }
+
         var items: [String] = []
 
         if shouldLogContext {
             items.append(context.description)
         }
 
-        var argsOutput = ""
+        var argsOutput = String()
 
         if let argsArray = args as? [Any] {
             for arg in argsArray {
@@ -52,6 +78,7 @@ enum Log {
 
         let log = OSLog(subsystem: Bundle.main.bundleIdentifier ?? "com.custom.app", category: level.prefix)
         os_log("# %{public}@ ", log: log, type: .info, items.joined(separator: " ") )
+
     }
 
     static func info(shouldLogContext: Bool = false,
@@ -60,7 +87,7 @@ enum Log {
                      line: Int = #line,
                      _ items: Any...) {
         let context = Context(file: file, function: function, line: line)
-        Log.handle(.info, shouldLogContext: shouldLogContext, context: context, args: items)
+        Log.instance.handle(.info, shouldLogContext: shouldLogContext, context: context, args: items)
     }
 
     static func warning(shouldLogContext: Bool = false,
@@ -69,7 +96,7 @@ enum Log {
                         line: Int = #line,
                         _ items: Any...) {
         let context = Context(file: file, function: function, line: line)
-        Log.handle(.warning, shouldLogContext: shouldLogContext, context: context, args: items)
+        Log.instance.handle(.warning, shouldLogContext: shouldLogContext, context: context, args: items)
     }
 
     static func error(shouldLogContext: Bool = true,
@@ -78,7 +105,7 @@ enum Log {
                       line: Int = #line,
                       _ items: Any...) {
         let context = Context(file: file, function: function, line: line)
-        Log.handle(.error, shouldLogContext: shouldLogContext, context: context, args: items)
+        Log.instance.handle(.error, shouldLogContext: shouldLogContext, context: context, args: items)
     }
 
     static func verbose(shouldLogContext: Bool = false,
@@ -87,7 +114,7 @@ enum Log {
                         line: Int = #line,
                         _ items: Any...) {
         let context = Context(file: file, function: function, line: line)
-        Log.handle(.verbose, shouldLogContext: shouldLogContext, context: context, args: items)
+        Log.instance.handle(.verbose, shouldLogContext: shouldLogContext, context: context, args: items)
     }
 
 }

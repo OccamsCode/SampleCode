@@ -13,9 +13,9 @@ class HomeFlowCoordinator: NSObject, Coordinator {
 
     var childCoordinators: [Coordinator]
     var navigation: UINavigationController
-    private let client: APIClient
+    private let client: Client
 
-    init(_ navigationController: UINavigationController, client: APIClient) {
+    init(_ navigationController: UINavigationController, client: Client) {
         self.navigation = navigationController
         self.client = client
         self.childCoordinators = []
@@ -23,13 +23,14 @@ class HomeFlowCoordinator: NSObject, Coordinator {
 
     func start() {
         let view = ViewControllerFactory.produce(HomeViewController.self)
-// FIXME: Localise text
-        view.tabBarItem = UITabBarItem(title: "Latest News",
-                                       image: UIImage(systemName: "newspaper"),
-                                       selectedImage: UIImage(systemName: "newspaper.fill"))
         let viewModel = HomeViewModel(client: client)
         viewModel.coordinator = self
         view.viewModel = viewModel
+
+        // FIXME: Create Image Resources
+        view.tabBarItem = UITabBarItem(title: HomeViewModel.Constants.tabBarTitle,
+                                       image: UIImage(systemName: "newspaper"),
+                                       selectedImage: UIImage(systemName: "newspaper.fill"))
 
         navigation.setViewControllers([view], animated: false)
     }

@@ -50,7 +50,7 @@ class ArticleTableViewCell: UITableViewCell, ArticleCellType {
     @IBOutlet private weak var publishedDateLabel: UILabel!
 
     @IBOutlet private weak var topStackView: UIStackView!
-    
+
     var delegate: ArticleCellDelegate?
 
     var cellStyle: ArticleCellStyle = .standard {
