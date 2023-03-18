@@ -116,6 +116,7 @@ class MockEnvironment: EnvironmentType {
     var endpoint: String = ""
     var addtionalHeaders: [String : String] = [:]
     var port: Int? = nil
+    var secret: URLQueryItem?
     
 }
 
