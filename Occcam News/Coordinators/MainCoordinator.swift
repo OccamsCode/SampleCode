@@ -23,10 +23,13 @@ class MainCoordinator: Coordinator {
         if ProcessInfo.processInfo.arguments.contains("--uitest") {
             self.client = NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
         } else {
+            let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String
+            let item = URLQueryItem(name: "api_token", value: key)
             let env = Environment(scheme: .secure,
                                   endpoint: "api.thenewsapi.com",
                                   addtionalHeaders: [:],
-                                  port: nil)
+                                  port: nil,
+                                  secret: item)
             self.client = NewAPIClient(environment: env, urlSession: URLSession.shared)
         }
     }

@@ -59,7 +59,6 @@ class HomeViewModel {
     func update(completion: @escaping () -> Void) {
 
         let topStories = TopStoriesRequest(parameters: [
-            URLQueryItem(name: "api_token", value: "1crzZq3hlOa4vneGOKIgxiYWPfWbaVLVRH1HV1ed"),
             URLQueryItem(name: "locale", value: "gb")
         ])
         let resource = Resource<TopStoriesResponse>(request: topStories)

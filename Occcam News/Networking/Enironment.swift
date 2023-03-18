@@ -12,6 +12,7 @@ protocol EnvironmentType {
     var endpoint: String { get }
     var addtionalHeaders: [String: String] { get }
     var port: Int? { get }
+    var secret: URLQueryItem? { get }
 }
 
 struct Environment: EnvironmentType, CustomStringConvertible {
@@ -20,9 +21,10 @@ struct Environment: EnvironmentType, CustomStringConvertible {
     let endpoint: String
     let addtionalHeaders: [String: String]
     let port: Int?
+    let secret: URLQueryItem?
 
     static var testing: Environment {
-        return Environment(scheme: .unsecure, endpoint: "localhost", addtionalHeaders: [:], port: 8080)
+        return Environment(scheme: .unsecure, endpoint: "localhost", addtionalHeaders: [:], port: 8080, secret: nil)
     }
 
     var description: String {

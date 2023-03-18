@@ -49,6 +49,7 @@
 		BAA2B736293FF9C100FB0034 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA2B735293FF9C100FB0034 /* UITest.swift */; };
 		BAA2B7392940054F00FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B7382940054F00FB0034 /* Swifter */; };
 		BAA2B73B2940074200FB0034 /* responseTopHeadlines.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */; };
+		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
 		BAA43EB8298F11E100B96725 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAA43EB7298F11E100B96725 /* Localizable.strings */; };
 		BAA43EBA298F121D00B96725 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43EB9298F121D00B96725 /* Localized.swift */; };
 		BAA43EBC298F26B400B96725 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43EBB298F26B400B96725 /* HomeFlow.swift */; };
@@ -124,6 +125,7 @@
 		BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA2B732293FF82F00FB0034 /* HomeFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowTests.swift; sourceTree = "<group>"; };
 		BAA2B735293FF9C100FB0034 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
+		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BAA43EB7298F11E100B96725 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BAA43EB9298F121D00B96725 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		BAA43EBB298F26B400B96725 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		BA1F379A25DA9CEE007CC963 = {
 			isa = PBXGroup;
 			children = (
+				BAA3ACEC29C5320E00033620 /* Config.xcconfig */,
 				BA1F37A525DA9CEF007CC963 /* Occcam News */,
 				BA1F37E525DAC85B007CC963 /* Occcam NewsTests */,
 				BAA2B727293FF66D00FB0034 /* BehaviourTests */,
@@ -551,6 +554,7 @@
 				BA1F37B025DA9CEF007CC963 /* Assets.xcassets in Resources */,
 				BAE5D6C2260A58E10073C8D5 /* SearchNewsTableViewCell.xib in Resources */,
 				BAA43EB8298F11E100B96725 /* Localizable.strings in Resources */,
+				BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */,
 				BA78E8B925F15BD300D7857C /* ArticleCollectionViewCell.xib in Resources */,
 				BA04D2A528E7A9A00098D0E2 /* ArticleTableViewCell.xib in Resources */,
 				BA1F37AE25DA9CEF007CC963 /* Main.storyboard in Resources */,
@@ -717,6 +721,7 @@
 /* Begin XCBuildConfiguration section */
 		BA1F37B525DA9CEF007CC963 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAA3ACEC29C5320E00033620 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -778,6 +783,7 @@
 		};
 		BA1F37B625DA9CEF007CC963 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAA3ACEC29C5320E00033620 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

@@ -21,14 +21,15 @@ extension Requestable {
     var headers: [String: String] { return [HTTP.Header.Key.accept: HTTP.Header.Value.json] }
     var body: Data? { return nil }
 
-    func fullURL(scheme: HTTP.Scheme, endpoint: String, port: Int?) -> URL? {
+    func url(using environment: EnvironmentType) -> URL? {
         var urlComponents = URLComponents()
 
-        urlComponents.scheme = scheme.rawValue
-        urlComponents.host = endpoint
-        urlComponents.port = port
+        urlComponents.scheme = environment.scheme.rawValue
+        urlComponents.host = environment.endpoint
+        urlComponents.port = environment.port
         urlComponents.path = path
         urlComponents.queryItems = parameters
+        if let secret = environment.secret { urlComponents.queryItems?.append(secret) }
 
         return urlComponents.url
     }
@@ -51,9 +52,7 @@ extension URLRequest {
 
     init?(request: Requestable, in environment: EnvironmentType) {
 
-        guard let fullURL = request.fullURL(scheme: environment.scheme,
-                                            endpoint: environment.endpoint,
-                                            port: environment.port) else { return nil }
+        guard let fullURL = request.url(using: environment) else { return nil }
         self.init(url: fullURL)
         self.httpMethod = request.method.rawValue
 
