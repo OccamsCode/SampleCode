@@ -79,8 +79,8 @@ class HomeViewModel {
     }
 
     func didSelectItem(at indexPath: IndexPath) {
-        if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return }
-        coordinator?.navigate(.toArticle(articles[indexPath.row]))
+        guard let selectedItem = article(at: indexPath) else { return }
+        coordinator?.navigate(.toArticle(selectedItem))
     }
 
     func didSelectContextActionForItem(at indexPath: IndexPath) -> Previewable {
