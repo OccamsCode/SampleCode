@@ -116,7 +116,7 @@ class MockEnvironment: EnvironmentType {
     var endpoint: String = ""
     var addtionalHeaders: [String : String] = [:]
     var port: Int? = nil
-    var secret: URLQueryItem?
+    var secret: Secret? = nil
     
 }
 
@@ -154,12 +154,11 @@ class MockGenerator {
 
     static func createArticles(_ count: Int) -> [Article] {
         return Array(0..<count).map {
-            Article(uuid: UUID(),
-                    title: String($0),
+            Article(title: String($0),
                     url: URL(string: "apple.com")!,
-                    imageUrl: URL(string: "apple.com")!,
+                    image: URL(string: "apple.com")!,
                     publishedAt: Date(),
-                    source: "Source")
+                    source: Article.Source(name: "Apple \($0)", url: "apple.com"))
         }
     }
 
