@@ -29,7 +29,7 @@ class MainCoordinator: Coordinator {
                                   endpoint: "gnews.io",
                                   addtionalHeaders: [:],
                                   port: nil,
-                                  secret: item)
+                                  secret: .queryItem(item))
             self.client = NewAPIClient(environment: env, urlSession: URLSession.shared)
         }
     }

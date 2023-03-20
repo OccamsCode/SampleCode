@@ -7,12 +7,17 @@
 
 import Foundation
 
+enum Secret {
+    case queryItem(_ item: URLQueryItem)
+    case header(_ key: HTTP.Header.Key, value: HTTP.Header.Value)
+}
+
 protocol EnvironmentType {
     var scheme: HTTP.Scheme { get }
     var endpoint: String { get }
     var addtionalHeaders: [String: String] { get }
     var port: Int? { get }
-    var secret: URLQueryItem? { get }
+    var secret: Secret? { get }
 }
 
 struct Environment: EnvironmentType, CustomStringConvertible {
@@ -21,7 +26,7 @@ struct Environment: EnvironmentType, CustomStringConvertible {
     let endpoint: String
     let addtionalHeaders: [String: String]
     let port: Int?
-    let secret: URLQueryItem?
+    let secret: Secret?
 
     static var testing: Environment {
         return Environment(scheme: .unsecure, endpoint: "localhost", addtionalHeaders: [:], port: 8080, secret: nil)

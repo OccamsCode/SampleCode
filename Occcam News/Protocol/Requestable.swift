@@ -29,7 +29,10 @@ extension Requestable {
         urlComponents.port = environment.port
         urlComponents.path = path
         urlComponents.queryItems = parameters
-        if let secret = environment.secret { urlComponents.queryItems?.append(secret) }
+
+        if case let .queryItem(item) = environment.secret {
+            urlComponents.queryItems?.append(item)
+        }
 
         return urlComponents.url
     }
@@ -62,6 +65,10 @@ extension URLRequest {
 
         environment.addtionalHeaders.forEach { (key, value) in
             self.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        if case let .header(key, value) = environment.secret {
+            self.setValue(value.rawValue, forHTTPHeaderField: key.rawValue)
         }
     }
 }
