@@ -58,6 +58,7 @@ class HomeViewModel {
 
     func update(completion: @escaping () -> Void) {
 
+        // TODO: Setting page or language & country
         let topStories = TopHeadlinesRequest(parameters: [
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "country", value: "gb")
