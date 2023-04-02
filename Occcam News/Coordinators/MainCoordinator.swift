@@ -20,6 +20,7 @@ class MainCoordinator: Coordinator {
         self.childCoordinators = []
 
         /*
+
         if ProcessInfo.processInfo.arguments.contains("--uitest") {
             self.client = NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
         } else {

@@ -13,6 +13,7 @@ class CoordinatorTests: XCTestCase {
     
     override func setUpWithError() throws {
         InjectedValues[\.clientProvider] = MockClient<String>(environment: MockEnvironment(), urlSession: MockURLSession())
+
     }
     
     override func tearDownWithError() throws {

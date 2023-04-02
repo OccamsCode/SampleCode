@@ -20,6 +20,7 @@ class SearchNewsViewModel {
     weak var coordinator: SearchFlowCoordinator?
 
     init(articles: [Article] = []) {
+
         self.articles = articles
         self.totalExpectedResults = 0
         self.currentPage = 1

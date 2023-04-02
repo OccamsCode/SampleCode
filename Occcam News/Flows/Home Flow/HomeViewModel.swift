@@ -28,6 +28,7 @@ class HomeViewModel {
     private(set) var generatedPreview: Previewable!
 
     init(article: [Article] = []) {
+
         self.articles = article
     }
 

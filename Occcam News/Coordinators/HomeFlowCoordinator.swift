@@ -15,13 +15,16 @@ class HomeFlowCoordinator: NSObject, Coordinator {
     var navigation: UINavigationController
 
     init(_ navigationController: UINavigationController) {
+
         self.navigation = navigationController
         self.childCoordinators = []
     }
 
     func start() {
         let view = ViewControllerFactory.produce(HomeViewController.self)
+
         let viewModel = HomeViewModel()
+
         viewModel.coordinator = self
         view.viewModel = viewModel
 
