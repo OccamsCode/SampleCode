@@ -21,13 +21,13 @@ class HomeViewModel {
         static let refreshControlTitle = Localized.HomeViewModel.RefreshControl.text
     }
 
-    private let client: Client
+    @Inject(\.clientProvider) var client: Client
+
     private var articles: [Article]
     weak var coordinator: HomeFlowCoordinator?
     private(set) var generatedPreview: Previewable!
 
-    init(client: Client, article: [Article] = []) {
-        self.client = client
+    init(article: [Article] = []) {
         self.articles = article
     }
 

@@ -1,185 +1,125 @@
 {
-    "meta": {
-        "found": 489846,
-        "returned": 10,
-        "limit": 10,
-        "page": 1
+  "totalArticles": 65189,
+  "articles": [
+    {
+      "title": "Trump indictment live updates and latest news",
+      "description": "President Donald Trump was indicted by a New York grand jury in a hush money case, and is expected to be arraigned on Tuesday.",
+      "content": "Donald Trump became the first former U.S. president to get indicted on Thursday.\nNow the country awaits more details on what charges exactly Trump faces in the New York hush money case — and when he will head to Manhattan to turn himself in.\nThe indi... [659 chars]",
+      "url": "https://www.cnbc.com/2023/03/31/trump-indicted-ny-grand-jury.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/107208213-16787958772023-03-14t001646z_671389944_rc2btz95fx22_rtrmadp_0_usa-election-trump.jpeg?v=1680295734&w=1920&h=1080",
+      "publishedAt": "2023-03-31T21:40:00Z",
+      "source": {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com"
+      }
     },
-    "data": [
-        {
-            "uuid": "9d0f1b05-3053-454b-9c84-8f0bc9b78286",
-            "title": "9 people shot in Lexington in 4 shootings within 6 hours of each other : news",
-            "description": "25.2m members in the news community. The place for news articles about current events in the United States and the rest of the world. Discuss it all …",
-            "keywords": "",
-            "snippet": "The place for news articles about current events in the United States and the rest of the world. Discuss it all here.",
-            "url": "https://www.reddit.com/r/news/comments/xbmass/9_people_shot_in_lexington_in_4_shootings_within/",
-            "image_url": "https://external-preview.redd.it/LdZltRV1l1NgUENyAlNaw1hqBKGFcAfgMcek4x_Qhvc.jpg?auto=webp&s=17175f7125f7ce5c5ecb41ba81f21cfa599f8786",
-            "language": "en",
-            "published_at": "2022-09-11T16:46:32.000000Z",
-            "source": "reddit.com",
-            "categories": [
-                "general",
-                "politics"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "9adf5538-d163-4a35-b278-f145046bf482",
-            "title": "Ukrainian ambassador vows military will \"liberate all Ukraine\" amid counteroffensive",
-            "description": "Ukrainian forces have liberated more than 1,100 square miles since the beginning of September, Gen. Valerii Zaluzhnyy, Ukraine's military chief, said Sunday.",
-            "keywords": "",
-            "snippet": "Washington — Oksana Markarova, Ukraine's ambassador to the United States, pledged Sunday that Ukraine's military will liberate all of the country from Russia ...",
-            "url": "https://www.cbsnews.com/news/ukraine-russia-war-ambassador-oksana-markarova-face-the-nation/",
-            "image_url": "https://assets3.cbsnewsstatic.com/hub/i/r/2022/09/11/ba3ead1a-f969-4352-83f1-1b945166f656/thumbnail/1200x630g2/9646be5fcd3001f626305aa16a5d64d5/markarova-3.jpg",
-            "language": "en",
-            "published_at": "2022-09-11T16:45:57.000000Z",
-            "source": "cbsnews.com",
-            "categories": [
-                "politics"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "8a75ea82-9d02-44c4-8630-8b4f60d6761a",
-            "title": "FBI file shows bureau kept tabs on Aretha Franklin's activism, a common focus during the Civil Rights era : news",
-            "description": "25.2m members in the news community. The place for news articles about current events in the United States and the rest of the world. Discuss it all …",
-            "keywords": "",
-            "snippet": ":: ding dong :: Hello! We would like to share with you what Entertainment Weekly calls “the funniest musical of all time.” Make it your mission to see The B...",
-            "url": "https://www.reddit.com/r/news/comments/xblrou/fbi_file_shows_bureau_kept_tabs_on_aretha/",
-            "image_url": "https://external-preview.redd.it/-OdK5dyb6nCPQh4jNhf6LPb2iIa_-7TasqI-XVVpnHc.jpg?auto=webp&s=b0ad6da855b3baa9ab46083585539eecc3ed411e",
-            "language": "en",
-            "published_at": "2022-09-11T16:23:57.000000Z",
-            "source": "reddit.com",
-            "categories": [
-                "general",
-                "politics"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "499c1dac-0855-4d6f-98c5-0e635040321b",
-            "title": "Where Queen Elizabeth’s corgis will go after her death",
-            "description": "The Duke and Duchess of York will take on the late Queen’s corgis after the Duchess “bonded” with the late Queen over dog walks, according to The Telegrap...",
-            "keywords": "News, corgis, death of queen elizabeth ii, prince andrew, queen elizabeth ii, sarah ferguson",
-            "snippet": "Queen Elizabeth II was known for her love of corgis — and now her beloved dogs are getting a new home.\n\nThe Duke and Duchess of York — Prince Andrew and ex-...",
-            "url": "https://nypost.com/2022/09/11/duke-and-duchess-of-york-to-take-on-queen-elizabeths-corgis/",
-            "image_url": "https://nypost.com/wp-content/uploads/sites/2/2022/09/queen-elizabeth-dog-comp.jpg?quality=75&strip=all&w=1024",
-            "language": "en",
-            "published_at": "2022-09-11T16:22:07.000000Z",
-            "source": "nypost.com",
-            "categories": [
-                "general"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "7a793006-4c1c-4635-b724-6ae1cec980ff",
-            "title": "Video Biden delivers remarks to honor 9/11 victims at Pentagon",
-            "description": "President Joe Biden on Sunday participated in a wreath-laying ceremony and delivered remarks at the 9/11 Remembrance Ceremony at the Pentagon.",
-            "keywords": "",
-            "snippet": "Biden delivers remarks to honor 9/11 victims at Pentagon President Joe Biden on Sunday participated in a wreath-laying ceremony and delivered remarks at the 9/1...",
-            "url": "https://abcnews.go.com/US/video/biden-delivers-remarks-honor-911-victims-pentagon-89700499",
-            "image_url": "https://s.abcnews.com/images/US/220911_vod_biden_remarks_hpMain_16x9_608.jpg",
-            "language": "en",
-            "published_at": "2022-09-11T16:15:33.000000Z",
-            "source": "abcnews.go.com",
-            "categories": [
-                "general"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "0acd39b1-1080-48a9-a473-715164bc9a60",
-            "title": "Steelers Week 1 inactives: QB Mason Rudolph, C Kendrick Green among players not playing against Bengals",
-            "description": "Kenny Pickett is Pittsburgh's primary backup",
-            "keywords": "",
-            "snippet": "The Steelers had two notable players included in their inactive list ahead of Sunday's season-opening game against the Bengals. Mason Rudolph won't dress for We...",
-            "url": "https://www.cbssports.com/nfl/news/steelers-week-1-inactives-qb-mason-rudolph-c-kendrick-green-among-players-not-playing-against-bengals/",
-            "image_url": "https://sportshub.cbsistatic.com/i/r/2022/09/11/85a6b63a-a334-4bcb-a029-a338f965fcd0/thumbnail/1200x675/03db8f2b61e64a94dc85fa3c8ac59375/rudolph-g.jpg",
-            "language": "en",
-            "published_at": "2022-09-11T16:14:34.000000Z",
-            "source": "cbssports.com",
-            "categories": [
-                "sports"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "258a1422-1e33-42d0-b943-cfa4f309cceb",
-            "title": "Bitcoin (BTC/USD) – 'Rich Dad, Poor Dad' Author Says 'Losers' Watching Stocks While Real Problem is Elsewhere: 'Major Crash To Come'",
-            "description": "This article was originally published on July 25, 2022. Robert Kiyosaki, the author of",
-            "keywords": "",
-            "snippet": "This article was originally published on July 25, 2022.\n\nRobert Kiyosaki, the author of \"Rich Dad, Poor Dad,\" is warning investors about the need to focus on th...",
-            "url": "https://www.benzinga.com/markets/cryptocurrency/22/07/28182334/what-is-rich-dad-poor-dad-author-buying-in-current-market-conditions-1",
-            "image_url": "https://cdn.benzinga.com/files/images/story/2022/09/11/robert_kiyosaki3.jpg?width=1200&height=800&fit=crop",
-            "language": "en",
-            "published_at": "2022-09-11T16:05:36.000000Z",
-            "source": "benzinga.com",
-            "categories": [
-                "business"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "2fb19161-22c3-4c6a-affa-20bcf31fd669",
-            "title": "Bowl projections: Georgia, Alabama swap College Football Playoff spots as upsets benefit Tennessee, Marshall",
-            "description": "Numerous Week 2 upsets created significant shifts in Jerry Palm's second set of regular-season bowl projections",
-            "keywords": "",
-            "snippet": "It was a bad week to play Sun Belt teams, especially if you among the top 10 programs in the college football rankings. Alabama was lucky it didn't play one, th...",
-            "url": "https://www.cbssports.com/college-football/news/bowl-projections-georgia-alabama-swap-college-football-playoff-spots-as-upsets-benefit-tennessee-marshall/",
-            "image_url": "https://sportshub.cbsistatic.com/i/r/2022/09/11/1f4c9dc0-7e5a-48bf-940b-6655efa2a091/thumbnail/1200x675/cade5ffcf5c30397a8fe692e8e84785a/graphic-bpuga2.png",
-            "language": "en",
-            "published_at": "2022-09-11T16:01:33.000000Z",
-            "source": "cbssports.com",
-            "categories": [
-                "sports"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "c00284c6-1e76-4f54-84a3-3bdf715bdd57",
-            "title": "Texas DPS chief spent a career focused on protection. Now questions about Uvalde are looming",
-            "description": "Texas' top cop spent a lifetime preventing crimes. Then he confronted the school shooting at Robb Elementary – the one nobody stepped in to stop.",
-            "keywords": "",
-            "snippet": "Texas DPS chief spent a career focused on protection. Now questions about Uvalde are looming\n\nSteve McCraw has spent a lifetime trying to protect somebody in tr...",
-            "url": "https://www.usatoday.com/story/news/nation/2022/09/11/uvalde-texas-school-shooting-dps-chief-steve-mccraw/8023846001/?gnt-cfr=1",
-            "image_url": "https://www.gannett-cdn.com/presto/2022/08/17/NAAS/62d965b3-86ad-4703-b3de-12cbc952834d-DPS_Director_Steve_McCraw_jwj_0412.jpg?auto=webp&crop=2999,1687,x0,y265&format=pjpg&width=1200",
-            "language": "en",
-            "published_at": "2022-09-11T16:01:09.000000Z",
-            "source": "usatoday.com",
-            "categories": [
-                "general",
-                "travel",
-                "sports"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        },
-        {
-            "uuid": "b01ee5c1-88db-4ccc-a3c0-7e7047dde465",
-            "title": "18 wildfires burning across Oregon, Washington force evacuations; thousands without power : news",
-            "description": "25.2m members in the news community. The place for news articles about current events in the United States and the rest of the world. Discuss it all …",
-            "keywords": "",
-            "snippet": "The place for news articles about current events in the United States and the rest of the world. Discuss it all here.",
-            "url": "https://www.reddit.com/r/news/comments/xbli2s/18_wildfires_burning_across_oregon_washington/",
-            "image_url": "https://external-preview.redd.it/Y09Svjr5uqF7MDGPQlPgNEYv1qJYEA2FSApHUSoD7Iw.jpg?auto=webp&s=d87306a759c80d6d9907887225b394d26d454901",
-            "language": "en",
-            "published_at": "2022-09-11T16:00:33.000000Z",
-            "source": "reddit.com",
-            "categories": [
-                "general",
-                "politics"
-            ],
-            "relevance_score": null,
-            "locale": "us"
-        }
-    ]
+    {
+      "title": "Migraines, cluster headaches linked to how you sleep: study",
+      "description": "A recent study found that migraines and cluster headaches are linked to the body's circadian rhythm and how one sleeps — which has been found to impact a long list of health disorders.",
+      "content": "Is it headache o’clock?\nMigraines and cluster headaches are closely linked to the body’s internal clock, a new study found.\nThe report, published in Neurology on Wednesday, suggested that both types of headaches have strong correlations to the circad... [3649 chars]",
+      "url": "https://nypost.com/2023/03/31/migraines-cluster-headaches-linked-to-how-you-sleep-study/",
+      "image": "https://nypost.com/wp-content/uploads/sites/2/2023/03/NYPICHPDPICT000009028773.jpg?quality=75&strip=all&w=1024",
+      "publishedAt": "2023-03-31T20:54:00Z",
+      "source": {
+        "name": "New York Post ",
+        "url": "https://nypost.com"
+      }
+    },
+    {
+      "title": "Army IDs 9 Soldiers from 101st Airborne Killed in Black Hawk Crashes in Kentucky",
+      "description": "The two helicopters were from the 101st Combat Aviation Brigade, 101st Airborne, and were conducting a routine training exercise flying at night with the pilots wearing night vision devices.",
+      "content": "The Army on Friday identified the nine soldiers killed in a crash involving two Black Hawk helicopters Wednesday evening in southwestern Kentucky.\nThe two helicopters were from the 101st Combat Aviation Brigade, 101st Airborne, and were conducting a ... [3485 chars]",
+      "url": "https://www.military.com/daily-news/2023/03/31/army-ids-9-soldiers-101st-airborne-killed-black-hawk-crashes-kentucky.html",
+      "image": "https://images03.military.com/sites/default/files/styles/full/public/2023-03/mil-UH60-black-hawk-crash-victims-kentucky-1800.jpg",
+      "publishedAt": "2023-03-31T20:43:54Z",
+      "source": {
+        "name": "Military.com",
+        "url": "https://www.military.com"
+      }
+    },
+    {
+      "title": "Judge won't declare early winner in Dominion defamation case against Fox News, paving way for trial over 2020 election lies",
+      "description": "Dominion Voting Systems' historic defamation case against Fox News will proceed to a high-stakes jury trial next month, a Delaware judge ruled Friday, declining to declare a pretrial winner.",
+      "content": "New York CNN —\nDominion Voting Systems’ historic defamation case against Fox News will proceed to a high-stakes jury trial next month, a Delaware judge ruled Friday, declining to declare a pretrial winner.\nBoth sides had asked Delaware Superior Court... [4858 chars]",
+      "url": "https://www.cnn.com/2023/03/31/media/fox-news-dominion-lawsuit/index.html",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/230317114244-fox-news-microphone-restricted.jpg?c=16x9&q=w_800,c_fill",
+      "publishedAt": "2023-03-31T20:31:00Z",
+      "source": {
+        "name": "CNN",
+        "url": "https://www.cnn.com"
+      }
+    },
+    {
+      "title": "The Hollywood Reporter",
+      "description": "Netflix, which has been home to executive Lisa Nishimura for 15 years, has kicked off its austerity measures with her exit.",
+      "content": "With the exit of long-tenured film executive Lisa Nishimura on Thursday, Netflix has officially entered its austerity age — whatever that may mean for the streaming powerhouse.\nNishimura’s 15 years at the company have spanned the streaming boom, Osca... [4992 chars]",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/netflixs-at-crossroads-lisa-nishimura-1235364821/",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2023/03/GettyImages-1426448711-copy.jpg?w=1024",
+      "publishedAt": "2023-03-31T20:13:00Z",
+      "source": {
+        "name": "Hollywood Reporter",
+        "url": "https://www.hollywoodreporter.com"
+      }
+    },
+    {
+      "title": "Scientists May Have Found the Culprit Behind Mysterious Hepatitis Outbreaks in Kids",
+      "description": "Three independent teams in the U.S. and UK have published evidence this week pointing to a common virus.",
+      "content": "Several teams of scientists believe they have uncovered the likely cause of a mysterious surge of severe hepatitis last year that hospitalized and killed children around the world. In three studies published this week, the groups detail evidence that... [5252 chars]",
+      "url": "https://gizmodo.com/mystery-hepatitis-kids-adeno-associated-virus-liver-1850288993",
+      "image": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/b0e05f1ca69eecc82e03019b02042f8e.jpg",
+      "publishedAt": "2023-03-31T19:23:30Z",
+      "source": {
+        "name": "Gizmodo",
+        "url": "https://gizmodo.com"
+      }
+    },
+    {
+      "title": "Here's what went wrong with Virgin Orbit",
+      "description": "Virgin Orbit is on the brink of bankruptcy after last-ditch efforts to secure funding failed.",
+      "content": "In this article VORB Follow your favorite stocks CREATE FREE ACCOUNT\nVirgin Orbit crew poses at the opening bell ceremony as a 70 foot model rocket with satellites is placed in front of the NASDAQ in Times Square of New York City, United States on Ja... [8628 chars]",
+      "url": "https://www.cnbc.com/2023/03/31/virgin-orbit-what-went-wrong.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/106998454-1641581462128-gettyimages-1237587303-AA_07012022_567801.jpg?v=1680290441&w=1920&h=1080",
+      "publishedAt": "2023-03-31T19:20:41Z",
+      "source": {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com"
+      }
+    },
+    {
+      "title": "Social Security will not be able to pay full benefits in 2034 if Congress doesn't act",
+      "description": "Americans' Social Security checks will get a lot smaller in 2034 if lawmakers don't act to address the pending shortfall, according to an annual report released Friday by the Social Security trustees.",
+      "content": "CNN —\nAmericans’ Social Security checks will get a lot smaller in 2034 if lawmakers don’t act to address the pending shortfall, according to an annual report released Friday by the Social Security trustees.\nThat’s because the combined Social Security... [5248 chars]",
+      "url": "https://edition.cnn.com/2023/03/31/politics/social-security-benefits-decrease/index.html",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/221020122201-social-security-card-file.jpg?c=16x9&q=w_800,c_fill",
+      "publishedAt": "2023-03-31T19:12:00Z",
+      "source": {
+        "name": "CNN",
+        "url": "https://www.cnn.com"
+      }
+    },
+    {
+      "title": "Stock market today: Live updates",
+      "description": "Stocks mounted a comeback in the latter part of March after the month started with the failure of two regional banks. The Dow Jones surged 200 points on Friday.",
+      "content": "Traders work on the floor of the New York Stock Exchange (NYSE) on March 28, 2023 in New York City.\nThe S&P 500 and Nasdaq Composite are up 5.5% and 14.8%, respectively, for the first quarter through Thursday's close. The Dow is down slightly. For th... [2117 chars]",
+      "url": "https://www.cnbc.com/2023/03/30/stock-market-today-live-updates.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/107216335-1680015742778-gettyimages-1477520691-dscf9578_8ev8jkb5.jpeg?v=1680274852&w=1920&h=1080",
+      "publishedAt": "2023-03-31T18:15:00Z",
+      "source": {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com"
+      }
+    },
+    {
+      "title": "Random: Bridgerton, Dungeons & Dragons Star Regé-Jean Page Is A Fan Of Chrono Trigger",
+      "description": "Breath of Fire, too! - It's a pretty great time for movies about video and tabletop games right now. The Tetris movie just...",
+      "content": "It's a pretty great time for movies about video and tabletop games right now. The Tetris movie just dropped on Apple TV+, The Super Mario Bros. Movie is out next week, and Dungeons & Dragons: Honor Among Thieves is out in cinemas today. And it turns ... [2921 chars]",
+      "url": "https://www.nintendolife.com/news/2023/03/random-bridgerton-dungeons-and-dragons-star-rege-jean-page-is-a-fan-of-chrono-trigger",
+      "image": "https://images.nintendolife.com/1904503c6b74a/1280x720.jpg",
+      "publishedAt": "2023-03-31T18:00:00Z",
+      "source": {
+        "name": "Nintendo Life",
+        "url": "https://www.nintendolife.com"
+      }
+    }
+  ]
 }

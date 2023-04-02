@@ -11,15 +11,11 @@ import XCTest
 // swiftlint:disable all
 class CoordinatorTests: XCTestCase {
     
-    var apiClient: MockClient<String>!
-    
     override func setUpWithError() throws {
-        
-        apiClient = MockClient(environment: MockEnvironment(), urlSession: MockURLSession())
+        InjectedValues[\.clientProvider] = MockClient<String>(environment: MockEnvironment(), urlSession: MockURLSession())
     }
     
     override func tearDownWithError() throws {
-        apiClient = nil
     }
     
     //MARK:- Main Coordinator Tests
@@ -53,7 +49,7 @@ class CoordinatorTests: XCTestCase {
     func test_InitialHomeFlowCoordinator_HasNoChildren() {
         
         // Given
-        let sut = HomeFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = HomeFlowCoordinator(UINavigationController())
         
         // When
         let result = sut.childCoordinators.count
@@ -66,7 +62,7 @@ class CoordinatorTests: XCTestCase {
     func test_HomeFlowCoordinatorOnStart_HasNoChildren() {
         
         // Given
-        let sut = HomeFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = HomeFlowCoordinator(UINavigationController())
         sut.start()
         
         // When
@@ -81,7 +77,7 @@ class CoordinatorTests: XCTestCase {
     func test_InitialSearchFlowCoordinator_HasNoChildren() {
         
         // Given
-        let sut = SearchFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = SearchFlowCoordinator(UINavigationController())
         
         // When
         let result = sut.childCoordinators.count
@@ -94,7 +90,7 @@ class CoordinatorTests: XCTestCase {
     func test_SearchFlowCoordinatorOnStart_HasNoChildren() {
         
         // Given
-        let sut = SearchFlowCoordinator(UINavigationController(), client: apiClient)
+        let sut = SearchFlowCoordinator(UINavigationController())
         sut.start()
         
         // When
