@@ -10,7 +10,6 @@ import CoreGraphics.CGGeometry
 
 class SearchNewsViewModel {
 
-    private let client: Client
     private var totalExpectedResults: Int
     private var currentPage: Int
     private var currentSearchTerm: String?
@@ -20,8 +19,8 @@ class SearchNewsViewModel {
     private(set) var generatedPreview: Previewable!
     weak var coordinator: SearchFlowCoordinator?
 
-    init(client: Client, articles: [Article] = []) {
-        self.client = client
+    init(articles: [Article] = []) {
+
         self.articles = articles
         self.totalExpectedResults = 0
         self.currentPage = 1

@@ -12,18 +12,16 @@ class SearchFlowCoordinator: NSObject, Coordinator {
 
     var childCoordinators: [Coordinator]
     let navigation: UINavigationController
-    private let client: Client
 
-    init(_ navigationController: UINavigationController, client: Client) {
+    init(_ navigationController: UINavigationController) {
         self.navigation = navigationController
-        self.client = client
         self.childCoordinators = []
     }
 
     func start() {
         let view =  ViewControllerFactory.produce(SearchNewsTableViewController.self)
         view.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        let viewModel =  SearchNewsViewModel(client: client)
+        let viewModel =  SearchNewsViewModel()
         viewModel.coordinator = self
         view.viewModel = viewModel
         navigation.setViewControllers([view], animated: false)

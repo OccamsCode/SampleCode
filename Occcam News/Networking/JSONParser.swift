@@ -12,7 +12,7 @@ class JSONParser: Parser {
     let decoder: JSONDecoder
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-    init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601withFractionalSeconds) {
+    init(_ dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601) {
         self.decoder = JSONDecoder()
         self.dateDecodingStrategy = dateDecodingStrategy
     }

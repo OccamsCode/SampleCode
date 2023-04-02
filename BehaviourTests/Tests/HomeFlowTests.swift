@@ -10,7 +10,7 @@ final class HomeFlowTests: UITest, HomeFlow {
         let path = bundle.url(forResource: "responseTopHeadlines", withExtension: "json")!
         let data = try! Data(contentsOf: path)
         
-        stubs.stubRequest(path: "/v1/news/top", jsonData: data)
+        stubs.stubRequest(path: "/api/v4/top-headlines", jsonData: data)
         
         launchApp(with: defaultLaunchArguments)
         

@@ -8,8 +8,8 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
-struct TopStoriesRequest: Requestable {
-    let path = "/v1/news/top"
+struct TopHeadlinesRequest: Requestable {
+    let path = "/api/v4/top-headlines"
     let parameters: [URLQueryItem]
 }
 
@@ -21,13 +21,14 @@ class HomeViewModel {
         static let refreshControlTitle = Localized.HomeViewModel.RefreshControl.text
     }
 
-    private let client: Client
+    @Inject(\.clientProvider) var client: Client
+
     private var articles: [Article]
     weak var coordinator: HomeFlowCoordinator?
     private(set) var generatedPreview: Previewable!
 
-    init(client: Client, article: [Article] = []) {
-        self.client = client
+    init(article: [Article] = []) {
+
         self.articles = article
     }
 
@@ -58,16 +59,18 @@ class HomeViewModel {
 
     func update(completion: @escaping () -> Void) {
 
-        let topStories = TopStoriesRequest(parameters: [
-            URLQueryItem(name: "locale", value: "gb")
+        // TODO: Setting page or language & country
+        let topStories = TopHeadlinesRequest(parameters: [
+            URLQueryItem(name: "lang", value: "en"),
+            URLQueryItem(name: "country", value: "gb")
         ])
-        let resource = Resource<TopStoriesResponse>(request: topStories)
+        let resource = Resource<TopHeadlinesResponse>(request: topStories)
 
         let task = client.dataTask(with: resource) { [unowned self] result in
 
             switch result {
             case .success(let topHeadlines):
-                self.articles = topHeadlines.data
+                self.articles = topHeadlines.articles
                 completion()
             case .failure(let failure):
                 Log.error(failure)
@@ -78,8 +81,8 @@ class HomeViewModel {
     }
 
     func didSelectItem(at indexPath: IndexPath) {
-        if indexPath.row < 0 || indexPath.row >= numberOfItems(in: indexPath.section) { return }
-        coordinator?.navigate(.toArticle(articles[indexPath.row]))
+        guard let selectedItem = article(at: indexPath) else { return }
+        coordinator?.navigate(.toArticle(selectedItem))
     }
 
     func didSelectContextActionForItem(at indexPath: IndexPath) -> Previewable {

@@ -38,6 +38,13 @@
 		BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8D525F1A64000D7857C /* HomeViewModel.swift */; };
 		BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */; };
 		BA78E8F42601281300D7857C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8F32601281300D7857C /* GradientView.swift */; };
+
+		BA7F466529D6038000912B78 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466429D6038000912B78 /* Cache.swift */; };
+		BA7F466729D61A8B00912B78 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466629D61A8B00912B78 /* Inject.swift */; };
+		BA7F466A29D9B8CE00912B78 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466929D9B8CE00912B78 /* InjectionKey.swift */; };
+		BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */; };
+		BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */; };
+
 		BA82635E2989C7C60032A739 /* RequestableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82635D2989C7C60032A739 /* RequestableTests.swift */; };
 		BA82764F2988457400F96F74 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82764E2988457400F96F74 /* HTTP.swift */; };
 		BA827651298845E300F96F74 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA827650298845E300F96F74 /* Requestable.swift */; };
@@ -116,6 +123,13 @@
 		BA78E8D525F1A64000D7857C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		BA78E8F32601281300D7857C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+
+		BA7F466429D6038000912B78 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		BA7F466629D61A8B00912B78 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		BA7F466929D9B8CE00912B78 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
+		BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
+		BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InjectedValues+Extension.swift"; sourceTree = "<group>"; };
+
 		BA82635D2989C7C60032A739 /* RequestableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableTests.swift; sourceTree = "<group>"; };
 		BA82764E2988457400F96F74 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		BA827650298845E300F96F74 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -199,7 +213,9 @@
 			children = (
 				BAE5D6AD260A43340073C8D5 /* Factories */,
 				BA0756FF28D77BC8000AD25E /* Logger.swift */,
+				BA7F466429D6038000912B78 /* Cache.swift */,
 				BA07570128D7BC03000AD25E /* MiscExtension.swift */,
+				BA7F466829D9B8A900912B78 /* Injection */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -369,6 +385,19 @@
 			path = "Article CollectionViewCell";
 			sourceTree = "<group>";
 		};
+
+		BA7F466829D9B8A900912B78 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+				BA7F466629D61A8B00912B78 /* Inject.swift */,
+				BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */,
+				BA7F466929D9B8CE00912B78 /* InjectionKey.swift */,
+				BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */,
+			);
+			path = Injection;
+			sourceTree = "<group>";
+		};
+
 		BAA2B727293FF66D00FB0034 /* BehaviourTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,10 +654,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7F466729D61A8B00912B78 /* Inject.swift in Sources */,
 				BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */,
 				BA04D2A428E7A9A00098D0E2 /* ArticleTableViewCell.swift in Sources */,
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
+
+				BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */,
+				BA7F466529D6038000912B78 /* Cache.swift in Sources */,
+
 				BAA43EBA298F121D00B96725 /* Localized.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
 				BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */,
@@ -645,9 +679,13 @@
 				BAE5D6C1260A58E10073C8D5 /* SearchNewsTableViewCell.swift in Sources */,
 				BA827657298846C800F96F74 /* Resource.swift in Sources */,
 				BA827651298845E300F96F74 /* Requestable.swift in Sources */,
+
+				BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */,
+
 				BA82764F2988457400F96F74 /* HTTP.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
+				BA7F466A29D9B8CE00912B78 /* InjectionKey.swift in Sources */,
 				BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */,
 				BA04D29F28E7A5A60098D0E2 /* HomeViewController.swift in Sources */,
 				BAE5D6B3260A52DB0073C8D5 /* SearchNewsTableViewController.swift in Sources */,

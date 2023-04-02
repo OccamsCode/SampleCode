@@ -7,50 +7,30 @@
 
 import Foundation
 
-struct Meta: Decodable {
-    let found: Int
-    let returned: Int
-    let limit: Int
-    let page: Int
-}
-
 struct Article: Decodable {
-    let uuid: UUID?
+
+    struct Source: Decodable {
+        let name: String?
+        let url: String?
+    }
+
     let title: String
     let url: URL
-    let imageUrl: URL?
+    let image: URL?
     let publishedAt: Date
-    let source: String
+    let source: Source
 
     enum CodingKeys: String, CodingKey {
-        case uuid
         case title
         case url
-        case imageUrl = "image_url"
-        case publishedAt = "published_at"
+        case image
+        case publishedAt
         case source
     }
 
 }
 
-struct TopStoriesResponse: Decodable {
-    let meta: Meta
-    let data: [Article]
-}
-
-struct Source: Decodable {
-    let id: String?
-    let name: String?
-}
-
-struct TopHeadlines: Decodable {
-    let status: String
-    let totalResults: Int
-    let articles: [Article]
-}
-
-struct SearchResult: Decodable {
-    let status: String
-    let totalResults: Int
+struct TopHeadlinesResponse: Decodable {
+    let totalArticles: Int
     let articles: [Article]
 }

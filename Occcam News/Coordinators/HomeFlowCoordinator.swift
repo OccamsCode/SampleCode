@@ -13,17 +13,18 @@ class HomeFlowCoordinator: NSObject, Coordinator {
 
     var childCoordinators: [Coordinator]
     var navigation: UINavigationController
-    private let client: Client
 
-    init(_ navigationController: UINavigationController, client: Client) {
+    init(_ navigationController: UINavigationController) {
+
         self.navigation = navigationController
-        self.client = client
         self.childCoordinators = []
     }
 
     func start() {
         let view = ViewControllerFactory.produce(HomeViewController.self)
-        let viewModel = HomeViewModel(client: client)
+
+        let viewModel = HomeViewModel()
+
         viewModel.coordinator = self
         view.viewModel = viewModel
 

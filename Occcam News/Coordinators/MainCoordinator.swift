@@ -13,25 +13,27 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     let window: UIWindow
     let tabBarController: UITabBarController
-    private let client: Client
 
     init(_ window: UIWindow) {
         self.window = window
         self.tabBarController = UITabBarController()
         self.childCoordinators = []
 
+        /*
+
         if ProcessInfo.processInfo.arguments.contains("--uitest") {
             self.client = NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
         } else {
             let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String
-            let item = URLQueryItem(name: "api_token", value: key)
+            let item = URLQueryItem(name: "apikey", value: key)
             let env = Environment(scheme: .secure,
-                                  endpoint: "api.thenewsapi.com",
+                                  endpoint: "gnews.io",
                                   addtionalHeaders: [:],
                                   port: nil,
-                                  secret: item)
+                                  secret: .queryItem(item))
             self.client = NewAPIClient(environment: env, urlSession: URLSession.shared)
         }
+        */
     }
 
     func start() {
@@ -41,7 +43,7 @@ class MainCoordinator: Coordinator {
         homeNavigationController.navigationBar.prefersLargeTitles = true
         // searchNavigationController.navigationBar.prefersLargeTitles = true
 
-        let homeFlow = HomeFlowCoordinator(homeNavigationController, client: client)
+        let homeFlow = HomeFlowCoordinator(homeNavigationController)
         // let searchFlow = SearchFlowCoordinator(searchNavigationController, client: client)
 
         homeFlow.start()
