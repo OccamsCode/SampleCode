@@ -19,10 +19,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/cache@v3
+        
+      - uses: actions/cache@v2
         with:
-          path: /Users/apophis/Library/Caches/com.occamnews.spm.cache
-          key: ${{ runner.os }}-spm-${{ hashFiles('Occcam News.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts 
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
 
       - name: Set Default Scheme
         run: |
