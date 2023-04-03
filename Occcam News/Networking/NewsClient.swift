@@ -6,16 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class NewAPIClient: Client {
 
-    internal let environment: EnvironmentType
-    internal let urlSession: URLSessionType
-
-    init(environment: EnvironmentType, urlSession: URLSessionType) {
-        self.environment = environment
-        self.urlSession = urlSession
-    }
+    @Inject(\.cacheProvider) var cache: Cache<URL, UIImage>
+    @Inject(\.environmentProvider) var environment: EnvironmentType
+    @Inject(\.sessionProvider) var urlSession: URLSessionType
 
     func dataTask<T>(with resource: Resource<T>,
                      completion: @escaping (Result<T, APIError>) -> Void ) -> URLSessionTaskType? {

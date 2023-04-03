@@ -130,7 +130,7 @@ class MockClient<T: Decodable>: Client {
     init(environment: EnvironmentType, urlSession: URLSessionType) {
         self.environment = environment
         self.urlSession = urlSession
-        state = .error
+        state = .data
     }
 
     func dataTask<T>(with resource: Resource<T>,
