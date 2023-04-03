@@ -13,20 +13,27 @@ private struct CacheProviderKey: InjectionKey {
 }
 
 private struct ClientProviderKey: InjectionKey {
-    static var currentValue: Client = logicValue
+    static var currentValue: Client = NewAPIClient()
+}
 
-    static var logicValue: Client {
+private struct SessionProviderKey: InjectionKey {
+    static var currentValue: URLSessionType = URLSession.shared
+}
+
+private struct EnvironmentProviderKey: InjectionKey {
+    static var currentValue: EnvironmentType = computedEnvironment
+
+    static var computedEnvironment: EnvironmentType {
         if ProcessInfo.processInfo.arguments.contains("--test") {
-            return NewAPIClient(environment: Environment.testing, urlSession: URLSession.shared)
+            return Environment.testing
         } else {
             let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String
             let item = URLQueryItem(name: "apikey", value: key)
-            let env = Environment(scheme: .secure,
-                                  endpoint: "gnews.io",
-                                  addtionalHeaders: [:],
-                                  port: nil,
-                                  secret: .queryItem(item))
-            return NewAPIClient(environment: env, urlSession: URLSession.shared)
+            return Environment(scheme: .secure,
+                               endpoint: "gnews.io",
+                               addtionalHeaders: [:],
+                               port: nil,
+                               secret: .queryItem(item))
         }
     }
 }
@@ -40,5 +47,15 @@ extension InjectedValues {
     var clientProvider: Client {
         get { Self[ClientProviderKey.self] }
         set { Self[ClientProviderKey.self] = newValue }
+    }
+
+    var sessionProvider: URLSessionType {
+        get { Self[SessionProviderKey.self] }
+        set { Self[SessionProviderKey.self] = newValue }
+    }
+
+    var environmentProvider: EnvironmentType {
+        get { Self[EnvironmentProviderKey.self] }
+        set { Self[EnvironmentProviderKey.self] = newValue }
     }
 }
