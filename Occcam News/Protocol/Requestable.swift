@@ -66,7 +66,7 @@ extension URLRequest {
         environment.addtionalHeaders.forEach { (key, value) in
             self.setValue(value, forHTTPHeaderField: key)
         }
-        
+
         if case let .header(key, value) = environment.secret {
             self.setValue(value.rawValue, forHTTPHeaderField: key.rawValue)
         }
