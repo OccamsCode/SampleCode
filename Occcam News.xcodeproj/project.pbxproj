@@ -38,13 +38,11 @@
 		BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8D525F1A64000D7857C /* HomeViewModel.swift */; };
 		BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */; };
 		BA78E8F42601281300D7857C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8F32601281300D7857C /* GradientView.swift */; };
-
 		BA7F466529D6038000912B78 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466429D6038000912B78 /* Cache.swift */; };
 		BA7F466729D61A8B00912B78 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466629D61A8B00912B78 /* Inject.swift */; };
 		BA7F466A29D9B8CE00912B78 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466929D9B8CE00912B78 /* InjectionKey.swift */; };
 		BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */; };
 		BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */; };
-
 		BA82635E2989C7C60032A739 /* RequestableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82635D2989C7C60032A739 /* RequestableTests.swift */; };
 		BA82764F2988457400F96F74 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82764E2988457400F96F74 /* HTTP.swift */; };
 		BA827651298845E300F96F74 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA827650298845E300F96F74 /* Requestable.swift */; };
@@ -104,7 +102,7 @@
 		BA1F37C125DAA0BE007CC963 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
 		BA1F37C625DAA19E007CC963 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		BA1F37C925DAA496007CC963 /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
-		BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Occcam NewsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1F37E425DAC85B007CC963 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37E625DAC85B007CC963 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1F380C25DB04ED007CC963 /* ClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTest.swift; sourceTree = "<group>"; };
@@ -123,13 +121,11 @@
 		BA78E8D525F1A64000D7857C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		BA78E8F32601281300D7857C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-
 		BA7F466429D6038000912B78 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		BA7F466629D61A8B00912B78 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		BA7F466929D9B8CE00912B78 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
 		BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
 		BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InjectedValues+Extension.swift"; sourceTree = "<group>"; };
-
 		BA82635D2989C7C60032A739 /* RequestableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableTests.swift; sourceTree = "<group>"; };
 		BA82764E2988457400F96F74 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		BA827650298845E300F96F74 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -225,7 +221,7 @@
 			children = (
 				BAA3ACEC29C5320E00033620 /* Config.xcconfig */,
 				BA1F37A525DA9CEF007CC963 /* Occcam News */,
-				BA1F37E525DAC85B007CC963 /* Occcam NewsTests */,
+				BA1F37E525DAC85B007CC963 /* AppTests */,
 				BAA2B727293FF66D00FB0034 /* BehaviourTests */,
 				BA1F37A425DA9CEF007CC963 /* Products */,
 				BAA2B7372940054F00FB0034 /* Frameworks */,
@@ -236,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37A325DA9CEF007CC963 /* Occcam News.app */,
-				BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */,
+				BA1F37E425DAC85B007CC963 /* AppTests.xctest */,
 				BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */,
 			);
 			name = Products;
@@ -245,19 +241,10 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
-				BA0756FE28D77B46000AD25E /* Utilities */,
-				BA78E8AD25F158DE00D7857C /* UIs */,
-				BAA43EB5298F111800B96725 /* Resources */,
-				BA1F37BC25DAA01F007CC963 /* Protocol */,
-				BA1F37F225DACD9F007CC963 /* Networking */,
-				BA2D838425DEEC6F0054FDDB /* Models */,
-				BA04D2A728E7AF3A0098D0E2 /* Flows */,
-				BA1F37C525DAA179007CC963 /* Coordinators */,
+				BA7F467029DE165800912B78 /* Core */,
+				BA7F466F29DE163F00912B78 /* App */,
 				BA1F37A625DA9CEF007CC963 /* AppDelegate.swift */,
 				BA1F37A825DA9CEF007CC963 /* SceneDelegate.swift */,
-				BA1F37AC25DA9CEF007CC963 /* Main.storyboard */,
-				BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */,
-				BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */,
 				BA1F37B425DA9CEF007CC963 /* Info.plist */,
 			);
 			path = "Occcam News";
@@ -288,7 +275,7 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		BA1F37E525DAC85B007CC963 /* Occcam NewsTests */ = {
+		BA1F37E525DAC85B007CC963 /* AppTests */ = {
 			isa = PBXGroup;
 			children = (
 				BA1F382C25DC153A007CC963 /* ViewModels */,
@@ -297,7 +284,7 @@
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
 				BA2D838B25DF21520054FDDB /* Mock Data */,
 			);
-			path = "Occcam NewsTests";
+			path = AppTests;
 			sourceTree = "<group>";
 		};
 		BA1F37F225DACD9F007CC963 /* Networking */ = {
@@ -370,6 +357,8 @@
 		BA78E8AD25F158DE00D7857C /* UIs */ = {
 			isa = PBXGroup;
 			children = (
+				BA1F37AC25DA9CEF007CC963 /* Main.storyboard */,
+				BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */,
 				BA04D2A028E7A94C0098D0E2 /* Cells */,
 				BA78E8F32601281300D7857C /* GradientView.swift */,
 			);
@@ -385,7 +374,6 @@
 			path = "Article CollectionViewCell";
 			sourceTree = "<group>";
 		};
-
 		BA7F466829D9B8A900912B78 /* Injection */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,7 +385,29 @@
 			path = Injection;
 			sourceTree = "<group>";
 		};
-
+		BA7F466F29DE163F00912B78 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */,
+				BA78E8AD25F158DE00D7857C /* UIs */,
+				BA2D838425DEEC6F0054FDDB /* Models */,
+				BA04D2A728E7AF3A0098D0E2 /* Flows */,
+				BA1F37C525DAA179007CC963 /* Coordinators */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BA7F467029DE165800912B78 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BA0756FE28D77B46000AD25E /* Utilities */,
+				BAA43EB5298F111800B96725 /* Resources */,
+				BA1F37BC25DAA01F007CC963 /* Protocol */,
+				BA1F37F225DACD9F007CC963 /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		BAA2B727293FF66D00FB0034 /* BehaviourTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,9 +500,9 @@
 			productReference = BA1F37A325DA9CEF007CC963 /* Occcam News.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BA1F37E325DAC85B007CC963 /* Occcam NewsTests */ = {
+		BA1F37E325DAC85B007CC963 /* AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "Occcam NewsTests" */;
+			buildConfigurationList = BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "AppTests" */;
 			buildPhases = (
 				BA1F37E025DAC85B007CC963 /* Sources */,
 				BA1F37E125DAC85B007CC963 /* Frameworks */,
@@ -503,9 +513,9 @@
 			dependencies = (
 				BA1F37EA25DAC85B007CC963 /* PBXTargetDependency */,
 			);
-			name = "Occcam NewsTests";
+			name = AppTests;
 			productName = "Occcam NewsTests";
-			productReference = BA1F37E425DAC85B007CC963 /* Occcam NewsTests.xctest */;
+			productReference = BA1F37E425DAC85B007CC963 /* AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BAA2B725293FF66D00FB0034 /* BehaviourTests */ = {
@@ -568,7 +578,7 @@
 			projectRoot = "";
 			targets = (
 				BA1F37A225DA9CEE007CC963 /* Occcam News */,
-				BA1F37E325DAC85B007CC963 /* Occcam NewsTests */,
+				BA1F37E325DAC85B007CC963 /* AppTests */,
 				BAA2B725293FF66D00FB0034 /* BehaviourTests */,
 			);
 		};
@@ -659,10 +669,8 @@
 				BA04D2A428E7A9A00098D0E2 /* ArticleTableViewCell.swift in Sources */,
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
-
 				BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */,
 				BA7F466529D6038000912B78 /* Cache.swift in Sources */,
-
 				BAA43EBA298F121D00B96725 /* Localized.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
 				BA78E8D625F1A64000D7857C /* HomeViewModel.swift in Sources */,
@@ -679,9 +687,7 @@
 				BAE5D6C1260A58E10073C8D5 /* SearchNewsTableViewCell.swift in Sources */,
 				BA827657298846C800F96F74 /* Resource.swift in Sources */,
 				BA827651298845E300F96F74 /* Requestable.swift in Sources */,
-
 				BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */,
-
 				BA82764F2988457400F96F74 /* HTTP.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
@@ -921,7 +927,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
-				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				INFOPLIST_FILE = AppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -943,7 +949,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
-				INFOPLIST_FILE = "Occcam NewsTests/Info.plist";
+				INFOPLIST_FILE = AppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1016,7 +1022,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "Occcam NewsTests" */ = {
+		BA1F37EB25DAC85B007CC963 /* Build configuration list for PBXNativeTarget "AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA1F37EC25DAC85B007CC963 /* Debug */,
