@@ -1,0 +1,12 @@
+version: 1
+labels:
+  - label: "size-xs"
+    size-below: 10
+  - label: "size-s"
+    size-above: 9
+    size-below: 100
+  - label: "size-m"
+    size-above: 99
+    size-below: 250
+  - label: "size-l"
+    size-above: 249

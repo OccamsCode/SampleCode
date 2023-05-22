@@ -6,44 +6,12 @@ on:
       - synchronize
 
 jobs:
-  label-pr:
+  Label-PR:
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR File Changes
-        id: file_changes
-        run: |
-          CHANGED_FILES=$(git diff --name-only HEAD^..HEAD)
-          NUM_FILES_CHANGED=$(echo "$CHANGED_FILES" | wc -l)
-          echo "::set-output name=num_files_changed::$NUM_FILES_CHANGED"
-
-      - name: Label PR based on File Changes
-        id: label_pr
-        run: |
-          FILE_CHANGES=${{ steps.file_changes.outputs.num_files_changed }}
-          if [[ $FILE_CHANGES -lt 5 ]]; then
-            LABEL="size-xs"
-          elif [[ $FILE_CHANGES -lt 10 ]]; then
-            LABEL="size-s"
-          elif [[ $FILE_CHANGES -lt 20 ]]; then
-            LABEL="size-m"
-          else
-            LABEL="size-l"
-          fi
-
-          echo "::set-output name=label::$LABEL"
-
-      - name: Add PR Label
-        if: steps.label_pr.outputs.label != ''
-        uses: actions/github-script@v6
+      # https://github.com/marketplace/actions/pr-labeler-based-on-multiple-rules
+      - uses: srvaroa/labeler@v0.8
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { context } = require('@actions/github');
-
-            const octokit = context.octokit;
-            await octokit.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              labels: [${{ steps.label_pr.outputs.label }}]
-            });
+          config_path: .github/labeler_config.yml
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
