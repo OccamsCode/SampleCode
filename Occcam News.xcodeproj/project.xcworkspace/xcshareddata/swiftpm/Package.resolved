@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "poppify",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OccamsCode/Poppify",
+      "state" : {
+        "revision" : "c164c0e869b08957713e4bd073400ae4ea09e5ab",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "swifter",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/httpswift/swifter.git",

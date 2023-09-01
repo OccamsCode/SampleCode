@@ -7,6 +7,7 @@
 
 import Foundation
 @testable import Occcam_News
+@testable import Poppify
 
 // swiftlint:disable all
 // MARK: - Requestable Tests
@@ -70,6 +71,10 @@ class MockURLSession: URLSessionType {
             completion(self.data, self.response, self.error)
         }
     }
+    
+    func sendRequest(for request: URLRequest) async throws -> (Data, URLResponse) {
+        return (data!, response!)
+    }
 
 }
 
@@ -114,7 +119,7 @@ class MockEnvironment: EnvironmentType {
 
     var scheme: HTTP.Scheme = .unsecure
     var endpoint: String = ""
-    var addtionalHeaders: [String : String] = [:]
+    var additionalHeaders: [String : String] = [:]
     var port: Int? = nil
     var secret: Secret? = nil
     
@@ -133,8 +138,8 @@ class MockClient<T: Decodable>: Client {
         state = .data
     }
 
-    func dataTask<T>(with resource: Resource<T>,
-                     completion: @escaping (Result<T, APIError>) -> Void) -> URLSessionTaskType? where T : Decodable {
+    func executeRequest<T>(with resource: Resource<T>,
+                     completion: @escaping (Result<T, RequestError>) -> Void) -> URLSessionTaskType? where T : Decodable {
         switch state {
         case .error:
             return MockTask{ completion(.failure(.response(error: MockError.err))) }
