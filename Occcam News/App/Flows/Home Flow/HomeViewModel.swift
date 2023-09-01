@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics.CGGeometry
+import Poppify
 
 struct TopHeadlinesRequest: Requestable {
     let path = "/api/v4/top-headlines"
@@ -66,15 +67,15 @@ class HomeViewModel {
         ])
         let resource = Resource<TopHeadlinesResponse>(request: topStories)
 
-        let task = client.dataTask(with: resource) { [unowned self] result in
+        let task = client.executeRequest(with: resource) { [unowned self] result in
 
             switch result {
             case .success(let topHeadlines):
                 self.articles = topHeadlines.articles
-                completion()
             case .failure(let failure):
                 Log.error(failure)
             }
+            completion()
         }
         task?.resume()
 

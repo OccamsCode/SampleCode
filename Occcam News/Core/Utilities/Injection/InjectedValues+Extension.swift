@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Poppify
 
 private struct CacheProviderKey: InjectionKey {
     static var currentValue: Cache<URL, UIImage> = Cache()
@@ -31,10 +32,16 @@ private struct EnvironmentProviderKey: InjectionKey {
             let item = URLQueryItem(name: "apikey", value: key)
             return Environment(scheme: .secure,
                                endpoint: "gnews.io",
-                               addtionalHeaders: [:],
+                               additionalHeaders: [:],
                                port: nil,
                                secret: .queryItem(item))
         }
+    }
+}
+
+extension Environment {
+    static var testing: Environment {
+        return Environment(scheme: .unsecure, endpoint: "localhost", additionalHeaders: [:], port: 8080, secret: nil)
     }
 }
 
