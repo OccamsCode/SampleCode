@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "injection",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OccamsCode/Injection",
+      "state" : {
+        "revision" : "b80033a62517093671e17122aba1b07476e357f2",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "poppify",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OccamsCode/Poppify",
