@@ -8,6 +8,7 @@
 import Foundation
 import CoreGraphics.CGGeometry
 import Poppify
+import Injection
 
 struct TopHeadlinesRequest: Requestable {
     let path = "/api/v4/top-headlines"
@@ -22,7 +23,7 @@ class HomeViewModel {
         static let refreshControlTitle = Localized.HomeViewModel.RefreshControl.text
     }
 
-    @Inject(\.clientProvider) var client: Client
+    @Injected(\.clientProvider) var client: Client
 
     private var articles: [Article]
     weak var coordinator: HomeFlowCoordinator?

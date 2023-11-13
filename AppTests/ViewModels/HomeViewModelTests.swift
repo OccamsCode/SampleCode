@@ -12,9 +12,10 @@ class HomeViewModelTests: XCTestCase {
     var sut: HomeViewModel!
 
     override func setUpWithError() throws {
-        InjectedValues[\.clientProvider] = MockClient<String>(environment: MockEnvironment(),
-                                                              urlSession: MockURLSession())
+
         sut = HomeViewModel()
+        sut.client = MockClient<String>(environment: MockEnvironment(),
+                                        urlSession: MockURLSession())
     }
 
     override func tearDownWithError() throws {

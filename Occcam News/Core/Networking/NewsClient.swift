@@ -8,9 +8,10 @@
 import Foundation
 import UIKit.UIImage
 import Poppify
+import Injection
 
 class NewAPIClient: Client {
-    @Inject(\.cacheProvider) var cache: Cache<URL, UIImage>
-    @Inject(\.environmentProvider) var environment: EnvironmentType
-    @Inject(\.sessionProvider) var urlSession: URLSessionType
+    @Injected(\.cacheProvider) var cache: Cache<URL, UIImage>
+    @Injected(\.environmentProvider) var environment: EnvironmentType
+    @Injected(\.sessionProvider) var urlSession: URLSessionType
 }

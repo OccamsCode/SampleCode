@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import UIKit
+import UIKit.UIImage
 import Poppify
+import Injection
 
 private struct CacheProviderKey: InjectionKey {
     static var currentValue: Cache<URL, UIImage> = Cache()

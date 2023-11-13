@@ -26,6 +26,7 @@
 		BA1F381525DB0C11007CC963 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1F381425DB0C11007CC963 /* Mocks.swift */; };
 		BA2D838625DEEC800054FDDB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D838525DEEC800054FDDB /* Model.swift */; };
 		BA2D838D25DF21970054FDDB /* responseTopHeadlines.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2D838C25DF21960054FDDB /* responseTopHeadlines.json */; };
+		BA3A76D72AEA7E7800F0F2D3 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = BA3A76D62AEA7E7800F0F2D3 /* Injection */; };
 		BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8B625F15BD300D7857C /* ArticleCollectionViewCell.swift */; };
 		BA78E8B925F15BD300D7857C /* ArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA78E8B725F15BD300D7857C /* ArticleCollectionViewCell.xib */; };
 		BA78E8CA25F1977A00D7857C /* CollectionViewCellReuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8C925F1977A00D7857C /* CollectionViewCellReuse.swift */; };
@@ -35,9 +36,6 @@
 		BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */; };
 		BA78E8F42601281300D7857C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78E8F32601281300D7857C /* GradientView.swift */; };
 		BA7F466529D6038000912B78 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466429D6038000912B78 /* Cache.swift */; };
-		BA7F466729D61A8B00912B78 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466629D61A8B00912B78 /* Inject.swift */; };
-		BA7F466A29D9B8CE00912B78 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466929D9B8CE00912B78 /* InjectionKey.swift */; };
-		BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */; };
 		BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA2B733293FF82F00FB0034 /* HomeFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA2B732293FF82F00FB0034 /* HomeFlowTests.swift */; };
@@ -109,9 +107,6 @@
 		BA78E8E025F9269A00D7857C /* SnapCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		BA78E8F32601281300D7857C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BA7F466429D6038000912B78 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		BA7F466629D61A8B00912B78 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
-		BA7F466929D9B8CE00912B78 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
-		BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
 		BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InjectedValues+Extension.swift"; sourceTree = "<group>"; };
 		BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA2B732293FF82F00FB0034 /* HomeFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowTests.swift; sourceTree = "<group>"; };
@@ -135,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3A76D72AEA7E7800F0F2D3 /* Injection in Frameworks */,
 				BAF1D4DC2A93DE0000C93976 /* Poppify in Frameworks */,
 				BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */,
 			);
@@ -201,6 +197,7 @@
 		BA1F379A25DA9CEE007CC963 = {
 			isa = PBXGroup;
 			children = (
+				BA3A76D32AEA7D8C00F0F2D3 /* Packages */,
 				BAA3ACEC29C5320E00033620 /* Config.xcconfig */,
 				BA1F37A525DA9CEF007CC963 /* Occcam News */,
 				BA1F37E525DAC85B007CC963 /* AppTests */,
@@ -298,6 +295,13 @@
 			path = "Mock Data";
 			sourceTree = "<group>";
 		};
+		BA3A76D32AEA7D8C00F0F2D3 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		BA78E8AB25F157CA00D7857C /* Home Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,9 +345,6 @@
 		BA7F466829D9B8A900912B78 /* Injection */ = {
 			isa = PBXGroup;
 			children = (
-				BA7F466629D61A8B00912B78 /* Inject.swift */,
-				BA7F466B29D9B8FD00912B78 /* InjectedValues.swift */,
-				BA7F466929D9B8CE00912B78 /* InjectionKey.swift */,
 				BA7F466D29D9B93200912B78 /* InjectedValues+Extension.swift */,
 			);
 			path = Injection;
@@ -460,6 +461,7 @@
 			packageProductDependencies = (
 				BAA2B720293FF5F000FB0034 /* Swifter */,
 				BAF1D4DB2A93DE0000C93976 /* Poppify */,
+				BA3A76D62AEA7E7800F0F2D3 /* Injection */,
 			);
 			productName = "Occcam News";
 			productReference = BA1F37A325DA9CEF007CC963 /* Occcam News.app */;
@@ -538,6 +540,7 @@
 			packageReferences = (
 				BAA2B71F293FF5F000FB0034 /* XCRemoteSwiftPackageReference "swifter" */,
 				BAF1D4DA2A93DE0000C93976 /* XCRemoteSwiftPackageReference "Poppify" */,
+				BA3A76D52AEA7E7800F0F2D3 /* XCRemoteSwiftPackageReference "Injection" */,
 			);
 			productRefGroup = BA1F37A425DA9CEF007CC963 /* Products */;
 			projectDirPath = "";
@@ -630,12 +633,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7F466729D61A8B00912B78 /* Inject.swift in Sources */,
 				BAE5D6AF260A43560073C8D5 /* ViewControllerFactory.swift in Sources */,
 				BA04D2A428E7A9A00098D0E2 /* ArticleTableViewCell.swift in Sources */,
 				BA2D838625DEEC800054FDDB /* Model.swift in Sources */,
 				BA1F37BE25DAA05E007CC963 /* Coordinator.swift in Sources */,
-				BA7F466C29D9B8FD00912B78 /* InjectedValues.swift in Sources */,
 				BA7F466529D6038000912B78 /* Cache.swift in Sources */,
 				BAA43EBA298F121D00B96725 /* Localized.swift in Sources */,
 				BA78E8B825F15BD300D7857C /* ArticleCollectionViewCell.swift in Sources */,
@@ -650,7 +651,6 @@
 				BA7F466E29D9B93200912B78 /* InjectedValues+Extension.swift in Sources */,
 				BA1F37C725DAA19E007CC963 /* MainCoordinator.swift in Sources */,
 				BA1F381125DB052E007CC963 /* NewsClient.swift in Sources */,
-				BA7F466A29D9B8CE00912B78 /* InjectionKey.swift in Sources */,
 				BA78E8E125F9269A00D7857C /* SnapCollectionFlowLayout.swift in Sources */,
 				BA04D29F28E7A5A60098D0E2 /* HomeViewController.swift in Sources */,
 				BAE5D6B3260A52DB0073C8D5 /* SearchNewsTableViewController.swift in Sources */,
@@ -999,6 +999,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA3A76D52AEA7E7800F0F2D3 /* XCRemoteSwiftPackageReference "Injection" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OccamsCode/Injection";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		BAA2B71F293FF5F000FB0034 /* XCRemoteSwiftPackageReference "swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/httpswift/swifter.git";
@@ -1018,6 +1026,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA3A76D62AEA7E7800F0F2D3 /* Injection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3A76D52AEA7E7800F0F2D3 /* XCRemoteSwiftPackageReference "Injection" */;
+			productName = Injection;
+		};
 		BAA2B720293FF5F000FB0034 /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BAA2B71F293FF5F000FB0034 /* XCRemoteSwiftPackageReference "swifter" */;
