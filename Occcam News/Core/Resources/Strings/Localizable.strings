@@ -1,6 +1,0 @@
-/*
- Home ViewModel
- */
-"HomeViewModel.TabBarItem.Title" = "Latest News";
-"HomeViewModel.NavigationItem.Title" = "Top Stories";
-"HomeViewModel.RefreshControl.Title" = "Fetching Latest News ...";
