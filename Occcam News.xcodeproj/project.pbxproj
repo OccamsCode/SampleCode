@@ -10,6 +10,7 @@
 		BA1F37B025DA9CEF007CC963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37AF25DA9CEF007CC963 /* Assets.xcassets */; };
 		BA1F37B325DA9CEF007CC963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */; };
 		BA285C822B02966C00C57B1C /* OCNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA285C812B02966C00C57B1C /* OCNApp.swift */; };
+		BA285C842B03DF8300C57B1C /* SomeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA285C832B03DF8300C57B1C /* SomeTest.swift */; };
 		BA3A76D72AEA7E7800F0F2D3 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = BA3A76D62AEA7E7800F0F2D3 /* Injection */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA2B7392940054F00FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B7382940054F00FB0034 /* Swifter */; };
@@ -42,6 +43,7 @@
 		BA1F37E425DAC85B007CC963 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA285C812B02966C00C57B1C /* OCNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCNApp.swift; sourceTree = "<group>"; };
+		BA285C832B03DF8300C57B1C /* SomeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTest.swift; sourceTree = "<group>"; };
 		BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
+				BA285C832B03DF8300C57B1C /* SomeTest.swift */,
 			);
 			path = AppTests;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 					};
 					BA1F37E325DAC85B007CC963 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1420;
 						TestTargetID = BA1F37A225DA9CEE007CC963;
 					};
 					BAA2B725293FF66D00FB0034 = {
@@ -348,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA285C842B03DF8300C57B1C /* SomeTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = AppTests/Info.plist;
@@ -559,6 +565,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.projects.Occcam-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Occcam News.app/Occcam News";
@@ -569,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 592QM63P2J;
 				INFOPLIST_FILE = AppTests/Info.plist;
