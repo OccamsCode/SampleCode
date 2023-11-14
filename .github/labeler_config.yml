@@ -10,3 +10,6 @@ labels:
     size-below: 250
   - label: "size-l"
     size-above: 249
+    size-below: 500
+  - label: "size-xl"
+    size-above: 501
