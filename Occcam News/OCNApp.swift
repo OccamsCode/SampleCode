@@ -21,3 +21,12 @@ struct ContentView: View {
         Text("Hello, World 🌍")
     }
 }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("Default preview")
+    }
+}
