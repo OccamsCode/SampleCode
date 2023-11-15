@@ -8,23 +8,27 @@
 import Foundation
 
 enum DomainMapper {
-    static func map(_ remoteModel: RemoteSource) -> Source {
-        return Source(name: remoteModel.name,
-                      url: URL(string: remoteModel.url))
+    static func map(_ remoteSource: RemoteSource) -> Source {
+        return Source(name: remoteSource.name,
+                      url: URL(string: remoteSource.url))
     }
 
-    static func map(_ remoteModel: RemoteArticle) -> Article {
-        var dateFormatter: DateFormatter = {
+    static func map(_ remoteArticle: RemoteArticle) -> Article {
+        let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             return formatter
         }()
 
-        return Article(title: remoteModel.title,
-                       description: remoteModel.description,
-                       url: URL(string: remoteModel.url),
-                       image: URL(string: remoteModel.image),
-                       publishedAt: dateFormatter.date(from: remoteModel.publishedAt),
-                       source: DomainMapper.map(remoteModel.source))
+        return Article(title: remoteArticle.title,
+                       description: remoteArticle.description,
+                       url: URL(string: remoteArticle.url),
+                       image: URL(string: remoteArticle.image),
+                       publishedAt: dateFormatter.date(from: remoteArticle.publishedAt),
+                       source: map(remoteArticle.source))
+    }
+
+    static func map(_ remoteHeadlines: RemoteHeadlines) -> (Int, [Article]) {
+        return (remoteHeadlines.totalArticles, remoteHeadlines.articles.map {map($0)})
     }
 }
