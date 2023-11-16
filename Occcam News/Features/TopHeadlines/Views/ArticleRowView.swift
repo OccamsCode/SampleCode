@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct ArticleRowView: View {
+
+    enum Action {
+        case onShare
+        case onBookmark
+    }
+
     let article: Article
+    let action: (ArticleRowView.Action) -> Void
     let relativeDateFormatter = RelativeDateTimeFormatter()
 
     var body: some View {
@@ -47,16 +54,15 @@ struct ArticleRowView: View {
                         .foregroundColor(.secondary)
                         .lineLimit(2)
                     Spacer()
-                    Button {} label: {
+                    Button { action(.onBookmark) } label: {
                         Image(systemName: "bookmark")
                     }
                     .buttonStyle(.bordered)
 
-                    Button {} label: {
+                    Button { action(.onShare) } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
                     .buttonStyle(.bordered)
-
                 }
             }
             .padding([.horizontal, .bottom])
@@ -71,6 +77,6 @@ struct ArticleRowView: View {
 
 struct ArticleRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleRowView(article: .preview)
+        ArticleRowView(article: .preview, action: { _ in })
     }
 }

@@ -8,27 +8,56 @@
 import SwiftUI
 
 struct ArticleListView: View {
+
+    enum Action: Identifiable {
+        case selected(Article)
+        case share(Article)
+
+        var id: String {
+            switch self {
+            case .selected(let article): return "selected:\(article.id)"
+            case .share(let article): return "share:\(article.id)"
+            }
+        }
+    }
+
     let articles: [Article]
-    @State private var selectedArticle: Article?
+    @State private var articleAction: ArticleListView.Action?
 
     var body: some View {
         List {
             ForEach(articles) { article in
-                ArticleRowView(article: article)
+                ArticleRowView(article: article, action: {
+                    switch $0 {
+                    case .onShare: articleAction = .share(article)
+                    case .onBookmark: print("Bookmark")
+                    }
+                })
                     .onTapGesture {
-                        selectedArticle = article
+                        articleAction = .selected(article)
                     }
             }
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
-        .sheet(item: $selectedArticle) { article in
+        .sheet(item: $articleAction) { action in
+
+            switch action {
+            case .selected(let article):
             if let url = article.url {
                 SafariView(url: url)
                     .edgesIgnoringSafeArea(.bottom)
             } else {
                 EmptyView()
+            }
+            case .share(let article):
+                if let url = article.url {
+                    ShareView(activityItems: [url])
+                        .edgesIgnoringSafeArea(.bottom)
+                } else {
+                    EmptyView()
+                }
             }
         }
     }
