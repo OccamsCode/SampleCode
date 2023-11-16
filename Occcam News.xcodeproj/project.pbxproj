@@ -127,6 +127,7 @@
 		BA1F37A525DA9CEF007CC963 /* Occcam News */ = {
 			isa = PBXGroup;
 			children = (
+				BA86B7752B064E30001DD073 /* Shared */,
 				BA86B7652B052105001DD073 /* Features */,
 				BA86B7452B04ED89001DD073 /* Core */,
 				BA7F466F29DE163F00912B78 /* App */,
@@ -255,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				BA86B76D2B052EB7001DD073 /* Views */,
-				BA86B7732B064B81001DD073 /* SafariView.swift */,
 			);
 			path = TopHeadlines;
 			sourceTree = "<group>";
@@ -267,6 +267,30 @@
 				BA86B76E2B052EC6001DD073 /* ArticleListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BA86B7752B064E30001DD073 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BA86B7762B064E38001DD073 /* DesignSystem */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BA86B7762B064E38001DD073 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				BA86B7772B064E4B001DD073 /* Components */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		BA86B7772B064E4B001DD073 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BA86B7732B064B81001DD073 /* SafariView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		BAA2B7372940054F00FB0034 /* Frameworks */ = {
