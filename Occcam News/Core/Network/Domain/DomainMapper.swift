@@ -22,8 +22,8 @@ enum DomainMapper {
 
         return Article(title: remoteArticle.title,
                        description: remoteArticle.description,
-                       url: URL(string: remoteArticle.url),
-                       image: URL(string: remoteArticle.image),
+                       url: remoteArticle.url,
+                       image: remoteArticle.image,
                        publishedAt: dateFormatter.date(from: remoteArticle.publishedAt) ?? .now,
                        source: map(remoteArticle.source))
     }

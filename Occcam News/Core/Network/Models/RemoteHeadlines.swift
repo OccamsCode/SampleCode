@@ -15,7 +15,10 @@ struct RemoteHeadlines: Decodable {
 
 // MARK: - Remote Article
 struct RemoteArticle: Decodable {
-    let title, description, content, url, image, publishedAt: String
+    let title, description, content: String
+    let url: URL
+    let image: URL?
+    let publishedAt: String
     let source: RemoteSource
 }
 
