@@ -24,6 +24,7 @@
 		BA86B76C2B052188001DD073 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B76A2B05215C001DD073 /* ArticleRowView.swift */; };
 		BA86B7702B052EEB001DD073 /* ArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B76E2B052EC6001DD073 /* ArticleListView.swift */; };
 		BA86B7722B053676001DD073 /* Previewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7712B053676001DD073 /* Previewable.swift */; };
+		BA86B7742B064B81001DD073 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7732B064B81001DD073 /* SafariView.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA2B7392940054F00FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B7382940054F00FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
@@ -68,6 +69,7 @@
 		BA86B76A2B05215C001DD073 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		BA86B76E2B052EC6001DD073 /* ArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListView.swift; sourceTree = "<group>"; };
 		BA86B7712B053676001DD073 /* Previewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewable.swift; sourceTree = "<group>"; };
+		BA86B7732B064B81001DD073 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				BA86B76D2B052EB7001DD073 /* Views */,
+				BA86B7732B064B81001DD073 /* SafariView.swift */,
 			);
 			path = TopHeadlines;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA86B75F2B04F7CA001DD073 /* Article.swift in Sources */,
+				BA86B7742B064B81001DD073 /* SafariView.swift in Sources */,
 				BA86B7702B052EEB001DD073 /* ArticleListView.swift in Sources */,
 				BA86B7722B053676001DD073 /* Previewable.swift in Sources */,
 				BA86B75C2B04F73A001DD073 /* DomainMapper.swift in Sources */,
