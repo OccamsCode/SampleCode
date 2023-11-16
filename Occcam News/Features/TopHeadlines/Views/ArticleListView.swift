@@ -45,19 +45,11 @@ struct ArticleListView: View {
 
             switch action {
             case .selected(let article):
-            if let url = article.url {
-                SafariView(url: url)
+                SafariView(url: article.url)
                     .edgesIgnoringSafeArea(.bottom)
-            } else {
-                EmptyView()
-            }
             case .share(let article):
-                if let url = article.url {
-                    ShareView(activityItems: [url])
-                        .edgesIgnoringSafeArea(.bottom)
-                } else {
-                    EmptyView()
-                }
+                ShareView(activityItems: [article.url])
+                    .edgesIgnoringSafeArea(.bottom)
             }
         }
     }
