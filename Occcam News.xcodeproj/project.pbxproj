@@ -185,6 +185,7 @@
 		BA86B7452B04ED89001DD073 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BA86B75A2B04F72C001DD073 /* Domain */,
 				BA86B7462B04ED9C001DD073 /* Network */,
 			);
 			path = Core;
@@ -195,7 +196,6 @@
 			children = (
 				BA86B7812B081845001DD073 /* Utilities */,
 				BA86B77A2B08119C001DD073 /* Client */,
-				BA86B75A2B04F72C001DD073 /* Domain */,
 				BA86B7472B04EDA2001DD073 /* Models */,
 			);
 			path = Network;
