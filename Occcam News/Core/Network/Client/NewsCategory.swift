@@ -15,4 +15,18 @@ enum NewsCategory: String, CaseIterable {
     case sports
     case science
     case health
+
+    var text: String {
+        switch self {
+        case .general: return "Top Headlines"
+        default:
+            return rawValue.capitalized
+        }
+    }
+}
+
+extension NewsCategory: Identifiable {
+    var id: String {
+        return rawValue
+    }
 }
