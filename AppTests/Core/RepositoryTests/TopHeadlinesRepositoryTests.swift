@@ -1,5 +1,5 @@
 //
-//  RepositoryTests.swift
+//  TopHeadlinesRepositoryTests.swift
 //  AppTests
 //
 //  Created by Brian Munjoma on 18/11/2023.
@@ -9,7 +9,7 @@ import XCTest
 @testable import Poppify
 @testable import Occcam_News
 
-final class RepositoryTests: XCTestCase {
+final class TopHeadlinesRepositoryTests: XCTestCase {
 
     var sut: TopHeadlinesRepository!
     private var client: MockClient<RemoteHeadlines>!
