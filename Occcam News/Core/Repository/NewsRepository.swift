@@ -10,7 +10,7 @@ import Injection
 import Poppify
 
 protocol TopHeadlinesRepository {
-    func fetchTopHeadlines(inCategory: NewsCategory) async throws -> Result<[Article], Error>
+    func fetchTopHeadlines(inCategory: NewsCategory) async throws -> Result<[Article], RequestError>
 }
 
 final class NewsRepository {
@@ -18,7 +18,7 @@ final class NewsRepository {
 }
 
 extension NewsRepository: TopHeadlinesRepository {
-    func fetchTopHeadlines(inCategory category: NewsCategory) async throws -> Result<[Article], Error> {
+    func fetchTopHeadlines(inCategory category: NewsCategory) async throws -> Result<[Article], RequestError> {
         let request = TopHeadlinesRequest(category)
         let resource = Resource<RemoteHeadlines>(request: request)
         let result = await client.executeRequest(with: resource)

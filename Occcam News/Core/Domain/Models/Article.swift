@@ -22,6 +22,9 @@ extension Article: Identifiable {
     }
 }
 
+extension Article: Equatable {}
+
+// swiftlint: disable line_length
 extension Article: Previewable {
     static var preview: Article {
         return Article(title: "NASA and ISRO to launch NISAR mission in 2024; know all about it",
@@ -32,3 +35,4 @@ extension Article: Previewable {
                        source: .preview)
     }
 }
+// swiftlint: enable line_length

@@ -12,6 +12,8 @@ struct Source {
     let url: URL?
 }
 
+extension Source: Equatable {}
+
 extension Source: Previewable {
     static var preview: Source {
         return Source(name: "CNN",
