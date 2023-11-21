@@ -22,13 +22,13 @@ private struct EnvironmentProviderKey: InjectionKey {
     static var currentValue: EnvironmentType = computedEnvironment
 
     static var computedEnvironment: EnvironmentType {
-        guard let key = Bundle.main.infoDictionary?["APP_KEY"] as? String, key.count > 0 else {
+        guard let key = Bundle.main.infoDictionary?["SECRET_KEY"] as? String, key.count > 0 else {
             fatalError("App Key not supplied")
         }
         let item = URLQueryItem(name: "apikey", value: key)
         print("Using key ending with \(key.suffix(5))")
         return EnvironmentInfo(scheme: .secure,
-                               endpoint: "api.tfl.gov.uk",
+                               endpoint: "gnews.io",
                                additionalHeaders: [:],
                                secret: .queryItem(item))
     }
