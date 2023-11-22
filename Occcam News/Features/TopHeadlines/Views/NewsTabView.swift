@@ -16,21 +16,42 @@ struct NewsTabView: View {
             case .success(let articles):
                 ArticleListView(articles: articles)
                     .navigationTitle(observable.selectedCategory.text)
+                    .navigationBarItems(trailing: menu)
+                    .onChange(of: observable.selectedCategory) { _ in
+                        loadTask()
+                    }
             case .loading:
-                Color.blue
+                ProgressView()
             case .idle:
                 Color.clear
                     .onAppear {
-                        Task {
-                            await observable.fetchArticles()
-                        }
+                        loadTask()
                     }
             case .failure(let error):
                 ContentErrorView(title: "Something went wrong",
                           message: error.localizedDescription,
                           actionTitle: "Refresh",
-                          callback: { Task { await observable.fetchArticles()}})
+                          callback: loadTask)
             }
+        }
+    }
+
+    private func loadTask() {
+        Task {
+            await observable.fetchArticles()
+        }
+    }
+
+    private var menu: some View {
+        Menu {
+            Picker("Category", selection: $observable.selectedCategory) {
+                ForEach(NewsCategory.allCases) {
+                    Text($0.text).tag($0)
+                }
+            }
+        } label: {
+            Image(systemName: "fiberchannel")
+                .imageScale(.large)
         }
     }
 }
