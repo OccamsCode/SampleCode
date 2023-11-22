@@ -36,6 +36,7 @@
 		BA86B7912B0BD7FD001DD073 /* ArticleListViewObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7902B0BD7FD001DD073 /* ArticleListViewObservable.swift */; };
 		BA86B7942B0BDA1B001DD073 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7932B0BDA1B001DD073 /* LoadingState.swift */; };
 		BA86B7962B0D17C9001DD073 /* NewsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7952B0D17C9001DD073 /* NewsTabView.swift */; };
+		BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7982B0D3E9F001DD073 /* ContentErrorView.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA2B7392940054F00FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B7382940054F00FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
@@ -92,6 +93,7 @@
 		BA86B7902B0BD7FD001DD073 /* ArticleListViewObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewObservable.swift; sourceTree = "<group>"; };
 		BA86B7932B0BDA1B001DD073 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		BA86B7952B0D17C9001DD073 /* NewsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTabView.swift; sourceTree = "<group>"; };
+		BA86B7982B0D3E9F001DD073 /* ContentErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentErrorView.swift; sourceTree = "<group>"; };
 		BAA2B726293FF66D00FB0034 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +322,7 @@
 			children = (
 				BA86B7732B064B81001DD073 /* SafariView.swift */,
 				BA86B7782B065275001DD073 /* ShareView.swift */,
+				BA86B7982B0D3E9F001DD073 /* ContentErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			files = (
 				BA86B75F2B04F7CA001DD073 /* Article.swift in Sources */,
 				BA86B7942B0BDA1B001DD073 /* LoadingState.swift in Sources */,
+				BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */,
 				BA86B77C2B0811D6001DD073 /* NewsCategory.swift in Sources */,
 				BA86B7742B064B81001DD073 /* SafariView.swift in Sources */,
 				BA86B7702B052EEB001DD073 /* ArticleListView.swift in Sources */,
