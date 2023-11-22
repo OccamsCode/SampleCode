@@ -25,8 +25,11 @@ struct NewsTabView: View {
                             await observable.fetchArticles()
                         }
                     }
-            case .failure(_):
-                Color.green
+            case .failure(let error):
+                ContentErrorView(title: "Something went wrong",
+                          message: error.localizedDescription,
+                          actionTitle: "Refresh",
+                          callback: { Task { await observable.fetchArticles()}})
             }
         }
     }
@@ -37,18 +40,19 @@ struct NewsTabView_Previews: PreviewProvider {
 
     struct PreviewRepo: TopHeadlinesRepository {
         func fetchTopHeadlines(inCategory: NewsCategory) async throws -> Result<[Article], RequestError> {
-            return .success([])
+            return .failure(.invalidData)
         }
     }
 
     static var previews: some View {
-        Group {
-            NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(), phase: .loading))
-                .previewDisplayName("Loading State")
-            NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(), phase: .success([.preview])))
-                .previewDisplayName("Success State")
-            NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(), phase: .failure(RequestError.invalidData)))
-                .previewDisplayName("Failed State")
-        }
+        NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
+                                                          phase: .loading))
+            .previewDisplayName("Loading State")
+        NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
+                                                          phase: .success([.preview])))
+            .previewDisplayName("Success State")
+        NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
+                                                          phase: .failure(RequestError.invalidData)))
+            .previewDisplayName("Failed State")
     }
 }
