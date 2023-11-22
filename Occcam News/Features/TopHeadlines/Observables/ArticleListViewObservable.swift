@@ -24,10 +24,12 @@ class ArticleListViewObservable: ObservableObject {
     @MainActor
     func fetchArticles() async {
 
+        if Task.isCancelled { return }
         phase = .loading
 
         do {
             let result = try await repository.fetchTopHeadlines(inCategory: selectedCategory)
+            if Task.isCancelled { return }
             switch result {
             case .success(let articles):
                 phase = .success(articles)
@@ -35,6 +37,7 @@ class ArticleListViewObservable: ObservableObject {
                 phase = .failure(failure)
             }
         } catch {
+            if Task.isCancelled { return }
             phase = .failure(error)
         }
     }
