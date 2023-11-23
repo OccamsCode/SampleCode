@@ -12,7 +12,7 @@ struct NewsTabView: View {
     @StateObject var observable = ArticleListViewObservable(repository: NewsRepository())
     var body: some View {
         NavigationView {
-            AsyncContentView(source: observable) { articles in
+            AsyncContentView(source: observable, loadingView: LoadingView()) { articles in
                 ArticleListView(articles: articles)
                     .navigationTitle(observable.selectedCategory.text)
                     .navigationBarItems(trailing: menu)
@@ -33,6 +33,16 @@ struct NewsTabView: View {
         } label: {
             Image(systemName: "line.3.horizontal")
                 .imageScale(.large)
+        }
+    }
+}
+
+extension NewsTabView {
+
+    struct LoadingView: View {
+        var body: some View {
+            ArticleListView(articles: [.preview, .preview])
+                .redacted(reason: .placeholder)
         }
     }
 }
