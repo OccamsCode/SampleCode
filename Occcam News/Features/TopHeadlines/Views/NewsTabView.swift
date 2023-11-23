@@ -31,7 +31,7 @@ struct NewsTabView: View {
                 }
             }
         } label: {
-            Image(systemName: "fiberchannel")
+            Image(systemName: "line.3.horizontal")
                 .imageScale(.large)
         }
     }
