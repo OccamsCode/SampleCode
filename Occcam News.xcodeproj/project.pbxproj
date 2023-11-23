@@ -38,6 +38,8 @@
 		BA86B7962B0D17C9001DD073 /* NewsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7952B0D17C9001DD073 /* NewsTabView.swift */; };
 		BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7982B0D3E9F001DD073 /* ContentErrorView.swift */; };
 		BA86B79B2B0E891B001DD073 /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B79A2B0E891A001DD073 /* AsyncContentView.swift */; };
+		BA86B7A32B0FA666001DD073 /* BehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7A22B0FA666001DD073 /* BehaviourTests.swift */; };
+		BA86B7A52B0FA666001DD073 /* BehaviourTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
 		BAF1D4DC2A93DE0000C93976 /* Poppify in Frameworks */ = {isa = PBXBuildFile; productRef = BAF1D4DB2A93DE0000C93976 /* Poppify */; };
@@ -45,6 +47,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		BA1F37E925DAC85B007CC963 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA1F379B25DA9CEE007CC963 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA1F37A225DA9CEE007CC963;
+			remoteInfo = "Occcam News";
+		};
+		BA86B7A62B0FA666001DD073 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BA1F379B25DA9CEE007CC963 /* Project object */;
 			proxyType = 1;
@@ -88,6 +97,9 @@
 		BA86B7952B0D17C9001DD073 /* NewsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTabView.swift; sourceTree = "<group>"; };
 		BA86B7982B0D3E9F001DD073 /* ContentErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentErrorView.swift; sourceTree = "<group>"; };
 		BA86B79A2B0E891A001DD073 /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
+		BA86B7A02B0FA666001DD073 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA86B7A22B0FA666001DD073 /* BehaviourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTests.swift; sourceTree = "<group>"; };
+		BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTestsLaunchTests.swift; sourceTree = "<group>"; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +121,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA86B79D2B0FA666001DD073 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -118,6 +137,7 @@
 				BAA3ACEC29C5320E00033620 /* Config.xcconfig */,
 				BA1F37A525DA9CEF007CC963 /* Occcam News */,
 				BA1F37E525DAC85B007CC963 /* AppTests */,
+				BA86B7A12B0FA666001DD073 /* BehaviourTests */,
 				BA1F37A425DA9CEF007CC963 /* Products */,
 				BAA2B7372940054F00FB0034 /* Frameworks */,
 			);
@@ -128,6 +148,7 @@
 			children = (
 				BA1F37A325DA9CEF007CC963 /* Occcam News.app */,
 				BA1F37E425DAC85B007CC963 /* AppTests.xctest */,
+				BA86B7A02B0FA666001DD073 /* BehaviourTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,6 +391,15 @@
 			path = LoadingState;
 			sourceTree = "<group>";
 		};
+		BA86B7A12B0FA666001DD073 /* BehaviourTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA86B7A22B0FA666001DD073 /* BehaviourTests.swift */,
+				BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */,
+			);
+			path = BehaviourTests;
+			sourceTree = "<group>";
+		};
 		BAA2B7372940054F00FB0034 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,13 +452,31 @@
 			productReference = BA1F37E425DAC85B007CC963 /* AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BA86B79F2B0FA666001DD073 /* BehaviourTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA86B7A82B0FA666001DD073 /* Build configuration list for PBXNativeTarget "BehaviourTests" */;
+			buildPhases = (
+				BA86B79C2B0FA666001DD073 /* Sources */,
+				BA86B79D2B0FA666001DD073 /* Frameworks */,
+				BA86B79E2B0FA666001DD073 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA86B7A72B0FA666001DD073 /* PBXTargetDependency */,
+			);
+			name = BehaviourTests;
+			productName = BehaviourTests;
+			productReference = BA86B7A02B0FA666001DD073 /* BehaviourTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		BA1F379B25DA9CEE007CC963 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					BA1F37A225DA9CEE007CC963 = {
@@ -437,6 +485,10 @@
 					BA1F37E325DAC85B007CC963 = {
 						CreatedOnToolsVersion = 12.4;
 						LastSwiftMigration = 1420;
+						TestTargetID = BA1F37A225DA9CEE007CC963;
+					};
+					BA86B79F2B0FA666001DD073 = {
+						CreatedOnToolsVersion = 14.2;
 						TestTargetID = BA1F37A225DA9CEE007CC963;
 					};
 				};
@@ -461,6 +513,7 @@
 			targets = (
 				BA1F37A225DA9CEE007CC963 /* Occcam News */,
 				BA1F37E325DAC85B007CC963 /* AppTests */,
+				BA86B79F2B0FA666001DD073 /* BehaviourTests */,
 			);
 		};
 /* End PBXProject section */
@@ -483,6 +536,13 @@
 				BA86B7592B04F4FF001DD073 /* RemoteHeadlines.json in Resources */,
 				BA86B7552B04F2EC001DD073 /* RemoteArticle.json in Resources */,
 				BA86B7512B04F0E8001DD073 /* RemoteSource.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA86B79E2B0FA666001DD073 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +629,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA86B79C2B0FA666001DD073 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA86B7A52B0FA666001DD073 /* BehaviourTestsLaunchTests.swift in Sources */,
+				BA86B7A32B0FA666001DD073 /* BehaviourTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -576,6 +645,11 @@
 			isa = PBXTargetDependency;
 			target = BA1F37A225DA9CEE007CC963 /* Occcam News */;
 			targetProxy = BA1F37E925DAC85B007CC963 /* PBXContainerItemProxy */;
+		};
+		BA86B7A72B0FA666001DD073 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA1F37A225DA9CEE007CC963 /* Occcam News */;
+			targetProxy = BA86B7A62B0FA666001DD073 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -796,6 +870,42 @@
 			};
 			name = Release;
 		};
+		BA86B7A92B0FA666001DD073 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tech-test.BehaviourTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Occcam News";
+			};
+			name = Debug;
+		};
+		BA86B7AA2B0FA666001DD073 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tech-test.BehaviourTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Occcam News";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -822,6 +932,15 @@
 			buildConfigurations = (
 				BA1F37EC25DAC85B007CC963 /* Debug */,
 				BA1F37ED25DAC85B007CC963 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA86B7A82B0FA666001DD073 /* Build configuration list for PBXNativeTarget "BehaviourTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA86B7A92B0FA666001DD073 /* Debug */,
+				BA86B7AA2B0FA666001DD073 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
