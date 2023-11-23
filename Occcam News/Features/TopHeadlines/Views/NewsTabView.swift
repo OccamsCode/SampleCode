@@ -12,33 +12,14 @@ struct NewsTabView: View {
     @StateObject var observable = ArticleListViewObservable(repository: NewsRepository())
     var body: some View {
         NavigationView {
-            switch observable.phase {
-            case .success(let articles):
+            AsyncContentView(source: observable) { articles in
                 ArticleListView(articles: articles)
                     .navigationTitle(observable.selectedCategory.text)
                     .navigationBarItems(trailing: menu)
                     .onChange(of: observable.selectedCategory) { _ in
-                        loadTask()
+                        observable.load()
                     }
-            case .loading:
-                ProgressView()
-            case .idle:
-                Color.clear
-                    .onAppear {
-                        loadTask()
-                    }
-            case .failure(let error):
-                ContentErrorView(title: "Something went wrong",
-                          message: error.localizedDescription,
-                          actionTitle: "Refresh",
-                          callback: loadTask)
             }
-        }
-    }
-
-    private func loadTask() {
-        Task {
-            await observable.fetchArticles()
         }
     }
 

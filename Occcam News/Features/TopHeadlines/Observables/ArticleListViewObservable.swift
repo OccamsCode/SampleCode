@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ArticleListViewObservable: ObservableObject {
+class ArticleListViewObservable: ObservableObject, LoadableObject {
 
     private let repository: TopHeadlinesRepository
     @Published private(set) var phase: LoadingState<[Article]>
@@ -39,6 +39,12 @@ class ArticleListViewObservable: ObservableObject {
         } catch {
             if Task.isCancelled { return }
             phase = .failure(error)
+        }
+    }
+
+    func load() {
+        Task {
+            await fetchArticles()
         }
     }
 }
