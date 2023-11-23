@@ -13,12 +13,18 @@ protocol LoadableObject: ObservableObject {
     func load()
 }
 
-struct AsyncContentView<Source: LoadableObject, Content: View>: View {
+struct AsyncContentView<Source: LoadableObject,
+                            LoadingView: View,
+                            Content: View>: View {
     @ObservedObject var source: Source
+    var loadingView: LoadingView
     var content: (Source.Output) -> Content
 
-    init(source: Source, @ViewBuilder content: @escaping (Source.Output) -> Content) {
+    init(source: Source,
+         loadingView: LoadingView,
+         @ViewBuilder content: @escaping (Source.Output) -> Content) {
         self.source = source
+        self.loadingView = loadingView
         self.content = content
     }
 
@@ -28,14 +34,24 @@ struct AsyncContentView<Source: LoadableObject, Content: View>: View {
             Color.clear
                 .onAppear(perform: source.load)
         case .loading:
-            ProgressView()
+            loadingView
         case .failure(let error):
-            ContentErrorView(title: "Title",
+            ContentErrorView(title: "General Error",
                              message: error.localizedDescription,
                              actionTitle: "Retry",
                              callback: source.load)
         case .success(let output):
             content(output)
         }
+    }
+}
+
+typealias DefaultProgressView = ProgressView<EmptyView, EmptyView>
+
+extension AsyncContentView where LoadingView == DefaultProgressView {
+    init(source: Source, @ViewBuilder content: @escaping (Source.Output) -> Content) {
+        self.init(source: source,
+                  loadingView: ProgressView(),
+                  content: content)
     }
 }
