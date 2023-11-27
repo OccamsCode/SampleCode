@@ -11,6 +11,7 @@
 		BA1F37B325DA9CEF007CC963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */; };
 		BA285C822B02966C00C57B1C /* OCNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA285C812B02966C00C57B1C /* OCNApp.swift */; };
 		BA3A76D72AEA7E7800F0F2D3 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = BA3A76D62AEA7E7800F0F2D3 /* Injection */; };
+		BA504FEA2B14F88B00865F6E /* BookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */; };
 		BA86B74A2B04EE1C001DD073 /* RemoteModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7492B04EE1C001DD073 /* RemoteModelTests.swift */; };
 		BA86B74C2B04EE6A001DD073 /* XCTest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B74B2B04EE6A001DD073 /* XCTest+Extension.swift */; };
 		BA86B74E2B04EEC3001DD073 /* RemoteHeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B74D2B04EEC3001DD073 /* RemoteHeadlines.swift */; };
@@ -71,6 +72,7 @@
 		BA1F37E425DAC85B007CC963 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA285C812B02966C00C57B1C /* OCNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCNApp.swift; sourceTree = "<group>"; };
+		BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTabView.swift; sourceTree = "<group>"; };
 		BA86B7492B04EE1C001DD073 /* RemoteModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteModelTests.swift; sourceTree = "<group>"; };
 		BA86B74B2B04EE6A001DD073 /* XCTest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extension.swift"; sourceTree = "<group>"; };
 		BA86B74D2B04EEC3001DD073 /* RemoteHeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHeadlines.swift; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 				BA1F37E825DAC85B007CC963 /* Info.plist */,
 			);
 			path = AppTests;
+			sourceTree = "<group>";
+		};
+		BA504FE82B14F87800865F6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BA78E8AD25F158DE00D7857C /* UIs */ = {
@@ -406,6 +416,7 @@
 		BA86B7AD2B0FB412001DD073 /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				BA504FE82B14F87800865F6E /* Views */,
 				BA86B7AE2B0FB42B001DD073 /* Observables */,
 			);
 			path = Bookmarks;
@@ -615,6 +626,7 @@
 			files = (
 				BA86B75F2B04F7CA001DD073 /* Article.swift in Sources */,
 				BA86B7942B0BDA1B001DD073 /* LoadingState.swift in Sources */,
+				BA504FEA2B14F88B00865F6E /* BookmarkTabView.swift in Sources */,
 				BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */,
 				BA86B77C2B0811D6001DD073 /* NewsCategory.swift in Sources */,
 				BA86B7742B064B81001DD073 /* SafariView.swift in Sources */,
