@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct TestApp: App {
+
+    @StateObject var bookmarks = ArticleBookmarkObservable()
+
     var body: some Scene {
         WindowGroup {
             NewsTabView()
                 .tabItem {
                     Label("News", systemImage: "newspaper")
                 }
+                .environmentObject(bookmarks)
         }
     }
 }
