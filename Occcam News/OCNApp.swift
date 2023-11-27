@@ -14,11 +14,14 @@ struct TestApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NewsTabView()
-                .tabItem {
-                    Label("News", systemImage: "newspaper")
-                }
-                .environmentObject(bookmarks)
+            TabView {
+                NewsTabView()
+                    .tabItem { Label("News", systemImage: "newspaper") }
+
+                BookmarkTabView()
+                    .tabItem {  Label("Saved", systemImage: "bookmark") }
+            }
+            .environmentObject(bookmarks)
         }
     }
 }
