@@ -15,6 +15,7 @@ struct ArticleRowView: View {
     }
 
     let article: Article
+    @ViewBuilder let bookmarkIcon: () -> Image
     let action: (ArticleRowView.Action) -> Void
     let relativeDateFormatter = RelativeDateTimeFormatter()
 
@@ -55,7 +56,7 @@ struct ArticleRowView: View {
                         .lineLimit(2)
                     Spacer()
                     Button { action(.onBookmark) } label: {
-                        Image(systemName: "bookmark")
+                        bookmarkIcon()
                     }
                     .buttonStyle(.bordered)
 
@@ -77,6 +78,8 @@ struct ArticleRowView: View {
 
 struct ArticleRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleRowView(article: .preview, action: { _ in })
+        ArticleRowView(article: .preview,
+                       bookmarkIcon: { Image(systemName: "bookmark.fill") },
+                       action: { _ in })
     }
 }
