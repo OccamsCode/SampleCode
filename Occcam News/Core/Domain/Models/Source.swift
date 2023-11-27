@@ -13,6 +13,7 @@ struct Source {
 }
 
 extension Source: Equatable {}
+extension Source: Codable {}
 
 extension Source: Previewable {
     static var preview: Source {
