@@ -8,41 +8,41 @@
 import Foundation
 
 protocol Store: Actor {
-    
+
     associatedtype Value
-    
+
     func save(_ value: Value)
     func load() -> Value?
 }
 
 actor PlistStore<T: Codable>: Store where T: Equatable {
-    
+
     var saved: T?
     let filename: String
-    
+
     init(_ filename: String) {
         self.filename = filename
     }
-    
+
     private var url: URL {
         FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("\(filename).plist")
     }
-    
+
     func save(_ value: T) {
         if let saved = saved, saved == value { return }
-        
+
         do {
             let encoder = PropertyListEncoder()
             encoder.outputFormat = .binary
             let data = try encoder.encode(value)
             try data.write(to: url, options: [.atomic])
         } catch {
-            print(error.localizedDescription)
+            print("Error saving to file \(url.lastPathComponent) - \(error.localizedDescription)")
         }
     }
-    
+
     func load() -> T? {
         do {
            let data = try Data(contentsOf: url)
@@ -51,7 +51,7 @@ actor PlistStore<T: Codable>: Store where T: Equatable {
             saved = value
             return value
         } catch {
-            print(error.localizedDescription)
+            print("Error reading file \(url.lastPathComponent) - \(error.localizedDescription)")
             return nil
         }
     }
