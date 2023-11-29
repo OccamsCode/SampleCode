@@ -11,6 +11,8 @@
 		BA1F37B325DA9CEF007CC963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1F37B125DA9CEF007CC963 /* LaunchScreen.storyboard */; };
 		BA285C822B02966C00C57B1C /* OCNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA285C812B02966C00C57B1C /* OCNApp.swift */; };
 		BA3A76D72AEA7E7800F0F2D3 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = BA3A76D62AEA7E7800F0F2D3 /* Injection */; };
+		BA504FEA2B14F88B00865F6E /* BookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */; };
+		BA504FED2B14FBD400865F6E /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA504FEC2B14FBD400865F6E /* DataStore.swift */; };
 		BA86B74A2B04EE1C001DD073 /* RemoteModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7492B04EE1C001DD073 /* RemoteModelTests.swift */; };
 		BA86B74C2B04EE6A001DD073 /* XCTest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B74B2B04EE6A001DD073 /* XCTest+Extension.swift */; };
 		BA86B74E2B04EEC3001DD073 /* RemoteHeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B74D2B04EEC3001DD073 /* RemoteHeadlines.swift */; };
@@ -40,6 +42,7 @@
 		BA86B79B2B0E891B001DD073 /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B79A2B0E891A001DD073 /* AsyncContentView.swift */; };
 		BA86B7A32B0FA666001DD073 /* BehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7A22B0FA666001DD073 /* BehaviourTests.swift */; };
 		BA86B7A52B0FA666001DD073 /* BehaviourTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */; };
+		BA86B7AC2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
 		BAF1D4DC2A93DE0000C93976 /* Poppify in Frameworks */ = {isa = PBXBuildFile; productRef = BAF1D4DB2A93DE0000C93976 /* Poppify */; };
@@ -70,6 +73,8 @@
 		BA1F37E425DAC85B007CC963 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1F37E825DAC85B007CC963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA285C812B02966C00C57B1C /* OCNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCNApp.swift; sourceTree = "<group>"; };
+		BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTabView.swift; sourceTree = "<group>"; };
+		BA504FEC2B14FBD400865F6E /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BA86B7492B04EE1C001DD073 /* RemoteModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteModelTests.swift; sourceTree = "<group>"; };
 		BA86B74B2B04EE6A001DD073 /* XCTest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extension.swift"; sourceTree = "<group>"; };
 		BA86B74D2B04EEC3001DD073 /* RemoteHeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHeadlines.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 		BA86B7A02B0FA666001DD073 /* BehaviourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA86B7A22B0FA666001DD073 /* BehaviourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTests.swift; sourceTree = "<group>"; };
 		BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTestsLaunchTests.swift; sourceTree = "<group>"; };
+		BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBookmarkObservable.swift; sourceTree = "<group>"; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +181,22 @@
 			path = AppTests;
 			sourceTree = "<group>";
 		};
+		BA504FE82B14F87800865F6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA504FE92B14F88B00865F6E /* BookmarkTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA504FEB2B14FBC100865F6E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				BA504FEC2B14FBD400865F6E /* DataStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		BA78E8AD25F158DE00D7857C /* UIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +228,7 @@
 		BA86B7452B04ED89001DD073 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BA504FEB2B14FBC100865F6E /* Store */,
 				BA86B7852B081AA4001DD073 /* Repository */,
 				BA86B75A2B04F72C001DD073 /* Domain */,
 				BA86B7462B04ED9C001DD073 /* Network */,
@@ -282,6 +305,7 @@
 		BA86B7652B052105001DD073 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				BA86B7AD2B0FB412001DD073 /* Bookmarks */,
 				BA86B7662B052110001DD073 /* TopHeadlines */,
 			);
 			path = Features;
@@ -398,6 +422,23 @@
 				BA86B7A42B0FA666001DD073 /* BehaviourTestsLaunchTests.swift */,
 			);
 			path = BehaviourTests;
+			sourceTree = "<group>";
+		};
+		BA86B7AD2B0FB412001DD073 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				BA504FE82B14F87800865F6E /* Views */,
+				BA86B7AE2B0FB42B001DD073 /* Observables */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		BA86B7AE2B0FB42B001DD073 /* Observables */ = {
+			isa = PBXGroup;
+			children = (
+				BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */,
+			);
+			path = Observables;
 			sourceTree = "<group>";
 		};
 		BAA2B7372940054F00FB0034 /* Frameworks */ = {
@@ -596,6 +637,7 @@
 			files = (
 				BA86B75F2B04F7CA001DD073 /* Article.swift in Sources */,
 				BA86B7942B0BDA1B001DD073 /* LoadingState.swift in Sources */,
+				BA504FEA2B14F88B00865F6E /* BookmarkTabView.swift in Sources */,
 				BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */,
 				BA86B77C2B0811D6001DD073 /* NewsCategory.swift in Sources */,
 				BA86B7742B064B81001DD073 /* SafariView.swift in Sources */,
@@ -612,6 +654,8 @@
 				BA86B77E2B081416001DD073 /* Requests.swift in Sources */,
 				BA86B76C2B052188001DD073 /* ArticleRowView.swift in Sources */,
 				BA86B74E2B04EEC3001DD073 /* RemoteHeadlines.swift in Sources */,
+				BA86B7AC2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift in Sources */,
+				BA504FED2B14FBD400865F6E /* DataStore.swift in Sources */,
 				BA86B7842B081883001DD073 /* InjectedValues+Extension.swift in Sources */,
 				BA86B7872B081ADB001DD073 /* NewsRepository.swift in Sources */,
 			);

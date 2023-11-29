@@ -23,14 +23,19 @@ struct ArticleListView: View {
 
     let articles: [Article]
     @State private var articleAction: ArticleListView.Action?
+    @EnvironmentObject var bookmarks: ArticleBookmarkObservable
 
     var body: some View {
         List {
             ForEach(articles) { article in
-                ArticleRowView(article: article, action: {
+                ArticleRowView(article: article,
+                               bookmarkIcon: {
+                    Image(systemName: bookmarks.isBookmarked(for: article) ? "bookmark.fill" : "bookmark")
+                },
+                               action: {
                     switch $0 {
                     case .onShare: articleAction = .share(article)
-                    case .onBookmark: print("Bookmark")
+                    case .onBookmark: toogleBookmark(for: article)
                     }
                 })
                     .onTapGesture {
@@ -53,10 +58,19 @@ struct ArticleListView: View {
             }
         }
     }
+
+    private func toogleBookmark(for article: Article) {
+        if bookmarks.isBookmarked(for: article) {
+            bookmarks.removeBookmark(for: article)
+        } else {
+            bookmarks.addBookmark(for: article)
+        }
+    }
 }
 
 struct ArticleListView_Previews: PreviewProvider {
     static var previews: some View {
         ArticleListView(articles: [Article.preview, Article.preview])
+            .environmentObject(ArticleBookmarkObservable())
     }
 }

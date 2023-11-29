@@ -23,6 +23,7 @@ extension Article: Identifiable {
 }
 
 extension Article: Equatable {}
+extension Article: Codable {}
 
 // swiftlint: disable line_length
 extension Article: Previewable {
