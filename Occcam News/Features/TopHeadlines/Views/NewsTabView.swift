@@ -9,7 +9,8 @@ import SwiftUI
 
 struct NewsTabView: View {
 
-    @StateObject var observable = ArticleListViewObservable(repository: NewsRepository())
+    @StateObject var observable: ArticleListViewObservable
+
     var body: some View {
         NavigationView {
             AsyncContentView(source: observable, loadingView: LoadingView()) { articles in

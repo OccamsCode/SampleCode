@@ -11,17 +11,34 @@ import SwiftUI
 struct TestApp: App {
 
     @StateObject var bookmarks = ArticleBookmarkObservable()
+    private let respository = NewsRepository()
 
     var body: some Scene {
         WindowGroup {
             TabView {
-                NewsTabView()
-                    .tabItem { Label("News", systemImage: "newspaper") }
-
-                BookmarkTabView()
-                    .tabItem {  Label("Saved", systemImage: "bookmark") }
+                newsTab
+                bookmarkTab
             }
             .environmentObject(bookmarks)
         }
     }
+}
+
+private extension TestApp {
+    private var newsTab: some View {
+        return NewsTabView(observable: topheadlineObservable)
+            .tabItem { Label("News", systemImage: "newspaper") }
+    }
+
+    private var bookmarkTab: some View {
+        return BookmarkTabView()
+            .tabItem {  Label("Saved", systemImage: "bookmark") }
+    }
+}
+
+private extension TestApp {
+    private var topheadlineObservable: ArticleListViewObservable {
+        ArticleListViewObservable(repository: respository)
+    }
+    
 }
