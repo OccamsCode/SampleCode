@@ -40,5 +40,4 @@ private extension TestApp {
     private var topheadlineObservable: ArticleListViewObservable {
         ArticleListViewObservable(repository: respository)
     }
-    
 }
