@@ -14,7 +14,8 @@ struct TopHeadlinesRequest: Requestable {
 
     init(_ category: NewsCategory = .general) {
         parameters = [
-            URLQueryItem(name: "category", value: category.rawValue)
+            URLQueryItem(name: "category", value: category.rawValue),
+            URLQueryItem(name: "country", value: "gb")
         ]
     }
 }
