@@ -17,15 +17,28 @@ struct SearchTabView: View {
                 switch articles.isEmpty {
                 case true:
                     ContentErrorView(title: "No results found for '\(observable.searchTerm)'",
-                                     message: "Try a different search term")
+                                     message: "Please try again using a different key word")
                 case false:
                     ArticleListView(articles: articles)
                 }
             }
             .navigationTitle("Search")
         }
-        .searchable(text: $observable.searchTerm)
+        .searchable(text: $observable.searchTerm) { suggestionsView }
         .onSubmit(of: .search, observable.load)
+    }
+
+    @ViewBuilder
+    private var suggestionsView: some View {
+        VStack {
+            ForEach(["SwiftUI", "Lite coin", "MacBook Pro M3"], id: \.self) { text in
+                Button {
+                    observable.searchTerm = text
+                } label: {
+                    Text(text)
+                }
+            }
+        }
     }
 }
 
