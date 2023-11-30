@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TestApp: App {
+struct OCNApp: App {
 
     @StateObject var bookmarks = ArticleBookmarkObservable()
     private let respository = NewsRepository()
@@ -17,6 +17,7 @@ struct TestApp: App {
         WindowGroup {
             TabView {
                 newsTab
+                searchTab
                 bookmarkTab
             }
             .environmentObject(bookmarks)
@@ -24,10 +25,15 @@ struct TestApp: App {
     }
 }
 
-private extension TestApp {
+private extension OCNApp {
     private var newsTab: some View {
         return NewsTabView(observable: topheadlineObservable)
             .tabItem { Label("News", systemImage: "newspaper") }
+    }
+
+    private var searchTab: some View {
+        return SearchTabView()
+            .tabItem { Label("Search", systemImage: "magnifyingglass") }
     }
 
     private var bookmarkTab: some View {
@@ -36,8 +42,13 @@ private extension TestApp {
     }
 }
 
-private extension TestApp {
+private extension OCNApp {
     private var topheadlineObservable: ArticleListViewObservable {
         ArticleListViewObservable(repository: respository)
+    }
+
+    private var searchTabView: some View {
+        return SearchTabView()
+            .tabItem { Label("Search", systemImage: "magnifyingglass") }
     }
 }
