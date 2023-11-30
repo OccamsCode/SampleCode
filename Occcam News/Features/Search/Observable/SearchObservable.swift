@@ -11,12 +11,15 @@ class SearchObservable: ObservableObject, LoadableObject {
 
     private let repository: SearchNewsRepository
     @Published private(set) var phase: LoadingState<[Article]>
-    @Published var searchTerm = ""
+    @Published var searchTerm: String
+    @Published var searchHistoryTerms: [String] = []
 
     internal init(repository: SearchNewsRepository,
-                  phase: LoadingState<[Article]> = .idle) {
+                  phase: LoadingState<[Article]> = .idle,
+                  searchTerm: String = "") {
         self.repository = repository
         self.phase = phase
+        self.searchTerm = searchTerm
     }
 
     @MainActor

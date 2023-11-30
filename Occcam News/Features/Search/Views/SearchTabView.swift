@@ -49,7 +49,8 @@ struct SearchTabView_Previews: PreviewProvider {
             .environmentObject(ArticleBookmarkObservable())
 
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
-                                                   phase: .success([])))
+                                                   phase: .success([]),
+                                                   searchTerm: "Tesla"))
             .previewDisplayName("Success State No Results")
             .environmentObject(ArticleBookmarkObservable())
 
