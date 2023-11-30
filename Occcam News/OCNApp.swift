@@ -32,7 +32,7 @@ private extension OCNApp {
     }
 
     private var searchTab: some View {
-        return SearchTabView()
+        return SearchTabView(observable: searchObservable)
             .tabItem { Label("Search", systemImage: "magnifyingglass") }
     }
 
@@ -47,8 +47,7 @@ private extension OCNApp {
         ArticleListViewObservable(repository: respository)
     }
 
-    private var searchTabView: some View {
-        return SearchTabView()
-            .tabItem { Label("Search", systemImage: "magnifyingglass") }
+    private var searchObservable: SearchObservable {
+        SearchObservable(repository: respository)
     }
 }
