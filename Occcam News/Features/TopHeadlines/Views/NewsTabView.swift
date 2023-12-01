@@ -13,7 +13,9 @@ struct NewsTabView: View {
 
     var body: some View {
         NavigationView {
-            AsyncContentView(source: observable, loadingView: LoadingView()) { articles in
+            AsyncContentView(source: observable, loadingView: LoadingView()) {
+                Color.clear.onAppear { observable.load() }
+            } content: { articles in
                 ArticleListView(articles: articles)
                     .navigationTitle(observable.selectedCategory.text)
                     .navigationBarItems(trailing: menu)

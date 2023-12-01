@@ -13,7 +13,16 @@ struct SearchTabView: View {
 
     var body: some View {
         NavigationView {
-            AsyncContentView(source: observable) { articles in
+            AsyncContentView(source: observable) {
+                switch observable.searchHistoryTerms.isEmpty {
+                case true:
+                    ContentErrorView(title: "Type your search query",
+                                     message: "")
+                case false:
+                    SearchHistoryListView(items: $observable.searchHistoryTerms,
+                                          action: searchHistoryAction)
+                }
+            } content: { articles in
                 switch articles.isEmpty {
                 case true:
                     ContentErrorView(title: "No results found for '\(observable.searchTerm)'",
@@ -25,19 +34,38 @@ struct SearchTabView: View {
             .navigationTitle("Search")
         }
         .searchable(text: $observable.searchTerm) { suggestionsView }
-        .onSubmit(of: .search, observable.load)
+        .onChange(of: observable.searchTerm) { newValue in
+            if newValue.isEmpty { observable.resetToIdle() }
+        }
+        .onSubmit(of: .search, search)
     }
 
     @ViewBuilder
     private var suggestionsView: some View {
-        VStack {
-            ForEach(["SwiftUI", "Lite coin", "MacBook Pro M3"], id: \.self) { text in
-                Button {
-                    observable.searchTerm = text
-                } label: {
-                    Text(text)
-                }
+        ForEach(["SwiftUI", "Lite coin", "MacBook Pro M3"], id: \.self) { text in
+            Button {
+                observable.searchTerm = text
+            } label: {
+                Label(text, systemImage: "magnifyingglass")
             }
+        }
+    }
+
+    private func search() {
+        let searchQuery = observable.searchTerm.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !searchQuery.isEmpty { observable.addHistory(searchQuery) }
+        observable.load()
+    }
+
+    private func searchHistoryAction(_ action: SearchHistoryListView.Action) {
+        switch action {
+        case .onClearHistory:
+            observable.clearAllHistory()
+        case .onSelectItem(let term):
+            observable.searchTerm = term
+            search()
+        case .onRemoveItem(let term):
+            observable.removeHistory(term)
         }
     }
 }
@@ -52,6 +80,14 @@ struct SearchTabView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
+        SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
+                                                   phase: .idle))
+            .previewDisplayName("Idle State - No History")
+
+        SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
+                                                   phase: .idle, searchHistoryItems: ["One", "Two", "Three"]))
+            .previewDisplayName("Idle State w/ History")
+
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
                                                    phase: .loading))
             .previewDisplayName("Loading State")
