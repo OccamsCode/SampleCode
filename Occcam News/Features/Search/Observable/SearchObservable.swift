@@ -12,17 +12,19 @@ class SearchObservable: ObservableObject, LoadableObject {
     private let repository: SearchNewsRepository
     @Published private(set) var phase: LoadingState<[Article]>
     @Published var searchTerm: String
-    @Published var searchHistoryTerms: [String] = []
-    
+    @Published var searchHistoryTerms: [String]
+
     private let maximumSearchHistoryLimit: Int
 
     internal init(repository: SearchNewsRepository,
                   phase: LoadingState<[Article]> = .idle,
                   searchTerm: String = "",
+                  searchHistoryItems: [String] = [],
                   maximumSearchHistoryLimit: Int = 10) {
         self.repository = repository
         self.phase = phase
         self.searchTerm = searchTerm
+        self.searchHistoryTerms = searchHistoryItems
         self.maximumSearchHistoryLimit = maximumSearchHistoryLimit
     }
 
@@ -53,7 +55,9 @@ class SearchObservable: ObservableObject, LoadableObject {
             await searchArticles()
         }
     }
-    
+
+    func resetToIdle() { phase = .idle }
+
     func addHistory(_ newSearchTerm: String) {
         if let index = searchHistoryTerms.firstIndex(where: {
             newSearchTerm.caseInsensitiveCompare($0) == .orderedSame
@@ -70,5 +74,9 @@ class SearchObservable: ObservableObject, LoadableObject {
         searchHistoryTerms.removeAll {
             newSearchTerm.caseInsensitiveCompare($0) == .orderedSame
         }
+    }
+
+    func clearAllHistory() {
+        searchHistoryTerms.removeAll()
     }
 }
