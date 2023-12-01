@@ -10,6 +10,7 @@ import Foundation
 class SearchObservable: ObservableObject, LoadableObject {
 
     private let repository: SearchNewsRepository
+    private let dataStore = PlistStore<[String]>("SearchHistory")
     @Published private(set) var phase: LoadingState<[Article]>
     @Published var searchTerm: String
     @Published var searchHistoryTerms: [String]
@@ -26,6 +27,7 @@ class SearchObservable: ObservableObject, LoadableObject {
         self.searchTerm = searchTerm
         self.searchHistoryTerms = searchHistoryItems
         self.maximumSearchHistoryLimit = maximumSearchHistoryLimit
+        if searchHistoryItems.isEmpty { loadSearchHistory() }
     }
 
     @MainActor
@@ -68,15 +70,30 @@ class SearchObservable: ObservableObject, LoadableObject {
         }
 
         searchHistoryTerms.insert(newSearchTerm, at: searchHistoryTerms.startIndex)
+        persistSearchHistory()
     }
 
     func removeHistory(_ newSearchTerm: String) {
         searchHistoryTerms.removeAll {
             newSearchTerm.caseInsensitiveCompare($0) == .orderedSame
         }
+        persistSearchHistory()
     }
 
     func clearAllHistory() {
         searchHistoryTerms.removeAll()
+        persistSearchHistory()
+    }
+
+    private func loadSearchHistory() {
+        Task {
+            await self.searchHistoryTerms = dataStore.load() ?? []
+        }
+    }
+
+    private func persistSearchHistory() {
+        Task {
+            await dataStore.save(searchHistoryTerms)
+        }
     }
 }
