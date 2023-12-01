@@ -9,10 +9,13 @@ import SwiftUI
 
 struct NewsTabView: View {
 
-    @StateObject var observable = ArticleListViewObservable(repository: NewsRepository())
+    @StateObject var observable: ArticleListViewObservable
+
     var body: some View {
         NavigationView {
-            AsyncContentView(source: observable, loadingView: LoadingView()) { articles in
+            AsyncContentView(source: observable, loadingView: LoadingView()) {
+                Color.clear.onAppear { observable.load() }
+            } content: { articles in
                 ArticleListView(articles: articles)
                     .navigationTitle(observable.selectedCategory.text)
                     .navigationBarItems(trailing: menu)

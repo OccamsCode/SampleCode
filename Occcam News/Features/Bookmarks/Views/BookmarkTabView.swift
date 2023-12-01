@@ -10,13 +10,15 @@ import SwiftUI
 struct BookmarkTabView: View {
 
     @EnvironmentObject var observable: ArticleBookmarkObservable
-
+    @State var searchText: String = ""
     var body: some View {
+        let filteredArticles = articles
         NavigationView {
-            ArticleListView(articles: observable.bookmarks)
-                .overlay(overlayView(isEmpty: observable.bookmarks.isEmpty))
-                .navigationTitle("Saved")
+            ArticleListView(articles: filteredArticles)
+                .overlay(overlayView(isEmpty: filteredArticles.isEmpty))
+                .navigationTitle("Saved Articles")
         }
+        .searchable(text: $searchText)
     }
 
     @ViewBuilder
@@ -24,6 +26,19 @@ struct BookmarkTabView: View {
         if isEmpty {
             ContentErrorView(title: "No saved articles",
                              message: "You have not bookmarked any articles")
+        }
+    }
+
+    private var articles: [Article] {
+        if searchText.isEmpty {
+            return observable.bookmarks
+        } else {
+            let searchTerm = searchText.lowercased()
+            return observable.bookmarks
+                .filter {
+                    $0.title.localizedCaseInsensitiveContains(searchTerm) ||
+                    $0.description.localizedCaseInsensitiveContains(searchTerm)
+                }
         }
     }
 }

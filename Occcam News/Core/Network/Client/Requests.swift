@@ -19,3 +19,15 @@ struct TopHeadlinesRequest: Requestable {
         ]
     }
 }
+
+struct SearchRequest: Requestable {
+    let path: String = "/api/v4/search"
+    let parameters: [URLQueryItem]
+
+    init(_ searchTerm: String) {
+        parameters = [
+            URLQueryItem(name: "q", value: searchTerm),
+            URLQueryItem(name: "country", value: "gb")
+        ]
+    }
+}
