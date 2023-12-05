@@ -9,45 +9,9 @@ import SwiftUI
 
 @main
 struct OCNApp: App {
-
-    @StateObject var bookmarks = ArticleBookmarkObservable()
-    private let respository = NewsRepository()
-
     var body: some Scene {
         WindowGroup {
-            TabView {
-                newsTab
-                searchTab
-                bookmarkTab
-            }
-            .environmentObject(bookmarks)
+            ContentView()
         }
-    }
-}
-
-private extension OCNApp {
-    private var newsTab: some View {
-        return NewsTabView(observable: topheadlineObservable)
-            .tabItem { Label("News", systemImage: "newspaper") }
-    }
-
-    private var searchTab: some View {
-        return SearchTabView(observable: searchObservable)
-            .tabItem { Label("Search", systemImage: "magnifyingglass") }
-    }
-
-    private var bookmarkTab: some View {
-        return BookmarkTabView()
-            .tabItem {  Label("Saved", systemImage: "bookmark") }
-    }
-}
-
-private extension OCNApp {
-    private var topheadlineObservable: ArticleListViewObservable {
-        ArticleListViewObservable(repository: respository)
-    }
-
-    private var searchObservable: SearchObservable {
-        SearchObservable(repository: respository)
     }
 }
