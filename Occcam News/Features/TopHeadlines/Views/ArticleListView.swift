@@ -26,7 +26,7 @@ struct ArticleListView: View {
     @EnvironmentObject var bookmarks: ArticleBookmarkObservable
 
     var body: some View {
-        List {
+        AdaptiveLayoutContentView {
             ForEach(articles) { article in
                 ArticleRowView(article: article,
                                bookmarkIcon: {
@@ -38,14 +38,8 @@ struct ArticleListView: View {
                     case .onBookmark: toogleBookmark(for: article)
                     }
                 })
-                    .onTapGesture {
-                        articleAction = .selected(article)
-                    }
             }
-            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .listRowSeparator(.hidden)
         }
-        .listStyle(.plain)
         .sheet(item: $articleAction) { action in
 
             switch action {
