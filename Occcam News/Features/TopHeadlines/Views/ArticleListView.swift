@@ -38,6 +38,9 @@ struct ArticleListView: View {
                     case .onBookmark: toogleBookmark(for: article)
                     }
                 })
+                .onTapGesture {
+                    articleAction = .selected(article)
+                }
             }
         }
         .sheet(item: $articleAction) { action in
