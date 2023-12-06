@@ -56,32 +56,13 @@ extension MenuItem: Identifiable {
     }
 }
 
-extension NewsCategory {
-    var systemImage: String {
-        switch self {
-        case .general:
-            return "newspaper"
-        case .world:
-            return "globe.europe.africa"
-        case .nation:
-            return "map"
-        case .business:
-            return "building.2"
-        case .technology:
-            return "desktopcomputer"
-        case .entertainment:
-            return "tv"
-        case .sports:
-            return "sportscourt"
-        case .science:
-            return "wave.3.right"
-        case .health:
-            return "cross"
-        }
-    }
-}
+struct SideBarContentView<Content: View>: View {
+    private let content: (MenuItem) -> Content
 
-struct SideBarContentView: View {
+    init(@ViewBuilder content: @escaping (MenuItem) -> Content) {
+        self.content = content
+    }
+
     var body: some View {
         NavigationView {
             List {
@@ -89,14 +70,18 @@ struct SideBarContentView: View {
                     navigationLinkForMenuItem($0)
                 }
 
-                Section("Categories") {
+                Section {
                     ForEach(MenuItem.newsCategoryItems) {
                         navigationLinkForMenuItem($0)
                     }
+                } header: {
+                    Text("Categories")
                 }
                 .navigationTitle("Occam News")
             }
             .listStyle(.sidebar)
+
+            Color.red
         }
     }
 
@@ -107,23 +92,25 @@ struct SideBarContentView: View {
     }
 
     @ViewBuilder
-    private func viewForMenuItem( item: MenuItem) -> some View {
-        switch item {
-        case .search:
-            Color.red
-        case .saved:
-            Color.blue
-        case .category(let newsCategory):
-            ZStack {
-                Color.green
-                Text(newsCategory.text)
-            }
-        }
+    private func viewForMenuItem(item: MenuItem) -> some View {
+        content(item)
     }
 }
 
 struct SideBarContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarContentView()
+        SideBarContentView { item in
+            switch item {
+            case .search:
+                Color.red
+            case .saved:
+                Color.blue
+            case .category(let newsCategory):
+                ZStack {
+                    Color.green
+                    Text(newsCategory.text)
+                }
+            }
+        }
     }
 }
