@@ -10,7 +10,7 @@ import SwiftUI
 struct RootContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject var bookmarks = ArticleBookmarkObservable()
-    private let respository = NewsRepository()
+    private let repository = NewsRepository()
     var body: some View {
         switch horizontalSizeClass {
         case .regular:
@@ -21,7 +21,7 @@ struct RootContentView: View {
                 case .saved:
                     bookmarkView
                 case .category(let newsCategory):
-                    anotherNews(newsCategory)
+                    topHeadlinesView(newsCategory)
                 }
             }
             .environmentObject(bookmarks)
@@ -37,12 +37,16 @@ struct RootContentView: View {
 }
 
 private extension RootContentView {
-    private var topHeadlinesView: some View {
-        return NewsTabView(observable: topheadlineObservable)
+    private func topHeadlinesView(_ category: NewsCategory = .general) -> some View {
+        return NewsTabView(observable:
+            ArticleListViewObservable(repository: repository, category: category)
+        )
     }
 
     private var searchView: some View {
-        return SearchTabView(observable: searchObservable)
+        return SearchTabView(observable:
+            SearchObservable(repository: repository)
+        )
     }
 
     private var bookmarkView: some View {
@@ -53,7 +57,7 @@ private extension RootContentView {
 private extension RootContentView {
     private var headlinesTab: some View {
         return NavigationView {
-            topHeadlinesView
+            topHeadlinesView()
         }
         .tabItem { Label("News", systemImage: "newspaper") }
     }
@@ -65,26 +69,10 @@ private extension RootContentView {
         .tabItem { Label("Search", systemImage: "magnifyingglass") }
     }
 
-    private func anotherNews(_ cat: NewsCategory) -> some View {
-        let obj = topheadlineObservable
-        obj.selectedCategory = cat
-        return NewsTabView(observable: obj)
-    }
-
     private var bookmarkTab: some View {
         return NavigationView {
             bookmarkView
         }
         .tabItem {  Label("Saved", systemImage: "bookmark") }
-    }
-}
-
-private extension RootContentView {
-    private var topheadlineObservable: ArticleListViewObservable {
-        ArticleListViewObservable(repository: respository)
-    }
-
-    private var searchObservable: SearchObservable {
-        SearchObservable(repository: respository)
     }
 }
