@@ -13,12 +13,10 @@ struct BookmarkTabView: View {
     @State var searchText: String = ""
     var body: some View {
         let filteredArticles = articles
-        NavigationView {
-            ArticleListView(articles: filteredArticles)
-                .overlay(overlayView(isEmpty: filteredArticles.isEmpty))
-                .navigationTitle("Saved Articles")
-        }
-        .searchable(text: $searchText)
+        ArticleListView(articles: filteredArticles)
+            .overlay(overlayView(isEmpty: filteredArticles.isEmpty))
+            .navigationTitle("Saved Articles")
+            .searchable(text: $searchText)
     }
 
     @ViewBuilder

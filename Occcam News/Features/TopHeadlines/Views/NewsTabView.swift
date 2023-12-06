@@ -12,17 +12,15 @@ struct NewsTabView: View {
     @StateObject var observable: ArticleListViewObservable
 
     var body: some View {
-        NavigationView {
-            AsyncContentView(source: observable, loadingView: LoadingView()) {
-                Color.clear.onAppear { observable.load() }
-            } content: { articles in
-                ArticleListView(articles: articles)
-                    .navigationTitle(observable.selectedCategory.text)
-                    .navigationBarItems(trailing: menu)
-                    .onChange(of: observable.selectedCategory) { _ in
-                        observable.load()
-                    }
-            }
+        AsyncContentView(source: observable, loadingView: LoadingView()) {
+            Color.clear.onAppear { observable.load() }
+        } content: { articles in
+            ArticleListView(articles: articles)
+                .navigationTitle(observable.selectedCategory.text)
+                .navigationBarItems(trailing: menu)
+                .onChange(of: observable.selectedCategory) { _ in
+                    observable.load()
+                }
         }
     }
 

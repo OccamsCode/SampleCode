@@ -12,27 +12,25 @@ struct SearchTabView: View {
     @StateObject var observable: SearchObservable
 
     var body: some View {
-        NavigationView {
-            AsyncContentView(source: observable) {
-                switch observable.searchHistoryTerms.isEmpty {
-                case true:
-                    ContentErrorView(title: "Type your search query",
-                                     message: "")
-                case false:
-                    SearchHistoryListView(items: $observable.searchHistoryTerms,
-                                          action: searchHistoryAction)
-                }
-            } content: { articles in
-                switch articles.isEmpty {
-                case true:
-                    ContentErrorView(title: "No results found for '\(observable.searchTerm)'",
-                                     message: "Please try again using a different key word")
-                case false:
-                    ArticleListView(articles: articles)
-                }
+        AsyncContentView(source: observable) {
+            switch observable.searchHistoryTerms.isEmpty {
+            case true:
+                ContentErrorView(title: "Type your search query",
+                                 message: "")
+            case false:
+                SearchHistoryListView(items: $observable.searchHistoryTerms,
+                                      action: searchHistoryAction)
             }
-            .navigationTitle("Search")
+        } content: { articles in
+            switch articles.isEmpty {
+            case true:
+                ContentErrorView(title: "No results found for '\(observable.searchTerm)'",
+                                 message: "Please try again using a different key word")
+            case false:
+                ArticleListView(articles: articles)
+            }
         }
+        .navigationTitle("Search")
         .searchable(text: $observable.searchTerm) { suggestionsView }
         .onChange(of: observable.searchTerm) { newValue in
             if newValue.isEmpty { observable.resetToIdle() }
