@@ -42,7 +42,7 @@ extension NewsTabView {
 
     struct LoadingView: View {
         var body: some View {
-            ArticleListView(articles: [.preview, .preview])
+            ArticleListView(articles: [.preview, .preview, .preview, .preview])
                 .redacted(reason: .placeholder)
         }
     }

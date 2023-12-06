@@ -24,6 +24,11 @@ struct ArticleListView: View {
     let articles: [Article]
     @State private var articleAction: ArticleListView.Action?
     @EnvironmentObject var bookmarks: ArticleBookmarkObservable
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var regularHorizontalSizeClass: Bool {
+        return horizontalSizeClass == .regular
+    }
 
     var body: some View {
         AdaptiveLayoutContentView {
@@ -41,6 +46,11 @@ struct ArticleListView: View {
                 .onTapGesture {
                     articleAction = .selected(article)
                 }
+                .frame(height: regularHorizontalSizeClass ? 360 : nil)
+                .background( regularHorizontalSizeClass ? Color(uiColor: .systemBackground) : .clear)
+                .mask(RoundedRectangle(cornerRadius: regularHorizontalSizeClass ? 8 : 0))
+                .shadow(radius: regularHorizontalSizeClass ? 4 : 0)
+                .padding(.bottom, regularHorizontalSizeClass ? 4 : 0)
             }
         }
         .sheet(item: $articleAction) { action in
@@ -67,7 +77,7 @@ struct ArticleListView: View {
 
 struct ArticleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleListView(articles: [Article.preview, Article.preview])
+        ArticleListView(articles: [.preview, .preview, .preview])
             .environmentObject(ArticleBookmarkObservable())
     }
 }
