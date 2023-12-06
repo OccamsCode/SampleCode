@@ -23,7 +23,9 @@ struct AdaptiveLayoutContentView<Content: View>: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 300))], spacing: 8) {
                     content()
                 }
+                .padding()
             }
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
         default:
             List {
                 content()
