@@ -14,10 +14,20 @@ struct RootContentView: View {
     var body: some View {
         switch horizontalSizeClass {
         case .regular:
-            SideBarContentView()
+            SideBarContentView {
+                switch $0 {
+                case .search:
+                    searchView
+                case .saved:
+                    bookmarkView
+                case .category(let newsCategory):
+                    anotherNews(newsCategory)
+                }
+            }
+            .environmentObject(bookmarks)
         default:
             TabContentView {
-                newsTab
+                headlinesTab
                 searchTab
                 bookmarkTab
             }
@@ -26,26 +36,46 @@ struct RootContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootContentView()
+private extension RootContentView {
+    private var topHeadlinesView: some View {
+        return NewsTabView(observable: topheadlineObservable)
+    }
+
+    private var searchView: some View {
+        return SearchTabView(observable: searchObservable)
+    }
+
+    private var bookmarkView: some View {
+        return BookmarkTabView()
     }
 }
 
 private extension RootContentView {
-    private var newsTab: some View {
-        return NewsTabView(observable: topheadlineObservable)
-            .tabItem { Label("News", systemImage: "newspaper") }
+    private var headlinesTab: some View {
+        return NavigationView {
+            topHeadlinesView
+        }
+        .tabItem { Label("News", systemImage: "newspaper") }
     }
 
     private var searchTab: some View {
-        return SearchTabView(observable: searchObservable)
-            .tabItem { Label("Search", systemImage: "magnifyingglass") }
+        return NavigationView {
+            searchView
+        }
+        .tabItem { Label("Search", systemImage: "magnifyingglass") }
+    }
+
+    private func anotherNews(_ cat: NewsCategory) -> some View {
+        let obj = topheadlineObservable
+        obj.selectedCategory = cat
+        return NewsTabView(observable: obj)
     }
 
     private var bookmarkTab: some View {
-        return BookmarkTabView()
-            .tabItem {  Label("Saved", systemImage: "bookmark") }
+        return NavigationView {
+            bookmarkView
+        }
+        .tabItem {  Label("Saved", systemImage: "bookmark") }
     }
 }
 
