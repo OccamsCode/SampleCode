@@ -81,7 +81,7 @@ struct SideBarContentView<Content: View>: View {
             }
             .listStyle(.sidebar)
 
-            Color.red
+            viewForMenuItem(item: .category(.general))
         }
     }
 
