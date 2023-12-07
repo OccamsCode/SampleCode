@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OccamsCode/Poppify",
       "state" : {
-        "revision" : "3fe75860387fc870de9b0a424d5691a023e1e55f",
-        "version" : "1.0.3"
+        "revision" : "da51e28251dcf17d68c07e348207c0718d76d96a",
+        "version" : "1.0.4"
       }
     },
     {
