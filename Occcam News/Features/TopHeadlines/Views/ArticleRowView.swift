@@ -18,6 +18,7 @@ struct ArticleRowView: View {
     @ViewBuilder let bookmarkIcon: () -> Image
     let action: (ArticleRowView.Action) -> Void
     let relativeDateFormatter = RelativeDateTimeFormatter()
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -37,7 +38,7 @@ struct ArticleRowView: View {
                     fatalError()
                 }
             }
-            .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 300)
+            .asyncImageFrame(horizontalSizeClass ?? .compact)
             .background(Color.gray.opacity(0.3))
             .clipped()
 
@@ -48,6 +49,10 @@ struct ArticleRowView: View {
                 Text(article.description)
                     .font(.subheadline)
                     .lineLimit(2)
+
+                if horizontalSizeClass == .regular {
+                    Spacer()
+                }
 
                 HStack {
                     Text(articleInformationText)
@@ -74,6 +79,20 @@ struct ArticleRowView: View {
         let relativeTime = relativeDateFormatter.localizedString(for: article.publishedAt, relativeTo: .now)
         return "\(article.source.name) · \(relativeTime)"
     }
+}
+
+fileprivate extension View {
+
+    @ViewBuilder
+    func asyncImageFrame(_ horizontalSizeClass: UserInterfaceSizeClass) -> some View {
+        switch horizontalSizeClass {
+        case .regular:
+            frame(height: 180)
+        default:
+            frame(maxWidth: .infinity, minHeight: 200, maxHeight: 300)
+        }
+    }
+
 }
 
 struct ArticleRowView_Previews: PreviewProvider {

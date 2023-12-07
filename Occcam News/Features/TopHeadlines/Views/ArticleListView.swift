@@ -24,9 +24,14 @@ struct ArticleListView: View {
     let articles: [Article]
     @State private var articleAction: ArticleListView.Action?
     @EnvironmentObject var bookmarks: ArticleBookmarkObservable
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var regularHorizontalSizeClass: Bool {
+        return horizontalSizeClass == .regular
+    }
 
     var body: some View {
-        List {
+        AdaptiveLayoutContentView {
             ForEach(articles) { article in
                 ArticleRowView(article: article,
                                bookmarkIcon: {
@@ -38,14 +43,16 @@ struct ArticleListView: View {
                     case .onBookmark: toogleBookmark(for: article)
                     }
                 })
-                    .onTapGesture {
-                        articleAction = .selected(article)
-                    }
+                .onTapGesture {
+                    articleAction = .selected(article)
+                }
+                .frame(height: regularHorizontalSizeClass ? 360 : nil)
+                .background( regularHorizontalSizeClass ? Color(uiColor: .systemBackground) : .clear)
+                .mask(RoundedRectangle(cornerRadius: regularHorizontalSizeClass ? 8 : 0))
+                .shadow(radius: regularHorizontalSizeClass ? 4 : 0)
+                .padding(.bottom, regularHorizontalSizeClass ? 4 : 0)
             }
-            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .listRowSeparator(.hidden)
         }
-        .listStyle(.plain)
         .sheet(item: $articleAction) { action in
 
             switch action {
@@ -70,7 +77,7 @@ struct ArticleListView: View {
 
 struct ArticleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleListView(articles: [Article.preview, Article.preview])
+        ArticleListView(articles: [.preview, .preview, .preview])
             .environmentObject(ArticleBookmarkObservable())
     }
 }
