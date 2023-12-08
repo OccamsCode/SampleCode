@@ -31,8 +31,9 @@ class ArticleBookmarkObservable: ObservableObject {
     @discardableResult
     func removeBookmark(for article: Article) -> Article? {
         guard let index = bookmarks.firstIndex(where: { article.id == $0.id }) else { return nil }
+        let removedArticle = bookmarks.remove(at: index)
         persistBookmarks()
-        return bookmarks.remove(at: index)
+        return removedArticle
     }
 
     private func persistBookmarks() {
