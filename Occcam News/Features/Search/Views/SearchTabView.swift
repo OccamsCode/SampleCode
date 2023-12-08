@@ -31,22 +31,11 @@ struct SearchTabView: View {
             }
         }
         .navigationTitle("Search")
-        .searchable(text: $observable.searchTerm) { suggestionsView }
+        .searchable(text: $observable.searchTerm)
         .onChange(of: observable.searchTerm) { newValue in
             if newValue.isEmpty { observable.resetToIdle() }
         }
         .onSubmit(of: .search, search)
-    }
-
-    @ViewBuilder
-    private var suggestionsView: some View {
-        ForEach(["SwiftUI", "Lite coin", "MacBook Pro M3"], id: \.self) { text in
-            Button {
-                observable.searchTerm = text
-            } label: {
-                Label(text, systemImage: "magnifyingglass")
-            }
-        }
     }
 
     private func search() {
