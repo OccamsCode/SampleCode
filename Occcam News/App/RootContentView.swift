@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @StateObject var bookmarks = ArticleBookmarkObservable()
+    @StateObject var bookmarks = ArticleBookmarkObservable(PlistStore("bookmarks"))
     private let repository = NewsRepository()
     var body: some View {
         switch horizontalSizeClass {

@@ -8,11 +8,12 @@
 import SwiftUI
 
 @MainActor
-class ArticleBookmarkObservable: ObservableObject {
+class ArticleBookmarkObservable<LocalStore: Store>: ObservableObject where LocalStore.Value == [Article] {
     @Published private(set) var bookmarks: [Article] = []
-    private let store = PlistStore<[Article]>("bookmarks")
+    private let store: LocalStore
 
-    init() {
+    init(_ store: LocalStore) {
+        self.store = store
         Task {
             await bookmarks = store.load() ?? []
         }

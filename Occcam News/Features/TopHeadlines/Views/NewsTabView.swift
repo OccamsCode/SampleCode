@@ -73,15 +73,15 @@ struct NewsTabView_Previews: PreviewProvider {
     static var previews: some View {
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .loading))
-            .environmentObject(ArticleBookmarkObservable())
+        .environmentObject(ArticleBookmarkObservable(PreviewStore()))
             .previewDisplayName("Loading State")
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .success([.preview])))
             .previewDisplayName("Success State")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .failure(RequestError.invalidData)))
             .previewDisplayName("Failed State")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
     }
 }

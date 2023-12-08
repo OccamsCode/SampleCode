@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookmarkTabView: View {
 
-    @EnvironmentObject var observable: ArticleBookmarkObservable
+    @EnvironmentObject var observable: ArticleBookmarkObservable<PlistStore<[Article]>>
     @State var searchText: String = ""
     var body: some View {
         let filteredArticles = articles
@@ -44,6 +44,6 @@ struct BookmarkTabView: View {
 struct BookmarkTabView_Previews: PreviewProvider {
     static var previews: some View {
         BookmarkTabView()
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
     }
 }

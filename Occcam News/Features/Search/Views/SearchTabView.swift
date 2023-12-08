@@ -82,13 +82,13 @@ struct SearchTabView_Previews: PreviewProvider {
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
                                                    phase: .success([.preview])))
             .previewDisplayName("Success State w/ Results")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
 
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
                                                    phase: .success([]),
                                                    searchTerm: "Tesla"))
             .previewDisplayName("Success State No Results")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
 
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
                                                    phase: .failure(RequestError.invalidRequest)))

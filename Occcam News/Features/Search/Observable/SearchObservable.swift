@@ -58,6 +58,7 @@ class SearchObservable: ObservableObject, LoadableObject {
         }
     }
 
+    @MainActor
     func resetToIdle() { phase = .idle }
 
     func addHistory(_ newSearchTerm: String) {
