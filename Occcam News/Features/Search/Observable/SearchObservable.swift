@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class SearchObservable: ObservableObject, LoadableObject {
 
     private let repository: SearchNewsRepository
@@ -30,7 +31,6 @@ class SearchObservable: ObservableObject, LoadableObject {
         if searchHistoryItems.isEmpty { loadSearchHistory() }
     }
 
-    @MainActor
     func searchArticles() async {
 
         if Task.isCancelled { return }
@@ -52,7 +52,7 @@ class SearchObservable: ObservableObject, LoadableObject {
         }
     }
 
-    func load() {
+    nonisolated func load() {
         Task {
             await searchArticles()
         }

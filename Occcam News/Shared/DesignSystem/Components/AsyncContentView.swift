@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol LoadableObject: ObservableObject {
     associatedtype Output
-    var phase: LoadingState<Output> { get }
+    nonisolated var phase: LoadingState<Output> { get }
     func load()
 }
 

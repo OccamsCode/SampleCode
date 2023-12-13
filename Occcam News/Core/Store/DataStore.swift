@@ -56,3 +56,10 @@ actor PlistStore<T: Codable>: Store where T: Equatable {
         }
     }
 }
+
+actor PreviewStore: Store {
+    typealias Value = [Article]
+
+    func save(_ value: [Article]) {}
+    func load() -> [Article]? { return nil }
+}

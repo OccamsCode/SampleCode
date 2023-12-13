@@ -8,11 +8,12 @@
 import SwiftUI
 
 @MainActor
-class ArticleBookmarkObservable: ObservableObject {
+class ArticleBookmarkObservable<LocalStore: Store>: ObservableObject where LocalStore.Value == [Article] {
     @Published private(set) var bookmarks: [Article] = []
-    private let store = PlistStore<[Article]>("bookmarks")
+    private let store: LocalStore
 
-    init() {
+    init(_ store: LocalStore) {
+        self.store = store
         Task {
             await bookmarks = store.load() ?? []
         }
@@ -31,8 +32,9 @@ class ArticleBookmarkObservable: ObservableObject {
     @discardableResult
     func removeBookmark(for article: Article) -> Article? {
         guard let index = bookmarks.firstIndex(where: { article.id == $0.id }) else { return nil }
+        let removedArticle = bookmarks.remove(at: index)
         persistBookmarks()
-        return bookmarks.remove(at: index)
+        return removedArticle
     }
 
     private func persistBookmarks() {

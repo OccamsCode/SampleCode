@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Poppify
 
 struct NewsTabView: View {
 
     @StateObject var observable: ArticleListViewObservable
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         AsyncContentView(source: observable, loadingView: LoadingView()) {
@@ -17,10 +19,22 @@ struct NewsTabView: View {
         } content: { articles in
             ArticleListView(articles: articles)
                 .navigationTitle(observable.selectedCategory.text)
-                .navigationBarItems(trailing: menu)
+                .navigationBarItems(trailing: navigationBarItems)
                 .onChange(of: observable.selectedCategory) { _ in
                     observable.load()
                 }
+        }
+    }
+
+    @ViewBuilder
+    private var navigationBarItems: some View {
+        switch horizontalSizeClass {
+        case .regular:
+            Button(action: observable.load) {
+                Image(systemName: "arrow.clockwise")
+            }
+        default:
+            menu
         }
     }
 
@@ -42,13 +56,12 @@ extension NewsTabView {
 
     struct LoadingView: View {
         var body: some View {
-            ArticleListView(articles: [.preview, .preview, .preview, .preview])
+            ArticleListView(articles: Array(repeating: .preview, count: 6))
                 .redacted(reason: .placeholder)
         }
     }
 }
 
-import Poppify
 struct NewsTabView_Previews: PreviewProvider {
 
     struct PreviewRepo: TopHeadlinesRepository {
@@ -60,15 +73,15 @@ struct NewsTabView_Previews: PreviewProvider {
     static var previews: some View {
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .loading))
-            .environmentObject(ArticleBookmarkObservable())
+        .environmentObject(ArticleBookmarkObservable(PreviewStore()))
             .previewDisplayName("Loading State")
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .success([.preview])))
             .previewDisplayName("Success State")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
                                                           phase: .failure(RequestError.invalidData)))
             .previewDisplayName("Failed State")
-            .environmentObject(ArticleBookmarkObservable())
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
     }
 }

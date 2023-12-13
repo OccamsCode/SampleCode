@@ -23,7 +23,7 @@ struct ArticleListView: View {
 
     let articles: [Article]
     @State private var articleAction: ArticleListView.Action?
-    @EnvironmentObject var bookmarks: ArticleBookmarkObservable
+    @EnvironmentObject var bookmarks: ArticleBookmarkObservable<PlistStore<[Article]>>
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private var regularHorizontalSizeClass: Bool {
@@ -76,8 +76,9 @@ struct ArticleListView: View {
 }
 
 struct ArticleListView_Previews: PreviewProvider {
+
     static var previews: some View {
-        ArticleListView(articles: [.preview, .preview, .preview])
-            .environmentObject(ArticleBookmarkObservable())
+        ArticleListView(articles: Array(repeating: Article.preview, count: 4))
+            .environmentObject(ArticleBookmarkObservable(PreviewStore()))
     }
 }
