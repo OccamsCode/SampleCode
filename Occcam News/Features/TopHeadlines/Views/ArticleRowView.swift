@@ -87,7 +87,7 @@ fileprivate extension View {
     func asyncImageFrame(_ horizontalSizeClass: UserInterfaceSizeClass) -> some View {
         switch horizontalSizeClass {
         case .regular:
-            frame(height: 180)
+            frame(maxWidth: .infinity, idealHeight: 200, maxHeight: 250)
         default:
             frame(maxWidth: .infinity, minHeight: 200, maxHeight: 300)
         }
