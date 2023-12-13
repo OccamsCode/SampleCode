@@ -22,6 +22,7 @@ struct RootContentView: View {
                     bookmarkView
                 case .category(let newsCategory):
                     topHeadlinesView(newsCategory)
+                        .id(newsCategory.id)
                 }
             }
             .environmentObject(bookmarks)
