@@ -19,35 +19,12 @@ struct NewsTabView: View {
         } content: { articles in
             ArticleListView(articles: articles)
                 .navigationTitle(observable.selectedCategory.text)
-                .navigationBarItems(trailing: navigationBarItems)
+                .navigationBarItems(trailing:
+                    NavigationItemsView(selection: $observable.selectedCategory, buttonAction: observable.load)
+                )
                 .onChange(of: observable.selectedCategory) { _ in
                     observable.load()
                 }
-        }
-    }
-
-    @ViewBuilder
-    private var navigationBarItems: some View {
-        switch horizontalSizeClass {
-        case .regular:
-            Button(action: observable.load) {
-                Image(systemName: "arrow.clockwise")
-            }
-        default:
-            menu
-        }
-    }
-
-    private var menu: some View {
-        Menu {
-            Picker("Category", selection: $observable.selectedCategory) {
-                ForEach(NewsCategory.allCases) {
-                    Text($0.text).tag($0)
-                }
-            }
-        } label: {
-            Image(systemName: "line.3.horizontal")
-                .imageScale(.large)
         }
     }
 }
