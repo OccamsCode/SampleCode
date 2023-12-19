@@ -7,73 +7,20 @@
 
 import SwiftUI
 
-enum MenuItem: CaseIterable {
-    case search
-    case saved
-    case category(NewsCategory)
-
-    var text: String {
-        switch self {
-        case .search:
-            return "Search"
-        case .saved:
-            return "Saved"
-        case .category(let newsCategory):
-            return newsCategory.text
-        }
-    }
-
-    var systemImage: String {
-        switch self {
-        case .search:
-            return "magnifyingglass"
-        case .saved:
-            return "bookmark"
-        case .category(let newsCategory):
-            return newsCategory.systemImage
-        }
-    }
-
-    static var allCases: [MenuItem] {
-        return [.search, .saved] + newsCategoryItems
-    }
-
-    static var newsCategoryItems: [MenuItem] {
-        return NewsCategory.allCases.map { .category($0) }
-    }
-}
-
-extension MenuItem: Identifiable {
-    var id: String {
-        switch self {
-        case .search:
-            return "search"
-        case .saved:
-            return "saved"
-        case .category(let newsCategory):
-            return newsCategory.id
-        }
-    }
-}
-
-extension MenuItem {
-    init?(_ id: MenuItem.ID?) {
-        switch id {
-        case MenuItem.search.id: self = .search
-        case MenuItem.saved.id: self = .saved
-        default:
-            if let id = id, let category = NewsCategory(rawValue: id.lowercased()) {
-                self = .category(category)
-            } else {
-                return nil
-            }
-        }
-    }
-}
-
 struct SideBarContentView<Content: View>: View {
     private let content: (MenuItem) -> Content
-    @State var selectedMenuItem: MenuItem.ID? = MenuItem.category(.general).id
+
+    @AppStorage("menu_item_selection") var selectedMenuItem: MenuItem.ID?
+    private var selection: Binding<MenuItem.ID?> {
+        Binding {
+            selectedMenuItem ?? MenuItem.category(.general).id
+        } set: { newValue in
+            if let newValue = newValue {
+                selectedMenuItem = newValue
+            }
+        }
+
+    }
 
     init(@ViewBuilder content: @escaping (MenuItem) -> Content) {
         self.content = content
@@ -103,7 +50,7 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private func listView(@ViewBuilder _ navigation: @escaping (MenuItem) -> some View) -> some View {
-        List(selection: $selectedMenuItem) {
+        List(selection: selection) {
             ForEach([MenuItem.search, MenuItem.saved]) {
                 navigation($0)
             }
@@ -121,7 +68,7 @@ struct SideBarContentView<Content: View>: View {
     }
 
     private func navigationLinkForMenuItem(_ item: MenuItem) -> some View {
-        NavigationLink(destination: viewForMenuItem(item: item), tag: item.id, selection: $selectedMenuItem) {
+        NavigationLink(destination: viewForMenuItem(item: item), tag: item.id, selection: selection) {
             Label(item.text, systemImage: item.systemImage)
         }
     }
@@ -133,11 +80,11 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private var navigationLink: some View {
-        if let menuItem = MenuItem(selectedMenuItem) {
+        if let menuItem = MenuItem(selection.wrappedValue) {
             NavigationLink(
                 destination: viewForMenuItem(item: menuItem),
                 tag: menuItem.id,
-                selection: $selectedMenuItem) {
+                selection: selection) {
                     EmptyView()
             }
         }
@@ -145,9 +92,9 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private func listRowForMenuItem(_ item: MenuItem) -> some View {
-        let isSelected = item.id == selectedMenuItem
+        let isSelected = item.id == selection.wrappedValue
         Button {
-            self.selectedMenuItem = item.id
+            self.selection.wrappedValue = item.id
         } label: {
             Label(item.text, systemImage: item.systemImage)
         }
