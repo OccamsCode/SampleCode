@@ -53,6 +53,7 @@
 		BA86B7AC2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */; };
 		BAA281F32B308C77006E4DA6 /* NewsCategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA281F22B308C77006E4DA6 /* NewsCategorySelectionView.swift */; };
 		BAA281F52B308D44006E4DA6 /* NavigationItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA281F42B308D44006E4DA6 /* NavigationItemsView.swift */; };
+		BAA281F82B325859006E4DA6 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA281F72B325859006E4DA6 /* MenuItem.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
 		BAF1D4DC2A93DE0000C93976 /* Poppify in Frameworks */ = {isa = PBXBuildFile; productRef = BAF1D4DB2A93DE0000C93976 /* Poppify */; };
@@ -126,6 +127,7 @@
 		BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBookmarkObservable.swift; sourceTree = "<group>"; };
 		BAA281F22B308C77006E4DA6 /* NewsCategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategorySelectionView.swift; sourceTree = "<group>"; };
 		BAA281F42B308D44006E4DA6 /* NavigationItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemsView.swift; sourceTree = "<group>"; };
+		BAA281F72B325859006E4DA6 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -383,6 +385,7 @@
 		BA86B7752B064E30001DD073 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BAA281F62B325841006E4DA6 /* Models */,
 				BA86B7762B064E38001DD073 /* DesignSystem */,
 			);
 			path = Shared;
@@ -493,6 +496,14 @@
 				BA86B7AB2B0FB0E6001DD073 /* ArticleBookmarkObservable.swift */,
 			);
 			path = Observables;
+			sourceTree = "<group>";
+		};
+		BAA281F62B325841006E4DA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BAA281F72B325859006E4DA6 /* MenuItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BAA2B7372940054F00FB0034 /* Frameworks */ = {
@@ -719,6 +730,7 @@
 				BA504FF22B18C1D700865F6E /* SearchObservable.swift in Sources */,
 				BA504FF62B18C40B00865F6E /* SearchTabView.swift in Sources */,
 				BA504FED2B14FBD400865F6E /* DataStore.swift in Sources */,
+				BAA281F82B325859006E4DA6 /* MenuItem.swift in Sources */,
 				BA86B7842B081883001DD073 /* InjectedValues+Extension.swift in Sources */,
 				BA86B7872B081ADB001DD073 /* NewsRepository.swift in Sources */,
 			);
