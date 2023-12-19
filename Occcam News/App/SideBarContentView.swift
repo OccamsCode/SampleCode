@@ -73,7 +73,18 @@ extension MenuItem {
 
 struct SideBarContentView<Content: View>: View {
     private let content: (MenuItem) -> Content
-    @State var selectedMenuItem: MenuItem.ID? = MenuItem.category(.general).id
+
+    @AppStorage("menu_item_selection") var selectedMenuItem: MenuItem.ID?
+    private var selection: Binding<MenuItem.ID?> {
+        Binding {
+            selectedMenuItem ?? MenuItem.category(.general).id
+        } set: { newValue in
+            if let newValue = newValue {
+                selectedMenuItem = newValue
+            }
+        }
+
+    }
 
     init(@ViewBuilder content: @escaping (MenuItem) -> Content) {
         self.content = content
@@ -103,7 +114,7 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private func listView(@ViewBuilder _ navigation: @escaping (MenuItem) -> some View) -> some View {
-        List(selection: $selectedMenuItem) {
+        List(selection: selection) {
             ForEach([MenuItem.search, MenuItem.saved]) {
                 navigation($0)
             }
@@ -121,7 +132,7 @@ struct SideBarContentView<Content: View>: View {
     }
 
     private func navigationLinkForMenuItem(_ item: MenuItem) -> some View {
-        NavigationLink(destination: viewForMenuItem(item: item), tag: item.id, selection: $selectedMenuItem) {
+        NavigationLink(destination: viewForMenuItem(item: item), tag: item.id, selection: selection) {
             Label(item.text, systemImage: item.systemImage)
         }
     }
@@ -133,11 +144,11 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private var navigationLink: some View {
-        if let menuItem = MenuItem(selectedMenuItem) {
+        if let menuItem = MenuItem(selection.wrappedValue) {
             NavigationLink(
                 destination: viewForMenuItem(item: menuItem),
                 tag: menuItem.id,
-                selection: $selectedMenuItem) {
+                selection: selection) {
                     EmptyView()
             }
         }
@@ -145,9 +156,9 @@ struct SideBarContentView<Content: View>: View {
 
     @ViewBuilder
     private func listRowForMenuItem(_ item: MenuItem) -> some View {
-        let isSelected = item.id == selectedMenuItem
+        let isSelected = item.id == selection.wrappedValue
         Button {
-            self.selectedMenuItem = item.id
+            self.selection.wrappedValue = item.id
         } label: {
             Label(item.text, systemImage: item.systemImage)
         }
