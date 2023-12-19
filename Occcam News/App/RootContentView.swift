@@ -25,14 +25,12 @@ struct RootContentView: View {
                         .id(newsCategory.id)
                 }
             }
-            .environmentObject(bookmarks)
         default:
             TabContentView {
                 headlinesTab
                 searchTab
                 bookmarkTab
             }
-            .environmentObject(bookmarks)
         }
     }
 }
@@ -42,16 +40,19 @@ private extension RootContentView {
         return NewsTabView(observable:
             ArticleListViewObservable(repository: repository, category: category)
         )
+        .environmentObject(bookmarks)
     }
 
     private var searchView: some View {
         return SearchTabView(observable:
             SearchObservable(repository: repository)
         )
+        .environmentObject(bookmarks)
     }
 
     private var bookmarkView: some View {
         return BookmarkTabView()
+            .environmentObject(bookmarks)
     }
 }
 
