@@ -11,8 +11,14 @@ class ArticleListViewObservable: ObservableObject, LoadableObject {
 
     private let repository: TopHeadlinesRepository
     @Published private(set) var phase: LoadingState<[Article]>
-    @Published var selectedCategory: NewsCategory
-
+    @Published var selectedCategory: NewsCategory {
+        didSet {
+            if oldValue != selectedCategory {
+                selectedMenuItem = MenuItem.category(selectedCategory).id
+            }
+        }
+    }
+    @AppStorage("menu_item_selection") private var selectedMenuItem: MenuItem.ID?
     internal init(repository: TopHeadlinesRepository,
                   phase: LoadingState<[Article]> = .idle,
                   category: NewsCategory = .general) {
