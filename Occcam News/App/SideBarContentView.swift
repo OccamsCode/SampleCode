@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SideBarContentView<Content: View>: View {
-    private let content: (MenuItem) -> Content
+struct SideBarContentView<DetailContent: View>: View {
+    private let detailContent: (MenuItem) -> DetailContent
 
     @AppStorage("menu_item_selection") var selectedMenuItem: MenuItem.ID?
     private var selection: Binding<MenuItem.ID?> {
@@ -22,84 +22,33 @@ struct SideBarContentView<Content: View>: View {
 
     }
 
-    init(@ViewBuilder content: @escaping (MenuItem) -> Content) {
-        self.content = content
+    init(@ViewBuilder detailContent: @escaping (MenuItem) -> DetailContent) {
+        self.detailContent = detailContent
     }
 
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationSplitView {
-                listView {
-                    navigationLinkForMenuItem($0)
+                MenuItem.ListView(selection: selection) { menuItem in
+                    MenuItem.NavigationLinkView(selection: selection, destination: detailContent) {
+                        Label(menuItem.text, systemImage: menuItem.systemImage)
+                    }
                 }
             } detail: {
-                viewForMenuItem(item: .category(.general))
+                detailContent(.category(.general))
             }
         } else {
             NavigationView {
                 ZStack {
-                    navigationLink
-                    listView {
-                        listRowForMenuItem($0)
+                    MenuItem.NavigationLinkView(selection: selection, destination: detailContent) {
+                        EmptyView()
+                    }
+                    MenuItem.ListView(selection: selection) {
+                        MenuItem.ListRowView(menuItem: $0, selection: selection)
                     }
                 }
             }
         }
-
-    }
-
-    @ViewBuilder
-    private func listView(@ViewBuilder _ navigation: @escaping (MenuItem) -> some View) -> some View {
-        List(selection: selection) {
-            ForEach([MenuItem.search, MenuItem.saved]) {
-                navigation($0)
-            }
-
-            Section {
-                ForEach(MenuItem.newsCategoryItems) {
-                    navigation($0)
-                }
-            } header: {
-                Text("Categories")
-            }
-            .navigationTitle("Occam News")
-        }
-        .listStyle(.sidebar)
-    }
-
-    private func navigationLinkForMenuItem(_ item: MenuItem) -> some View {
-        NavigationLink(destination: viewForMenuItem(item: item), tag: item.id, selection: selection) {
-            Label(item.text, systemImage: item.systemImage)
-        }
-    }
-
-    @ViewBuilder
-    private func viewForMenuItem(item: MenuItem) -> some View {
-        content(item)
-    }
-
-    @ViewBuilder
-    private var navigationLink: some View {
-        if let menuItem = MenuItem(selection.wrappedValue) {
-            NavigationLink(
-                destination: viewForMenuItem(item: menuItem),
-                tag: menuItem.id,
-                selection: selection) {
-                    EmptyView()
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func listRowForMenuItem(_ item: MenuItem) -> some View {
-        let isSelected = item.id == selection.wrappedValue
-        Button {
-            self.selection.wrappedValue = item.id
-        } label: {
-            Label(item.text, systemImage: item.systemImage)
-        }
-        .foregroundColor(isSelected ? .white : nil)
-        .listRowBackground((isSelected ? Color.accentColor : Color.clear).mask(RoundedRectangle(cornerRadius: 8)))
     }
 }
 
