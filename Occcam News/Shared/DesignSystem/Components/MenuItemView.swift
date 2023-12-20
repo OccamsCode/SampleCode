@@ -31,23 +31,6 @@ extension MenuItem {
         }
     }
 
-    struct NavigationLinkView<Destination: View, Content: View>: View {
-        @Binding var selection: MenuItem.ID?
-        let destination: (MenuItem) -> Destination
-        let content: () -> Content
-
-        var body: some View {
-            if let menuItem = MenuItem(selection) {
-                NavigationLink(
-                    destination: destination(menuItem),
-                    tag: menuItem.id,
-                    selection: $selection) {
-                        content()
-                }
-            }
-        }
-    }
-
     struct ListRowView: View {
         let menuItem: MenuItem
         @Binding var selection: MenuItem.ID?
@@ -64,6 +47,25 @@ extension MenuItem {
             }
             .foregroundColor(isSelected ? .white : nil)
             .listRowBackground((isSelected ? Color.accentColor : Color.clear).mask(RoundedRectangle(cornerRadius: 8)))
+        }
+    }
+}
+
+extension MenuItem {
+    struct NavigationLinkView<Destination: View, Content: View>: View {
+        @Binding var selection: MenuItem.ID?
+        let destination: (MenuItem) -> Destination
+        let content: () -> Content
+
+        var body: some View {
+            if let menuItem = MenuItem(selection) {
+                NavigationLink(
+                    destination: destination(menuItem),
+                    tag: menuItem.id,
+                    selection: $selection) {
+                        content()
+                    }
+            }
         }
     }
 }
