@@ -8,7 +8,7 @@
 <!--- If it fixes an open issue, please link to the issue here. -->
 
 ## Screenshots (if appropriate):
-<!--- Display both before & afterscreens to create a better MR --->
+<!--- Display both before & after screenshot to create a better MR --->
 <!--- Create a table using the /table command to better group the screenshots --->
 
 ## Types of change
