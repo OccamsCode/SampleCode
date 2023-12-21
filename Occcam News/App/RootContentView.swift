@@ -10,11 +10,12 @@ import SwiftUI
 struct RootContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject var bookmarks = ArticleBookmarkObservable(PlistStore("bookmarks"))
+    @AppStorage("menu_item_selection") var selectedMenuItem: MenuItem.ID?
     private let repository = NewsRepository()
     var body: some View {
         switch horizontalSizeClass {
         case .regular:
-            SideBarContentView {
+            SideBarContentView(selectedMenuItem: $selectedMenuItem) {
                 switch $0 {
                 case .search:
                     searchView
@@ -36,7 +37,7 @@ struct RootContentView: View {
 }
 
 private extension RootContentView {
-    private func topHeadlinesView(_ category: NewsCategory = .general) -> some View {
+    private func topHeadlinesView(_ category: NewsCategory) -> some View {
         return NewsTabView(observable:
             ArticleListViewObservable(repository: repository, category: category)
         )
@@ -59,9 +60,18 @@ private extension RootContentView {
 private extension RootContentView {
     private var headlinesTab: some View {
         return NavigationView {
-            topHeadlinesView()
+            topHeadlinesView(currentCategory)
         }
         .tabItem { Label("News", systemImage: "newspaper") }
+    }
+
+    private var currentCategory: NewsCategory {
+        switch MenuItem(selectedMenuItem) {
+        case let .category(category):
+            return category
+        default:
+            return .general
+        }
     }
 
     private var searchTab: some View {

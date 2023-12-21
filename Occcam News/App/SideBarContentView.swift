@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct SideBarContentView<DetailContent: View>: View {
-    private let detailContent: (MenuItem) -> DetailContent
-
-    @AppStorage("menu_item_selection") var selectedMenuItem: MenuItem.ID?
+    @Binding var selectedMenuItem: MenuItem.ID?
     private var selection: Binding<MenuItem.ID?> {
         Binding {
             selectedMenuItem ?? MenuItem.category(.general).id
@@ -22,9 +20,7 @@ struct SideBarContentView<DetailContent: View>: View {
 
     }
 
-    init(@ViewBuilder detailContent: @escaping (MenuItem) -> DetailContent) {
-        self.detailContent = detailContent
-    }
+    @ViewBuilder let detailContent: (MenuItem) -> DetailContent
 
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -54,7 +50,7 @@ struct SideBarContentView<DetailContent: View>: View {
 
 struct SideBarContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarContentView { item in
+        SideBarContentView(selectedMenuItem: .constant(nil)) { item in
             switch item {
             case .search:
                 Color.red

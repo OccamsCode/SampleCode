@@ -24,8 +24,10 @@ struct TabContentView<Content: View>: View {
 struct TabContentView_Previews: PreviewProvider {
     static var previews: some View {
         TabContentView {
-            Color.indigo
-            Color.cyan
+            ForEach([Color.red, .green, .blue], id: \.self) { color in
+                color
+                    .tabItem { Label(String(describing: color), systemImage: "") }
+            }
         }
     }
 }
