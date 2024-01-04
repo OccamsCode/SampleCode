@@ -1,4 +1,6 @@
 [![iOS Build and Test](https://github.com/OccamsCode/SampleCode/actions/workflows/GitHubActions.yml/badge.svg)](https://github.com/OccamsCode/SampleCode/actions/workflows/GitHubActions.yml)
+[![GitHub issues](https://img.shields.io/github/issues/OccamsCode/SampleCode)](https://github.com/OccamsCode/SampleCode/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/OccamsCode/SampleCode)](https://github.com/OccamsCode/SampleCode/pulls)
 
 # Sample Code
 
