@@ -19,23 +19,23 @@ struct AsyncContentView<Source: LoadableObject,
                             Content: View>: View {
     @ObservedObject var source: Source
     var loadingView: LoadingView
-    var idle: () -> Idle
+    var idle: Idle
     var content: (Source.Output) -> Content
 
     init(source: Source,
          loadingView: LoadingView,
-         @ViewBuilder idle: @escaping () -> Idle,
+         @ViewBuilder idle: () -> Idle,
          @ViewBuilder content: @escaping (Source.Output) -> Content) {
         self.source = source
         self.loadingView = loadingView
         self.content = content
-        self.idle = idle
+        self.idle = idle()
     }
 
     var body: some View {
         switch source.phase {
         case .idle:
-            idle()
+            idle
         case .loading:
             loadingView
         case .failure(let error):
@@ -53,7 +53,7 @@ typealias DefaultProgressView = ProgressView<EmptyView, EmptyView>
 
 extension AsyncContentView where LoadingView == DefaultProgressView {
     init(source: Source,
-         @ViewBuilder idle: @escaping () -> Idle,
+         @ViewBuilder idle: () -> Idle,
          @ViewBuilder content: @escaping (Source.Output) -> Content) {
         self.init(source: source,
                   loadingView: ProgressView(),

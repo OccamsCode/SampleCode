@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct TabContentView<Content: View>: View {
-    private let content: () -> Content
+    private let content: Content
 
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
     }
 
     var body: some View {
         TabView {
-            content()
+            content
         }
     }
 }
