@@ -57,6 +57,7 @@
 		BAA281FA2B33361B006E4DA6 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA281F92B33361B006E4DA6 /* MenuItemView.swift */; };
 		BAA2B721293FF5F000FB0034 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = BAA2B720293FF5F000FB0034 /* Swifter */; };
 		BAA3ACED29C5320F00033620 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BAA3ACEC29C5320E00033620 /* Config.xcconfig */; };
+		BAB15ED52B4DF4E000B5CCEF /* BPContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB15ED42B4DF4E000B5CCEF /* BPContentUnavailableView.swift */; };
 		BAF1D4DC2A93DE0000C93976 /* Poppify in Frameworks */ = {isa = PBXBuildFile; productRef = BAF1D4DB2A93DE0000C93976 /* Poppify */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		BAA281F72B325859006E4DA6 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		BAA281F92B33361B006E4DA6 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		BAA3ACEC29C5320E00033620 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		BAB15ED42B4DF4E000B5CCEF /* BPContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPContentUnavailableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +414,7 @@
 				BAA281F22B308C77006E4DA6 /* NewsCategorySelectionView.swift */,
 				BAA281F42B308D44006E4DA6 /* NavigationItemsView.swift */,
 				BAA281F92B33361B006E4DA6 /* MenuItemView.swift */,
+				BAB15ED42B4DF4E000B5CCEF /* BPContentUnavailableView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				BA86B7942B0BDA1B001DD073 /* LoadingState.swift in Sources */,
 				BA504FEA2B14F88B00865F6E /* BookmarkTabView.swift in Sources */,
 				BA86B7992B0D3E9F001DD073 /* ContentErrorView.swift in Sources */,
+				BAB15ED52B4DF4E000B5CCEF /* BPContentUnavailableView.swift in Sources */,
 				BA86B77C2B0811D6001DD073 /* NewsCategory.swift in Sources */,
 				BA5050022B1F561900865F6E /* TabContentView.swift in Sources */,
 				BA86B7742B064B81001DD073 /* SafariView.swift in Sources */,
