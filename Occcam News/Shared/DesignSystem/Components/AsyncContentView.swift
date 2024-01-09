@@ -13,10 +13,8 @@ protocol LoadableObject: ObservableObject {
     func load()
 }
 
-struct AsyncContentView<Source: LoadableObject,
-                            LoadingView: View,
-                            Idle: View,
-                            Content: View>: View {
+struct AsyncContentView<Source, LoadingView, Idle, Content>: View
+    where Source: LoadableObject, LoadingView: View, Idle: View, Content: View {
     @ObservedObject var source: Source
     var loadingView: LoadingView
     var idle: Idle
