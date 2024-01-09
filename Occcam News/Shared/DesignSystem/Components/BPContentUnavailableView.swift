@@ -8,6 +8,10 @@
 import SwiftUI
 
 @available(iOS, deprecated: 17.0, message: "Use SwiftUI's ContentUnavailableView API beyond iOS 16")
+@available(macOS, deprecated: 14.0, message: "Use SwiftUI's ContentUnavailableView API beyond macOS 13")
+@available(macCatalyst, deprecated: 17.0, message: "Use SwiftUI's ContentUnavailableView API beyond Mac Catalyst 16")
+@available(tvOS, deprecated: 17.0, message: "Use SwiftUI's ContentUnavailableView API beyond tvOS 16")
+@available(watchOS, deprecated: 10.0, message: "Use SwiftUI's ContentUnavailableView API beyond watchOS 9")
 public struct ContentUnavailableView<Label, Description, Actions>: View
     where Label: View, Description: View, Actions: View {
 
