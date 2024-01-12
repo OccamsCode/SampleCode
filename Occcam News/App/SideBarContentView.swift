@@ -17,7 +17,6 @@ struct SideBarContentView<DetailContent: View>: View {
                 selectedMenuItem = newValue
             }
         }
-
     }
 
     @ViewBuilder let detailContent: (MenuItem) -> DetailContent
@@ -26,12 +25,10 @@ struct SideBarContentView<DetailContent: View>: View {
         if #available(iOS 16.0, *) {
             NavigationSplitView {
                 MenuItem.ListView(selection: selection) { menuItem in
-                    MenuItem.NavigationLinkView(selection: selection, destination: detailContent) {
                         Label(menuItem.text, systemImage: menuItem.systemImage)
                     }
-                }
             } detail: {
-                detailContent(.category(.general))
+                detailContent(MenuItem(selection.wrappedValue) ?? .category(.general))
             }
         } else {
             NavigationView {
