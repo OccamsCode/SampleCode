@@ -16,8 +16,7 @@ extension Source: Equatable {}
 extension Source: Codable {}
 
 extension Source: Previewable {
-    static var preview: Source {
-        return Source(name: "CNN",
-                      url: URL(string: "https://www.cnn.com"))
+    static func preview() -> Source {
+        return Source(name: "CNN", url: nil)
     }
 }
