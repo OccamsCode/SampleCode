@@ -78,7 +78,7 @@ struct ArticleListView: View {
 struct ArticleListView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ArticleListView(articles: Array(repeating: Article.preview, count: 4))
+        ArticleListView(articles: Array(repeating: .preview(), count: 4))
             .environmentObject(ArticleBookmarkObservable(PreviewStore()))
     }
 }

@@ -27,13 +27,13 @@ extension Article: Codable {}
 
 // swiftlint: disable line_length
 extension Article: Previewable {
-    static var preview: Article {
+    static func preview() -> Article {
         return Article(title: UUID().uuidString,
                        description: "Know all about NISAR mission tests and the expected launch date from NASA NISAR Project Manager Phil Barela. It is a joint NASA and ISRO project.",
                        url: URL(string: "https://bc.ctvnews.ca/b-c-to-test-emergency-alert-system-wednesday-1.6644970")!,
-                       image: URL(string: "https://www.svtstatic.se/image-news/1200/1.91:1/0.5/0.5/c5d6c2228b01106b63e91e67f80d5ecab2abcf0f384051dd8cf59eb39910ab09"),
+                       image: nil,
                        publishedAt: .distantPast,
-                       source: .preview)
+                       source: .preview())
     }
 }
 // swiftlint: enable line_length

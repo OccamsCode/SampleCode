@@ -80,7 +80,7 @@ struct SearchTabView_Previews: PreviewProvider {
             .previewDisplayName("Loading State")
 
         SearchTabView(observable: SearchObservable(repository: PreviewRepo(),
-                                                   phase: .success([.preview])))
+                                                   phase: .success([.preview()])))
             .previewDisplayName("Success State w/ Results")
             .environmentObject(ArticleBookmarkObservable(PreviewStore()))
 

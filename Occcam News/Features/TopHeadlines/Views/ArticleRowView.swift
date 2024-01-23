@@ -97,7 +97,7 @@ fileprivate extension View {
 
 struct ArticleRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleRowView(article: .preview,
+        ArticleRowView(article: .preview(),
                        bookmarkIcon: { Image(systemName: "bookmark.fill") },
                        action: { _ in })
     }

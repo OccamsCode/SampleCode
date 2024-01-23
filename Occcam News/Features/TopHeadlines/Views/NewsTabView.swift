@@ -33,7 +33,7 @@ extension NewsTabView {
 
     struct LoadingView: View {
         var body: some View {
-            ArticleListView(articles: Array(repeating: .preview, count: 6))
+            ArticleListView(articles: Array(repeating: .preview(), count: 4))
                 .redacted(reason: .placeholder)
         }
     }
@@ -53,7 +53,7 @@ struct NewsTabView_Previews: PreviewProvider {
         .environmentObject(ArticleBookmarkObservable(PreviewStore()))
             .previewDisplayName("Loading State")
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
-                                                          phase: .success([.preview])))
+                                                          phase: .success([.preview()])))
             .previewDisplayName("Success State")
             .environmentObject(ArticleBookmarkObservable(PreviewStore()))
         NewsTabView(observable: ArticleListViewObservable(repository: PreviewRepo(),
